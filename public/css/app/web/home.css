@@ -1,0 +1,303 @@
+#wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 500px 1fr 1fr 1fr 1fr 600px;
+  grid-template-columns: 500px 1fr 1fr 1fr 1fr 600px;
+  -ms-grid-rows: minmax(125px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  grid-template-rows: minmax(125px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  grid-template-areas: "hdr_left . . . . hdr_right" "sldr sldr sldr sldr sldr sldr" "footer footer footer footer footer footer" "ftr ftr ftr ftr ftr ftr";
+}
+
+#wrapper .hdr_left {
+  grid-area: hdr_left;
+  background-color: #FFF;
+  padding: 1em;
+}
+
+#wrapper .hdr_left .logo {
+  margin: 8px 0 0 8px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#wrapper .hdr_left .logo .cmpnylogo img {
+  width: 80px;
+  float: left;
+}
+
+#wrapper .hdr_left .logo .cmpnyname {
+  font: 24px segobl;
+  margin-left: 80px;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  top: 2px;
+  line-height: 25px;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .drk, #wrapper .hdr_left .logo .cmpnyname .lght {
+  float: left;
+  width: 100%;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .drk {
+  color: #0077bf;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .lght {
+  color: #6dc5e6;
+}
+
+#wrapper .hdr_right {
+  grid-area: hdr_right;
+  background-color: #FFF;
+  padding: 1em;
+}
+
+#wrapper .sldr {
+  grid-area: sldr;
+  background-color: #F9F9F9;
+  min-height: 600px;
+}
+
+#wrapper .footer {
+  grid-area: footer;
+  background-color: #313131;
+  padding: 20px 10px 30px;
+}
+
+#wrapper .footer .ftrbx h3 {
+  margin: 10px 0 15px;
+  color: #6dc5e6;
+  font: 18px segobb;
+  letter-spacing: 1px;
+  line-height: 22px;
+}
+
+#wrapper .footer .ftrbx ul {
+  padding: 0;
+}
+
+#wrapper .footer .ftrbx ul li {
+  position: relative;
+  list-style: none;
+  border-bottom: 1px solid #1f1f1f;
+  border-top: 1px solid #424242;
+  color: #FFF;
+  font-style: italic;
+  padding-left: 25px;
+}
+
+#wrapper .footer .ftrbx ul li:first-child {
+  border-top: 0;
+}
+
+#wrapper .footer .ftrbx ul li:last-child {
+  border-bottom: 0;
+}
+
+#wrapper .footer .ftrbx ul li a, #wrapper .footer .ftrbx ul li span {
+  font-size: 14px;
+  width: 100%;
+  text-decoration: none;
+  padding: 10px 0;
+  color: #FFF;
+  display: inline-block;
+}
+
+#wrapper .footer .ftrbx ul li .fa {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #339cde;
+  font-size: 20px;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li {
+  float: left;
+  margin: 0 4px;
+  padding: 0;
+  display: inline-block;
+  border: 0;
+  list-style: none;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li a {
+  text-align: center;
+  background-color: #0077c0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li a .fa {
+  color: #FFF;
+  position: relative;
+  top: -2px;
+  font-size: 18px;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(1) a {
+  background-color: #3b5998;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(2) a {
+  background-color: #1da1f2;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(3) a {
+  background-color: #517fa6;
+}
+
+#wrapper .ftr {
+  grid-area: ftr;
+  background-color: #2a2a2a;
+  padding: 12px 0;
+  text-align: center;
+}
+
+#wrapper .ftr p {
+  color: #FFF;
+  font-size: 11px;
+  margin: 0;
+}
+
+.nptgrp {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+  display: inline-block;
+}
+
+.nptgrp.err textarea, .nptgrp.err select, .nptgrp.err input[type=text], .nptgrp.err input[type=password] {
+  border: 1px solid #923f3f;
+}
+
+.nptgrp textarea, .nptgrp select, .nptgrp input[type=text],
+.nptgrp input[type=password] {
+  border: 1px solid #BDBDBD;
+  padding: 8px 10px;
+  font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+  width: 100%;
+}
+
+.nptgrp textarea:focus, .nptgrp select:focus, .nptgrp input[type=text]:focus,
+.nptgrp input[type=password]:focus {
+  outline: none;
+}
+
+.nptgrp textarea:focus ~ label, .nptgrp textarea:valid ~ label, .nptgrp select:focus ~ label, .nptgrp select:valid ~ label, .nptgrp input[type=text]:focus ~ label, .nptgrp input[type=text]:valid ~ label,
+.nptgrp input[type=password]:focus ~ label,
+.nptgrp input[type=password]:valid ~ label {
+  top: -15px;
+  left: 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #4B97C9;
+  text-transform: uppercase;
+}
+
+.nptgrp label {
+  color: #999;
+  font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 9px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.nptgrp .popcntnr {
+  position: absolute;
+  right: -40px;
+  bottom: 30px;
+}
+
+.nptgrp .popcntnr .popover {
+  position: relative;
+  display: block;
+  border-radius: 0;
+  border: 1px solid #923f3f;
+}
+
+.nptgrp .popcntnr .popover .arrow {
+  left: 50%;
+}
+
+.nptgrp .popcntnr .popover .arrow::before {
+  border-top-color: #580303;
+}
+
+.nptgrp .popcntnr .popover .popover-body {
+  padding: 5px 10px;
+  line-height: 16px;
+}
+
+#frmlgn {
+  margin: 20px 0 0;
+}
+
+#frmlgn .nptgrp {
+  margin: 0;
+}
+
+#frmlgn .btn.btnblu {
+  float: right;
+  margin: 8px 0 0;
+}
+
+#frmlgn .nptgrp > .popcntnr {
+  right: 0;
+}
+
+#frmlgn .rmmbr {
+  margin: 5px 0 0;
+}
+
+#frmlgn .rmmbr input[type=checkbox] {
+  float: left;
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+#frmlgn .rmmbr label {
+  color: #636363;
+  float: left;
+  font: normal 12px arial;
+  margin: 0;
+}
+
+#rgstrtn {
+  width: 550px;
+  float: right;
+  margin: 30px 20px 0 0;
+}
+
+#rgstrtn .ttls {
+  margin-bottom: 30px;
+}
+
+#rgstrtn .ttls h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#rgstrtn .ttls h2 {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+#rgstrtn .btn.btnblu {
+  float: right;
+}
+
+#rgstrtn .nptgrp > .popcntnr {
+  right: -15px;
+}
+
+/*# sourceMappingURL=home.css.map */

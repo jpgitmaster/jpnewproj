@@ -1,0 +1,280 @@
+#wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  grid-template-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  grid-template-areas: "hdr_left hdr_right" "content content" "footer footer" "ftr ftr";
+  /* JOBS */
+  /* EDIT PROFILE */
+}
+
+#wrapper .hdr_left {
+  grid-area: hdr_left;
+  background-color: #FFF;
+  padding: 1em;
+}
+
+#wrapper .hdr_left .logo {
+  margin: 8px 0 0 8px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#wrapper .hdr_left .logo .cmpnylogo img {
+  width: 80px;
+  float: left;
+}
+
+#wrapper .hdr_left .logo .cmpnyname {
+  font: 24px segobl;
+  margin-left: 80px;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  top: 2px;
+  line-height: 25px;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .drk, #wrapper .hdr_left .logo .cmpnyname .lght {
+  float: left;
+  width: 100%;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .drk {
+  color: #0077bf;
+}
+
+#wrapper .hdr_left .logo .cmpnyname .lght {
+  color: #6dc5e6;
+}
+
+#wrapper .hdr_right {
+  grid-area: hdr_right;
+  background-color: #FFF;
+  padding: 1em;
+}
+
+#wrapper .hdr_right .picture {
+  float: right;
+  margin: 10px 0 0;
+}
+
+#wrapper .hdr_right .picture .pctrname {
+  float: left;
+  margin: 10px 0 0;
+}
+
+#wrapper .hdr_right .picture .pctrname .name {
+  border-bottom: 1px solid #6dc5e6;
+  padding: 0 10px 2px;
+  text-align: center;
+  font: 18px segob;
+  color: #a5a5a5;
+}
+
+#wrapper .hdr_right .picture .dp {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin: 0 15px;
+}
+
+#wrapper .hdr_right .picture .dp .fa {
+  font-size: 80px;
+  color: #CCC;
+  margin: 0;
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu {
+  top: 5px !important;
+  left: -16px !important;
+  min-width: 300px;
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu ul {
+  margin: -10px 0 10px;
+  padding: 0;
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu ul li {
+  lisT-style: none;
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu ul li a {
+  padding: 8px 15px;
+  border-bottom: 1px dashed #CCC;
+  text-decoration: none;
+  display: block;
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu:before {
+  position: absolute;
+  top: -8px;
+  right: 39px;
+  display: inline-block;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ccc;
+  border-left: 8px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+#wrapper .hdr_right .picture .dp .dropdown-menu:after {
+  position: absolute;
+  top: -7px;
+  right: 40px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ffffff;
+  border-left: 7px solid transparent;
+  content: '';
+}
+
+#wrapper .content {
+  grid-area: content;
+  background-color: #F9F9F9;
+  min-height: 600px;
+}
+
+#wrapper #jbs {
+  padding: 20px;
+}
+
+#wrapper #jbs [class*=col-] {
+  display: -webkit-box;
+  display: flex;
+}
+
+#wrapper #jbs [class*=col-] .jb {
+  padding: 20px;
+  background-color: #FFF;
+  margin: 10px;
+}
+
+#wrapper #edit_profile {
+  padding: 20px;
+}
+
+#wrapper #edit_profile #edtprof_accrdn {
+  width: 900px;
+}
+
+#wrapper #edit_profile #edtprof_accrdn .card {
+  border: 0;
+  border-radius: 0;
+}
+
+#wrapper #edit_profile #edtprof_accrdn .card .card-header {
+  background-color: #8ad3ef;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 8px 15px;
+}
+
+#wrapper .footer {
+  grid-area: footer;
+  background-color: #313131;
+  padding: 20px 10px 30px;
+}
+
+#wrapper .footer .ftrbx h3 {
+  margin: 10px 0 15px;
+  color: #6dc5e6;
+  font: 18px segobb;
+  letter-spacing: 1px;
+  line-height: 22px;
+}
+
+#wrapper .footer .ftrbx ul {
+  padding: 0;
+}
+
+#wrapper .footer .ftrbx ul li {
+  position: relative;
+  list-style: none;
+  border-bottom: 1px solid #1f1f1f;
+  border-top: 1px solid #424242;
+  color: #FFF;
+  font-style: italic;
+  padding-left: 25px;
+}
+
+#wrapper .footer .ftrbx ul li:first-child {
+  border-top: 0;
+}
+
+#wrapper .footer .ftrbx ul li:last-child {
+  border-bottom: 0;
+}
+
+#wrapper .footer .ftrbx ul li a, #wrapper .footer .ftrbx ul li span {
+  font-size: 14px;
+  width: 100%;
+  text-decoration: none;
+  padding: 10px 0;
+  color: #FFF;
+  display: inline-block;
+}
+
+#wrapper .footer .ftrbx ul li .fa {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #339cde;
+  font-size: 20px;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li {
+  float: left;
+  margin: 0 4px;
+  padding: 0;
+  display: inline-block;
+  border: 0;
+  list-style: none;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li a {
+  text-align: center;
+  background-color: #0077c0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li a .fa {
+  color: #FFF;
+  position: relative;
+  top: -2px;
+  font-size: 18px;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(1) a {
+  background-color: #3b5998;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(2) a {
+  background-color: #1da1f2;
+}
+
+#wrapper .footer .ftrbx ul.sclmedia > li:nth-child(3) a {
+  background-color: #517fa6;
+}
+
+#wrapper .ftr {
+  grid-area: ftr;
+  background-color: #2a2a2a;
+  padding: 12px 0;
+  text-align: center;
+}
+
+#wrapper .ftr p {
+  color: #FFF;
+  font-size: 11px;
+  margin: 0;
+}
+
+/*# sourceMappingURL=masterpage.css.map */

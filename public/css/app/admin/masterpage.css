@@ -1,0 +1,193 @@
+#wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 250px 1fr 1fr 1fr 1fr 350px;
+  grid-template-columns: 250px 1fr 1fr 1fr 1fr 350px;
+  -ms-grid-rows: minmax(60px, auto) 1fr 1fr 1fr;
+  grid-template-rows: minmax(60px, auto) 1fr 1fr 1fr;
+  grid-template-areas: "logo search search search search picture" "navi content content content content content";
+}
+
+#wrapper .admnbx {
+  padding: 1em;
+}
+
+#wrapper .admnbx.logo {
+  grid-area: logo;
+  background-color: #E9E9E9;
+}
+
+#wrapper .admnbx.search {
+  grid-area: search;
+  background-color: #F9F9F9;
+}
+
+#wrapper .admnbx.search #search_data {
+  width: 100%;
+}
+
+#wrapper .admnbx.search #search_data input[type=text] {
+  border-right: 0;
+}
+
+#wrapper .admnbx.search #search_data .dropdown-toggle {
+  background-color: #FFF;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-top-right-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+}
+
+#wrapper .admnbx.picture {
+  grid-area: picture;
+  background-color: #F9F9F9;
+  padding-bottom: 10px;
+}
+
+#wrapper .admnbx.picture .dp {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin-right: 15px;
+}
+
+#wrapper .admnbx.picture .dp .fa {
+  font-size: 50px;
+  color: #CCC;
+  margin: -5px 0 0;
+}
+
+#wrapper .admnbx.picture .dp .dropdown-menu {
+  top: 2px !important;
+  left: -3px !important;
+}
+
+#wrapper .admnbx.picture .dp .dropdown-menu a {
+  padding: 8px 15px;
+}
+
+#wrapper .admnbx.picture .dp .dropdown-menu:before {
+  position: absolute;
+  top: -8px;
+  right: 39px;
+  display: inline-block;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ccc;
+  border-left: 8px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+#wrapper .admnbx.picture .dp .dropdown-menu:after {
+  position: absolute;
+  top: -7px;
+  right: 40px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ffffff;
+  border-left: 7px solid transparent;
+  content: '';
+}
+
+#wrapper .admnbx.navi {
+  grid-area: navi;
+  background-color: #F9F9F9;
+  padding: 0;
+  min-height: 100vH;
+}
+
+#wrapper .admnbx.navi ul {
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper .admnbx.navi ul li {
+  list-style: none;
+  float: left;
+  width: 100%;
+}
+
+#wrapper .admnbx.navi ul li a {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 20px;
+  text-decoration: none;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #E9E9E9;
+  position: relative;
+}
+
+#wrapper .admnbx.navi ul li a .icn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+#wrapper .admnbx.navi ul li a .lbl {
+  display: block;
+}
+
+#wrapper .admnbx.navi ul li:first-child {
+  border-bottom: 1px solid #E9E9E9;
+}
+
+#wrapper .admnbx.navi ul li:last-child {
+  border-top: 1px solid #FFF;
+}
+
+#wrapper .admnbx.content {
+  grid-area: content;
+  background-color: #E9E9E9;
+  border-top: 1px solid #FFF;
+  border-left: 1px solid #FFF;
+}
+
+@media screen and (max-width: 992px) {
+  #wrapper {
+    -ms-grid-columns: 150px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 150px 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: minmax(60px, auto) minmax(60px, auto) 1fr 1fr;
+    grid-template-rows: minmax(60px, auto) minmax(60px, auto) 1fr 1fr;
+    grid-template-areas: "logo logo logo picture picture picture" "navi search search search search search" "navi content content content content content" "navi content content content content content";
+  }
+  #wrapper .bx.navi {
+    overflow: hidden;
+  }
+  #wrapper .bx.navi ul li:first-child {
+    border-bottom: 0;
+  }
+  #wrapper .bx.navi ul li a {
+    padding: 8px 15px;
+  }
+  #wrapper .bx.navi ul li a .icn {
+    display: none;
+  }
+  #wrapper .bx.search {
+    border-top: 1px solid #FFF;
+  }
+  #wrapper .bx.picture {
+    background-color: #E9E9E9;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #wrapper {
+    -ms-grid-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "logo logo logo picture picture picture" "search search search search search search" "navi content content content content content" "navi content content content content content";
+  }
+  #wrapper .bx.navi ul li a {
+    text-align: center;
+  }
+  #wrapper .bx.navi ul li a .icn {
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+  #wrapper .bx.navi ul li a .lbl {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=masterpage.css.map */

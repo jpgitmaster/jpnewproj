@@ -1,0 +1,17 @@
+@font-face {font-family: segoi; src: url('fonts/segoui/segoeui.ttf');}
+@font-face {font-family: segobb; src: url('fonts/segoui/segoeuib.ttf');}
+@font-face {font-family: segob; src: url('fonts/segoui/seguisb.ttf');}
+@font-face {font-family: segobl; src: url('fonts/segoui/seguibl.ttf');}
+
+
+.btn{
+    cursor: pointer;
+    
+    &.btnblu{
+    	border: 1px solid #00588d; border-radius: 0; color: #FFF; background-color: #0077c0;
+    	padding: 4px 16px;
+    	font-size: 14px;
+    	text-transform: uppercase;
+    }
+}
+.bx{margin: 5px;}
