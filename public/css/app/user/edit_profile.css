@@ -1,0 +1,51 @@
+/* EDIT PROFILE */
+#edit_profile {
+  padding: 10px 20px;
+}
+
+#edit_profile .grdprofile {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 350px;
+  grid-template-columns: 1fr 350px;
+  -ms-grid-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "content_left avatar" "content_left preview_resume";
+}
+
+#edit_profile .grdprofile .content_left {
+  grid-area: content_left;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn {
+  width: 900px;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn .card {
+  border: 0;
+  border-radius: 0;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header {
+  background-color: #8ad3ef;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 8px 15px;
+}
+
+#edit_profile .grdprofile .avatar {
+  grid-area: avatar;
+}
+
+#edit_profile .grdprofile .preview_resume {
+  grid-area: preview_resume;
+}
+
+#edit_profile .grdprofile .cntnbx {
+  background-color: #FFF;
+  padding: 10px 20px 20px;
+  margin: 8px;
+}
+
+/*# sourceMappingURL=edit_profile.css.map */

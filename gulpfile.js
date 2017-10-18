@@ -4,7 +4,9 @@ elixir(function(mix) {
     mix.sass('app/global.scss', 'public/css/app');
     mix.sass('app/web/home.scss', 'public/css/app/web');
     mix.sass('app/admin/masterpage.scss', 'public/css/app/admin');
+
     mix.sass('app/user/masterpage.scss', 'public/css/app/user');
+    mix.sass('app/user/edit_profile.scss', 'public/css/app/user');
 });
 
 elixir(function(mix) {

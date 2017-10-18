@@ -9,20 +9,11 @@
         <link rel="stylesheet" type="text/css" href="{{ URL::asset($css) }}">
       @endforeach
     @endif
-	<style>
-		#frmLgn{
-			width: 400px;
-			margin: 40px auto;
-		}
-		#frmLgn .inptgrp{
-			margin-bottom: 20px; clear: both;
-		}
-	</style>
 </head>
 <body>
 <div id="wrapper" ng-controller="ctrlApp">
 	<div class="hdr_left">
-		<a href="/" class="logo">
+		{{-- <a href="/" class="logo">
 			<div class="cmpnylogo">
 				<img src="{{ URL::asset('img/logo.png') }}" alt="">
 			</div>
@@ -30,7 +21,7 @@
 				<span class="drk">Global Nursing Solution &</span>
 				<span class="lght">Consulting Services LLC</span>
 			</div>
-		</a>
+		</a> --}}
 	</div>
 	<div class="hdr_right">
 		<form id="frmlgn" action="login" method="POST" novalidate>

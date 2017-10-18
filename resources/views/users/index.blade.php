@@ -14,7 +14,7 @@
 <body>
 <div id="wrapper">
   <div class="hdr_left">
-    <a href="/" class="logo">
+    {{-- <a href="/" class="logo">
       <div class="cmpnylogo">
         <img src="{{ URL::asset('img/logo.png') }}" alt="">
       </div>
@@ -22,16 +22,19 @@
         <span class="drk">Global Nursing Solution &</span>
         <span class="lght">Consulting Services LLC</span>
       </div>
-    </a>
+    </a> --}}
   </div>
   <div class="hdr_right">
     <div class="picture">
       <div class="pctrname">
-        <span class="name">
-          @if (Auth::user())
-            {{ Auth::user()->email }}
-          @endif
-        </span>
+        <div class="ttl">
+            <h3>
+              @if (Auth::user())
+                {{ Auth::user()->email }}
+              @endif
+            </h3>
+            <div class="btmbrdr"><hr></div>
+        </div>
       </div>
       <div class="dp">
         <div data-toggle="dropdown">
@@ -67,15 +70,15 @@
               <a href="mailto:support@247globalnursingsolution.com">support@247globalnursingsolution.com</a>
             </li>
             <li>
-              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="fa fa-phone"></i>
               <span>(212) 244-0247</span>
             </li>
             <li>
-              <i class="fa fa-fax" aria-hidden="true" style="font-size: 16px;"></i>
+              <i class="fa fa-fax" style="font-size: 16px;"></i>
               <span>Fax No: (212) 244-0248</span>
             </li>
             <li>
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <i class="fa fa-map-marker"></i>
               <span>
                 330 West 38th Street, Suite 808, New York, NY, 10018
               </span>
@@ -83,9 +86,21 @@
             <li></li>
           </ul>
           <ul class="sclmedia">
-            <li><a href="https://www.facebook.com/247-Global-Nursing-Solution-and-Consulting-Services-LLC-177514276040094/?fref=ts" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://twitter.com/247GNSCS" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/247gnscs/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li>
+              <a href="https://www.facebook.com/247-Global-Nursing-Solution-and-Consulting-Services-LLC-177514276040094/?fref=ts" target="_blank">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/247GNSCS" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/247gnscs/" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

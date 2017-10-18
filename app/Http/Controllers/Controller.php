@@ -33,6 +33,7 @@ class Controller extends BaseController
         define('c_admn_masterpage', 'css/app/admin/masterpage.css');
         
         define('c_usr_masterpage', 'css/app/user/masterpage.css');
+        define('c_usr_edit_profile', 'css/app/user/edit_profile.css');
 
         define('c_home', 'css/app/web/home.css');
     }

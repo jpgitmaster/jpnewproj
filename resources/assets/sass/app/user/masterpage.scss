@@ -54,12 +54,11 @@
 			.pctrname{
 				float: left;
 				margin: 10px 0 0;
-				.name{
-					border-bottom: 1px solid #6dc5e6;
-				    padding: 0 10px 2px;
-				    text-align: center;
-				    font: 18px segob;
-				    color: #a5a5a5;
+				.ttl{
+					h3{
+					    margin: 0 10px;
+    					font: 18px segob;
+					}
 				}
 			}
 			.dp{
@@ -140,29 +139,6 @@
 				padding: 20px;
 				background-color: #FFF;
 				margin: 10px;
-			}
-		}
-	}
-
-	/* EDIT PROFILE */
-	#edit_profile{
-
-		padding: 20px;
-
-		#edtprof_accrdn{
-			width: 900px;
-
-			.card{
-				border: 0;
-				border-radius: 0;
-
-				.card-header{
-					background-color: #8ad3ef;
-					color: #FFF;
-					cursor: pointer;
-					border-radius: 0;
-					padding: 8px 15px;
-				}
 			}
 		}
 	}

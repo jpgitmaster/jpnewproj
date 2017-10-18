@@ -1,0 +1,47 @@
+/* EDIT PROFILE */
+#edit_profile{
+	padding: 10px 20px;
+	.grdprofile{
+		display: grid;
+		grid-template-columns: 1fr 350px;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas:
+			"content_left avatar"
+			"content_left preview_resume";
+		
+		.content_left{
+			grid-area: content_left;
+
+			#edtprof_accrdn{
+				width: 900px;
+
+				.card{
+					border: 0;
+					border-radius: 0;
+
+					.card-header{
+						background-color: #8ad3ef;
+						color: #FFF;
+						cursor: pointer;
+						border-radius: 0;
+						padding: 8px 15px;
+					}
+				}
+			}
+		}
+		
+		.avatar{
+			grid-area: avatar;
+		}
+
+		.preview_resume{
+			grid-area: preview_resume;
+		}
+
+		.cntnbx{
+			background-color: #FFF;
+			padding: 10px 20px 20px;
+			margin: 8px;
+		}
+	}
+}

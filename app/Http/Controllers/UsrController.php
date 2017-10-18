@@ -29,8 +29,9 @@ class UsrController extends Controller
     public function profile(){
     	return view('users.profile', [
             'scripts'       => $this->import['scripts'],
-            'stylesheet'    => $this->import['stylesheet'],
+            'stylesheet'    => array_merge($this->import['stylesheet'], array(c_usr_edit_profile)),
             'ngular'        => $this->import['ngular']
+            
         ]);
     }
 

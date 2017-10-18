@@ -7,7 +7,6 @@
   grid-template-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
   grid-template-areas: "hdr_left hdr_right" "content content" "footer footer" "ftr ftr";
   /* JOBS */
-  /* EDIT PROFILE */
 }
 
 #wrapper .hdr_left {
@@ -66,12 +65,9 @@
   margin: 10px 0 0;
 }
 
-#wrapper .hdr_right .picture .pctrname .name {
-  border-bottom: 1px solid #6dc5e6;
-  padding: 0 10px 2px;
-  text-align: center;
+#wrapper .hdr_right .picture .pctrname .ttl h3 {
+  margin: 0 10px;
   font: 18px segob;
-  color: #a5a5a5;
 }
 
 #wrapper .hdr_right .picture .dp {
@@ -152,27 +148,6 @@
   padding: 20px;
   background-color: #FFF;
   margin: 10px;
-}
-
-#wrapper #edit_profile {
-  padding: 20px;
-}
-
-#wrapper #edit_profile #edtprof_accrdn {
-  width: 900px;
-}
-
-#wrapper #edit_profile #edtprof_accrdn .card {
-  border: 0;
-  border-radius: 0;
-}
-
-#wrapper #edit_profile #edtprof_accrdn .card .card-header {
-  background-color: #8ad3ef;
-  color: #FFF;
-  cursor: pointer;
-  border-radius: 0;
-  padding: 8px 15px;
 }
 
 #wrapper .footer {
