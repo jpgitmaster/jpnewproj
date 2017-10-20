@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div id="edit_profile">
+<div id="edit_profile" ng-controller="ctrlEditProfile">
 	<div class="grdprofile">
 		<div class="content_left">
 			<div class="cntnbx">
@@ -51,7 +51,20 @@
 				    <h3>Display Picture</h3>
 				    <div class="btmbrdr"><hr></div>
 				</div>
-				
+				<i class="fa fa-user-circle-o"></i>
+				<div class="clearfix"></div>
+				<div class="fileUpload btn btn-primary">
+	                Browse <input type="file" class="upload" file-input="files">
+	            </div>
+	            <div class="prvw" style="position: relative;">
+		            <div class="preview-pane">
+		                <div class="preview-container">
+		                  <span ng-if="imgtarget" ng-cloak>
+		                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
+		                  </span>
+		                </div>
+		            </div>
+		        </div>
 			</div>
 		</div>
 		<div class="preview_resume">
@@ -63,6 +76,38 @@
 				
 			</div>
 		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="cropModal">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      	<button type="button" class="close" data-dismiss="modal">
+	          <span>&times;</span>
+	        </button>
+	      	<div class="ttl">
+			    <h3>Change Display Picture</h3>
+			    <div class="btmbrdr"><hr></div>
+			</div>
+	      <div class="modal-body">
+	        <div class="prvw">
+	            <div class="preview-pane">
+	                <div class="preview-container">
+	                  <span ng-if="imgtarget" ng-cloak>
+	                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
+	                  </span>
+	                </div>
+	            </div>
+	        </div>
+            <div class="imgcropper" jp-custom-crop>
+              <img ng-src="<%=imgtarget%>" alt="Cropping Image" id="target" />
+            </div> 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 </div>
 @endsection

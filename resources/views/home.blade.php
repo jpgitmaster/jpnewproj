@@ -13,7 +13,7 @@
 <body>
 <div id="wrapper" ng-controller="ctrlApp">
 	<div class="hdr_left">
-		{{-- <a href="/" class="logo">
+		<a href="/" class="logo">
 			<div class="cmpnylogo">
 				<img src="{{ URL::asset('img/logo.png') }}" alt="">
 			</div>
@@ -21,7 +21,7 @@
 				<span class="drk">Global Nursing Solution &</span>
 				<span class="lght">Consulting Services LLC</span>
 			</div>
-		</a> --}}
+		</a>
 	</div>
 	<div class="hdr_right">
 		<form id="frmlgn" action="login" method="POST" novalidate>
@@ -44,8 +44,11 @@
 				            @endif
 				        </div>
 				        <div class="rmmbr">
-				        	<input type="checkbox">
-				        	<label>Remember Me</label>
+				        	<label class="option">
+				                <input type="checkbox" name="rememberme" class="fcs">
+				                <span class="checkbox"></span>
+			                </label>
+				        	<label class="lbl">Remember Me</label>
 				        </div>
 			        </div>
 	  			</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="usrApp">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 <body>
 <div id="wrapper">
   <div class="hdr_left">
-    {{-- <a href="/" class="logo">
+    <!-- <a href="/" class="logo">
       <div class="cmpnylogo">
         <img src="{{ URL::asset('img/logo.png') }}" alt="">
       </div>
@@ -22,7 +22,7 @@
         <span class="drk">Global Nursing Solution &</span>
         <span class="lght">Consulting Services LLC</span>
       </div>
-    </a> --}}
+    </a> -->
   </div>
   <div class="hdr_right">
     <div class="picture">
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-  <div class="content">
+  <div class="content" ng-app="usrContent">
     @yield('content')
   </div>
   <div class="footer">

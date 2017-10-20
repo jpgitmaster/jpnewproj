@@ -12,4 +12,8 @@ elixir(function(mix) {
 elixir(function(mix) {
     mix.webpack('app/global.js', 'public/js/app');
     mix.webpack('app/home.js', 'public/app/web');
+
+    // USER
+    mix.webpack('app/user.js', 'public/app');
+    mix.webpack('app/user/edit_profile.js', 'public/app/user');
 });

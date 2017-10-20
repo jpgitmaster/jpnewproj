@@ -14,7 +14,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap],
-            'ngular'    => []
+            'ngular'    => [n_ng, n_ngresource, n_nganimate, n_user]
         ];
     }
 
@@ -28,9 +28,9 @@ class UsrController extends Controller
 
     public function profile(){
     	return view('users.profile', [
-            'scripts'       => $this->import['scripts'],
-            'stylesheet'    => array_merge($this->import['stylesheet'], array(c_usr_edit_profile)),
-            'ngular'        => $this->import['ngular']
+            'scripts'       => array_merge($this->import['scripts'], array(j_jcrop)),
+            'stylesheet'    => array_merge($this->import['stylesheet'], array(c_jcrop, c_usr_edit_profile)),
+            'ngular'        =>  array_merge($this->import['ngular'], array(n_user_edit_profile))
             
         ]);
     }

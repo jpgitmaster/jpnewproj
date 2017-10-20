@@ -34,6 +34,7 @@ class Controller extends BaseController
         
         define('c_usr_masterpage', 'css/app/user/masterpage.css');
         define('c_usr_edit_profile', 'css/app/user/edit_profile.css');
+        define('c_jcrop', 'plugins/jcrop/css/jquery.Jcrop.min.css');
 
         define('c_home', 'css/app/web/home.css');
     }
@@ -41,6 +42,7 @@ class Controller extends BaseController
     public function import_js(){
         define('j_jquery', 'plugins/jquery/jquery.min.js');
         define('j_popper', 'plugins/popperjs/popper.min.js');
+        define('j_jcrop', 'plugins/jcrop/js/jquery.Jcrop.js');
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
     }
 
@@ -50,5 +52,9 @@ class Controller extends BaseController
         define('n_nganimate', 'plugins/angular/angular-animate.min.js');
 
         define('n_home', 'app/web/home.js');
+
+        // USER
+        define('n_user', 'app/user.js');
+        define('n_user_edit_profile', 'app/user/edit_profile.js');
     }
 }

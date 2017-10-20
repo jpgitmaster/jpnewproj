@@ -32,6 +32,41 @@
 		
 		.avatar{
 			grid-area: avatar;
+			text-align: center;
+
+			.ttl{
+				text-align: left;
+			}
+
+			.fa {
+			    font-size: 100px;
+			    color: #CCC;
+			    display: inline-block;
+			}
+
+			.fileUpload{
+		        position: relative;
+			    overflow: hidden;
+			    margin: 15px 0;
+			    background-color: #8ad3ef;
+			    width: 80%;
+			    text-transform: uppercase;
+			    border: 1px solid #3bbaea;
+			    padding: 5px 10px;
+
+				.upload{
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin: 0;
+					padding: 0;
+					font-size: 20px;
+					cursor: pointer;
+					opacity: 0;
+					filter: alpha(opacity=0);
+				}
+			}
+
 		}
 
 		.preview_resume{
@@ -42,6 +77,51 @@
 			background-color: #FFF;
 			padding: 10px 20px 20px;
 			margin: 8px;
+		}
+	}
+}
+#cropModal{
+	.modal-content{
+		padding: 10px 20px;
+		position: relative;
+		
+		.close{
+		    position: absolute;
+		    right: 20px;
+		    top: 10px;
+		    outline: none;
+		    cursor: pointer;
+		}
+
+		.ttl{
+			width: 100%;
+		}
+		.modal-body{
+			.prvw {
+			    position: absolute;
+			    z-index: 999;
+
+			    .preview-pane {
+				    display: block;
+				    z-index: 9;
+				    position: relative;
+				    padding: 6px;
+
+				    .preview-container {
+					    width: 150px;
+					    position: relative;
+					    z-index: -9;
+					    height: 150px;
+					    border-radius: 50%;
+					    border: 5px inset #0077c0;
+					    overflow: hidden;
+					    text-align: center;
+					}
+				}
+			}
+			.imgcropper{
+				width: 100%;
+			}
 		}
 	}
 }

@@ -36,6 +36,40 @@
 
 #edit_profile .grdprofile .avatar {
   grid-area: avatar;
+  text-align: center;
+}
+
+#edit_profile .grdprofile .avatar .ttl {
+  text-align: left;
+}
+
+#edit_profile .grdprofile .avatar .fa {
+  font-size: 100px;
+  color: #CCC;
+  display: inline-block;
+}
+
+#edit_profile .grdprofile .avatar .fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 15px 0;
+  background-color: #8ad3ef;
+  width: 80%;
+  text-transform: uppercase;
+  border: 1px solid #3bbaea;
+  padding: 5px 10px;
+}
+
+#edit_profile .grdprofile .avatar .fileUpload .upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 
 #edit_profile .grdprofile .preview_resume {
@@ -46,6 +80,50 @@
   background-color: #FFF;
   padding: 10px 20px 20px;
   margin: 8px;
+}
+
+#cropModal .modal-content {
+  padding: 10px 20px;
+  position: relative;
+}
+
+#cropModal .modal-content .close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+#cropModal .modal-content .ttl {
+  width: 100%;
+}
+
+#cropModal .modal-content .modal-body .prvw {
+  position: absolute;
+  z-index: 999;
+}
+
+#cropModal .modal-content .modal-body .prvw .preview-pane {
+  display: block;
+  z-index: 9;
+  position: relative;
+  padding: 6px;
+}
+
+#cropModal .modal-content .modal-body .prvw .preview-pane .preview-container {
+  width: 150px;
+  position: relative;
+  z-index: -9;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px inset #0077c0;
+  overflow: hidden;
+  text-align: center;
+}
+
+#cropModal .modal-content .modal-body .imgcropper {
+  width: 100%;
 }
 
 /*# sourceMappingURL=edit_profile.css.map */
