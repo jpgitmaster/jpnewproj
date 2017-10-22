@@ -43,16 +43,39 @@
   text-align: left;
 }
 
-#edit_profile .grdprofile .avatar .fa {
-  font-size: 100px;
-  color: #CCC;
+#edit_profile .grdprofile .avatar .dsplaypc {
   display: inline-block;
+  height: 160px;
+  overflow: hidden;
+}
+
+#edit_profile .grdprofile .avatar .dsplaypc .prvw {
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+#edit_profile .grdprofile .avatar .dsplaypc .fa {
+  font-size: 150px;
+  color: #CCC;
+  margin: 5px 0;
+}
+
+#edit_profile .grdprofile .avatar .alert {
+  padding: 5px 15px 10px;
+}
+
+#edit_profile .grdprofile .avatar .alert ul {
+  margin: 0 0 0 15px;
+  padding: 0;
+  text-align: left;
+  font-size: 14px;
 }
 
 #edit_profile .grdprofile .avatar .fileUpload {
   position: relative;
   overflow: hidden;
-  margin: 15px 0;
+  margin: 5px 0;
   background-color: #8ad3ef;
   width: 80%;
   text-transform: uppercase;
@@ -99,31 +122,50 @@
   width: 100%;
 }
 
-#cropModal .modal-content .modal-body .prvw {
-  position: absolute;
-  z-index: 999;
-}
-
-#cropModal .modal-content .modal-body .prvw .preview-pane {
-  display: block;
-  z-index: 9;
-  position: relative;
-  padding: 6px;
-}
-
-#cropModal .modal-content .modal-body .prvw .preview-pane .preview-container {
-  width: 150px;
-  position: relative;
-  z-index: -9;
-  height: 150px;
-  border-radius: 50%;
-  border: 5px inset #0077c0;
-  overflow: hidden;
-  text-align: center;
+#cropModal .modal-content .modal-body {
+  min-height: 400px;
 }
 
 #cropModal .modal-content .modal-body .imgcropper {
   width: 100%;
+  text-align: center;
+  display: none;
+}
+
+#cropModal .modal-content .modal-body .imgcropper .jcrop-holder {
+  margin: 0 auto;
+}
+
+#cropModal .modal-content .modal-body .imgcropper .jcrop-holder .jcrop-keymgr {
+  visibility: hidden;
+}
+
+#cropModal .modal-content .modal-body .imgcropper .jcrop-holder div {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.prvw {
+  position: absolute;
+  z-index: 999;
+  left: -10px;
+  display: none;
+}
+
+.prvw .preview-pane {
+  display: block;
+  position: relative;
+  padding: 6px;
+}
+
+.prvw .preview-pane .preview-container {
+  width: 150px;
+  position: relative;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px inset #6dc5e6;
+  overflow: hidden;
+  text-align: center;
 }
 
 /*# sourceMappingURL=edit_profile.css.map */

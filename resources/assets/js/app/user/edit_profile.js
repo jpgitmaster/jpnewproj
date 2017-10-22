@@ -26,25 +26,26 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
 	            
 	            // scope.shw_avatarmdl = true;
 
-	            // $http({
-	            //     method: 'POST',
-	            //     url: "/jobseeker/validate_file",
-	            //     headers: { 'Content-Type': undefined },
-	            //     transformRequest: function (data) {
-	            //         var fd = new FormData();
-	            //         angular.forEach(data.img_files, function(file){
-	            //            fd.append('file', file);
-	            //         });
-	            //         return fd;
-	            //     },
-	            //     data: {img_files: files}
-	            // }).then(function(result){
+	            $http({
+	                method: 'POST',
+	                url: "/validate_file",
+	                headers: { 'Content-Type': undefined },
+	                transformRequest: function (data) {
+	                    var fd = new FormData();
+	                    angular.forEach(data.img_files, function(file){
+	                       fd.append('file', file);
+	                    });
+	                    return fd;
+	                },
+	                data: {img_files: files}
+	            }).then(function(result){
+	            	var msg = result.data;
 	                // $timeout(function(){
-	                    scope.shw_avatarmdl = false;
+	                    // scope.shw_avatarmdl = false;
 	                    // var msg = result.data;
 
-	                    // if(!msg['error']){
-	                        angular.element('#cropModal').appendTo('body').modal({
+	                    if(!msg['file']){
+	                    	angular.element('#cropModal').appendTo('body').modal({
 	                            backdrop: 'static'
 	                        });
 	                        var file = files[0];
@@ -56,11 +57,12 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
 	                                scope.imgForm(imgTarget);
 	                            }
 	                        }(file));
-	                    // }else{
-	                    //     scope.msg = msg;
-	                    // }
+	                        scope.msg = '';
+	                    }else{
+	                        scope.msg = msg;
+	                    }
 	                // }, 1000);
-	            // });
+	            });
 	        });
 	    }
 	}
@@ -72,8 +74,10 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
         restrict: 'A',
         link: function (scope, element, attrs)
         {
-            $( document ).ready(function() {
-                var jcrop_api,
+            $(function(){
+            	$('#cropModal').on('shown.bs.modal', function () {
+            		$('.imgcropper, .prvw').hide().delay('200').fadeIn();
+				  var jcrop_api,
                   boundx,
                   boundy,
 
@@ -104,6 +108,7 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
                   });
 
                 function updatePreview(c){
+                    console.log(c);
                     var imgx = Math.round(c.x);
                     var imgy = Math.round(c.y);
                     var imgw = Math.round(c.w);
@@ -122,6 +127,7 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
                       });
                   	}
                 };
+				})
             });
         }
     };

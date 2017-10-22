@@ -43,6 +43,16 @@ class UsrController extends Controller
         ]);
     }
 
+    public function validate_file(Request $request){
+        $msg = [];
+        $validate = Validator::make(
+            ['file' => $request->file('file')],
+            ['file' => 'required|image|mimes:jpeg,png,jpg|max:2048']
+        );
+        $msg = $validate->messages()->toArray();
+        print_r(json_encode($msg, JSON_PRETTY_PRINT));
+    }
+
     public function logout(){
 		// if (Auth::guard('jp_user')->check()):
   //   		Auth::guard('jp_user')->logout();

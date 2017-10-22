@@ -15,6 +15,10 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 	Route::get('jobs', [
 	    'as' => 'usr_jobs', 'uses' => 'UsrController@jobs'
 	]);
+
+	Route::post('validate_file', [
+	    'as' => 'validate_file', 'uses' => 'UsrController@validate_file'
+	]);
 	Route::prefix('user')->group(function () {
 		Route::get('dashboard', [
 		    'as' => 'usr_dashboard', 'uses' => 'UsrController@dashboard'

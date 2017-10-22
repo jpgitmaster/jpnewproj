@@ -34,7 +34,7 @@ class Controller extends BaseController
         
         define('c_usr_masterpage', 'css/app/user/masterpage.css');
         define('c_usr_edit_profile', 'css/app/user/edit_profile.css');
-        define('c_jcrop', 'plugins/jcrop/css/jquery.Jcrop.min.css');
+        define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
 
         define('c_home', 'css/app/web/home.css');
     }
@@ -42,7 +42,7 @@ class Controller extends BaseController
     public function import_js(){
         define('j_jquery', 'plugins/jquery/jquery.min.js');
         define('j_popper', 'plugins/popperjs/popper.min.js');
-        define('j_jcrop', 'plugins/jcrop/js/jquery.Jcrop.js');
+        define('j_jcrop', 'plugins/jcrop/js/jquery.jcrop.min.js');
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
     }
 

@@ -38,16 +38,40 @@
 				text-align: left;
 			}
 
-			.fa {
-			    font-size: 100px;
-			    color: #CCC;
-			    display: inline-block;
+			.dsplaypc{
+				    display: inline-block;
+				    height: 160px;
+				    overflow: hidden;
+				
+				.prvw{
+					position: relative;
+					left: 0; right: 0;
+				}
+
+				.fa {
+			        font-size: 150px;
+				    color: #CCC;
+				    margin: 5px 0;
+				}
+			}
+
+			.alert{
+				padding: 5px 15px 10px;
+			    color: #f00;
+			    background-color: #ffffff;
+			    border-color: #f00
+				ul{
+				    margin: 0 0 0 15px;
+				    padding: 0;
+				    text-align: left;
+				    font-size: 14px;
+				}
 			}
 
 			.fileUpload{
 		        position: relative;
 			    overflow: hidden;
-			    margin: 15px 0;
+			    margin: 5px 0;
 			    background-color: #8ad3ef;
 			    width: 80%;
 			    text-transform: uppercase;
@@ -97,31 +121,45 @@
 			width: 100%;
 		}
 		.modal-body{
-			.prvw {
-			    position: absolute;
-			    z-index: 999;
+			min-height: 400px;
 
-			    .preview-pane {
-				    display: block;
-				    z-index: 9;
-				    position: relative;
-				    padding: 6px;
-
-				    .preview-container {
-					    width: 150px;
-					    position: relative;
-					    z-index: -9;
-					    height: 150px;
+			.imgcropper{
+				width: 100%;
+				text-align: center;
+				display: none;
+				
+				.jcrop-holder {
+				    margin: 0 auto;
+				    .jcrop-keymgr{visibility: hidden;}
+				    div {
 					    border-radius: 50%;
-					    border: 5px inset #0077c0;
 					    overflow: hidden;
-					    text-align: center;
 					}
 				}
 			}
-			.imgcropper{
-				width: 100%;
-			}
+		}
+	}
+}
+
+.prvw {
+    position: absolute;
+    z-index: 999;
+    left: -10px;
+    display: none;
+
+    .preview-pane {
+	    display: block;
+	    position: relative;
+	    padding: 6px;
+
+	    .preview-container {
+		    width: 150px;
+		    position: relative;
+		    height: 150px;
+		    border-radius: 50%;
+		    border: 5px inset #6dc5e6;
+		    overflow: hidden;
+		    text-align: center;
 		}
 	}
 }

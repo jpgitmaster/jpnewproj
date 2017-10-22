@@ -51,20 +51,31 @@
 				    <h3>Display Picture</h3>
 				    <div class="btmbrdr"><hr></div>
 				</div>
-				<i class="fa fa-user-circle-o"></i>
+				<div class="dsplaypc">
+					<span ng-if="!imgtarget" ng-cloak>
+						<i class="fa fa-user-circle-o"></i>
+					</span>
+					<span ng-if="imgtarget" ng-cloak>
+						<div class="prvw">
+				            <div class="preview-pane">
+				                <div class="preview-container">
+				                  <span ng-if="imgtarget" ng-cloak>
+				                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
+				                  </span>
+				                </div>
+				            </div>
+				        </div>
+				    </span>
+				</div>
+				<div class="alert" ng-if="msg['file']" ng-cloak>
+					<ul>
+						<li ng-repeat="test in msg['file']"><%=test%></li>
+					</ul>
+				</div>
 				<div class="clearfix"></div>
 				<div class="fileUpload btn btn-primary">
 	                Browse <input type="file" class="upload" file-input="files">
 	            </div>
-	            <div class="prvw" style="position: relative;">
-		            <div class="preview-pane">
-		                <div class="preview-container">
-		                  <span ng-if="imgtarget" ng-cloak>
-		                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
-		                  </span>
-		                </div>
-		            </div>
-		        </div>
 			</div>
 		</div>
 		<div class="preview_resume">
@@ -78,6 +89,7 @@
 		</div>
 	</div>
 	<!-- Modal -->
+
 	<div class="modal fade" id="cropModal">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
