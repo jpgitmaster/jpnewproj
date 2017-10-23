@@ -55,7 +55,43 @@ class UsrController extends Controller
 
     public function upload_dp(Request $request){
         // $coodinates = json_decode($request->all());
-        print_r($request->all());
+        $rqst = $request->all();
+        $coordinate = json_decode($rqst['coordinates']);
+
+        if($request->hasFile('file')):
+            $dp = [];
+            $dp['folder'] = 'display_pic';
+            $dp['file'] = $request->file('file')->getClientOriginalName();
+            $dp['extension'] = $request->file('file')->getClientOriginalExtension();
+            $dp['resume_name'] = 'jp_testing_';
+
+            // Storage::putFile('resumes', $request->file('file'));
+            $request->file('file')->move(public_path($dp['folder']), $dp['resume_name'].'.'.$dp['extension']);
+
+            $jpeg_quality = 100;
+
+            // print_r();
+            $src = $dp['folder'].'/'.$dp['resume_name'].'.'.$dp['extension'];
+            
+            if($dp['extension'] == 'png'):
+                $img_r = imagecreatefrompng($src);
+            else:
+                $img_r = imagecreatefromjpeg($src);
+            endif;
+
+            $dst_r = ImageCreateTrueColor( $coordinate->imgw2, $coordinate->imgh2 );
+
+            imagecopyresampled($dst_r, $img_r, 0, 0, $coordinate->imgx, $coordinate->imgy,
+                $coordinate->imgw2, $coordinate->imgh2, $coordinate->imgw, $coordinate->imgh);
+
+            if($dp['extension'] == 'png'):
+                imagecolortransparent($dst_r, imagecolorallocate($dst_r, 0, 0, 0));
+                imagepng($dst_r, $src, 0);
+            else:
+                imagejpeg($dst_r, $src, $jpeg_quality);
+            endif;
+            
+        endif;
     }
 
     public function logout(){

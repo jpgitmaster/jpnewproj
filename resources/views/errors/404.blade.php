@@ -62,6 +62,9 @@
 <!-- jQuery v3.2.0 -->
 <script src="{{ URL::asset('plugins/jquery/jquery.min.js') }}"></script>
 
+<script src="{{ URL::asset('plugins/popperjs/popper.min.js') }}"></script>
 
+<!-- Bootstrap v3.3.7 -->
+<script src="{{ URL::asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
