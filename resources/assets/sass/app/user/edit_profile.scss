@@ -54,23 +54,28 @@
 				    margin: 5px 0;
 				}
 			}
+			.nptgrp{
+				margin: 0;
+			    position: absolute;
+			    right: 0;
+			    left: 0;
+			    width: 100%;
+			    bottom: -2px;
 
-			.alert{
-				padding: 5px 15px 10px;
-			    color: #f00;
-			    background-color: #ffffff;
-			    border-color: #f00
-				ul{
-				    margin: 0 0 0 15px;
-				    padding: 0;
-				    text-align: left;
-				    font-size: 14px;
-				}
+			    .popcntnr{
+			    	right: 0;
+			    	left: 0;
+			    	cursor: default;
+
+			    	ul{
+						margin: 5px 0 5px 20px;
+						padding: 0;
+					}
+			    }
 			}
 
 			.fileUpload{
 		        position: relative;
-			    overflow: hidden;
 			    margin: 5px 0;
 			    background-color: #8ad3ef;
 			    width: 80%;

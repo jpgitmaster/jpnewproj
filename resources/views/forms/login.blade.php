@@ -3,15 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		#frmLgn{
-			width: 400px;
-			margin: 40px auto;
-		}
-		#frmLgn .inptgrp{
-			margin-bottom: 20px; clear: both;
-		}
-	</style>
 </head>
 <body>
 

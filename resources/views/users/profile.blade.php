@@ -67,13 +67,20 @@
 				        </div>
 				    </span>
 				</div>
-				<div class="alert" ng-if="msg['file']" ng-cloak>
-					<ul>
-						<li ng-repeat="test in msg['file']"><%=test%></li>
-					</ul>
-				</div>
 				<div class="clearfix"></div>
 				<div class="fileUpload btn btn-primary">
+	            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+						<div class="popcntnr">
+		                    <div class="popover bs-popover-top">
+							    <div class="arrow"></div>
+							    <div class="popover-body">
+							      	<ul>
+										<li ng-repeat="test in msg['file']"><%=test%></li>
+									</ul>
+							    </div>
+							</div>
+		                </div>
+	                </div>
 	                Browse <input type="file" class="upload" file-input="files">
 	            </div>
 			</div>
@@ -115,8 +122,8 @@
             </div> 
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancelUpload()">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="uploadFile(files)">Save changes</button>
 	      </div>
 	    </div>
 	  </div>

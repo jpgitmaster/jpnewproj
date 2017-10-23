@@ -141,54 +141,6 @@
 	}
 }
 
-.nptgrp{
-    position: relative; width: 100%; margin-bottom: 25px; display: inline-block;
-
-    &.err{
-        textarea, select, input[type=text], input[type=password]{
-            border: 1px solid #923f3f;
-        }
-    }
-    
-    textarea, select, input[type=text],
-    input[type=password]{
-        border: 1px solid #0077c0; padding: 8px 10px; font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif; width: 100%;
-        &:focus{outline:none;}
-        &:focus ~ label, &:valid ~ label{
-            top: -15px;
-            left: 0;
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: bold;
-            color: #0077c0;
-            text-transform: uppercase;
-        }
-    }
-
-    label{
-        color: #999;  font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif; position: absolute; pointer-events: none; left: 10px; top: 9px;
-        transition:0.2s ease all; 
-        -moz-transition:0.2s ease all; 
-        -webkit-transition:0.2s ease all;
-    }
-
-    .popcntnr{
-        position: absolute; right: -40px; bottom: 30px;
-        .popover{
-            position: relative; display: block; border-radius: 0; border: 1px solid #923f3f;
-            .arrow{
-            	left: 50%;
-            	&::before{border-top-color: rgb(88, 3, 3);}
-            }
-
-            .popover-body{
-            	padding: 5px 10px;
-    			line-height: 16px;
-            }
-        }
-    }
-}
-
 #frmlgn{
 	margin: 20px 0 0;
 	.nptgrp{margin: 0;}

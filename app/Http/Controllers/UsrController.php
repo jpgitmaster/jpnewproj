@@ -12,7 +12,7 @@ class UsrController extends Controller
     public function __construct(){
     	parent::__construct();
     	$this->import = [
-            'stylesheet' => [c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
+            'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap],
             'ngular'    => [n_ng, n_ngresource, n_nganimate, n_user]
         ];
@@ -43,7 +43,7 @@ class UsrController extends Controller
         ]);
     }
 
-    public function validate_file(Request $request){
+    public function validate_dp(Request $request){
         $msg = [];
         $validate = Validator::make(
             ['file' => $request->file('file')],
@@ -51,6 +51,11 @@ class UsrController extends Controller
         );
         $msg = $validate->messages()->toArray();
         print_r(json_encode($msg, JSON_PRETTY_PRINT));
+    }
+
+    public function upload_dp(Request $request){
+        // $coodinates = json_decode($request->all());
+        print_r($request->all());
     }
 
     public function logout(){

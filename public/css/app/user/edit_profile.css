@@ -61,20 +61,28 @@
   margin: 5px 0;
 }
 
-#edit_profile .grdprofile .avatar .alert {
-  padding: 5px 15px 10px;
+#edit_profile .grdprofile .avatar .nptgrp {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 100%;
+  bottom: -2px;
 }
 
-#edit_profile .grdprofile .avatar .alert ul {
-  margin: 0 0 0 15px;
+#edit_profile .grdprofile .avatar .nptgrp .popcntnr {
+  right: 0;
+  left: 0;
+  cursor: default;
+}
+
+#edit_profile .grdprofile .avatar .nptgrp .popcntnr ul {
+  margin: 5px 0 5px 20px;
   padding: 0;
-  text-align: left;
-  font-size: 14px;
 }
 
 #edit_profile .grdprofile .avatar .fileUpload {
   position: relative;
-  overflow: hidden;
   margin: 5px 0;
   background-color: #8ad3ef;
   width: 80%;
