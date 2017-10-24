@@ -17,13 +17,11 @@
   grid-area: content_left;
 }
 
-#edit_profile .grdprofile .content_left #edtprof_accrdn {
-  width: 900px;
-}
-
 #edit_profile .grdprofile .content_left #edtprof_accrdn .card {
   border: 0;
   border-radius: 0;
+  margin: 0 0 20px;
+  box-shadow: 0 0 10px #e8e8e8;
 }
 
 #edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header {
@@ -32,6 +30,20 @@
   cursor: pointer;
   border-radius: 0;
   padding: 8px 15px;
+  font: 20px segobb;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header .glyph {
+  background-color: #FFF;
+  color: #5cc2e8;
+  position: relative;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
 }
 
 #edit_profile .grdprofile .avatar {

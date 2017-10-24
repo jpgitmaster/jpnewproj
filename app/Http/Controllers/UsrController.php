@@ -90,7 +90,6 @@ class UsrController extends Controller
             else:
                 imagejpeg($dst_r, $src, $jpeg_quality);
             endif;
-            
         endif;
     }
 

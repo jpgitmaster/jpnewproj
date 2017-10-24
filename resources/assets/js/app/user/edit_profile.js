@@ -38,7 +38,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
         }).then(function(result){
             console.log(result.data);
             angular.element('#cropModal').modal('hide');
-            // $scope.cancelUpload();
         });
         
     }

@@ -18,6 +18,10 @@
   src: url("fonts/segoui/seguibl.ttf");
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
+
 .btn {
   cursor: pointer;
 }

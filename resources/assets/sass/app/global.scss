@@ -3,6 +3,9 @@
 @font-face {font-family: segob; src: url('fonts/segoui/seguisb.ttf');}
 @font-face {font-family: segobl; src: url('fonts/segoui/seguibl.ttf');}
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
 
 .btn{
     cursor: pointer;

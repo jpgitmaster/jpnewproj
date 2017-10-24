@@ -193,7 +193,6 @@
   @endforeach
 @endif
 
-
 <!-- App -->
 @if (isset($ngular))
   @foreach($ngular as $ng)
