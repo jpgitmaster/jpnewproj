@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Session;
 
 use App\Usr;
-use Session;
+use Carbon\Carbon;
+
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\MailNewRegistrants;
 
 class WebController extends Controller
 {
@@ -101,24 +105,24 @@ class WebController extends Controller
                 $msg['has_error'] = true;
                 $msg['error'] = $validate->messages()->toArray();
             else:
-            //     // $usr = new User;
-            //     // $usr->genid          = '';
-            //     // $usr->email          = $user['email'];
-            //     // $usr->password       = Hash::make($user['pword']);
-            //     // $usr->remember       = 0;
-            //     // $usr->activated      = 0;
-            //     // $usr->act_created    = Carbon::now();
-            //     // $usr->last_login     = Carbon::now();
-            //     // $usr->role           = 1;
-            //     // $usr->remember_token = $user['token'];
-            //     // $usr->save();
-            //     // if( count($mailer->failures()) > 0 ):
-            //     //     print_r(count($mailer->failures()));
-            //     // else:
-            //     //     $mailer->to($user['email'])
-            //     //         ->send(new MailNewRegistrants($user));
-            //     // endif;
-            //     $msg['has_error'] = false;
+                $usr = new Usr;
+                $usr->genid          = '';
+                $usr->email          = $user['email'];
+                $usr->password       = Hash::make($user['pword']);
+                $usr->remember       = 0;
+                $usr->activated      = 0;
+                $usr->act_created    = Carbon::now();
+                $usr->last_login     = Carbon::now();
+                $usr->role           = 1;
+                $usr->remember_token = $user['token'];
+                $usr->save();
+                if( count($mailer->failures()) > 0 ):
+                    print_r(count($mailer->failures()));
+                else:
+                    $mailer->to($user['email'])
+                        ->send(new MailNewRegistrants($user));
+                endif;
+                $msg['has_error'] = false;
             endif;
             print_r(json_encode($msg, JSON_PRETTY_PRINT));
         endif;
