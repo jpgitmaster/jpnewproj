@@ -16,7 +16,7 @@ ngApp.controller('ctrlApp', ['$scope', '$http', function($scope, $http) {
             }
         }).then(function(result){
             $scope.msg = result.data;
-            $scope.rgstr = '';
+            // $scope.rgstr = {};
             console.log($scope.msg);
         });
     }

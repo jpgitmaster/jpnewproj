@@ -38,17 +38,17 @@ class WebController extends Controller
     	return view('forms.login');
     }
     public function login(Request $request){
-    	$usr = $request->all();
+    	$input = $request->all();
 
         $messages = [
             'email.exists' => "Couldn't find your email."
         ];
-    	$validate = Validator::make($usr, [
+    	$validate = Validator::make($input, [
             'email' => 'required|email|exists:users,email',
             'pword' => 'required'
         ], $messages);
         $validate->setAttributeNames($this->replace_names);
-    	$usr = Usr::where('email', $usr['email'])->first();
+    	$usr = Usr::where('email', $input['email'])->first();
        	
     	if(isset($usr->role)):
 	    	switch ($usr->role):
@@ -64,8 +64,8 @@ class WebController extends Controller
 	    endif;
     	if(!$validate->fails()):
 	    	if(Auth::guard($guard)->attempt([
-	    		'email' 	=> $usr['email'],
-	    		'password' 	=> $usr['pword'],
+	    		'email' 	=> $input['email'],
+	    		'password' 	=> $input['pword'],
 				'activated' => 1,
 				'role' 		=> $usr->role
 	    	])):
@@ -75,7 +75,7 @@ class WebController extends Controller
     		endif;
             return back()
                     ->withInput()
-                    ->withErrors(['pword' => 'Your password is incorrect.'], 'login');
+                    ->withErrors(['pword' => 'Please check your email and password.'], 'login');
     	else:
     		return back()
                     ->withInput()
@@ -85,6 +85,7 @@ class WebController extends Controller
     
     public function register(Request $request, Mailer $mailer){
         $usr = $request->all();
+
         $user = json_decode($usr['user'], true);
 
         if($user['token'] == Session::token()):
@@ -100,28 +101,56 @@ class WebController extends Controller
                 $msg['has_error'] = true;
                 $msg['error'] = $validate->messages()->toArray();
             else:
-                $usr = new User;
-                $usr->genid          = '';
-                $usr->email          = $user['email'];
-                $usr->password       = Hash::make($user['pword']);
-                $usr->remember       = 0;
-                $usr->activated      = 0;
-                $usr->act_created    = Carbon::now();
-                $usr->last_login     = Carbon::now();
-                $usr->role           = 1;
-                $usr->remember_token = $user['token'];
-                $usr->save();
-                if( count($mailer->failures()) > 0 ):
-                    print_r(count($mailer->failures()));
-                else:
-                    $mailer->to($user['email'])
-                        ->send(new MailNewRegistrants($user));
-                endif;
-                $msg['has_error'] = false;
+            //     // $usr = new User;
+            //     // $usr->genid          = '';
+            //     // $usr->email          = $user['email'];
+            //     // $usr->password       = Hash::make($user['pword']);
+            //     // $usr->remember       = 0;
+            //     // $usr->activated      = 0;
+            //     // $usr->act_created    = Carbon::now();
+            //     // $usr->last_login     = Carbon::now();
+            //     // $usr->role           = 1;
+            //     // $usr->remember_token = $user['token'];
+            //     // $usr->save();
+            //     // if( count($mailer->failures()) > 0 ):
+            //     //     print_r(count($mailer->failures()));
+            //     // else:
+            //     //     $mailer->to($user['email'])
+            //     //         ->send(new MailNewRegistrants($user));
+            //     // endif;
+            //     $msg['has_error'] = false;
             endif;
             print_r(json_encode($msg, JSON_PRETTY_PRINT));
         endif;
         // print_r($request->session()->all());
         // return redirect('profile');
+    }
+
+    public function email_confirmation($token){
+        $user = User::where('remember_token', $token)->first();
+        
+        // if(!is_null($user)){
+        //     $user->activated = 1;
+        //     $user->save();
+
+        //     Auth::login($user);
+        //     // $active_user = User::find($token);
+        //     if (Auth::check()):
+        //         return redirect()->route('home_index')->with('status', 'completed');
+        //     endif;
+            
+        // }
+        // return redirect()->route('login')->with('status', $user);
+    }
+
+    public function hasError($validate){
+        if(isset($validate)):
+            if($validate->fails()):
+                $result = true;
+            else:
+                $result = false;
+            endif;
+            return $result;
+        endif;
     }
 }
