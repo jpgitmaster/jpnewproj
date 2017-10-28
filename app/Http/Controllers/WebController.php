@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Session;
 
 use App\Usr;
@@ -9,6 +8,7 @@ use Carbon\Carbon;
 
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -45,45 +45,44 @@ class WebController extends Controller
     
     public function login(Request $request){
         $input = $request->all();
-
         $messages = [
             'email.exists' => "Couldn't find your email."
         ];
-        $validate = Validator::make($input, [
+    	$validate = Validator::make($input, [
             'email' => 'required|email|exists:users,email',
             'pword' => 'required'
         ], $messages);
         $validate->setAttributeNames($this->replace_names);
-        $usr = Usr::where('email', $input['email'])->first();
-        
-        if(isset($usr->role)):
-            switch ($usr->role):
-                case 1:
-                    $guard = 'jp_user';
-                    $redirect = 'usr_jobs';
-                    break;
-                case 2:
-                    $guard = 'jp_admin';
-                    $redirect = 'admn_dashboard';
-                    break;
-            endswitch;
-        endif;
-        if(!$validate->fails()):
-            if(Auth::guard($guard)->attempt([
-                'email'     => $input['email'],
-                'password'  => $input['pword'],
-                'activated' => 1,
-                'role'      => $usr->role
-            ])):
-                // Auth::guard($guard)->login($usr);
-                Session::put('usr_role', $usr->role);
-                return redirect()->route($redirect);
-            endif;
+    	$usr = Usr::where('email', $input['email'])->first();
+       	
+    	if(isset($usr->role)):
+	    	switch ($usr->role):
+	    		case 1:
+	    			$guard = 'jp_user';
+	    			$redirect = 'usr_jobs';
+	    			break;
+	    		case 2:
+	    			$guard = 'jp_admin';
+	    			$redirect = 'admn_dashboard';
+	    			break;
+	    	endswitch;
+	    endif;
+    	if(!$validate->fails()):
+	    	if(Auth::guard($guard)->attempt([
+	    		'email' 	=> $input['email'],
+	    		'password' 	=> $input['pword'],
+				'activated' => 1,
+				'role' 		=> $usr->role
+	    	])):
+	    		// Auth::guard($guard)->login($usr);
+	    		Session::put('usr_role', $usr->role);
+    			return redirect()->route($redirect);
+    		endif;
             return back()
                     ->withInput()
                     ->withErrors(['pword' => 'Please check your email and password.'], 'login');
-        else:
-            return back()
+    	else:
+    		return back()
                     ->withInput()
                     ->withErrors($validate, 'login');
         endif;
@@ -91,6 +90,7 @@ class WebController extends Controller
     
     public function register(Request $request, Mailer $mailer){
         $usr = $request->all();
+
         $user = json_decode($usr['user'], true);
 
         if($user['token'] == Session::token()):

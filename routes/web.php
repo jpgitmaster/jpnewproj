@@ -5,6 +5,7 @@
 Route::group(['middleware' => 'role:vwr'], function(){
 	Route::get('login', 'WebController@login_v');
 	Route::post('login', 'WebController@login');
+	Route::get('activation/{token}', 'WebController@email_confirmation')->name('activation');
 	Route::post('register', 'WebController@register');
 	Route::get('{name?}', [
 		'as' => 'home_index', 'uses' => 'WebController@index'
