@@ -43,6 +43,8 @@ class Controller extends BaseController
         define('j_jquery', 'plugins/jquery/jquery.min.js');
         define('j_popper', 'plugins/popperjs/popper.min.js');
         define('j_jcrop', 'plugins/jcrop/js/jquery.jcrop.min.js');
+        define('j_velocity', 'plugins/velocity/velocity.min.js');
+        define('j_velocity_ui', 'plugins/velocity/velocity.ui.min.js');
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
     }
 

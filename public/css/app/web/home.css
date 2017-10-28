@@ -58,6 +58,8 @@
   grid-area: sldr;
   background-color: #F9F9F9;
   min-height: 600px;
+  position: relative;
+  overflow: hidden;
 }
 
 #wrapper .footer {
@@ -240,11 +242,16 @@
 #rgstrtn {
   width: 550px;
   float: right;
-  margin: 30px 20px 0 0;
+  margin: 80px 30px 0 0;
+  /*background-color: rgba(154, 154, 154, 0.5);
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;*/
 }
 
 #rgstrtn .ttls {
   margin-bottom: 30px;
+  /*color: #FFF;*/
 }
 
 #rgstrtn .ttls h1 {
@@ -260,6 +267,10 @@
 
 #rgstrtn .btn.btnblu {
   float: right;
+}
+
+#rgstrtn svg:not(:root) {
+  margin-top: -20px;
 }
 
 #rgstrtn .nptgrp > .popcntnr {

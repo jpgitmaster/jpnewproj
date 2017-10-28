@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Usr;
 use Session;
+
+use App\Usr;
+use Carbon\Carbon;
+
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\MailNewRegistrants;
 
 class WebController extends Controller
 {
@@ -15,7 +20,7 @@ class WebController extends Controller
     	parent::__construct();
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global],
-            'scripts' => [j_jquery, j_popper, j_bootstrap],
+            'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
             'ngular'    => [n_ng, n_ngresource, n_nganimate, n_home]
         ];
         $this->replace_names = [
@@ -37,50 +42,51 @@ class WebController extends Controller
     public function login_v(Request $request){
     	return view('forms.login');
     }
+    
     public function login(Request $request){
-    	$usr = $request->all();
+        $input = $request->all();
 
         $messages = [
             'email.exists' => "Couldn't find your email."
         ];
-    	$validate = Validator::make($usr, [
+        $validate = Validator::make($input, [
             'email' => 'required|email|exists:users,email',
             'pword' => 'required'
         ], $messages);
         $validate->setAttributeNames($this->replace_names);
-    	$usr = Usr::where('email', $usr['email'])->first();
-       	
-    	if(isset($usr->role)):
-	    	switch ($usr->role):
-	    		case 1:
-	    			$guard = 'jp_user';
-	    			$redirect = 'usr_jobs';
-	    			break;
-	    		case 2:
-	    			$guard = 'jp_admin';
-	    			$redirect = 'admn_dashboard';
-	    			break;
-	    	endswitch;
-	    endif;
-    	if(!$validate->fails()):
-	    	if(Auth::guard($guard)->attempt([
-	    		'email' 	=> $usr['email'],
-	    		'password' 	=> $usr['pword'],
-				'activated' => 1,
-				'role' 		=> $usr->role
-	    	])):
-	    		// Auth::guard($guard)->login($usr);
-	    		Session::put('usr_role', $usr->role);
-    			return redirect()->route($redirect);
-    		endif;
+        $usr = Usr::where('email', $input['email'])->first();
+        
+        if(isset($usr->role)):
+            switch ($usr->role):
+                case 1:
+                    $guard = 'jp_user';
+                    $redirect = 'usr_jobs';
+                    break;
+                case 2:
+                    $guard = 'jp_admin';
+                    $redirect = 'admn_dashboard';
+                    break;
+            endswitch;
+        endif;
+        if(!$validate->fails()):
+            if(Auth::guard($guard)->attempt([
+                'email'     => $input['email'],
+                'password'  => $input['pword'],
+                'activated' => 1,
+                'role'      => $usr->role
+            ])):
+                // Auth::guard($guard)->login($usr);
+                Session::put('usr_role', $usr->role);
+                return redirect()->route($redirect);
+            endif;
             return back()
                     ->withInput()
-                    ->withErrors(['pword' => 'Your password is incorrect.'], 'login');
-    	else:
-    		return back()
+                    ->withErrors(['pword' => 'Please check your email and password.'], 'login');
+        else:
+            return back()
                     ->withInput()
                     ->withErrors($validate, 'login');
-    	endif;
+        endif;
     }
     
     public function register(Request $request, Mailer $mailer){
@@ -100,7 +106,7 @@ class WebController extends Controller
                 $msg['has_error'] = true;
                 $msg['error'] = $validate->messages()->toArray();
             else:
-                $usr = new User;
+                $usr = new Usr;
                 $usr->genid          = '';
                 $usr->email          = $user['email'];
                 $usr->password       = Hash::make($user['pword']);
@@ -123,5 +129,33 @@ class WebController extends Controller
         endif;
         // print_r($request->session()->all());
         // return redirect('profile');
+    }
+
+    public function email_confirmation($token){
+        $user = User::where('remember_token', $token)->first();
+        
+        // if(!is_null($user)){
+        //     $user->activated = 1;
+        //     $user->save();
+
+        //     Auth::login($user);
+        //     // $active_user = User::find($token);
+        //     if (Auth::check()):
+        //         return redirect()->route('home_index')->with('status', 'completed');
+        //     endif;
+            
+        // }
+        // return redirect()->route('login')->with('status', $user);
+    }
+
+    public function hasError($validate){
+        if(isset($validate)):
+            if($validate->fails()):
+                $result = true;
+            else:
+                $result = false;
+            endif;
+            return $result;
+        endif;
     }
 }
