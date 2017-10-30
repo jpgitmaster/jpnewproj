@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -136,7 +138,7 @@ class WebController extends Controller
     }
 
     public function email_confirmation($token){
-        $user = User::where('remember_token', $token)->first();
+        $user = Usr::where('remember_token', $token)->first();
         
         // if(!is_null($user)){
         //     $user->activated = 1;

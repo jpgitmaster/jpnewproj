@@ -243,6 +243,13 @@
   top: 50px;
 }
 
+#sccssrgstrtn .close {
+  margin-top: -10px;
+  float: right;
+  cursor: pointer;
+  outline: none;
+}
+
 #sccssrgstrtn .fa {
   font-size: 120px;
   color: #0077c0;
@@ -251,12 +258,6 @@
 
 #sccssrgstrtn .msg {
   margin-left: 130px;
-}
-
-#sccssrgstrtn .msg .close {
-  margin-top: -10px;
-  float: right;
-  cursor: pointer;
 }
 
 #sccssrgstrtn .msg h1 {

@@ -205,7 +205,13 @@
 
 #sccssrgstrtn{
 	top: 50px;
-
+	
+	.close{
+    	margin-top: -10px;
+    	float: right;
+    	cursor: pointer;
+    	outline: none;
+    }
 	.fa{
 	    font-size: 120px;
     	color: #0077c0;
@@ -214,12 +220,6 @@
 
 	.msg{
 	    margin-left: 130px;
-	    
-	    .close{
-	    	margin-top: -10px;
-	    	float: right;
-	    	cursor: pointer;
-	    }
 
 	    h1{
 	    	font: 28px segobb;
@@ -255,6 +255,6 @@
 	svg:not(:root){
 		margin-top: -20px;
 	}
-	
+
 	.nptgrp > .popcntnr{right: -15px;}
 }
