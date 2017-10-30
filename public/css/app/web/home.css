@@ -239,37 +239,6 @@
   font-size: 14px;
 }
 
-#sccssrgstrtn {
-  top: 50px;
-}
-
-#sccssrgstrtn .close {
-  margin-top: -10px;
-  float: right;
-  cursor: pointer;
-  outline: none;
-}
-
-#sccssrgstrtn .fa {
-  font-size: 120px;
-  color: #0077c0;
-  float: left;
-}
-
-#sccssrgstrtn .msg {
-  margin-left: 130px;
-}
-
-#sccssrgstrtn .msg h1 {
-  font: 28px segobb;
-  color: #4bbd00;
-}
-
-#sccssrgstrtn .msg p {
-  font: 18px segob;
-  color: #777;
-}
-
 #rgstrtn {
   width: 550px;
   float: right;

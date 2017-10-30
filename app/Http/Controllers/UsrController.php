@@ -13,7 +13,7 @@ class UsrController extends Controller
     	parent::__construct();
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
-            'scripts' => [j_jquery, j_popper, j_bootstrap],
+            'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
             'ngular'    => [n_ng, n_ngresource, n_nganimate, n_user]
         ];
     }

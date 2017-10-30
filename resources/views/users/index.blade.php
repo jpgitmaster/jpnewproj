@@ -110,7 +110,24 @@
     <p>24/7 Global Nursing Solution &amp; Consulting Services LLC © 2016. All Rights Reserved</p>
   </div>
 </div>
-
+<div class="modal" id="new_activated_user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+        <i class="fa fa-check"></i>
+        <div class="msg">
+          <h1>Congratulations!</h1>
+          <p>
+            You're first login in this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- JS -->
 @if (isset($scripts))
   @foreach($scripts as $js)
@@ -118,7 +135,13 @@
   @endforeach
 @endif
 
-
+@if (session('new_activated_user'))
+  <script>
+    $(function(){
+      $('#new_activated_user').modal().velocity('transition.flipXIn');;
+    });
+  </script>
+@endif
   <!-- App -->
 @if (isset($ngular))
   @foreach($ngular as $ng)

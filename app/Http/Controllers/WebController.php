@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Session;
 
 use App\Usr;
+use App\Mail\MailNewRegistrants;
+
 use Carbon\Carbon;
 
 use Illuminate\Mail\Mailer;
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\MailNewRegistrants;
+
 
 class WebController extends Controller
 {
@@ -29,6 +31,9 @@ class WebController extends Controller
             'pword' => 'Password',
             'pword_confirmation' => 'Confirm Password'
         ];
+
+        // date_default_timezone_set('America/Los_Angeles');
+        date_default_timezone_set('Asia/Manila');
     }    
 
     public function index(Request $request){
@@ -76,8 +81,7 @@ class WebController extends Controller
     				'activated' => 1,
     				'role' 		=> $usr->role
     	    	])):
-    	    		// Auth::guard($guard)->login($usr);
-    	    		Session::put('usr_role', $usr->role);
+                    Session::put('usr_role', $usr->role);
         			return redirect()->route($redirect);
         		endif;
                 return back()
@@ -100,7 +104,7 @@ class WebController extends Controller
         $user = json_decode($usr['user'], true);
 
         // generated id
-        $gen_id  = $this->gen_id(20);
+        $gen_id  = $this->get_genid(20);
 
         if($user['token'] == Session::token()):
             $validate = Validator::make($user, [
@@ -121,10 +125,10 @@ class WebController extends Controller
                 $usr->password       = Hash::make($user['pword']);
                 $usr->remember       = 0;
                 $usr->activated      = 0;
-                $usr->act_created    = Carbon::now();
-                $usr->last_login     = Carbon::now();
+                $usr->act_activated  = '1987-05-14 00:00:00';
                 $usr->role           = 1;
                 $usr->remember_token = $user['token'];
+
                 $usr->save();
                 if( count($mailer->failures()) > 0 ):
                     print_r(count($mailer->failures()));
@@ -142,19 +146,28 @@ class WebController extends Controller
 
     public function email_confirmation($token){
         $user = Usr::where('remember_token', $token)->first();
-        
-        // if(!is_null($user)){
-        //     $user->activated = 1;
-        //     $user->save();
+        if(!is_null($user)):
+            $user->activated    = 1;
+            $user->act_activated = Carbon::now();
+            $user->save();
 
-        //     Auth::login($user);
-        //     // $active_user = User::find($token);
-        //     if (Auth::check()):
-        //         return redirect()->route('home_index')->with('status', 'completed');
-        //     endif;
-            
-        // }
-        // return redirect()->route('login')->with('status', $user);
+            if(isset($user->role)):
+                switch ($user->role):
+                    case 1:
+                        $guard = 'jp_user';
+                        $redirect = 'usr_jobs';
+                        break;
+                    case 2:
+                        $guard = 'jp_admin';
+                        $redirect = 'admn_dashboard';
+                        break;
+                endswitch;
+            endif;
+            Auth::guard($guard)->login($user);
+            Session::put('usr_role', $user->role);
+            return redirect()->route($redirect)->with('new_activated_user', true);
+        endif;
+        return view('errors.404');
     }
 
     public function hasError($validate){
@@ -183,7 +196,7 @@ class WebController extends Controller
         return $min + $rnd;
     }
 
-    public function getToken($length){
+    public function get_genid($length){
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";

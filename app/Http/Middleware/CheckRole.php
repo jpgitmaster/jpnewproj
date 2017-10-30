@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
+
 use Illuminate\Support\Facades\Auth;
 class CheckRole
 {
@@ -15,6 +17,8 @@ class CheckRole
      */
     public function handle($request, Closure $next, $role = null)
     {
+        // Auth::guard('jp_user')->logout();
+        // Session::forget('usr_role');
         if($request->session()->get('usr_role') != null):
             if($role == 'vwr' && $request->session()->get('usr_role') == 1):
                 return redirect()->route('usr_jobs');
@@ -24,5 +28,7 @@ class CheckRole
             endif;
         endif;
         return $next($request);
+
+
     }
 }

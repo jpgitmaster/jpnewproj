@@ -130,4 +130,35 @@
   line-height: 16px;
 }
 
+.modal {
+  top: 50px;
+}
+
+.modal .close {
+  margin-top: -10px;
+  float: right;
+  cursor: pointer;
+  outline: none;
+}
+
+.modal .fa {
+  font-size: 120px;
+  color: #0077c0;
+  float: left;
+}
+
+.modal .msg {
+  margin-left: 130px;
+}
+
+.modal .msg h1 {
+  font: 28px segobb;
+  color: #4bbd00;
+}
+
+.modal .msg p {
+  font: 18px segob;
+  color: #777;
+}
+
 /*# sourceMappingURL=global.css.map */

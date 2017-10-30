@@ -12,5 +12,6 @@ class Usr extends Authenticatable
 
     protected $table = 'users';
     const CREATED_AT = 'act_created';
-    const UPDATED_AT = 'last_login';
+    const UPDATED_AT = 'act_updated';
+
 }

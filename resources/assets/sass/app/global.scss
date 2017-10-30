@@ -72,3 +72,33 @@
         }
     }
 }
+
+.modal{
+    top: 50px;
+    
+    .close{
+        margin-top: -10px;
+        float: right;
+        cursor: pointer;
+        outline: none;
+    }
+    .fa{
+        font-size: 120px;
+        color: #0077c0;
+        float: left;
+    }
+
+    .msg{
+        margin-left: 130px;
+
+        h1{
+            font: 28px segobb;
+            color: #4bbd00;
+        }
+
+        p{
+            font: 18px segob;
+            color: #777;
+        }
+    }
+}
