@@ -17,11 +17,13 @@ ngApp.controller('ctrlApp', ['$scope', '$timeout', '$http',
                 return fd;
             }
         }).then(function(result){
+            $scope.msg = result.data;
+
             $timeout(function(){
                 $scope.loader = false;
-                $scope.msg = result.data;
-                if ($scope.msg['has_error'] == false){
-                    $scope.rgstr = {};
+                if($scope.msg['has_error'] == false){
+                    angular.element('#sccssrgstrtn').modal().velocity('transition.flipXIn');
+                    $scope.rgstr = {};    
                 }
                 console.log($scope.msg);
             }, 500);

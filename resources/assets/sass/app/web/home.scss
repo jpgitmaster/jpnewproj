@@ -53,6 +53,8 @@
 		grid-area: sldr;
 		background-color: #F9F9F9;
 		min-height: 600px;
+		position: relative;
+		overflow: hidden;
 	}
 	
 	.footer{
@@ -201,18 +203,58 @@
 	}
 }
 
+#sccssrgstrtn{
+	top: 50px;
+
+	.fa{
+	    font-size: 120px;
+    	color: #0077c0;
+    	float: left;
+	}
+
+	.msg{
+	    margin-left: 130px;
+	    
+	    .close{
+	    	margin-top: -10px;
+	    	float: right;
+	    	cursor: pointer;
+	    }
+
+	    h1{
+	    	font: 28px segobb;
+    		color: #4bbd00;
+	    }
+
+	    p{
+	    	font: 18px segob;
+	    	color: #777;
+	    }
+	}
+}
 #rgstrtn{
-	width: 550px;
-	float: right;
-	margin: 30px 20px 0 0;
+    width: 550px;
+    float: right;
+    margin: 80px 30px 0 0;
+    /*background-color: rgba(154, 154, 154, 0.5);
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;*/
+
 	.ttls{
 		margin-bottom: 30px;
+		/*color: #FFF;*/
+
 		h1{margin: 0; font-size: 1.5rem;}
 		h2{margin: 5px 0 0; font-size: 0.9rem; font-weight: normal;}
 	}
 	.btn.btnblu{
 		float: right;
 	}
-	svg:not(:root){margin-top: -20px;}
+
+	svg:not(:root){
+		margin-top: -20px;
+	}
+	
 	.nptgrp > .popcntnr{right: -15px;}
 }

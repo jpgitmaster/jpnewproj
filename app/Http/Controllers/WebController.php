@@ -8,8 +8,8 @@ use Carbon\Carbon;
 
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\MailNewRegistrants;
 
@@ -19,7 +19,7 @@ class WebController extends Controller
     	parent::__construct();
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global],
-            'scripts' => [j_jquery, j_popper, j_bootstrap],
+            'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
             'ngular'    => [n_ng, n_ngresource, n_nganimate, n_home]
         ];
         $this->replace_names = [
@@ -41,9 +41,9 @@ class WebController extends Controller
     public function login_v(Request $request){
     	return view('forms.login');
     }
+    
     public function login(Request $request){
-    	$input = $request->all();
-
+        $input = $request->all();
         $messages = [
             'email.exists' => "Couldn't find your email."
         ];
@@ -67,24 +67,29 @@ class WebController extends Controller
 	    	endswitch;
 	    endif;
     	if(!$validate->fails()):
-	    	if(Auth::guard($guard)->attempt([
-	    		'email' 	=> $input['email'],
-	    		'password' 	=> $input['pword'],
-				'activated' => 1,
-				'role' 		=> $usr->role
-	    	])):
-	    		// Auth::guard($guard)->login($usr);
-	    		Session::put('usr_role', $usr->role);
-    			return redirect()->route($redirect);
-    		endif;
+            if($usr->activated == 1):
+    	    	if(Auth::guard($guard)->attempt([
+    	    		'email' 	=> $input['email'],
+    	    		'password' 	=> $input['pword'],
+    				'activated' => 1,
+    				'role' 		=> $usr->role
+    	    	])):
+    	    		// Auth::guard($guard)->login($usr);
+    	    		Session::put('usr_role', $usr->role);
+        			return redirect()->route($redirect);
+        		endif;
+                return back()
+                        ->withInput()
+                        ->withErrors(['pword' => 'Incorrect password.'], 'login');
+            endif;
             return back()
-                    ->withInput()
-                    ->withErrors(['pword' => 'Please check your email and password.'], 'login');
+                        ->withInput()
+                        ->withErrors(['email' => 'Your account is not yet activated.'], 'login');
     	else:
     		return back()
                     ->withInput()
                     ->withErrors($validate, 'login');
-    	endif;
+        endif;
     }
     
     public function register(Request $request, Mailer $mailer){

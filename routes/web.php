@@ -1,6 +1,6 @@
 <?php
 
-Auth::routes();
+// Auth::routes();
 
 Route::group(['middleware' => 'role:vwr'], function(){
 	Route::get('login', 'WebController@login_v');
@@ -10,6 +10,8 @@ Route::group(['middleware' => 'role:vwr'], function(){
 	Route::get('{name?}', [
 		'as' => 'home_index', 'uses' => 'WebController@index'
 	])->where('name', 'home');
+
+	Route::get('activation/{token}', 'WebController@email_confirmation')->name('activation');
 });
 
 Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
