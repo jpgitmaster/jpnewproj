@@ -1,9 +1,11 @@
 'use strict';
 var ngApp = angular.module('ngApp', ['ngResource', 'ngAnimate']);
 
-ngApp.controller('ctrlApp', ['$scope', '$http', function($scope, $http) {
+ngApp.controller('ctrlApp', ['$scope', '$timeout', '$http',
+    function($scope, $timeout, $http) {
 
     $scope.usrRegister = function(usr){
+        $scope.loader = true;
         $http({
             method: 'POST',
             url: "register",
@@ -15,9 +17,14 @@ ngApp.controller('ctrlApp', ['$scope', '$http', function($scope, $http) {
                 return fd;
             }
         }).then(function(result){
-            $scope.msg = result.data;
-            // $scope.rgstr = {};
-            console.log($scope.msg);
+            $timeout(function(){
+                $scope.loader = false;
+                $scope.msg = result.data;
+                if ($scope.msg['has_error'] == false){
+                    $scope.rgstr = {};
+                }
+                console.log($scope.msg);
+            }, 500);
         });
     }
 

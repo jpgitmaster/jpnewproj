@@ -262,6 +262,10 @@
   float: right;
 }
 
+#rgstrtn svg:not(:root) {
+  margin-top: -20px;
+}
+
 #rgstrtn .nptgrp > .popcntnr {
   right: -15px;
 }
