@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 use Illuminate\Mail\Mailer;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,7 +56,7 @@ class WebController extends Controller
         $validate->setAttributeNames($this->replace_names);
     	$usr = Usr::where('email', $input['email'])->first();
        	
-    	if(isset($usr->role)):
+        if(isset($usr->role)):
 	    	switch ($usr->role):
 	    		case 1:
 	    			$guard = 'jp_user';
@@ -97,6 +99,9 @@ class WebController extends Controller
 
         $user = json_decode($usr['user'], true);
 
+        // generated id
+        $gen_id  = $this->gen_id(20);
+
         if($user['token'] == Session::token()):
             $validate = Validator::make($user, [
                 'email' => 'required|email|max:80|unique:users,email',
@@ -111,7 +116,7 @@ class WebController extends Controller
                 $msg['error'] = $validate->messages()->toArray();
             else:
                 $usr = new Usr;
-                $usr->genid          = '';
+                $usr->genid          = $gen_id;
                 $usr->email          = $user['email'];
                 $usr->password       = Hash::make($user['pword']);
                 $usr->remember       = 0;
@@ -136,7 +141,7 @@ class WebController extends Controller
     }
 
     public function email_confirmation($token){
-        $user = User::where('remember_token', $token)->first();
+        $user = Usr::where('remember_token', $token)->first();
         
         // if(!is_null($user)){
         //     $user->activated = 1;
@@ -161,5 +166,34 @@ class WebController extends Controller
             endif;
             return $result;
         endif;
+    }
+
+
+    public function crypto_rand_secure($min, $max){
+        $range = $max - $min;
+        if ($range < 1) return $min; // not so random...
+        $log = ceil(log($range, 2));
+        $bytes = (int) ($log / 8) + 1; // length in bytes
+        $bits = (int) $log + 1; // length in bits
+        $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter; // discard irrelevant bits
+        } while ($rnd > $range);
+        return $min + $rnd;
+    }
+
+    public function getToken($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+
+        for ($i=0; $i < $length; $i++) {
+            $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
+        }
+
+        return $token;
     }
 }
