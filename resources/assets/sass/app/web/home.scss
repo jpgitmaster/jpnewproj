@@ -203,6 +203,35 @@
 	}
 }
 
+#sccssrgstrtn{
+	top: 50px;
+
+	.fa{
+	    font-size: 120px;
+    	color: #0077c0;
+    	float: left;
+	}
+
+	.msg{
+	    margin-left: 130px;
+	    
+	    .close{
+	    	margin-top: -10px;
+	    	float: right;
+	    	cursor: pointer;
+	    }
+
+	    h1{
+	    	font: 28px segobb;
+    		color: #4bbd00;
+	    }
+
+	    p{
+	    	font: 18px segob;
+	    	color: #777;
+	    }
+	}
+}
 #rgstrtn{
     width: 550px;
     float: right;

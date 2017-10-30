@@ -200,9 +200,13 @@
 	      	<button type="button" class="close" data-dismiss="modal">
 	          <span>&times;</span>
 	        </button>
-	        <p>
-	        	You are now successfully registered! Please check your email to activate your account!
-	        </p>
+	        <i class="fa fa-check"></i>
+	        <div class="msg">
+	        	<h1>Congratulations!</h1>
+	        	<p>
+	        		You are now successfully registered. Please check your email to activate your account.
+	        	</p>
+	        </div>
 	      </div>
 	    </div>
 	  </div>
