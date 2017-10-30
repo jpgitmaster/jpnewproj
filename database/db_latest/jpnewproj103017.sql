@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2017 at 06:18 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Oct 30, 2017 at 09:30 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -67,15 +67,15 @@ CREATE TABLE `primary_info` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `genid` varchar(100) NOT NULL,
+  `genid` varchar(20) NOT NULL,
   `email` varchar(150) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember` tinyint(1) NOT NULL,
   `remember_token` varchar(100) NOT NULL,
   `activated` tinyint(1) NOT NULL,
-  `act_activated` datetime NOT NULL,
+  `act_updated` datetime NOT NULL,
   `act_created` datetime NOT NULL,
-  `last_login` datetime NOT NULL,
+  `act_activated` datetime NOT NULL,
   `role` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -83,8 +83,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `genid`, `email`, `password`, `remember`, `remember_token`, `activated`, `act_activated`, `act_created`, `last_login`, `role`) VALUES
-(5, '', 'vasquezjp14@gmail.com', '$2y$10$.PddW5k4tP3zRGTroGUwHuicJcbcA9MiM0AT5tnORRY8CByFl5zAG', 0, 'ae4oBgZw1fAqGb13yLL5bpdKyUNXN2OaR1PKULswXapqjLVXaKAlLQNVsw3K', 0, '0000-00-00 00:00:00', '2017-10-28 04:58:00', '2017-10-28 04:58:00', 1);
+INSERT INTO `users` (`id`, `genid`, `email`, `password`, `remember`, `remember_token`, `activated`, `act_updated`, `act_created`, `act_activated`, `role`) VALUES
+(3, 'qlMRixkSp2cwYsNBjETW', 'vasquezjp14@gmail.com', '$2y$10$ZSoUpxrjw462TZv6exxga.3qSmof4Xz7YkhiTGoahQqdS7KOfnmJK', 0, 'TvE0nF5XfE72DyPEh78syWyviwd7ZfaiO9NUX70P', 1, '2017-10-30 15:57:05', '2017-10-30 15:31:48', '2017-10-30 15:57:05', 1);
 
 --
 -- Indexes for dumped tables
@@ -126,7 +126,7 @@ ALTER TABLE `primary_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
