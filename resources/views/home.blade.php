@@ -12,72 +12,89 @@
 </head>
 <body>
 <div id="wrapper" ng-controller="ctrlApp">
-	<div class="hdr_left">
-		<a href="/" class="logo">
-			<div class="cmpnylogo">
-				<img src="{{ URL::asset('img/logo.png') }}" alt="">
-			</div>
-			<div class="cmpnyname">
-				<span class="drk">Global Nursing Solution &</span>
-				<span class="lght">Consulting Services LLC</span>
-			</div>
-		</a>
+	<div class="hdrtop">
+		<div class="hdr_left">
+			<a href="/" class="logo">
+				<div class="cmpnylogo">
+					<img src="{{ URL::asset('img/logo.png') }}" alt="">
+				</div>
+				<div class="cmpnyname">
+					<span class="drk">Global Nursing Solution &</span>
+					<span class="lght">Consulting Services LLC</span>
+				</div>
+			</a>
+		</div>
+		<div class="hdr_right">
+			<form id="frmlgn" action="login" method="POST" novalidate>
+		  		{{ csrf_field() }}
+		  		<div class="row no-gutters">
+		  			<div class="col-lg-6">
+		  				<div class="bx">
+			  				<div class="nptgrp {{$errors->login->has('email') ? 'err' : ''}}">
+					            <input type="text" name="email" value="{{ old('email') }}" ng-focus="l_email = true" ng-blur="l_email = false" required>
+					            <label>Email</label>
+					            @if ($errors->login->has('email'))
+					                <div class="am-flip-x popcntnr" ng-if="l_email === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+										    <div class="arrow"></div>
+										    <div class="popover-body">
+										      {{ $errors->login->first('email') }}
+										    </div>
+										</div>
+					                </div>
+					            @endif
+					        </div>
+					        <div class="rmmbr">
+					        	<label class="option">
+					                <input type="checkbox" name="rememberme" class="fcs">
+					                <span class="checkbox"></span>
+				                </label>
+					        	<label class="lbl">Remember Me</label>
+					        </div>
+				        </div>
+		  			</div>
+		  			<div class="col-lg-6">
+		  				<div class="bx">
+			  				<div class="nptgrp {{$errors->login->has('pword') ? 'err' : ''}}">
+					            <input type="password" name="pword" ng-focus="l_pword = true" ng-blur="l_pword = false" required>
+					            <label>Password</label>
+					            @if ($errors->login->has('pword'))
+					                <div class="am-flip-x popcntnr" ng-if="l_pword === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+										    <div class="arrow"></div>
+										    <div class="popover-body">
+										      {{ $errors->login->first('pword') }}
+										    </div>
+										</div>
+					                </div>
+					            @endif
+					        </div>
+					        <button type="submit" class="btn btnblu">
+					            Login
+					        </button>
+				        </div>
+		  			</div>
+		  		</div>
+		    </form>
+		</div>
 	</div>
-	<div class="hdr_right">
-		<form id="frmlgn" action="login" method="POST" novalidate>
-	  		{{ csrf_field() }}
-	  		<div class="row no-gutters">
-	  			<div class="col-lg-6">
-	  				<div class="bx">
-		  				<div class="nptgrp {{$errors->login->has('email') ? 'err' : ''}}">
-				            <input type="text" name="email" value="{{ old('email') }}" ng-focus="l_email = true" ng-blur="l_email = false" required>
-				            <label>Email</label>
-				            @if ($errors->login->has('email'))
-				                <div class="am-flip-x popcntnr" ng-if="l_email === true" ng-cloak>
-				                    <div class="popover bs-popover-top">
-									    <div class="arrow"></div>
-									    <div class="popover-body">
-									      {{ $errors->login->first('email') }}
-									    </div>
-									</div>
-				                </div>
-				            @endif
-				        </div>
-				        <div class="rmmbr">
-				        	<label class="option">
-				                <input type="checkbox" name="rememberme" class="fcs">
-				                <span class="checkbox"></span>
-			                </label>
-				        	<label class="lbl">Remember Me</label>
-				        </div>
-			        </div>
-	  			</div>
-	  			<div class="col-lg-6">
-	  				<div class="bx">
-		  				<div class="nptgrp {{$errors->login->has('pword') ? 'err' : ''}}">
-				            <input type="password" name="pword" ng-focus="l_pword = true" ng-blur="l_pword = false" required>
-				            <label>Password</label>
-				            @if ($errors->login->has('pword'))
-				                <div class="am-flip-x popcntnr" ng-if="l_pword === true" ng-cloak>
-				                    <div class="popover bs-popover-top">
-									    <div class="arrow"></div>
-									    <div class="popover-body">
-									      {{ $errors->login->first('pword') }}
-									    </div>
-									</div>
-				                </div>
-				            @endif
-				        </div>
-				        <button type="submit" class="btn btnblu">
-				            Login
-				        </button>
-			        </div>
-	  			</div>
-	  		</div>
-	    </form>
-	</div>
+	
 	<div class="sldr">
-		<!-- <img src="{{ URL::asset('img/group.jpg') }}" alt="" style="position: absolute; width: 100%;"> -->
+		<div class="sldr_left">
+			<img src="{{ URL::asset('img/ceo.png') }}" alt="">
+			<div class="ceo_testi">
+				<div class="popover bs-popover-right">
+				    <div class="arrow"></div>
+				    <div class="popover-body">
+				      	Let 24/7 Global Nursing Solution and Consulting Services help you to become a skilled, experienced and competitive healthcare professional. Finding the right job and not just a job. We offer assistance in every way we can to all our recruits, not only professionally but also in handling the struggles of our profession. We maybe new in the business but not in Nursing. Let us be your partner and we can work together to build not only your career but your dreams as well.
+				    </div>
+				</div>
+				<div class="ceoname">
+					<h2>Andrea Jose, BSN, RN</h2>
+					<h4>President / CEO / Founder</h4>
+				</div>
+			</div>
+		</div>
 		<div id="rgstrtn">
 			<div class="ttls">
 				<h1>Registration</h1>
@@ -141,6 +158,42 @@
 	            </div>
 	        </form>
 		</div>
+	</div>
+	<div class="services">
+	  <div class="row no-gutters">
+	    <div class="col-lg-3 blubx">
+	      <div class="bx">
+	        <h3>Professional Growth</h3>
+	        <p>
+	          We recruit efficient and competent professionals. We will help you every step of the way to build your career in healthcare. We offer permanent, part time and per-diem positions.
+	        </p>
+	      </div>
+	    </div>
+	    <div class="col-lg-3 blubx">
+	      <div class="bx">
+	        <h3>Perks &amp; Benefits</h3>
+	        <p>
+				In return for commitment, hard work and talent, we offer competitive salaries and benefits, high quality training and opportunities.
+	        </p>
+	      </div>
+	    </div>
+	    <div class="col-lg-3 blubx">
+	      <div class="bx">
+	        <h3>Client Services</h3>
+	        <p>
+	          We cater to the different Nursing Facilities in New York State. We live in our core value of Client Satisfaction giving a professional yet a personal service.
+	        </p>
+	      </div>
+	    </div>
+	    <div class="col-lg-3 blubx">
+	      <div class="bx">
+	        <h3>Staffing &amp; Solutions</h3>
+	        <p>
+	          We offer Staffing Assistance. We will help you find the right professional for the job. Matching skills with responsibilities that will work for your business. Working with you to give Quality Patient Care.
+	        </p>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 	<div class="footer">
 	    <div class="no-gutter">

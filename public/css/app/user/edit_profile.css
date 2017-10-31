@@ -6,8 +6,8 @@
 #edit_profile .grdprofile {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 350px;
-  grid-template-columns: 1fr 350px;
+  -ms-grid-columns: 1fr 300px;
+  grid-template-columns: 1fr 300px;
   -ms-grid-rows: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: "content_left avatar" "content_left preview_resume";
@@ -123,6 +123,8 @@
   background-color: #FFF;
   padding: 10px 20px 20px;
   margin: 8px;
+  border: 1px solid #8ad3ef;
+  border-radius: 10px;
 }
 
 #cropModal .modal-content {

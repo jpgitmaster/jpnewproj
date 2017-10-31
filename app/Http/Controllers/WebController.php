@@ -155,7 +155,7 @@ class WebController extends Controller
                 switch ($user->role):
                     case 1:
                         $guard = 'jp_user';
-                        $redirect = 'usr_jobs';
+                        $redirect = 'usr_profile';
                         break;
                     case 2:
                         $guard = 'jp_admin';

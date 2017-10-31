@@ -12,13 +12,15 @@
 #wrapper .hdr_left {
   grid-area: hdr_left;
   background-color: #FFF;
-  padding: 1em;
+  padding: 15px;
+  border-bottom: 1px solid #8ad3ef;
 }
 
 #wrapper .hdr_left .logo {
-  margin: 8px 0 0 8px;
+  margin: 8px 0 0 10px;
   text-decoration: none;
   display: inline-block;
+  width: 410px;
 }
 
 #wrapper .hdr_left .logo .cmpnylogo img {
@@ -52,7 +54,8 @@
 #wrapper .hdr_right {
   grid-area: hdr_right;
   background-color: #FFF;
-  padding: 1em;
+  padding: 15px;
+  border-bottom: 1px solid #8ad3ef;
 }
 
 #wrapper .hdr_right .picture {
@@ -250,6 +253,10 @@
   color: #FFF;
   font-size: 11px;
   margin: 0;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
 }
 
 /*# sourceMappingURL=masterpage.css.map */
