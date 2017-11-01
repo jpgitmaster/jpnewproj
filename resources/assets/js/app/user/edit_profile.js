@@ -1,8 +1,13 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', []);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
-	function($scope, $timeout, $http) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', 'Usr',
+	function($scope, $rootScope, $timeout, $http, Usr) {
+
+	Usr.query().$promise.then(function(data) {
+       $rootScope.usr = data;
+   	});
+
 	$scope.imgForm = function(imgtarget){
 		$timeout(function(){
             $scope.imgtarget = imgtarget;
@@ -21,8 +26,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
 	}
 
     $scope.uploadFile = function(files){
-        // console.log(files);
-        // console.log($scope.coordinates);
         $http({
             method: 'POST',
             url: '/upload_dp',
@@ -39,10 +42,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
             data: {img_files: files, coordinates: $scope.coordinates}
         }).then(function(result){
             console.log(result.data);
+   			$rootScope.usr = Usr.query();
             $scope.cancelUpload();
             angular.element('#cropModal').modal('hide');
         });
         
+    }
+
+    $scope.timestamp = function(){
+    	return Date.now();
     }
 }]);
 

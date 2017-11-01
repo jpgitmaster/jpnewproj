@@ -196,6 +196,10 @@
   display: none;
 }
 
+.prvw.ltstdp {
+  display: block;
+}
+
 .prvw .preview-pane {
   display: block;
   position: relative;

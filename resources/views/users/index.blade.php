@@ -28,7 +28,7 @@
       </div>
     </a>
   </div>
-  <div class="hdr_right">
+  <div class="hdr_right" ng-controller="ctrlHeader">
     <div class="picture">
       <div class="pctrname">
         <div class="ttl">
@@ -41,8 +41,13 @@
         </div>
       </div>
       <div class="dp">
-        <div data-toggle="dropdown">
-          <i class="fa fa-user-circle-o"></i>
+        <div data-toggle="dropdown" class="drpdwn">
+          <span ng-if="usr[0]['dp']" ng-cloak>
+            <img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
+          </span>
+          <span ng-if="!usr[0]['dp']" ng-cloak>
+            <i class="fa fa-user-circle-o"></i>
+          </span>
         </div>
         <div class="dropdown-menu">
           <div class="arrow"></div>

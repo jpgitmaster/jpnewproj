@@ -30,22 +30,6 @@ ngApp.controller('ctrlApp', ['$scope', '$timeout', '$http',
         });
     }
 
-    $scope.actv_form = 'login';
-
-    $scope.getForm = function(num){
-        switch (num) {
-            case 0:
-                $scope.actv_form = 'home/form/login';
-                break;
-            case 1:
-                $scope.actv_form = 'home/form/forgot_password';
-                break;
-            default:
-                $scope.actv_form = 'home/form/login';
-                break;
-        }
-    }
-
 }]);
 
 ngApp.config(function($interpolateProvider){

@@ -142,17 +142,27 @@
 				    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="dsplaypc">
-					<span ng-if="!imgtarget" ng-cloak>
+					<span ng-if="!imgtarget && !usr[0]['dp']" ng-cloak>
 						<i class="fa fa-user-circle-o"></i>
 					</span>
+
 					<span ng-if="imgtarget" ng-cloak>
 						<div class="prvw">
 				            <div class="preview-pane">
 				                <div class="preview-container">
 				                  <span ng-if="imgtarget" ng-cloak>
-				                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
+				                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
 				                  </span>
 				                </div>
+				            </div>
+				        </div>
+				    </span>
+				    <span ng-if="!imgtarget && usr[0]['dp']" ng-cloak>
+				    	<div class="prvw ltstdp">
+				            <div class="preview-pane">
+				                <div class="preview-container">
+				    				<img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture" />
+				    			</div>
 				            </div>
 				        </div>
 				    </span>
@@ -206,7 +216,7 @@
 	            <div class="preview-pane">
 	                <div class="preview-container">
 	                  <span ng-if="imgtarget" ng-cloak>
-	                    <img ng-src="<%=imgtarget%>" alt="Avatar" class="imglnk" />
+	                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
 	                  </span>
 	                </div>
 	            </div>

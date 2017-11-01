@@ -81,10 +81,20 @@
   margin: 0 15px;
 }
 
-#wrapper .hdr_right .picture .dp .fa {
+#wrapper .hdr_right .picture .dp .drpdwn {
+  display: inline-block;
+}
+
+#wrapper .hdr_right .picture .dp .drpdwn .fa {
   font-size: 80px;
   color: #CCC;
   margin: 0;
+}
+
+#wrapper .hdr_right .picture .dp .drpdwn img {
+  width: 80px;
+  height: 80px;
+  float: right;
 }
 
 #wrapper .hdr_right .picture .dp .dropdown-menu {

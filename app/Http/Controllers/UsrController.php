@@ -61,22 +61,44 @@ class UsrController extends Controller
 
     public function upload_dp(Request $request){
         // $coodinates = json_decode($request->all());
+        // $current_img = Usr::where('genid', Auth::user()->genid)->count();
+        $current_img = DB::table('primary_info')->select('dp')->where('genid', Auth::user()->genid);
         $rqst = $request->all();
         $coordinate = json_decode($rqst['coordinates']);
+
         if($request->hasFile('file')):
             $dp = [];
             $dp['folder'] = 'display_pic';
             $dp['file'] = $request->file('file')->getClientOriginalName();
             $dp['extension'] = $request->file('file')->getClientOriginalExtension();
-            $dp['resume_name'] = Auth::user()->genid.Carbon::now()->format('mdy');
+            $dp['imgname'] = Auth::user()->genid.Carbon::now()->format('mdy');
+            
+            if($current_img->count()):
+                $dp['location'] = public_path($dp['folder']).'/'.$current_img->first()->dp;
+                if(file_exists($dp['location'])):
+                    unlink($dp['location']);
+                    $request->file('file')->move(public_path($dp['folder']), $current_img->first()->dp);
+                endif;
+                DB::table('primary_info')
+                    ->where('genid', Auth::user()->genid)
+                    ->update(['dp' => $dp['imgname'].'.'.$dp['extension']]);
+            else:
+                // Storage::putFile('resumes', $request->file('file'));
+                $request->file('file')->move(public_path($dp['folder']), $dp['imgname'].'.'.$dp['extension']);
+                DB::table('primary_info')->insert([
+                    'genid' => Auth::user()->genid,
+                    'fname' => '',
+                    'mname' => '',
+                    'lname' => '',
+                    'dp'    => $dp['imgname'].'.'.$dp['extension']
+                ]);
+            endif;
 
-            // Storage::putFile('resumes', $request->file('file'));
-            $request->file('file')->move(public_path($dp['folder']), $dp['resume_name'].'.'.$dp['extension']);
 
             $jpeg_quality = 100;
 
             // print_r();
-            $src = $dp['folder'].'/'.$dp['resume_name'].'.'.$dp['extension'];
+            $src = $dp['folder'].'/'.$dp['imgname'].'.'.$dp['extension'];
             
             if($dp['extension'] == 'png'):
                 $img_r = imagecreatefrompng($src);
@@ -94,20 +116,6 @@ class UsrController extends Controller
                 imagepng($dst_r, $src, 0);
             else:
                 imagejpeg($dst_r, $src, $jpeg_quality);
-            endif;
-
-            // $count = Usr::where('genid', Auth::user()->genid)->count();
-            $count = DB::table('primary_info')->where('genid', Auth::user()->genid)->count();
-            if($count):
-
-            else:
-                DB::table('primary_info')->insert([
-                    'genid' => Auth::user()->genid,
-                    'fname' => '',
-                    'mname' => '',
-                    'lname' => '',
-                    'dp'    => $dp['resume_name'].'.'.$dp['extension']
-                ]);
             endif;
         endif;
     }

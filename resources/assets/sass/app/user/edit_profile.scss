@@ -193,6 +193,10 @@
     left: -10px;
     display: none;
 
+    &.ltstdp{
+    	display: block;
+    }
+
     .preview-pane {
 	    display: block;
 	    position: relative;
