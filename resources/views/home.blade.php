@@ -3,7 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Document</title>
+	<meta property="og:image" content="{{ URL::asset('public/img/logo.png') }}" />
+  
+    <link rel="shortcut icon" href="{{ URL::asset('img/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL::asset('img/logo.png') }}">
+    <title>24/7 Global Nursing Solution & Consulting Services LLC</title>
+
 	@if (isset($stylesheet))
       @foreach($stylesheet as $css)
         <link rel="stylesheet" type="text/css" href="{{ URL::asset($css) }}">
@@ -68,6 +73,9 @@
 										</div>
 					                </div>
 					            @endif
+					        </div>
+					        <div class="rmmbr">
+					        	<a href="" class="lbl">Forgot your password?</a>
 					        </div>
 					        <button type="submit" class="btn btnblu">
 					            Login
@@ -246,7 +254,7 @@
       <p>24/7 Global Nursing Solution &amp; Consulting Services LLC © 2016. All Rights Reserved</p>
   	</div>
 	
-	<div class="modal" id="sccssrgstrtn">
+	<div class="modal msgmdl" id="sccssrgstrtn">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-body">

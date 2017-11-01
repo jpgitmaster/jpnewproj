@@ -14,9 +14,11 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
     }
 
     $scope.cancelUpload = function(){
-        $scope.imgtarget = ''; $scope.msg = '';
-        angular.element('.upload').val('');
-    }
+        $scope.imgtarget = '';
+    	angular.element('.upload').val('');
+    	angular.element('#target').data('Jcrop').destroy();
+    	angular.element('#target').attr('src', '');
+	}
 
     $scope.uploadFile = function(files){
         // console.log(files);
@@ -37,6 +39,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$timeout', '$http',
             data: {img_files: files, coordinates: $scope.coordinates}
         }).then(function(result){
             console.log(result.data);
+            $scope.cancelUpload();
             angular.element('#cropModal').modal('hide');
         });
         
@@ -55,6 +58,7 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
 	            scope.$apply();
 	            
 	            scope.shw_avatarmdl = true;
+	            scope.loader = true;
 
 	            $http({
 	                method: 'POST',
@@ -81,8 +85,8 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
                             var reader = new FileReader();
                             reader.readAsDataURL(file);
                             reader.onload = function(e) {
-                                var imgTarget = e.target.result;
-                                scope.imgForm(imgTarget);
+                            	var imgTarget = e.target.result;
+                            	scope.imgForm(imgTarget);
                             }
                         }(file));
                         scope.msg = '';
@@ -103,7 +107,11 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
         {
             $(function(){
             	$('#cropModal').on('shown.bs.modal', function () {
-            		$('.imgcropper, .prvw').hide().delay('200').fadeIn();
+            		
+            		$timeout(function(){
+            			scope.loader = false;
+            			$('.imgcropper, .prvw').hide().delay('200').fadeIn();
+            		}, 1000)
 				  var jcrop_api,
                   boundx,
                   boundy,
@@ -134,25 +142,25 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
                     jcrop_api.animateTo([510, 300, 190, 100]);
                   });
 
-                function updatePreview(c){
-                    var imgx = Math.round(c.x);
-                    var imgy = Math.round(c.y);
-                    var imgw = Math.round(c.w);
-                    var imgh = Math.round(c.h);
-                    var imgw2 = xsize;
-                    var imgh2 = ysize;
-                    scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
-                    if (parseInt(c.w) > 0){
-                      var rx = xsize / c.w;
-                      var ry = ysize / c.h;
-                      $pimg.css({
-                        width: Math.round(rx * boundx) + 'px',
-                        height: Math.round(ry * boundy) + 'px',
-                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
-                        marginTop: '-' + Math.round(ry * c.y) + 'px'
-                      });
-                  	}
-                };
+	                function updatePreview(c){
+	                    var imgx = Math.round(c.x);
+	                    var imgy = Math.round(c.y);
+	                    var imgw = Math.round(c.w);
+	                    var imgh = Math.round(c.h);
+	                    var imgw2 = xsize;
+	                    var imgh2 = ysize;
+	                    scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
+	                    if (parseInt(c.w) > 0){
+	                      var rx = xsize / c.w;
+	                      var ry = ysize / c.h;
+	                      $pimg.css({
+	                        width: Math.round(rx * boundx) + 'px',
+	                        height: Math.round(ry * boundy) + 'px',
+	                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+	                        marginTop: '-' + Math.round(ry * c.y) + 'px'
+	                      });
+	                  	}
+	                };
 				})
             });
         }

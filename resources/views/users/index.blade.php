@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title')</title>
+  <meta property="og:image" content="{{ URL::asset('public/img/logo.png') }}" />
+  
+  <link rel="shortcut icon" href="{{ URL::asset('img/logo.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ URL::asset('img/logo.png') }}">
+  <title>24/7 Global Nursing Solution & Consulting Services LLC - @yield('title')</title>
 
 @if (isset($stylesheet))
   @foreach($stylesheet as $css)
@@ -110,7 +114,7 @@
     <p>24/7 Global Nursing Solution &amp; Consulting Services LLC © 2016. All Rights Reserved</p>
   </div>
 </div>
-<div class="modal" id="new_activated_user">
+<div class="modal msgmdl" id="new_activated_user">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">

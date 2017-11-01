@@ -15,6 +15,11 @@ Route::group(['middleware' => 'role:vwr'], function(){
 });
 
 Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
+	Route::get('user', [
+	    'as' => 'current_user', 'uses' => 'UsrController@get_current_user'
+	]);
+
+	
 	Route::get('jobs', [
 	    'as' => 'usr_jobs', 'uses' => 'UsrController@jobs'
 	]);

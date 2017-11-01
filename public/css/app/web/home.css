@@ -98,8 +98,8 @@
 #wrapper .sldr .sldr_left .ceo_testi .popover .popover-body {
   color: #FFF;
   padding: 20px;
-  font: italic 15px segoi;
-  line-height: 22px;
+  font: italic 16px segoi;
+  line-height: 24px;
   text-shadow: 1px 1px 1px #b3b3b3;
   text-align: justify;
   width: 100%;
@@ -374,6 +374,10 @@
   float: left;
   margin: 0;
   font-size: 14px;
+}
+
+#frmlgn .rmmbr a {
+  color: #0077c0;
 }
 
 /*# sourceMappingURL=home.css.map */

@@ -24,17 +24,82 @@
 				        <div class="row no-gutters">
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.fname" required>
+							            <label>First Name <span>*</span></label>
+							        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.mname" required>
+							            <label>Middle Name <span>*</span></label>
+							        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-		              			
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.lname" required>
+							            <label>Last Name <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.prsnt_addrss" required>
+							            <label>Present Address <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.prmnnt_addrss" required>
+							            <label>Permanent Address </label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.email" required>
+							            <label>Email <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.mobile" required>
+							            <label>Mobile No. <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.phone" required>
+							            <label>Phone No.</label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-3">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.bdate" required>
+							            <label>Birthdate <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-3">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.bplace" required>
+							            <label>Birthplace <span>*</span></label>
+							        </div>
 		              			</div>
 		              		</div>
 		              	</div>
@@ -124,7 +189,7 @@
 	<div class="modal fade" id="cropModal">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	      	<button type="button" class="close" data-dismiss="modal">
+	      	<button type="button" class="close" data-dismiss="modal" ng-click="cancelUpload()">
 	          <span>&times;</span>
 	        </button>
 	      	<div class="ttl">
@@ -132,6 +197,11 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 	      <div class="modal-body">
+	      	<span ng-if="loader" ng-cloak class="loader">
+                <svg width="150px" height="150px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+			      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+			    </svg>
+		    </span>
 	        <div class="prvw">
 	            <div class="preview-pane">
 	                <div class="preview-container">

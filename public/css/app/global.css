@@ -59,7 +59,7 @@
 .nptgrp {
   position: relative;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   display: inline-block;
 }
 
@@ -104,6 +104,10 @@
   -webkit-transition: 0.2s ease all;
 }
 
+.nptgrp label span {
+  color: #f00;
+}
+
 .nptgrp .popcntnr {
   position: absolute;
   right: -40px;
@@ -130,33 +134,33 @@
   line-height: 16px;
 }
 
-.modal {
+.msgmdl {
   top: 50px;
 }
 
-.modal .close {
+.msgmdl .close {
   margin-top: -10px;
   float: right;
   cursor: pointer;
   outline: none;
 }
 
-.modal .fa {
+.msgmdl .fa {
   font-size: 120px;
   color: #0077c0;
   float: left;
 }
 
-.modal .msg {
+.msgmdl .msg {
   margin-left: 130px;
 }
 
-.modal .msg h1 {
+.msgmdl .msg h1 {
   font: 28px segobb;
   color: #4bbd00;
 }
 
-.modal .msg p {
+.msgmdl .msg p {
   font: 18px segob;
   color: #777;
 }
