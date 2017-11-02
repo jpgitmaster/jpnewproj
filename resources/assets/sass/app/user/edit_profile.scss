@@ -52,10 +52,6 @@
 			grid-area: avatar;
 			text-align: center;
 
-			.ttl{
-				text-align: left;
-			}
-
 			.dsplaypc{
 				    display: inline-block;
 				    height: 160px;
@@ -94,12 +90,6 @@
 
 			.fileUpload{
 		        position: relative;
-			    margin: 5px 0;
-			    background-color: #8ad3ef;
-			    width: 80%;
-			    text-transform: uppercase;
-			    border: 1px solid #3bbaea;
-			    padding: 5px 10px;
 
 				.upload{
 					position: absolute;
@@ -118,6 +108,20 @@
 
 		.preview_resume{
 			grid-area: preview_resume;
+			text-align: center;
+
+			.fa{
+				display: inline-block;
+				font-size: 200px;
+				margin-bottom: 8px;
+				
+				&.fa-file-pdf-o{
+					color: #dc3545;
+				}
+				&.fa-file-word-o{
+					color: #0077c0;
+				}
+			}
 		}
 
 		.cntnbx{
@@ -126,6 +130,22 @@
 			margin: 8px;
 			border: 1px solid #8ad3ef;
 			border-radius: 10px;
+			
+			.ttl{
+				text-align: left;
+			}
+
+			.btns{
+				text-align: center;
+				margin: 10px 0 0;
+				display: inline-block;
+
+				.btn{
+					border-radius: 0;
+					overflow: hidden;
+					padding: 5px 25px;
+				}
+			}
 		}
 	}
 }
@@ -182,6 +202,14 @@
 					display: none;
 					opacity: 0;
 				}
+			}
+		}
+		.modal-footer{
+			justify-content: center;
+
+			.btn{
+				border-radius: 0;
+				padding: 10px 30px;
 			}
 		}
 	}

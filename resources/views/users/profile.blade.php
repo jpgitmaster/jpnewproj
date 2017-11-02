@@ -168,21 +168,24 @@
 				    </span>
 				</div>
 				<div class="clearfix"></div>
-				<div class="fileUpload btn btn-primary">
-	            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
-						<div class="popcntnr">
-		                    <div class="popover bs-popover-top">
-							    <div class="arrow"></div>
-							    <div class="popover-body">
-							      	<ul>
-										<li ng-repeat="test in msg['file']"><%=test%></li>
-									</ul>
-							    </div>
-							</div>
+				<div class="btns">
+					<button type="button" class="btn btn-danger">Remove</button>
+					<div class="fileUpload btn btn-success">
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								      	<ul>
+											<li ng-repeat="err in msg['file']"><%=err%></li>
+										</ul>
+								    </div>
+								</div>
+			                </div>
 		                </div>
-	                </div>
-	                Browse <input type="file" class="upload" file-input="files">
-	            </div>
+		                Browse <input type="file" class="upload" file-input="files">
+		            </div>
+				</div>
 			</div>
 		</div>
 		<div class="preview_resume">
@@ -190,6 +193,13 @@
 				<div class="ttl">
 				    <h3>Resume</h3>
 				    <div class="btmbrdr"><hr></div>
+				</div>
+				<i class="fa fa-file-pdf-o"></i>
+				{{-- <i class="fa fa-file-word-o"></i> --}}
+
+				<div class="btns">
+					<button type="button" class="btn btn-danger">Remove</button>
+	        		<button type="button" class="btn btn-success">Browse</button>
 				</div>
 			</div>
 		</div>
@@ -226,8 +236,8 @@
             </div> 
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancelUpload()">Close</button>
-	        <button type="button" class="btn btn-primary" ng-click="uploadFile(files)">Save changes</button>
+	        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cancelUpload()">Close</button>
+	        <button type="button" class="btn btn-success" ng-click="uploadFile(files)">Crop Image</button>
 	      </div>
 	    </div>
 	  </div>

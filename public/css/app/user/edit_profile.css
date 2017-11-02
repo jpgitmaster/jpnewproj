@@ -51,10 +51,6 @@
   text-align: center;
 }
 
-#edit_profile .grdprofile .avatar .ttl {
-  text-align: left;
-}
-
 #edit_profile .grdprofile .avatar .dsplaypc {
   display: inline-block;
   height: 160px;
@@ -95,12 +91,6 @@
 
 #edit_profile .grdprofile .avatar .fileUpload {
   position: relative;
-  margin: 5px 0;
-  background-color: #8ad3ef;
-  width: 80%;
-  text-transform: uppercase;
-  border: 1px solid #3bbaea;
-  padding: 5px 10px;
 }
 
 #edit_profile .grdprofile .avatar .fileUpload .upload {
@@ -117,6 +107,21 @@
 
 #edit_profile .grdprofile .preview_resume {
   grid-area: preview_resume;
+  text-align: center;
+}
+
+#edit_profile .grdprofile .preview_resume .fa {
+  display: inline-block;
+  font-size: 200px;
+  margin-bottom: 8px;
+}
+
+#edit_profile .grdprofile .preview_resume .fa.fa-file-pdf-o {
+  color: #dc3545;
+}
+
+#edit_profile .grdprofile .preview_resume .fa.fa-file-word-o {
+  color: #0077c0;
 }
 
 #edit_profile .grdprofile .cntnbx {
@@ -125,6 +130,22 @@
   margin: 8px;
   border: 1px solid #8ad3ef;
   border-radius: 10px;
+}
+
+#edit_profile .grdprofile .cntnbx .ttl {
+  text-align: left;
+}
+
+#edit_profile .grdprofile .cntnbx .btns {
+  text-align: center;
+  margin: 10px 0 0;
+  display: inline-block;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .btn {
+  border-radius: 0;
+  overflow: hidden;
+  padding: 5px 25px;
 }
 
 #cropModal .modal-content {
@@ -187,6 +208,16 @@
 #cropModal .modal-content .modal-body .imgcropper #target {
   display: none;
   opacity: 0;
+}
+
+#cropModal .modal-content .modal-footer {
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+#cropModal .modal-content .modal-footer .btn {
+  border-radius: 0;
+  padding: 10px 30px;
 }
 
 .prvw {
