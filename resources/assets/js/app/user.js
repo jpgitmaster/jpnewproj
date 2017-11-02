@@ -11,8 +11,8 @@ usrApp.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('<%=').endSymbol('%>');
 });
 
-usrApp.controller('ctrlHeader', ['$scope', '$timeout', '$http', 'Usr',
-	function($scope, $timeout, $http, Usr) {
+usrApp.controller('ctrlHeader', ['$scope', '$rootScope', '$timeout', '$http', 'Usr',
+	function($scope, $rootScope, $timeout, $http, Usr) {
 
 	Usr.query().$promise.then(function(data) {
        $rootScope.usr = data;

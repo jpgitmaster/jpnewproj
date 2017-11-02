@@ -45,7 +45,7 @@ class UsrController extends Controller
         return view('users.jobs', [
             'scripts'       => $this->import['scripts'],
             'stylesheet'    => $this->import['stylesheet'],
-            'ngular'        => $this->import['ngular']
+            'ngular'        =>  array_merge($this->import['ngular'], array(n_user_edit_profile))
         ]);
     }
 
@@ -71,18 +71,20 @@ class UsrController extends Controller
             $dp['folder'] = 'display_pic';
             $dp['file'] = $request->file('file')->getClientOriginalName();
             $dp['extension'] = $request->file('file')->getClientOriginalExtension();
-            $dp['imgname'] = Auth::user()->genid.Carbon::now()->format('mdy');
             
+
             if($current_img->count()):
                 $dp['location'] = public_path($dp['folder']).'/'.$current_img->first()->dp;
+                
                 if(file_exists($dp['location'])):
                     unlink($dp['location']);
                     $request->file('file')->move(public_path($dp['folder']), $current_img->first()->dp);
                 endif;
                 DB::table('primary_info')
                     ->where('genid', Auth::user()->genid)
-                    ->update(['dp' => $dp['imgname'].'.'.$dp['extension']]);
+                    ->update(['dp' => $current_img->first()->dp]);
             else:
+                $dp['imgname'] = Auth::user()->genid.Carbon::now()->format('mdy');
                 // Storage::putFile('resumes', $request->file('file'));
                 $request->file('file')->move(public_path($dp['folder']), $dp['imgname'].'.'.$dp['extension']);
                 DB::table('primary_info')->insert([
@@ -92,18 +94,17 @@ class UsrController extends Controller
                     'lname' => '',
                     'dp'    => $dp['imgname'].'.'.$dp['extension']
                 ]);
+                $dp['location'] = $dp['folder'].'/'.$dp['imgname'].'.'.$dp['extension'];
             endif;
 
 
             $jpeg_quality = 100;
 
-            // print_r();
-            $src = $dp['folder'].'/'.$dp['imgname'].'.'.$dp['extension'];
             
             if($dp['extension'] == 'png'):
-                $img_r = imagecreatefrompng($src);
+                $img_r = imagecreatefrompng($dp['location']);
             else:
-                $img_r = imagecreatefromjpeg($src);
+                $img_r = imagecreatefromjpeg($dp['location']);
             endif;
 
             $dst_r = ImageCreateTrueColor( $coordinate->imgw2, $coordinate->imgh2 );
@@ -113,19 +114,14 @@ class UsrController extends Controller
 
             if($dp['extension'] == 'png'):
                 imagecolortransparent($dst_r, imagecolorallocate($dst_r, 0, 0, 0));
-                imagepng($dst_r, $src, 0);
+                imagepng($dst_r, $dp['location'], 0);
             else:
-                imagejpeg($dst_r, $src, $jpeg_quality);
+                imagejpeg($dst_r, $dp['location'], $jpeg_quality);
             endif;
         endif;
     }
 
     public function logout(){
-		// if (Auth::guard('jp_user')->check()):
-  //   		Auth::guard('jp_user')->logout();
-  //      	elseif (Auth::guard('jp_admin')->check()):
-  //      		Auth::guard('jp_admin')->logout();
-  //       endif;
         Auth::guard('jp_user')->logout();
         Session::forget('usr_role');
     	return redirect()->route('home_index');

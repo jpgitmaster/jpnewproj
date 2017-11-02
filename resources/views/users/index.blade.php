@@ -32,10 +32,8 @@
     <div class="picture">
       <div class="pctrname">
         <div class="ttl">
-            <h3>
-              @if (Auth::user())
-                {{ Auth::user()->email }}
-              @endif
+            <h3 ng-if="usr[0]['email']" ng-cloak>
+              <%=usr[0]['email']%>
             </h3>
             <div class="btmbrdr"><hr></div>
         </div>
