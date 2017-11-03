@@ -8,13 +8,19 @@
   display: grid;
   -ms-grid-columns: 1fr 300px;
   grid-template-columns: 1fr 300px;
-  -ms-grid-rows: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "content_left avatar" "content_left preview_resume";
+  -ms-grid-rows: 1fr 1fr 300px;
+  grid-template-rows: 1fr 1fr 300px;
+  grid-template-areas: "content_left avatar" "content_left preview_resume" "content_left preview_resume";
 }
 
 #edit_profile .grdprofile .content_left {
   grid-area: content_left;
+}
+
+#edit_profile .grdprofile .content_left .pvw {
+  float: right;
+  position: relative;
+  top: 2px;
 }
 
 #edit_profile .grdprofile .content_left #edtprof_accrdn .card {
@@ -89,22 +95,6 @@
   padding: 0;
 }
 
-#edit_profile .grdprofile .avatar .fileUpload {
-  position: relative;
-}
-
-#edit_profile .grdprofile .avatar .fileUpload .upload {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-
 #edit_profile .grdprofile .preview_resume {
   grid-area: preview_resume;
   text-align: center;
@@ -138,14 +128,40 @@
 
 #edit_profile .grdprofile .cntnbx .btns {
   text-align: center;
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   display: inline-block;
 }
 
 #edit_profile .grdprofile .cntnbx .btns .btn {
-  border-radius: 0;
   overflow: hidden;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .fileUpload {
+  position: relative;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .fileUpload .upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+#edit_profile .grdprofile .cntnbx .btn {
   padding: 5px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 0;
+}
+
+#edit_profile .grdprofile .cntnbx .btn.btn-primary {
+  background-color: #0077c0;
+  border-color: #02639e;
 }
 
 #cropModal .modal-content {
@@ -217,7 +233,9 @@
 
 #cropModal .modal-content .modal-footer .btn {
   border-radius: 0;
-  padding: 10px 30px;
+  padding: 6px 30px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .prvw {

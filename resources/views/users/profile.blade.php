@@ -6,6 +6,9 @@
 	<div class="grdprofile">
 		<div class="content_left">
 			<div class="cntnbx">
+				<button class="btn btn-success" style="float: right; position: relative; top: 2px;">
+					PREVIEW
+				</button>
 				<div class="ttl">
 				    <h3>User Profile</h3>
 				    <div class="btmbrdr"><hr></div>
@@ -170,7 +173,7 @@
 				<div class="clearfix"></div>
 				<div class="btns">
 					<button type="button" class="btn btn-danger">Remove</button>
-					<div class="fileUpload btn btn-success">
+					<div class="fileUpload btn btn-primary">
 		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
 							<div class="popcntnr">
 			                    <div class="popover bs-popover-top">
@@ -199,7 +202,21 @@
 
 				<div class="btns">
 					<button type="button" class="btn btn-danger">Remove</button>
-	        		<button type="button" class="btn btn-success">Browse</button>
+	        		<div class="fileUpload btn btn-primary">
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								      	<ul>
+											<li ng-repeat="err in msg['file']"><%=err%></li>
+										</ul>
+								    </div>
+								</div>
+			                </div>
+		                </div>
+		                Browse <input type="file" class="upload" file-input="files">
+		            </div>
 				</div>
 			</div>
 		</div>
