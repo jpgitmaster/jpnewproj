@@ -2,17 +2,12 @@
 #edit_profile{
 	padding: 10px 20px;
 	.grdprofile{
-		display: grid;
-		grid-template-columns: 1fr 300px;
-		grid-template-rows: 1fr 1fr 300px;
-		grid-template-areas:
-			"content_left avatar"
-			"content_left preview_resume"
-			"content_left preview_resume";
-		
-		.content_left{
-			grid-area: content_left;
+		float: left;
+		width: 100%;
+		padding: 20px 0 50px;
 
+		.content_left{
+			margin-right: 300px;
 			.pvw{
 				float: right;
 				position: relative;
@@ -55,71 +50,75 @@
 			}
 		}
 		
-		.avatar{
-			grid-area: avatar;
-			text-align: center;
+		.content_right{
+			width: 300px;
+			float: right;
 
-			.dsplaypc{
-				    display: inline-block;
-				    height: 160px;
-				    overflow: hidden;
-				
-				.prvw{
-					position: relative;
-					left: 0; right: 0;
-				}
+			.avatar{
+				text-align: center;
 
-				.fa {
-			        font-size: 150px;
-				    color: #CCC;
-				    margin: 5px 0;
-				}
-			}
-			.nptgrp{
-				margin: 0;
-			    position: absolute;
-			    right: 0;
-			    left: 0;
-			    width: 100%;
-			    bottom: -2px;
-
-			    .popcntnr{
-			    	right: -15px;
-			    	left: -15px;
-			    	cursor: default;
-
-			    	ul{
-						margin: 5px 0 5px 20px;
-						padding: 0;
+				.dsplaypc{
+					    display: inline-block;
+					    height: 160px;
+					    overflow: hidden;
+					
+					.prvw{
+						position: relative;
+						left: 0; right: 0;
 					}
-			    }
+
+					.fa {
+				        font-size: 150px;
+					    color: #CCC;
+					    margin: 5px 0;
+					}
+				}
+				.nptgrp{
+					margin: 0;
+				    position: absolute;
+				    right: 0;
+				    left: 0;
+				    width: 100%;
+				    bottom: -2px;
+
+				    .popcntnr{
+				    	right: -15px;
+				    	left: -15px;
+				    	cursor: default;
+
+				    	ul{
+							margin: 5px 0 5px 20px;
+							padding: 0;
+						}
+				    }
+				}
+			}
+
+			.preview_resume{
+				text-align: center;
+
+				.fa{
+					display: inline-block;
+					font-size: 200px;
+					margin-bottom: 8px;
+					
+					&.fa-file-pdf-o{
+						color: #dc3545;
+					}
+					&.fa-file-word-o{
+						color: #0077c0;
+					}
+				}
 			}
 		}
-
-		.preview_resume{
-			grid-area: preview_resume;
-			text-align: center;
-
-			.fa{
-				display: inline-block;
-				font-size: 200px;
-				margin-bottom: 8px;
-				
-				&.fa-file-pdf-o{
-					color: #dc3545;
-				}
-				&.fa-file-word-o{
-					color: #0077c0;
-				}
-			}
-		}
-
+		
 		.cntnbx{
 			background-color: #FFF;
 			padding: 10px 20px 20px;
 			margin: 8px;
 			border: 1px solid #8ad3ef;
 			border-radius: 10px;
+			margin: 0 8px 15px;
 			
 			.ttl{
 				text-align: left;

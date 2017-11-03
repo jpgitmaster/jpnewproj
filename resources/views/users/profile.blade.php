@@ -4,6 +4,86 @@
 @section('content')
 <div id="edit_profile" ng-controller="ctrlEditProfile">
 	<div class="grdprofile">
+		<div class="content_right">
+			<div class="avatar cntnbx">
+				<div class="ttl">
+				    <h3>Display Picture</h3>
+				    <div class="btmbrdr"><hr></div>
+				</div>
+				<div class="dsplaypc">
+					<span ng-if="!imgtarget && !usr[0]['dp']" ng-cloak>
+						<i class="fa fa-user-circle-o"></i>
+					</span>
+
+					<span ng-if="imgtarget" ng-cloak>
+						<div class="prvw">
+				            <div class="preview-pane">
+				                <div class="preview-container">
+				                  <span ng-if="imgtarget" ng-cloak>
+				                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
+				                  </span>
+				                </div>
+				            </div>
+				        </div>
+				    </span>
+				    <span ng-if="!imgtarget && usr[0]['dp']" ng-cloak>
+				    	<div class="prvw ltstdp">
+				            <div class="preview-pane">
+				                <div class="preview-container">
+				    				<img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture" />
+				    			</div>
+				            </div>
+				        </div>
+				    </span>
+				</div>
+				<div class="clearfix"></div>
+				<div class="btns">
+					<button type="button" class="btn btn-danger">Remove</button>
+					<div class="fileUpload btn btn-primary">
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								      	<ul>
+											<li ng-repeat="err in msg['file']"><%=err%></li>
+										</ul>
+								    </div>
+								</div>
+			                </div>
+		                </div>
+		                Browse <input type="file" class="upload" file-input="files">
+		            </div>
+				</div>
+			</div>
+			<div class="preview_resume cntnbx">
+				<div class="ttl">
+				    <h3>Resume</h3>
+				    <div class="btmbrdr"><hr></div>
+				</div>
+				<i class="fa fa-file-pdf-o"></i>
+				{{-- <i class="fa fa-file-word-o"></i> --}}
+
+				<div class="btns">
+					<button type="button" class="btn btn-danger">Remove</button>
+	        		<div class="fileUpload btn btn-primary">
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								      	<ul>
+											<li ng-repeat="err in msg['file']"><%=err%></li>
+										</ul>
+								    </div>
+								</div>
+			                </div>
+		                </div>
+		                Browse <input type="file" class="upload" file-input="files">
+		            </div>
+				</div>
+			</div>
+		</div>
 		<div class="content_left">
 			<div class="cntnbx">
 				<button class="btn btn-success" style="float: right; position: relative; top: 2px;">
@@ -135,88 +215,6 @@
 				      </div>
 				    </div>
 				  </div>
-				</div>
-			</div>
-		</div>
-		<div class="avatar">
-			<div class="cntnbx">
-				<div class="ttl">
-				    <h3>Display Picture</h3>
-				    <div class="btmbrdr"><hr></div>
-				</div>
-				<div class="dsplaypc">
-					<span ng-if="!imgtarget && !usr[0]['dp']" ng-cloak>
-						<i class="fa fa-user-circle-o"></i>
-					</span>
-
-					<span ng-if="imgtarget" ng-cloak>
-						<div class="prvw">
-				            <div class="preview-pane">
-				                <div class="preview-container">
-				                  <span ng-if="imgtarget" ng-cloak>
-				                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
-				                  </span>
-				                </div>
-				            </div>
-				        </div>
-				    </span>
-				    <span ng-if="!imgtarget && usr[0]['dp']" ng-cloak>
-				    	<div class="prvw ltstdp">
-				            <div class="preview-pane">
-				                <div class="preview-container">
-				    				<img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture" />
-				    			</div>
-				            </div>
-				        </div>
-				    </span>
-				</div>
-				<div class="clearfix"></div>
-				<div class="btns">
-					<button type="button" class="btn btn-danger">Remove</button>
-					<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
-							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
-								    <div class="arrow"></div>
-								    <div class="popover-body">
-								      	<ul>
-											<li ng-repeat="err in msg['file']"><%=err%></li>
-										</ul>
-								    </div>
-								</div>
-			                </div>
-		                </div>
-		                Browse <input type="file" class="upload" file-input="files">
-		            </div>
-				</div>
-			</div>
-		</div>
-		<div class="preview_resume">
-			<div class="cntnbx">
-				<div class="ttl">
-				    <h3>Resume</h3>
-				    <div class="btmbrdr"><hr></div>
-				</div>
-				<i class="fa fa-file-pdf-o"></i>
-				{{-- <i class="fa fa-file-word-o"></i> --}}
-
-				<div class="btns">
-					<button type="button" class="btn btn-danger">Remove</button>
-	        		<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
-							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
-								    <div class="arrow"></div>
-								    <div class="popover-body">
-								      	<ul>
-											<li ng-repeat="err in msg['file']"><%=err%></li>
-										</ul>
-								    </div>
-								</div>
-			                </div>
-		                </div>
-		                Browse <input type="file" class="upload" file-input="files">
-		            </div>
 				</div>
 			</div>
 		</div>
