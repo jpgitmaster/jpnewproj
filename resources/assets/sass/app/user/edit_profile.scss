@@ -80,23 +80,29 @@
 			.preview_resume{
 				text-align: center;
 
-				.fa:not(.fa-trash):not(.fa-close){
-					display: inline-block;
-					font-size: 200px;
-					margin-bottom: 8px;
-					
-					&.fa-file-pdf-o{
-						color: #dc3545;
+				.icns{
+					float: left;
+					width: 100%;
+					min-height: 210px;
+
+					.fa:not(.fa-trash):not(.fa-close){
+						display: inline-block;
+						font-size: 200px;
+						margin-bottom: 8px;
+						
+						&.fa-file-pdf-o{
+							color: #dc3545;
+						}
+						&.fa-file-word-o{
+							color: #0077c0;
+						}
+						&.fa-file-text-o{
+							color: #E9E9E9;
+						}
 					}
-					&.fa-file-word-o{
-						color: #0077c0;
+					svg:not(:root){
+						margin: 15px 0;
 					}
-					&.fa-file-text-o{
-						color: #E9E9E9;
-					}
-				}
-				svg:not(:root){
-					margin: 0 0 30px;
 				}
 			}
 			.nptgrp{

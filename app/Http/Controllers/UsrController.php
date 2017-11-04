@@ -22,6 +22,7 @@ class UsrController extends Controller
             'ngular'    => [n_ng, n_ngresource, n_nganimate, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
+        $this->msg = [];
     }
 
     public function dashboard(){
@@ -50,17 +51,15 @@ class UsrController extends Controller
     }
 
     public function validate_dp(Request $request){
-        $msg = [];
         $validate = Validator::make(
             ['file' => $request->file('file')],
             ['file' => 'required|image|mimes:jpeg,png,jpg|max:2048']
         );
-        $msg['dp']['error'] = $validate->messages()->toArray();
-        print_r(json_encode($msg, JSON_PRETTY_PRINT));
+        $this->msg['dp']['error'] = $validate->messages()->toArray();
+        print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
     public function upload_dp(Request $request){
-        $msg = [];
         $current_img = DB::table('primary_info')->select('dp')->where('genid', Auth::user()->genid);
         $rqst = $request->all();
         $coordinate = json_decode($rqst['coordinates']);
@@ -83,7 +82,7 @@ class UsrController extends Controller
                     ->where('genid', Auth::user()->genid)
                     ->update(['dp' => $current_img->first()->dp]);
 
-                $msg['dp']['success'] = 'You have successfully changed your primary picture.';
+                $this->msg['dp']['success'] = 'You have successfully changed your primary picture.';
             else:
                 $dp['imgname'] = Auth::user()->genid.Carbon::now()->format('mdy');
                 // Storage::putFile('resumes', $request->file('file'));
@@ -96,7 +95,7 @@ class UsrController extends Controller
                     'dp'    => $dp['imgname'].'.'.$dp['extension']
                 ]);
                 $dp['location'] = $dp['folder'].'/'.$dp['imgname'].'.'.$dp['extension'];
-                $msg['dp']['success'] = 'You have successfully added your display picture.';
+                $this->msg['dp']['success'] = 'You have successfully added your display picture.';
             endif;
 
 
@@ -120,24 +119,36 @@ class UsrController extends Controller
             else:
                 imagejpeg($dst_r, $dp['location'], $jpeg_quality);
             endif;
-            print_r(json_encode($msg, JSON_PRETTY_PRINT));
+            print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
         endif;
     }
 
     public function upload_resume(Request $request){
-        $msg = [];
+        $current_resume = DB::table('resumes')->where('genid', Auth::user()->genid);
         $validate = Validator::make(
             ['file' => $request->file('file')],
             ['file' => 'required|mimes:doc,docx,pdf|max:2048']
         );
         $has_error = $this->hasError($validate);
 
-        if($has_error == true):
-            $msg['resume']['error'] = $validate->messages()->toArray();
-        else:
-            $msg['resume']['success'] = true;
+        if($request->hasFile('file')):
+            $rsm = [];
+            $rsm['folder'] = 'resumes';
+            $rsm['file'] = $request->file('file')->getClientOriginalName();
+            $rsm['extension'] = $request->file('file')->getClientOriginalExtension();
+
+            if($has_error == true):
+                $this->msg['resume']['error'] = $validate->messages()->toArray();
+            else:
+                $this->msg['resume']['success'] = true;
+                $rsm['rsmname'] = Auth::user()->genid.Carbon::now()->format('mdy');
+                if($current_resume->count()):
+                else:
+                endif;
+                $request->file('file')->move(public_path($rsm['folder']), $rsm['rsmname'].'.'.$rsm['extension']);
+            endif;
+            print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
         endif;
-        print_r(json_encode($msg, JSON_PRETTY_PRINT));
     }
 
     public function get_current_user(){
