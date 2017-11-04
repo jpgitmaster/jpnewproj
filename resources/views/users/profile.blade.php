@@ -38,13 +38,15 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="btns">
-					<button type="button" class="btn btn-danger">Remove</button>
 					<div class="fileUpload btn btn-primary">
 		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
 							<div class="popcntnr">
 			                    <div class="popover bs-popover-top">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
+								    	<span class="rmve" ng-click="msg['file'] = ''">
+				            				<i class="fa fa-close"></i>
+	  			            			</span>
 								      	<ul>
 											<li ng-repeat="err in msg['file']"><%=err%></li>
 										</ul>
@@ -52,8 +54,11 @@
 								</div>
 			                </div>
 		                </div>
-		                Browse <input type="file" class="upload" file-input="files">
+	                	Browse <input type="file" class="upload" file-input="files">
 		            </div>
+		            <button type="button" class="btn btn-danger">
+						<i class="fa fa-trash"></i>
+					</button>
 				</div>
 			</div>
 			<div class="preview_resume cntnbx">
@@ -61,32 +66,52 @@
 				    <h3>Resume</h3>
 				    <div class="btmbrdr"><hr></div>
 				</div>
-				<i class="fa fa-file-pdf-o"></i>
-				{{-- <i class="fa fa-file-word-o"></i> --}}
+				
+				<span ng-if="resume_loader" ng-cloak>
+	                <svg width="172px" height="172px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+				      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+				    </svg>
+			    </span>
+			    <span ng-if="!resume_loader" ng-cloak>
+					<span ng-if="!wordoc && !pdf" ng-cloak>
+						<i class="fa fa-file-text-o"></i>
+					</span>
+					<span ng-if="wordoc" ng-cloak>
+						<i class="fa fa-file-word-o"></i>
+					</span>
+					<span ng-if="pdf" ng-cloak>
+						<i class="fa fa-file-pdf-o"></i>
+					</span>
+				</span>
 
 				<div class="btns">
-					<button type="button" class="btn btn-danger">Remove</button>
-	        		<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+					<div class="fileUpload btn btn-primary">
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['resume_error']['file']" ng-cloak>
 							<div class="popcntnr">
 			                    <div class="popover bs-popover-top">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
+								    	<span class="rmve" ng-click="msg['resume_error']['file'] = ''">
+				            				<i class="fa fa-close"></i>
+	  			            			</span>
 								      	<ul>
-											<li ng-repeat="err in msg['file']"><%=err%></li>
+											<li ng-repeat="err in msg['resume_error']['file']"><%=err%></li>
 										</ul>
 								    </div>
 								</div>
 			                </div>
 		                </div>
-		                Browse <input type="file" class="upload" file-input="files">
+	                	Browse <input type="file" class="upload" file-resume="files">
 		            </div>
+		            <button type="button" class="btn btn-danger">
+						<i class="fa fa-trash"></i>
+					</button>
 				</div>
 			</div>
 		</div>
 		<div class="content_left">
 			<div class="cntnbx">
-				<button class="btn btn-success" style="float: right; position: relative; top: 2px;">
+				<button class="btn btn-success pvw">
 					PREVIEW
 				</button>
 				<div class="ttl">

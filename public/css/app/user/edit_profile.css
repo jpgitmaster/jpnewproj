@@ -17,6 +17,7 @@
   float: right;
   position: relative;
   top: 2px;
+  padding: 5px 20px;
 }
 
 #edit_profile .grdprofile .content_left #edtprof_accrdn .card {
@@ -75,42 +76,51 @@
   margin: 5px 0;
 }
 
-#edit_profile .grdprofile .content_right .avatar .nptgrp {
-  margin: 0;
-  position: absolute;
-  right: 0;
-  left: 0;
-  width: 100%;
-  bottom: -2px;
-}
-
-#edit_profile .grdprofile .content_right .avatar .nptgrp .popcntnr {
-  right: -15px;
-  left: -15px;
-  cursor: default;
-}
-
-#edit_profile .grdprofile .content_right .avatar .nptgrp .popcntnr ul {
-  margin: 5px 0 5px 20px;
-  padding: 0;
-}
-
 #edit_profile .grdprofile .content_right .preview_resume {
   text-align: center;
 }
 
-#edit_profile .grdprofile .content_right .preview_resume .fa {
+#edit_profile .grdprofile .content_right .preview_resume .fa:not(.fa-trash):not(.fa-close) {
   display: inline-block;
   font-size: 200px;
   margin-bottom: 8px;
 }
 
-#edit_profile .grdprofile .content_right .preview_resume .fa.fa-file-pdf-o {
+#edit_profile .grdprofile .content_right .preview_resume .fa:not(.fa-trash):not(.fa-close).fa-file-pdf-o {
   color: #dc3545;
 }
 
-#edit_profile .grdprofile .content_right .preview_resume .fa.fa-file-word-o {
+#edit_profile .grdprofile .content_right .preview_resume .fa:not(.fa-trash):not(.fa-close).fa-file-word-o {
   color: #0077c0;
+}
+
+#edit_profile .grdprofile .content_right .preview_resume .fa:not(.fa-trash):not(.fa-close).fa-file-text-o {
+  color: #E9E9E9;
+}
+
+#edit_profile .grdprofile .content_right .preview_resume svg:not(:root) {
+  margin: 0 0 30px;
+}
+
+#edit_profile .grdprofile .content_right .nptgrp {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 100%;
+  bottom: -5px;
+  z-index: 999;
+}
+
+#edit_profile .grdprofile .content_right .nptgrp .popcntnr {
+  right: -15px;
+  left: -15px;
+  cursor: default;
+}
+
+#edit_profile .grdprofile .content_right .nptgrp .popcntnr ul {
+  margin: 5px 0 5px 20px;
+  padding: 0;
 }
 
 #edit_profile .grdprofile .cntnbx {
@@ -132,10 +142,6 @@
   display: inline-block;
 }
 
-#edit_profile .grdprofile .cntnbx .btns .btn {
-  overflow: hidden;
-}
-
 #edit_profile .grdprofile .cntnbx .btns .fileUpload {
   position: relative;
 }
@@ -153,13 +159,17 @@
 }
 
 #edit_profile .grdprofile .cntnbx .btn {
-  padding: 5px 25px;
   text-transform: uppercase;
   font-size: 13px;
   border-radius: 0;
 }
 
+#edit_profile .grdprofile .cntnbx .btn.btn-danger {
+  padding: 5px 10px;
+}
+
 #edit_profile .grdprofile .cntnbx .btn.btn-primary {
+  padding: 5px 70px;
   background-color: #0077c0;
   border-color: #02639e;
 }

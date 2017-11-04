@@ -30,6 +30,10 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 	Route::post('upload_dp', [
 	    'as' => 'upload_dp', 'uses' => 'UsrController@upload_dp'
 	]);
+
+	Route::post('upload_resume', [
+	    'as' => 'upload_resume', 'uses' => 'UsrController@upload_resume'
+	]);
 	Route::prefix('user')->group(function () {
 		Route::get('dashboard', [
 		    'as' => 'usr_dashboard', 'uses' => 'UsrController@dashboard'

@@ -72,6 +72,19 @@
             .popover-body{
                 padding: 5px 10px;
                 line-height: 16px;
+
+                .rmve{
+                    position: absolute;
+                    right: 8px;
+                    top: 2px;
+                    color: #dc3545;
+                    cursor: pointer;
+                    text-align: center;
+
+                    .fa{
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }

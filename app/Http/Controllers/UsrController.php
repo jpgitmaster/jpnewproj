@@ -60,8 +60,6 @@ class UsrController extends Controller
     }
 
     public function upload_dp(Request $request){
-        // $coodinates = json_decode($request->all());
-        // $current_img = Usr::where('genid', Auth::user()->genid)->count();
         $current_img = DB::table('primary_info')->select('dp')->where('genid', Auth::user()->genid);
         $rqst = $request->all();
         $coordinate = json_decode($rqst['coordinates']);
@@ -121,12 +119,22 @@ class UsrController extends Controller
         endif;
     }
 
-    public function logout(){
-        Auth::guard('jp_user')->logout();
-        Session::forget('usr_role');
-    	return redirect()->route('home_index');
-    }
+    public function upload_resume(Request $request){
+        $msg = [];
+        $validate = Validator::make(
+            ['file' => $request->file('file')],
+            ['file' => 'required|mimes:doc,docx,pdf|max:2048']
+        );
+        $msg['resume_error'] = $validate->messages()->toArray();
+        $has_error = $this->hasError($validate);
 
+        if($has_error == true):
+            $msg['has_error'] = true;
+        else:
+
+        endif;
+        print_r(json_encode($msg, JSON_PRETTY_PRINT));
+    }
 
     public function get_current_user(){
         $users = DB::table('users')
@@ -181,5 +189,22 @@ class UsrController extends Controller
         // echo json_encode($users, JSON_PRETTY_PRINT);
         // dd($users);
         return response()->json($users);
+    }
+
+    public function hasError($validate){
+        if(isset($validate)):
+            if($validate->fails()):
+                $result = true;
+            else:
+                $result = false;
+            endif;
+            return $result;
+        endif;
+    }
+
+    public function logout(){
+        Auth::guard('jp_user')->logout();
+        Session::forget('usr_role');
+        return redirect()->route('home_index');
     }
 }

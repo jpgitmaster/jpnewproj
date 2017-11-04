@@ -134,6 +134,19 @@
   line-height: 16px;
 }
 
+.nptgrp .popcntnr .popover .popover-body .rmve {
+  position: absolute;
+  right: 8px;
+  top: 2px;
+  color: #dc3545;
+  cursor: pointer;
+  text-align: center;
+}
+
+.nptgrp .popcntnr .popover .popover-body .rmve .fa {
+  font-size: 14px;
+}
+
 .msgmdl {
   top: 50px;
 }

@@ -107,6 +107,65 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
 	}
 }]);
 
+usrContent.directive('fileResume', ['$parse', '$http', '$timeout',
+	function($parse, $http, $timeout){
+	return {
+	    restrict: 'A',
+	    link: function(scope, elm, attrs){
+	        elm.bind('change', function(){
+	            
+	            var files = elm[0].files;
+	            $parse(attrs.fileResume).assign(scope, files);
+	            scope.$apply();
+	            
+	            scope.resume_loader = true;
+
+	            var file = files[0];
+	            scope.wordoc = false;
+	            scope.pdf = false;
+		        if(typeof(file) != 'undefined' && file !== null){
+		            if(file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type == 'application/msword'){
+		            	scope.wordoc = true;
+		            	scope.pdf = false;
+		            }
+		            if(file.type == 'application/pdf'){
+		            	scope.wordoc = false;
+		            	scope.pdf = true;
+		            }
+	            }
+	            console.log();
+	            $http({
+	                method: 'POST',
+	                url: "/upload_resume",
+	                headers: { 'Content-Type': undefined },
+	                transformRequest: function (data) {
+	                    var fd = new FormData();
+	                    angular.forEach(data.resumefiles, function(file){
+	                       fd.append('file', file);
+	                    });
+	                    return fd;
+	                },
+	                data: {resumefiles: files}
+	            }).then(function(result){
+	            	var msg = result.data;
+                    
+                    $timeout(function(){
+                    	scope.resume_loader = false;
+
+                    	if(!msg['resume_error']){
+	                    	scope.msg = '';
+	                    }else{
+	                        scope.msg = msg;
+	                    }
+	                    angular.element('.preview_resume .upload').val('');
+	                    console.log(msg);
+                    }, 500);
+	            });
+	        });
+	    }
+	}
+}]);
+
 
 usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', function($parse, $rootScope, $timeout){
     return {
