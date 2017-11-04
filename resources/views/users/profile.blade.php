@@ -39,17 +39,22 @@
 				<div class="clearfix"></div>
 				<div class="btns">
 					<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['file']" ng-cloak>
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['dp']" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
+			                    <div class="popover bs-popover-top" ng-class="{'success': msg['dp']['success']}">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
-								    	<span class="rmve" ng-click="msg['file'] = ''">
+								    	<span class="rmve" ng-click="msg['dp'] = ''">
 				            				<i class="fa fa-close"></i>
 	  			            			</span>
-								      	<ul>
-											<li ng-repeat="err in msg['file']"><%=err%></li>
+								      	<ul ng-if="msg['dp']['error']['file']" ng-cloak>
+											<li ng-repeat="err in msg['dp']['error']['file']">
+												<%=err%>
+											</li>
 										</ul>
+										<p ng-if="msg['dp']['success']" ng-cloak>
+											<%=msg['dp']['success']%>
+										</p>
 								    </div>
 								</div>
 			                </div>
@@ -86,16 +91,16 @@
 
 				<div class="btns">
 					<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['resume_error']['file']" ng-cloak>
+		            	<div class="nptgrp err am-flip-x" ng-if="msg['resume']" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
+			                    <div class="popover bs-popover-top" ng-class="{'success': msg['resume']['success']}">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
-								    	<span class="rmve" ng-click="msg['resume_error']['file'] = ''">
+								    	<span class="rmve" ng-click="msg['resume']['error']['file'] = ''">
 				            				<i class="fa fa-close"></i>
 	  			            			</span>
 								      	<ul>
-											<li ng-repeat="err in msg['resume_error']['file']"><%=err%></li>
+											<li ng-repeat="err in msg['resume']['error']['file']"><%=err%></li>
 										</ul>
 								    </div>
 								</div>

@@ -55,11 +55,12 @@ class UsrController extends Controller
             ['file' => $request->file('file')],
             ['file' => 'required|image|mimes:jpeg,png,jpg|max:2048']
         );
-        $msg = $validate->messages()->toArray();
+        $msg['dp']['error'] = $validate->messages()->toArray();
         print_r(json_encode($msg, JSON_PRETTY_PRINT));
     }
 
     public function upload_dp(Request $request){
+        $msg = [];
         $current_img = DB::table('primary_info')->select('dp')->where('genid', Auth::user()->genid);
         $rqst = $request->all();
         $coordinate = json_decode($rqst['coordinates']);
@@ -81,6 +82,8 @@ class UsrController extends Controller
                 DB::table('primary_info')
                     ->where('genid', Auth::user()->genid)
                     ->update(['dp' => $current_img->first()->dp]);
+
+                $msg['dp']['success'] = 'You have successfully changed your primary picture.';
             else:
                 $dp['imgname'] = Auth::user()->genid.Carbon::now()->format('mdy');
                 // Storage::putFile('resumes', $request->file('file'));
@@ -93,6 +96,7 @@ class UsrController extends Controller
                     'dp'    => $dp['imgname'].'.'.$dp['extension']
                 ]);
                 $dp['location'] = $dp['folder'].'/'.$dp['imgname'].'.'.$dp['extension'];
+                $msg['dp']['success'] = 'You have successfully added your display picture.';
             endif;
 
 
@@ -116,6 +120,7 @@ class UsrController extends Controller
             else:
                 imagejpeg($dst_r, $dp['location'], $jpeg_quality);
             endif;
+            print_r(json_encode($msg, JSON_PRETTY_PRINT));
         endif;
     }
 
@@ -125,13 +130,12 @@ class UsrController extends Controller
             ['file' => $request->file('file')],
             ['file' => 'required|mimes:doc,docx,pdf|max:2048']
         );
-        $msg['resume_error'] = $validate->messages()->toArray();
         $has_error = $this->hasError($validate);
 
         if($has_error == true):
-            $msg['has_error'] = true;
+            $msg['resume']['error'] = $validate->messages()->toArray();
         else:
-
+            $msg['resume']['success'] = true;
         endif;
         print_r(json_encode($msg, JSON_PRETTY_PRINT));
     }

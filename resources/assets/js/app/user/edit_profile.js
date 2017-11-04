@@ -41,10 +41,18 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             },
             data: {img_files: files, coordinates: $scope.coordinates}
         }).then(function(result){
-            console.log(result.data);
-   			$rootScope.usr = Usr.query();
-            $scope.cancelUpload();
-            angular.element('#cropModal').modal('hide');
+        	console.log(result.data);
+   			
+   			var msg = result.data;
+
+   			if(!msg['dp']['success']){
+            	$scope.msg = '';
+            }else{
+                $scope.msg = msg;
+                $rootScope.usr = Usr.query();
+	            $scope.cancelUpload();
+	            angular.element('#cropModal').modal('hide');
+            }
         });
         
     }
@@ -84,7 +92,7 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
 	            	var msg = result.data;
                     scope.shw_avatarmdl = false;
                     
-                    if(!msg['file']){
+                    if(!msg['dp']['error']['file']){
                     	angular.element('#cropModal').appendTo('body').modal({
                             backdrop: 'static'
                         });
@@ -148,17 +156,17 @@ usrContent.directive('fileResume', ['$parse', '$http', '$timeout',
 	                data: {resumefiles: files}
 	            }).then(function(result){
 	            	var msg = result.data;
-                    
+                    console.log(msg);
                     $timeout(function(){
                     	scope.resume_loader = false;
 
-                    	if(!msg['resume_error']){
+                    	if(!msg['resume']){
 	                    	scope.msg = '';
 	                    }else{
 	                        scope.msg = msg;
 	                    }
 	                    angular.element('.preview_resume .upload').val('');
-	                    console.log(msg);
+	                    
                     }, 500);
 	            });
 	        });

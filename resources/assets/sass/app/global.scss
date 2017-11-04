@@ -3,6 +3,10 @@
 @font-face {font-family: segob; src: url('fonts/segoui/seguisb.ttf');}
 @font-face {font-family: segobl; src: url('fonts/segoui/seguibl.ttf');}
 
+body, html{
+    font-family: sans-serif, segoi;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none;
 }
@@ -64,9 +68,22 @@
         position: absolute; right: -40px; bottom: 30px;
         .popover{
             position: relative; display: block; border-radius: 0; border: 1px solid #923f3f;
+            
             .arrow{
                 left: 50%;
                 &::before{border-top-color: rgb(88, 3, 3);}
+            }
+
+            &.success{
+                border: 1px solid #28a745;
+                .arrow{
+                    &::before{border-top-color: #28a745;}
+                }
+                .popover-body{
+                    .rmve{
+                        color: #28a745;
+                    }
+                }
             }
 
             .popover-body{

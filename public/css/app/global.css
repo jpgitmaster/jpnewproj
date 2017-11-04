@@ -18,6 +18,10 @@
   src: url("fonts/segoui/seguibl.ttf");
 }
 
+body, html {
+  font-family: sans-serif, segoi;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none;
 }
@@ -127,6 +131,18 @@
 
 .nptgrp .popcntnr .popover .arrow::before {
   border-top-color: #580303;
+}
+
+.nptgrp .popcntnr .popover.success {
+  border: 1px solid #28a745;
+}
+
+.nptgrp .popcntnr .popover.success .arrow::before {
+  border-top-color: #28a745;
+}
+
+.nptgrp .popcntnr .popover.success .popover-body .rmve {
+  color: #28a745;
 }
 
 .nptgrp .popcntnr .popover .popover-body {

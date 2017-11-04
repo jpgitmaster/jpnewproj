@@ -119,8 +119,12 @@
 }
 
 #edit_profile .grdprofile .content_right .nptgrp .popcntnr ul {
-  margin: 5px 0 5px 20px;
+  margin: 10px 0 5px 20px;
   padding: 0;
+}
+
+#edit_profile .grdprofile .content_right .nptgrp .popcntnr p {
+  margin: 10px 0 4px;
 }
 
 #edit_profile .grdprofile .cntnbx {
