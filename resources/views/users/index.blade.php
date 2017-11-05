@@ -40,10 +40,10 @@
       </div>
       <div class="dp">
         <div data-toggle="dropdown" class="drpdwn">
-          <span ng-if="usr[0]['dp']" ng-cloak>
-            <img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
+          <span ng-if="usr[0]['imgname']" ng-cloak>
+            <img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
           </span>
-          <span ng-if="!usr[0]['dp']" ng-cloak>
+          <span ng-if="!usr[0]['imgname']" ng-cloak>
             <i class="fa fa-user-circle-o"></i>
           </span>
         </div>

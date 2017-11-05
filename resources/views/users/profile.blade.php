@@ -11,7 +11,7 @@
 				    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="dsplaypc">
-					<span ng-if="!imgtarget && !usr[0]['dp']" ng-cloak>
+					<span ng-if="!imgtarget && !usr[0]['imgname']" ng-cloak>
 						<i class="fa fa-user-circle-o"></i>
 					</span>
 
@@ -26,11 +26,11 @@
 				            </div>
 				        </div>
 				    </span>
-				    <span ng-if="!imgtarget && usr[0]['dp']" ng-cloak>
+				    <span ng-if="!imgtarget && usr[0]['imgname']" ng-cloak>
 				    	<div class="prvw ltstdp">
 				            <div class="preview-pane">
 				                <div class="preview-container">
-				    				<img ng-src="{{URL::asset('display_pic')}}/<%=usr[0]['dp']%>?<%=timestamp()%>" alt="Display Picture" />
+				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
 				    			</div>
 				            </div>
 				        </div>
@@ -99,9 +99,14 @@
 								    	<span class="rmve" ng-click="msg['resume'] = ''">
 				            				<i class="fa fa-close"></i>
 	  			            			</span>
-								      	<ul>
-											<li ng-repeat="err in msg['resume']['error']['file']"><%=err%></li>
+								      	<ul ng-if="msg['resume']['error']['file']" ng-cloak>
+											<li ng-repeat="err in msg['resume']['error']['file']">
+												<%=err%>
+											</li>
 										</ul>
+										<p ng-if="msg['resume']['success']" ng-cloak>
+											<%=msg['resume']['success']%>
+										</p>
 								    </div>
 								</div>
 			                </div>
