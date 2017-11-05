@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2017 at 09:20 AM
+-- Generation Time: Nov 05, 2017 at 01:37 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -32,16 +32,16 @@ CREATE TABLE `avatars` (
   `imgname` varchar(50) NOT NULL,
   `imgext` varchar(10) NOT NULL,
   `imgfolder` varchar(100) NOT NULL,
-  `added_date` datetime DEFAULT NULL,
-  `changed_date` datetime DEFAULT NULL
+  `imgadded` datetime DEFAULT NULL,
+  `imgchanged` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `avatars`
 --
 
-INSERT INTO `avatars` (`id`, `genid`, `imgname`, `imgext`, `imgfolder`, `added_date`, `changed_date`) VALUES
-(4, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110517110517.jpg', 'jpg', 'avatars', '2017-11-05 13:49:37', '2017-11-05 13:50:30');
+INSERT INTO `avatars` (`id`, `genid`, `imgname`, `imgext`, `imgfolder`, `imgadded`, `imgchanged`) VALUES
+(6, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110517.jpg', 'jpg', 'avatars', '2017-11-05 20:06:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,19 +97,20 @@ INSERT INTO `primary_info` (`id`, `genid`, `fname`, `mname`, `lname`) VALUES
 CREATE TABLE `resumes` (
   `id` int(11) NOT NULL,
   `genid` varchar(20) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `file_extension` varchar(10) NOT NULL,
-  `folder` varchar(100) NOT NULL,
-  `added_date` datetime DEFAULT NULL,
-  `changed_date` datetime DEFAULT NULL
+  `rsmname` varchar(50) NOT NULL,
+  `rsmext` varchar(10) NOT NULL,
+  `rsmsize` varchar(15) NOT NULL,
+  `rsmfolder` varchar(100) NOT NULL,
+  `rsmadded` datetime DEFAULT NULL,
+  `rsmchanged` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `resumes`
 --
 
-INSERT INTO `resumes` (`id`, `genid`, `filename`, `file_extension`, `folder`, `added_date`, `changed_date`) VALUES
-(10, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110517110517.docx', 'docx', 'resumes', '2017-11-05 12:35:42', '2017-11-05 13:00:54');
+INSERT INTO `resumes` (`id`, `genid`, `rsmname`, `rsmext`, `rsmsize`, `rsmfolder`, `rsmadded`, `rsmchanged`) VALUES
+(12, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110517110517.docx', 'docx', '66877', 'resumes', '2017-11-05 20:18:34', '2017-11-05 20:33:06');
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,7 @@ ALTER TABLE `primary_info`
 ALTER TABLE `resumes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `genid` (`genid`),
-  ADD UNIQUE KEY `filename` (`filename`);
+  ADD UNIQUE KEY `filename` (`rsmname`);
 
 --
 -- Indexes for table `users`
@@ -187,7 +188,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `avatars`
 --
 ALTER TABLE `avatars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `personal_information`
 --
@@ -202,7 +203,7 @@ ALTER TABLE `primary_info`
 -- AUTO_INCREMENT for table `resumes`
 --
 ALTER TABLE `resumes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -60,7 +60,7 @@ class UsrController extends Controller
     }
 
     public function upload_dp(Request $request){
-        $current_img = DB::table('avatars')->select('imgext', 'added_date', 'changed_date')->where('genid', Auth::user()->genid);
+        $current_img = DB::table('avatars')->select('imgext', 'imgadded', 'imgchanged')->where('genid', Auth::user()->genid);
         $rqst = $request->all();
         $coordinate = json_decode($rqst['coordinates']);
 
@@ -73,11 +73,11 @@ class UsrController extends Controller
 
             if($current_img->count()):
                 $changed_date = '';
-                if($current_img->first()->changed_date):
-                    $changed_date = Carbon::parse($current_img->first()->changed_date)->format('mdy');
+                if($current_img->first()->imgchanged):
+                    $changed_date = Carbon::parse($current_img->first()->imgchanged)->format('mdy');
                 endif;
 
-                $dp['old_dpname'] = Auth::user()->genid.Carbon::parse($current_img->first()->added_date)->format('mdy').$changed_date.'.'.$current_img->first()->imgext;
+                $dp['old_dpname'] = Auth::user()->genid.Carbon::parse($current_img->first()->imgadded)->format('mdy').$changed_date.'.'.$current_img->first()->imgext;
                 $dp['new_dpname'] = '';
                 $dp['location'] = public_path($dp['folder']).'/'.$dp['old_dpname'];
                 
@@ -86,17 +86,17 @@ class UsrController extends Controller
                 endif;
 
                 // NEW LOCATION
-                $dp['new_dpname'] = Auth::user()->genid.Carbon::parse($current_img->first()->added_date)->format('mdy').Carbon::now()->format('mdy').'.'.$dp['extension'];
+                $dp['new_dpname'] = Auth::user()->genid.Carbon::parse($current_img->first()->imgadded)->format('mdy').Carbon::now()->format('mdy').'.'.$dp['extension'];
                 $request->file('file')->move(public_path($dp['folder']), $dp['new_dpname']);
 
                 $dp['location'] = public_path($dp['folder']).'/'.$dp['new_dpname'];
                 DB::table('avatars')
                     ->where('genid', Auth::user()->genid)
                     ->update([
-                        'imgname'       => $dp['new_dpname'],
-                        'imgext'        => $dp['extension'],
-                        'imgfolder'     => $dp['folder'],
-                        'changed_date'  => Carbon::now()
+                        'imgname'     => $dp['new_dpname'],
+                        'imgext'      => $dp['extension'],
+                        'imgfolder'   => $dp['folder'],
+                        'imgchanged'  => Carbon::now()
                     ]);
 
                 $this->msg['dp']['success'] = 'You have successfully changed your primary picture.';
@@ -105,11 +105,11 @@ class UsrController extends Controller
                 $dp['location'] = $dp['folder'].'/'.$dp['dpname'];
                 DB::table('avatars')->insert([
                     'genid' => Auth::user()->genid,
-                    'imgname'           => $dp['dpname'],
-                    'imgext'            => $dp['extension'],
-                    'imgfolder'            => $dp['folder'],
-                    'added_date'        => Carbon::now(),
-                    'changed_date'      => NULL
+                    'imgname'         => $dp['dpname'],
+                    'imgext'          => $dp['extension'],
+                    'imgfolder'       => $dp['folder'],
+                    'imgadded'        => Carbon::now(),
+                    'imgchanged'      => NULL
                 ]);
                 $this->msg['dp']['success'] = 'You have successfully added your display picture.';
                 $request->file('file')->move(public_path($dp['folder']), $dp['dpname']);
@@ -141,7 +141,7 @@ class UsrController extends Controller
     }
 
     public function upload_resume(Request $request){
-        $current_resume = DB::table('resumes')->select('file_extension', 'added_date', 'changed_date')->where('genid', Auth::user()->genid);
+        $current_resume = DB::table('resumes')->select('rsmext', 'rsmadded', 'rsmchanged')->where('genid', Auth::user()->genid);
         $validate = Validator::make(
             ['file' => $request->file('file')],
             ['file' => 'required|mimes:doc,docx,pdf|max:2048']
@@ -151,7 +151,8 @@ class UsrController extends Controller
         if($request->hasFile('file')):
             $rsm = [];
             $rsm['folder'] = 'resumes';
-            $rsm['file'] = $request->file('file')->getClientOriginalName();
+            // $rsm['file'] = $request->file('file')->getClientOriginalName();
+            $rsm['size'] = $request->file('file')->getClientSize();
             $rsm['extension'] = $request->file('file')->getClientOriginalExtension();
 
             if($has_error == true):
@@ -160,37 +161,39 @@ class UsrController extends Controller
                 $this->msg['resume']['success'] = true;
                 if($current_resume->count()):
                     $changed_date = '';
-                    if($current_resume->first()->changed_date):
-                        $changed_date = Carbon::parse($current_resume->first()->changed_date)->format('mdy');
+                    if($current_resume->first()->rsmchanged):
+                        $changed_date = Carbon::parse($current_resume->first()->rsmchanged)->format('mdy');
                     endif;
-                    $rsm['old_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->added_date)->format('mdy').$changed_date.'.'.$current_resume->first()->file_extension;
+                    $rsm['old_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').$changed_date.'.'.$current_resume->first()->rsmext;
                     $rsm['new_rsmname'] = '';
                     $rsm['location'] = public_path($rsm['folder']).'/'.$rsm['old_rsmname'];
 
                     if(file_exists($rsm['location'])):
                         unlink($rsm['location']);
-                        $rsm['new_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->added_date)->format('mdy').Carbon::now()->format('mdy').'.'.$rsm['extension'];
+                        $rsm['new_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').Carbon::now()->format('mdy').'.'.$rsm['extension'];
                         $request->file('file')->move(public_path($rsm['folder']), $rsm['new_rsmname']);
                     endif;
 
                     DB::table('resumes')
                     ->where('genid', Auth::user()->genid)
                     ->update([
-                        'filename'       => $rsm['new_rsmname'],
-                        'file_extension' => $rsm['extension'],
-                        'folder' => $rsm['folder'],
-                        'changed_date' => Carbon::now()
+                        'rsmname'           => $rsm['new_rsmname'],
+                        'rsmext'            => $rsm['extension'],
+                        'rsmsize'           => $rsm['size'],
+                        'rsmfolder'         => $rsm['folder'],
+                        'rsmchanged'   => Carbon::now()
                     ]);
                     $this->msg['resume']['success'] = 'You have successfully changed your resume.';
                 else:
                     $rsm['rsmname'] = Auth::user()->genid.Carbon::now()->format('mdy').'.'.$rsm['extension'];
                     DB::table('resumes')->insert([
                         'genid' => Auth::user()->genid,
-                        'filename'          => $rsm['rsmname'],
-                        'file_extension'    => $rsm['extension'],
-                        'folder'            => $rsm['folder'],
-                        'added_date'        => Carbon::now(),
-                        'changed_date'      => NULL
+                        'rsmname'           => $rsm['rsmname'],
+                        'rsmext'            => $rsm['extension'],
+                        'rsmsize'           => $rsm['size'],
+                        'rsmfolder'         => $rsm['folder'],
+                        'rsmadded'     => Carbon::now(),
+                        'rsmchanged'   => NULL
                     ]);
                     $this->msg['resume']['success'] = 'You have successfully added your resume.';
                     $request->file('file')->move(public_path($rsm['folder']), $rsm['rsmname']);
@@ -201,13 +204,22 @@ class UsrController extends Controller
     }
 
     public function get_current_user(){
+        $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
         $users = DB::table('users')
-            ->join('avatars', 'users.genid', '=', 'avatars.genid')
+            ->leftJoin('avatars', function ($join) {
+                $join->on('users.genid', '=', 'avatars.genid');
+            })
+            ->leftJoin('resumes', function ($join) {
+                $join->on('users.genid', '=', 'resumes.genid');
+            })
+            // ->join('avatars', 'users.genid', '=', 'avatars.genid')->whereNotNull('avatars.genid')
+            // ->join('resumes', 'users.genid', '=', 'resumes.genid')
             // ->join('personal_information', 'users.genid', '=', 'personal_information.genid')
             ->select(
-                'email', 'act_created', 'imgname'
+                'email', 'act_created', 'imgname', 'rsmname', 'rsmext'
             )->where('users.genid', Auth::user()->genid)
-            ->orderBy('users.id', 'desc')->get();
+            ->orderBy('users.id', 'desc')
+            ->get();
         // $edcs = DB::table('educational_bg')
         //     ->select(
         //         'genid', 'educ_type', 'school', 'sdate', 'edate',

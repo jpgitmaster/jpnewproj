@@ -125,6 +125,7 @@ class WebController extends Controller
                 $usr->password       = Hash::make($user['pword']);
                 $usr->remember       = 0;
                 $usr->activated      = 0;
+                $usr->act_activated  = NULL;
                 $usr->role           = 1;
                 $usr->remember_token = $user['token'];
 

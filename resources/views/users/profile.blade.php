@@ -78,13 +78,13 @@
 					    </svg>
 				    </span>
 				    <span ng-if="!resume_loader" ng-cloak>
-						<span ng-if="!wordoc && !pdf" ng-cloak>
+						<span ng-if="!wordoc && !pdf && !usr[0]['rsmext']" ng-cloak>
 							<i class="fa fa-file-text-o"></i>
 						</span>
-						<span ng-if="wordoc" ng-cloak>
+						<span ng-if="wordoc || usr[0]['rsmext'] == 'doc' || usr[0]['rsmext'] == 'docx'" ng-cloak>
 							<i class="fa fa-file-word-o"></i>
 						</span>
-						<span ng-if="pdf" ng-cloak>
+						<span ng-if="pdf || usr[0]['rsmext'] == 'pdf'" ng-cloak>
 							<i class="fa fa-file-pdf-o"></i>
 						</span>
 					</span>
