@@ -216,7 +216,7 @@ class UsrController extends Controller
             // ->join('resumes', 'users.genid', '=', 'resumes.genid')
             // ->join('personal_information', 'users.genid', '=', 'personal_information.genid')
             ->select(
-                'email', 'act_created', 'imgname', 'rsmname', 'rsmext'
+                'email', 'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
             )->where('users.genid', Auth::user()->genid)
             ->orderBy('users.id', 'desc')
             ->get();

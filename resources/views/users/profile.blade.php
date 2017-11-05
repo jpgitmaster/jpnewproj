@@ -73,21 +73,36 @@
 				</div>
 				<div class="icns">
 					<span ng-if="resume_loader" ng-cloak>
-		                <svg width="170px" height="170px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+		                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 					      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 					    </svg>
 				    </span>
-				    <span ng-if="!resume_loader" ng-cloak>
-						<span ng-if="!wordoc && !pdf && !usr[0]['rsmext']" ng-cloak>
-							<i class="fa fa-file-text-o"></i>
-						</span>
-						<span ng-if="wordoc || usr[0]['rsmext'] == 'doc' || usr[0]['rsmext'] == 'docx'" ng-cloak>
-							<i class="fa fa-file-word-o"></i>
-						</span>
-						<span ng-if="pdf || usr[0]['rsmext'] == 'pdf'" ng-cloak>
-							<i class="fa fa-file-pdf-o"></i>
-						</span>
-					</span>
+				    <div ng-if="!resume_loader" ng-cloak class="cntnt">
+					    <div class="fnticn">
+							<span ng-if="!usr[0]['rsmext']" ng-cloak>
+								<i class="fa fa-file-text-o"></i>
+							</span>
+							<span ng-if="usr[0]['rsmext'] == 'doc' || usr[0]['rsmext'] == 'docx'" ng-cloak>
+								<i class="fa fa-file-word-o"></i>
+							</span>
+							<span ng-if="usr[0]['rsmext'] == 'pdf'" ng-cloak>
+								<i class="fa fa-file-pdf-o"></i>
+							</span>
+						</div>
+						<div class="lbls" ng-class="{'nocntnt': !usr[0]['rsmname']}">
+							<div class="lbl">
+								<strong>TYPE:</strong> <%=usr[0]['rsmext']%>
+							</div>
+							<div class="lbl">
+								<strong>SIZE:</strong> <%=usr[0]['rsmsize'] / 1000 | number: 1%> KB
+							</div>
+							<div class="lbl">
+								<a href="{{URL::asset('resumes')}}/<%=usr[0]['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
+									Download Resume
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="btns">
 					<div class="fileUpload btn btn-primary">
