@@ -11,7 +11,7 @@
         		padding: 30px;
         		background-color: #f6f6f6;
         		border: 1px solid #34b2ff;
-        		width: 650;
+        		width: 650px;
         		margin: 30px auto 100px;
         		border-radius: 10px;
         		text-align: center;
