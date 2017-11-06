@@ -6,15 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Test Email</title>
         <style>
-        	body{
-        		position: relative;
-        	}
         	.jpwrpr{
         		font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
         		padding: 30px;
         		background-color: #f6f6f6;
         		border: 1px solid #34b2ff;
-        		width: 80%;
+        		width: 650;
         		margin: 30px auto 100px;
         		border-radius: 10px;
         		text-align: center;
@@ -58,14 +55,6 @@
         	.imgcntnr a img{
         		display: inline-block;
         	}
-        	.bgbtm{
-        		background-color: #6cc5e5;
-        		min-height: 300px;
-        		position: absolute;
-        		bottom: 0;
-        		left: 0;
-        		right: 0;
-        	}
         </style>
     </head>
     <body>
@@ -88,7 +77,9 @@
 				<br>
 				<strong>24/7 Global Nursing Solution & Consulting Services LLC</strong>
 			</div>
-			<a href="{{route('activation', $user['token'])}}" class="actvt">Activate your account</a>
+			<a href="{{route('activation', $user['token'])}}" class="actvt">
+				Activate your account
+			</a>
 		</div>
     </body>
 </html>
