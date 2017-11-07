@@ -203,6 +203,17 @@ class UsrController extends Controller
         endif;
     }
 
+    public function delete_record(Request $request){
+        switch ($request->num):
+            case 0:
+                # code...
+                break;
+            case 1:
+                # code...
+                break;
+        endswitch;
+    }
+
     public function get_current_user(){
         $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
         $users = DB::table('users')

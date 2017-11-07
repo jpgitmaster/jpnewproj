@@ -61,9 +61,32 @@
 		                </div>
 	                	Browse <input type="file" class="upload" file-input="files">
 		            </div>
-		            <button type="button" class="btn btn-danger">
-						<i class="fa fa-trash"></i>
-					</button>
+		            <div class="dltbtn">
+		            	<div class="nptgrp am-flip-x" ng-if="dltdp" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								    	<p>
+								    		Are you sure you want to delete your display picture?
+								    	</p>
+								    	<div class="btns">
+								    		<button class="btn btn-primary" ng-click="deleteRecord(0)">
+								    			Yes
+								    		</button>
+								    		<button type="button" class="btn btn-danger" ng-click="clsbbl(0)">
+								    			No
+								    		</button>
+								    	</div>	
+
+								    </div>
+								</div>
+			                </div>
+		                </div>
+		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp">
+			            	<i class="fa fa-trash"></i>
+						</button>
+		            </div>
 				</div>
 			</div>
 			<div class="preview_resume cntnbx">
@@ -128,9 +151,32 @@
 		                </div>
 	                	Browse <input type="file" class="upload" file-resume="files">
 		            </div>
-		            <button type="button" class="btn btn-danger">
-						<i class="fa fa-trash"></i>
-					</button>
+		            <div class="dltbtn">
+		            	<div class="nptgrp am-flip-x" ng-if="dltrsm" ng-cloak>
+							<div class="popcntnr">
+			                    <div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body">
+								    	<p>
+								    		Are you sure you want to delete your resume?
+								    	</p>
+								    	<div class="btns">
+								    		<button class="btn btn-primary" type="button" ng-click="deleteRecord(1)">
+								    			Yes
+								    		</button>
+								    		<button class="btn btn-danger" type="button" ng-click="clsbbl(1)">
+								    			No
+								    		</button>
+								    	</div>	
+
+								    </div>
+								</div>
+			                </div>
+		                </div>
+		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm">
+			            	<i class="fa fa-trash"></i>
+						</button>
+		            </div>
 				</div>
 			</div>
 		</div>
@@ -143,6 +189,7 @@
 				    <h3>User Profile</h3>
 				    <div class="btmbrdr"><hr></div>
 				</div>
+
 				<div id="edtprof_accrdn">
 				  <div class="card">
 				    <div class="card-header" data-toggle="collapse" href="#collapseOne">

@@ -145,6 +145,7 @@
 
 #edit_profile .grdprofile .content_right .preview_resume .icns .cntnt .lbls .lbl strong {
   font-size: 10px;
+  color: #0077c0;
 }
 
 #edit_profile .grdprofile .content_right .preview_resume .icns .cntnt .lbls .lbl .btn {
@@ -200,6 +201,7 @@
 
 #edit_profile .grdprofile .cntnbx .btns .fileUpload {
   position: relative;
+  float: left;
 }
 
 #edit_profile .grdprofile .cntnbx .btns .fileUpload .upload {
@@ -212,6 +214,45 @@
   cursor: pointer;
   opacity: 0;
   filter: alpha(opacity=0);
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn {
+  position: relative;
+  float: left;
+  margin-left: 5px;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr {
+  left: -218px;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover {
+  border-color: #8ad3ef;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .arrow {
+  border-top-color: #8ad3ef;
+  left: initial;
+  right: 25px;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .arrow::before {
+  border-top-color: #8ad3ef;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .popover-body p {
+  font-size: 15px;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .popover-body .btns {
+  text-align: center;
+  width: 100%;
+  margin: 6px 0;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .popover-body .btns .btn {
+  display: inline-block;
+  padding: 5px 20px;
 }
 
 #edit_profile .grdprofile .cntnbx .btn {

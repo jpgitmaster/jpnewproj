@@ -54,7 +54,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
 	            angular.element('#cropModal').modal('hide');
             }
         });
-        
     }
 
     $scope.timestamp = function(){
@@ -62,6 +61,35 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     }
     $scope.updateUsr = function(){
     	$rootScope.usr = Usr.query();
+    }
+
+    $scope.deleteRecord = function(num){
+    	$http({
+            method: 'POST',
+            url: '/delete_record',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+
+                fd.append('num', angular.toJson(data.num));
+                return fd;
+            },
+            data: {num: num}
+        }).then(function(result){
+        	console.log(result.data);
+        });
+    }
+
+    $scope.clsbbl = function(num){
+    	switch(num){
+    		case 0:
+    			$scope.dltdp = false;
+    			break;
+    		case 1:
+    			$scope.dltrsm = false;
+    			break;
+    	}
+    	
     }
 }]);
 
