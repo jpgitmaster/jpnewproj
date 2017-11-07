@@ -9,12 +9,11 @@
         	.jpwrpr{
         		font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
         		padding: 30px;
-        		background-color: #f6f6f6;
-        		border: 1px solid #34b2ff;
+        		background-color: #FFF;
         		width: 650px;
         		margin: 30px auto 100px;
-        		border-radius: 10px;
         		text-align: center;
+        		box-shadow: 0px 1px 60px #ced1d3;
         	}
         	.jpwrpr .jpmsg{
         		float: left;
