@@ -154,26 +154,36 @@
 		            <div class="dltbtn">
 		            	<div class="nptgrp am-flip-x" ng-if="dltrsm" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
+			                    <div class="popover bs-popover-top" ng-class="{'success': msg['rsm']['dlt']['success']}">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
-								    	<p>
-								    		Are you sure you want to delete your resume?
-								    	</p>
-								    	<div class="btns">
-								    		<button class="btn btn-primary" type="button" ng-click="deleteRecord(1)">
-								    			Yes
-								    		</button>
-								    		<button class="btn btn-danger" type="button" ng-click="clsbbl(1)">
-								    			No
-								    		</button>
-								    	</div>	
+								    	<div ng-if="!msg['rsm']['dlt']['success']" ng-cloak>
+									    	<p>
+									    		Are you sure you want to delete your resume?
+									    	</p>
+									    	<div class="btns">
+									    		<button class="btn btn-primary" type="button" ng-click="deleteRecord(1)">
+									    			Yes
+									    		</button>
+									    		<button class="btn btn-danger" type="button" ng-click="clsbbl(1)">
+									    			No
+									    		</button>
+									    	</div>
+								    	</div>
+								    	<div ng-if="msg['rsm']['dlt']['success']" ng-cloak>
+									    	<span class="rmve" ng-click="msg['rsm']['dlt']['success'] = ''; clsbbl(1)">
+					            				<i class="fa fa-close"></i>
+		  			            			</span>
+									    	<p>
+												<%=msg['rsm']['dlt']['success']%>
+											</p>
+										</div>
 
 								    </div>
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm">
+		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']">
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>

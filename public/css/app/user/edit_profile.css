@@ -135,6 +135,10 @@
   min-height: 30px;
 }
 
+#edit_profile .grdprofile .content_right .preview_resume .icns .cntnt .lbls.nocntnt .lbl strong {
+  color: #FFF;
+}
+
 #edit_profile .grdprofile .content_right .preview_resume .icns .cntnt .lbls.nocntnt .lbl .btn {
   display: none;
 }
@@ -263,6 +267,12 @@
 
 #edit_profile .grdprofile .cntnbx .btn.btn-danger {
   padding: 5px 10px;
+}
+
+#edit_profile .grdprofile .cntnbx .btn.btn-danger:disabled {
+  cursor: not-allowed;
+  background-color: #bfbfbf;
+  border-color: #9e9e9e;
 }
 
 #edit_profile .grdprofile .cntnbx .btn.btn-primary {

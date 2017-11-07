@@ -125,6 +125,10 @@
 							    	color: #FFF;
     								border-bottom: 8px solid #E9E9E9;
     								min-height: 30px;
+
+    								strong{
+    									color: #FFF;
+    								}
     								.btn{
     									display: none;
     								}
@@ -254,6 +258,11 @@
 
 				&.btn-danger{
 					padding: 5px 10px;
+					&:disabled{
+						cursor: not-allowed;
+					    background-color: #bfbfbf;
+    					border-color: #9e9e9e;
+					}
 				}
 
 				&.btn-primary{

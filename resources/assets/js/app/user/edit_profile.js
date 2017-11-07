@@ -76,7 +76,13 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             },
             data: {num: num}
         }).then(function(result){
-        	console.log(result.data);
+        	var msg = result.data;
+        	if(!msg['rsm']['dlt']['success']){
+            	$scope.msg = '';
+            }else{
+                $scope.msg = msg;
+                $rootScope.usr = Usr.query();
+            }
         });
     }
 

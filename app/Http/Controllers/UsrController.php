@@ -159,20 +159,21 @@ class UsrController extends Controller
                 $this->msg['resume']['error'] = $validate->messages()->toArray();
             else:
                 $this->msg['resume']['success'] = true;
+
                 if($current_resume->count()):
                     $changed_date = '';
                     if($current_resume->first()->rsmchanged):
                         $changed_date = Carbon::parse($current_resume->first()->rsmchanged)->format('mdy');
                     endif;
                     $rsm['old_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').$changed_date.'.'.$current_resume->first()->rsmext;
-                    $rsm['new_rsmname'] = '';
                     $rsm['location'] = public_path($rsm['folder']).'/'.$rsm['old_rsmname'];
 
                     if(file_exists($rsm['location'])):
                         unlink($rsm['location']);
-                        $rsm['new_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').Carbon::now()->format('mdy').'.'.$rsm['extension'];
-                        $request->file('file')->move(public_path($rsm['folder']), $rsm['new_rsmname']);
                     endif;
+
+                    $rsm['new_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').Carbon::now()->format('mdy').'.'.$rsm['extension'];
+                    $request->file('file')->move(public_path($rsm['folder']), $rsm['new_rsmname']);
 
                     DB::table('resumes')
                     ->where('genid', Auth::user()->genid)
@@ -209,9 +210,31 @@ class UsrController extends Controller
                 # code...
                 break;
             case 1:
-                # code...
+                $current_resume = DB::table('resumes')->select('rsmext', 'rsmadded', 'rsmchanged', 'rsmfolder')->where('genid', Auth::user()->genid);
+                $changed_date = '';
+                
+                if($current_resume->first()->rsmchanged):
+                    $changed_date = Carbon::parse($current_resume->first()->rsmchanged)->format('mdy');
+                endif;
+
+                $rsm['rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').$changed_date.'.'.$current_resume->first()->rsmext;
+                $rsm['location'] = public_path($current_resume->first()->rsmfolder).'/'.$rsm['rsmname'];
+
+                if(file_exists($rsm['location'])):
+                    unlink($rsm['location']);
+                endif;
+                DB::table('resumes')
+                ->where('genid', Auth::user()->genid)
+                ->update([
+                    'rsmname'           => '',
+                    'rsmext'            => '',
+                    'rsmsize'           => '',
+                    'rsmfolder'         => ''
+                ]);
+                $this->msg['rsm']['dlt']['success'] = 'You have successfully deleted your resume.';
                 break;
         endswitch;
+        print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
     public function get_current_user(){
@@ -273,9 +296,9 @@ class UsrController extends Controller
             //     endif;
             // endforeach;
         endforeach;
-        // echo json_encode($users, JSON_PRETTY_PRINT);
+        return json_encode($users, JSON_PRETTY_PRINT);
         // dd($users);
-        return response()->json($users);
+        // return response()->json($users);
     }
 
     public function hasError($validate){
