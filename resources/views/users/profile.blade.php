@@ -211,14 +211,15 @@
 
 				<div id="edtprof_accrdn">
 				  <div class="card">
-				    <div class="card-header" data-toggle="collapse" href="#collapseOne">
+				    <div class="card-header" ng-click="collapseTab(1)">
 				    	<div class="glyph">
 		                    <i class="fa fa-address-card"></i>
 		                </div>
 				        Personal Information
+				        <i class="fa fa-chevron-down"></i>
 				    </div>
 
-				    <div id="collapseOne" class="collapse show">
+				    <div class="collapse">
 				      <div class="card-body">
 				        <div class="row no-gutters">
 		              		<div class="col-lg-4">
@@ -306,26 +307,30 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+				    <div class="card-header" ng-click="collapseTab(2)">
 				        <div class="glyph">
 		                    <i class="fa fa-graduation-cap"></i>
 		                </div>
 				        Educational Background
+
+				        <i class="fa fa-chevron-down"></i>
 				    </div>
-				    <div id="collapseTwo" class="collapse">
+				    <div class="collapse">
 				      <div class="card-body">
 				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 				      </div>
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header collapsed" data-toggle="collapse" href="#collapseThree">
+				    <div class="card-header" ng-click="collapseTab(3)">
 				        <div class="glyph">
 		                    <i class="fa fa-stethoscope"></i>
 		                </div>
 				        Employment History
+
+				        <i class="fa fa-chevron-down"></i>
 				    </div>
-				    <div id="collapseThree" class="collapse">
+				    <div class="collapse">
 				      <div class="card-body">
 				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 				      </div>

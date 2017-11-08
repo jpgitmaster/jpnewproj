@@ -102,7 +102,27 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     			$scope.dltrsm = false;
     			break;
     	}
-    	
+    }
+
+    angular.element('#edtprof_accrdn .card:nth-child(1) .collapse').collapse('show');
+    angular.element('#edtprof_accrdn .card .card-header').addClass('collapsed');
+    angular.element('#edtprof_accrdn .card:nth-child(1) .card-header').removeClass('collapsed');
+    angular.element('#edtprof_accrdn .card .collapse').collapse('hide');
+    var current_num = 1;
+
+    $scope.collapseTab = function(num){
+        if(!angular.element('#edtprof_accrdn .card:nth-child('+num+')').hasClass('disabled')){
+            angular.element('#edtprof_accrdn .card .collapse').collapse('hide');
+            angular.element('#edtprof_accrdn .card:nth-child('+num+') .collapse').collapse('show');
+            
+            if(current_num == num){
+                angular.element('#edtprof_accrdn .card:nth-child('+num+') .card-header').toggleClass('collapsed');
+            }else{
+                angular.element('#edtprof_accrdn .card .card-header').addClass('collapsed');
+                angular.element('#edtprof_accrdn .card:nth-child('+num+') .card-header').toggleClass('collapsed');
+            }
+            current_num = num;
+        }
     }
 }]);
 

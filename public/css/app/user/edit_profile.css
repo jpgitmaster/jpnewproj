@@ -34,6 +34,7 @@
   border-radius: 0;
   padding: 8px 15px;
   font: 20px segobb;
+  text-shadow: 1px 0 0 #2e90b5;
 }
 
 #edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header .glyph {
@@ -47,6 +48,26 @@
   border-radius: 50%;
   float: left;
   margin-right: 10px;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header .fa.fa-chevron-down {
+  position: absolute;
+  right: 12px;
+  top: 15px;
+  font-size: 20px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+  transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
+}
+
+#edit_profile .grdprofile .content_left #edtprof_accrdn .card .card-header.collapsed .fa.fa-chevron-down {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+  transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
 }
 
 #edit_profile .grdprofile .content_right {
