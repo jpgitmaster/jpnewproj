@@ -251,6 +251,9 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.prsnt_addrss" required>
 							            <label>Present Address <span>*</span></label>
+							            <span class="btmlbl">
+							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+							            </span>
 							        </div>
 		              			</div>
 		              		</div>
@@ -259,6 +262,9 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.prmnnt_addrss" required>
 							            <label>Permanent Address </label>
+							            <span class="btmlbl">
+							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+							            </span>
 							        </div>
 		              			</div>
 		              		</div>
@@ -267,6 +273,9 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.email" required>
 							            <label>Email <span>*</span></label>
+							            <span class="btmlbl">
+							            	e.g. yourname@gmail.com
+							            </span>
 							        </div>
 		              			</div>
 		              		</div>
@@ -275,6 +284,9 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.mobile" required>
 							            <label>Mobile No. <span>*</span></label>
+							            <span class="btmlbl">
+							            	e.g. 0917-123-4567
+							            </span>
 							        </div>
 		              			</div>
 		              		</div>
@@ -283,18 +295,32 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.phone" required>
 							            <label>Phone No.</label>
+							            <span class="btmlbl">
+							            	e.g. (632) 765-4321
+							            </span>
 							        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-3">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.bdate" required>
-							            <label>Birthdate <span>*</span></label>
+							            <input type="text" ng-model="usr.gender" required>
+							            <label>Gender <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
-		              		<div class="col-lg-3">
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.bdate" required>
+							            <label>Birthdate <span>*</span></label>
+							            <span class="btmlbl">
+							            	<strong>Format:</strong> mm/dd/yyyy
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.bplace" required>
@@ -302,7 +328,43 @@
 							        </div>
 		              			</div>
 		              		</div>
+		              		<div class="col-lg-1">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.age" required>
+							            <label>Age <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.cstatus" required>
+							            <label>Civil Status <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.country" required>
+							            <label>Country <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.nationality" required>
+							            <label>Nationality <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
 		              	</div>
+
+		              	<button class="btn btn-success" type="submit">
+		              		Save Changes
+		              	</button>
 				      </div>
 				    </div>
 				  </div>

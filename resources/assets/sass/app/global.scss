@@ -4,7 +4,7 @@
 @font-face {font-family: segobl; src: url('fonts/segoui/seguibl.ttf');}
 
 body, html{
-    font-family: sans-serif, segoi;
+    font-family: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -43,7 +43,7 @@ body, html{
         border: 1px solid #0077c0; padding: 8px 10px; font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif; width: 100%;
         &:focus{outline:none;}
         &:focus ~ label, &:valid ~ label{
-            top: -15px;
+            top: -13px;
             left: 0;
             font-size: 10px;
             letter-spacing: 1px;
@@ -54,7 +54,11 @@ body, html{
     }
 
     label{
-        color: #999;  font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif; position: absolute; pointer-events: none; left: 10px; top: 9px;
+        color: #5d5d5d;
+        font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif; position: absolute;
+        pointer-events: none;
+        left: 10px;
+        top: 9px;
         transition:0.2s ease all; 
         -moz-transition:0.2s ease all; 
         -webkit-transition:0.2s ease all;
@@ -62,6 +66,14 @@ body, html{
         span{
             color: #f00;
         }
+    }
+
+    .btmlbl{
+        position: absolute;
+        bottom: -15px;
+        right: 0;
+        font-size: 11px;
+        color: #999;
     }
 
     .popcntnr{

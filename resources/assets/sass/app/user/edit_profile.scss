@@ -9,69 +9,73 @@
 		.content_left{
 			margin-right: 300px;
 			
-			.pvw{
-				float: right;
-				position: relative;
-				top: 2px;
-				padding: 5px 20px;
-			}
+			.cntnbx{
+				min-height: 590px;
 
-			#edtprof_accrdn{
+				.pvw{
+					float: right;
+					position: relative;
+					top: 2px;
+					padding: 5px 20px;
+				}
 
-				.card{
-					border: 0;
-					border-radius: 0;
-					margin: 0 0 20px;
-					box-shadow: 0 0 10px #e8e8e8;
+				#edtprof_accrdn{
 
-					.card-header{
-						background-color: #8ad3ef;
-						color: #FFF;
-						cursor: pointer;
+					.card{
+						border: 0;
 						border-radius: 0;
-						padding: 8px 15px;
-						font: 20px segobb;
-						text-shadow: 1px 0 0 #2e90b5;
+						margin: 0 0 10px;
+						box-shadow: 0 0 10px #e8e8e8;
 
-						.glyph{
-							background-color: #FFF;
-							color: #5cc2e8;
-							position: relative;
-							top: 0;
-							width: 30px;
-							height: 30px;
-							text-align: center;
-							border-radius: 50%;
-							float: left;
-							margin-right: 10px;
-						}
+						.card-header{
+							background-color: #54c3ec;
+						    color: #FFF;
+						    cursor: pointer;
+						    border-radius: 0;
+						    padding: 6px 15px;
+						    font: 20px segobb;
+						    text-shadow: 1px 0 0 #2e90b5;
 
-						.fa.fa-chevron-down{
-							position: absolute;
-							right: 12px;
-							top: 15px;
-							font-size: 20px;
-							-webkit-transform: rotate(180deg);
-							-moz-transform: rotate(180deg);
-						    transform: rotate(180deg);
-						    transition: -webkit-transform .8s ease-in-out;
-						    transition: transform .8s ease-in-out;
-						    transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out, -moz-transform .8s ease-in-out;
-						}
-						&.collapsed{
+							.glyph{
+								background-color: #FFF;
+								color: #5cc2e8;
+								position: relative;
+								top: 0;
+								width: 30px;
+								height: 30px;
+								text-align: center;
+								border-radius: 50%;
+								float: left;
+								margin-right: 10px;
+							}
+
 							.fa.fa-chevron-down{
-								-webkit-transform: rotate(0deg);
-								-moz-transform: rotate(0deg);
-							    transform: rotate(0deg);
+								position: absolute;
+								right: 12px;
+								top: 12px;
+								font-size: 20px;
+								-webkit-transform: rotate(180deg);
+								-moz-transform: rotate(180deg);
+							    transform: rotate(180deg);
 							    transition: -webkit-transform .8s ease-in-out;
-							    transition: -moz-transform .8s ease-in-out;
 							    transition: transform .8s ease-in-out;
 							    transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out, -moz-transform .8s ease-in-out;
 							}
+							&.collapsed{
+								.fa.fa-chevron-down{
+									-webkit-transform: rotate(0deg);
+									-moz-transform: rotate(0deg);
+								    transform: rotate(0deg);
+								    transition: -webkit-transform .8s ease-in-out;
+								    transition: -moz-transform .8s ease-in-out;
+								    transition: transform .8s ease-in-out;
+								    transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out, -moz-transform .8s ease-in-out;
+								}
+							}
 						}
-					}
-					.card-body{
-						
+						.card-body{
+							
+						}
 					}
 				}
 			}
