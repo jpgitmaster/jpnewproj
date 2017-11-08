@@ -234,6 +234,18 @@
   border-color: #8ad3ef;
 }
 
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover.success {
+  border-color: #28a745;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover.success .arrow {
+  border-top-color: #28a745;
+}
+
+#edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover.success .arrow::before {
+  border-top-color: #28a745;
+}
+
 #edit_profile .grdprofile .cntnbx .btns .dltbtn .nptgrp .popcntnr .popover .arrow {
   border-top-color: #8ad3ef;
   left: initial;
@@ -271,8 +283,6 @@
 
 #edit_profile .grdprofile .cntnbx .btn.btn-danger:disabled {
   cursor: not-allowed;
-  background-color: #bfbfbf;
-  border-color: #9e9e9e;
 }
 
 #edit_profile .grdprofile .cntnbx .btn.btn-primary {

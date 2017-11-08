@@ -64,26 +64,35 @@
 		            <div class="dltbtn">
 		            	<div class="nptgrp am-flip-x" ng-if="dltdp" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top">
+			                    <div class="popover bs-popover-top" ng-class="{'success': msg['dpimg']['dlt']['success']}">
 								    <div class="arrow"></div>
 								    <div class="popover-body">
-								    	<p>
-								    		Are you sure you want to delete your display picture?
-								    	</p>
-								    	<div class="btns">
-								    		<button class="btn btn-primary" ng-click="deleteRecord(0)">
-								    			Yes
-								    		</button>
-								    		<button type="button" class="btn btn-danger" ng-click="clsbbl(0)">
-								    			No
-								    		</button>
-								    	</div>	
-
+								    	<div ng-if="!msg['dpimg']['dlt']['success']" ng-cloak>
+									    	<p>
+									    		Are you sure you want to delete your display picture?
+									    	</p>
+									    	<div class="btns">
+									    		<button class="btn btn-primary" ng-click="deleteRecord(0)">
+									    			Yes
+									    		</button>
+									    		<button type="button" class="btn btn-danger" ng-click="clsbbl(0)">
+									    			No
+									    		</button>
+									    	</div>
+									    </div>
+								    	<div ng-if="msg['dpimg']['dlt']['success']" ng-cloak>
+									    	<span class="rmve" ng-click="msg['dpimg']['dlt']['success'] = ''; clsbbl(0)">
+					            				<i class="fa fa-close"></i>
+		  			            			</span>
+									    	<p>
+												<%=msg['dpimg']['dlt']['success']%>
+											</p>
+										</div>
 								    </div>
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp">
+		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr[0]['imgname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>
@@ -183,7 +192,7 @@
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']">
+		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>

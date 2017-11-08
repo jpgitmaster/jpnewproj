@@ -224,6 +224,15 @@
 							.popover{
 								border-color: #8ad3ef;
 
+								&.success{
+									border-color: #28a745;
+									.arrow{
+										border-top-color: #28a745;
+										&::before{
+											border-top-color: #28a745;
+										}
+									}
+								}
 								.arrow{
 									border-top-color: #8ad3ef; left: initial; right: 25px;
 									&::before{
@@ -260,8 +269,6 @@
 					padding: 5px 10px;
 					&:disabled{
 						cursor: not-allowed;
-					    background-color: #bfbfbf;
-    					border-color: #9e9e9e;
 					}
 				}
 

@@ -90,6 +90,12 @@ class UsrController extends Controller
                 $request->file('file')->move(public_path($dp['folder']), $dp['new_dpname']);
 
                 $dp['location'] = public_path($dp['folder']).'/'.$dp['new_dpname'];
+
+                $txt = 'added';
+                if($current_img->first()->imgext):
+                    $txt = 'changed';
+                endif;
+
                 DB::table('avatars')
                     ->where('genid', Auth::user()->genid)
                     ->update([
@@ -98,8 +104,7 @@ class UsrController extends Controller
                         'imgfolder'   => $dp['folder'],
                         'imgchanged'  => Carbon::now()
                     ]);
-
-                $this->msg['dp']['success'] = 'You have successfully changed your primary picture.';
+                $this->msg['dp']['success'] = 'You have successfully '.$txt.' your display picture.';
             else:
                 $dp['dpname'] = Auth::user()->genid.Carbon::now()->format('mdy').'.'.$dp['extension'];
                 $dp['location'] = $dp['folder'].'/'.$dp['dpname'];
@@ -175,6 +180,10 @@ class UsrController extends Controller
                     $rsm['new_rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').Carbon::now()->format('mdy').'.'.$rsm['extension'];
                     $request->file('file')->move(public_path($rsm['folder']), $rsm['new_rsmname']);
 
+                    $txt = 'added';
+                    if($current_resume->first()->rsmext):
+                        $txt = 'changed';
+                    endif;
                     DB::table('resumes')
                     ->where('genid', Auth::user()->genid)
                     ->update([
@@ -184,7 +193,7 @@ class UsrController extends Controller
                         'rsmfolder'         => $rsm['folder'],
                         'rsmchanged'   => Carbon::now()
                     ]);
-                    $this->msg['resume']['success'] = 'You have successfully changed your resume.';
+                    $this->msg['resume']['success'] = 'You have successfully '.$txt.' your resume.';
                 else:
                     $rsm['rsmname'] = Auth::user()->genid.Carbon::now()->format('mdy').'.'.$rsm['extension'];
                     DB::table('resumes')->insert([
@@ -207,7 +216,28 @@ class UsrController extends Controller
     public function delete_record(Request $request){
         switch ($request->num):
             case 0:
-                # code...
+                $current_img = DB::table('avatars')->select('imgext', 'imgadded', 'imgchanged', 'imgfolder')->where('genid', Auth::user()->genid);
+                $changed_date = '';
+                
+                if($current_img->first()->imgchanged):
+                    $changed_date = Carbon::parse($current_img->first()->imgchanged)->format('mdy');
+                endif;
+
+                $img['imgname'] = Auth::user()->genid.Carbon::parse($current_img->first()->imgadded)->format('mdy').$changed_date.'.'.$current_img->first()->imgext;
+                $img['location'] = public_path($current_img->first()->imgfolder).'/'.$img['imgname'];
+
+                if(file_exists($img['location'])):
+                    unlink($img['location']);
+                endif;
+                
+                DB::table('avatars')
+                ->where('genid', Auth::user()->genid)
+                ->update([
+                    'imgname'           => '',
+                    'imgext'            => '',
+                    'imgfolder'         => ''
+                ]);
+                $this->msg['dpimg']['dlt']['success'] = 'You have successfully deleted your display picture.';
                 break;
             case 1:
                 $current_resume = DB::table('resumes')->select('rsmext', 'rsmadded', 'rsmchanged', 'rsmfolder')->where('genid', Auth::user()->genid);
