@@ -74,7 +74,23 @@
 							}
 						}
 						.card-body{
-							
+							.bx{
+								margin: 5px 3px;
+							}
+							.crdftr{
+								text-align: center;
+							    padding: 25px 0 0;
+							    float: left;
+							    width: 100%;
+							    margin: 15px 0 10px;
+							    border-top: 1px dashed #54c3ec;
+
+								.btn-success{
+								    font-size: 14px;
+								    border-radius: 5px;
+								    padding: 10px 50px;
+								}
+							}
 						}
 					}
 				}

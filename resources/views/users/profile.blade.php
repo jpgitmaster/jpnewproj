@@ -361,10 +361,11 @@
 		              			</div>
 		              		</div>
 		              	</div>
-
-		              	<button class="btn btn-success" type="submit">
-		              		Save Changes
-		              	</button>
+						<div class="crdftr">
+			              	<button class="btn btn-success" type="submit">
+			              		Save Changes
+			              	</button>
+		              	</div>
 				      </div>
 				    </div>
 				  </div>

@@ -74,6 +74,25 @@
   transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
 }
 
+#edit_profile .grdprofile .content_left .cntnbx #edtprof_accrdn .card .card-body .bx {
+  margin: 5px 3px;
+}
+
+#edit_profile .grdprofile .content_left .cntnbx #edtprof_accrdn .card .card-body .crdftr {
+  text-align: center;
+  padding: 25px 0 0;
+  float: left;
+  width: 100%;
+  margin: 15px 0 10px;
+  border-top: 1px dashed #54c3ec;
+}
+
+#edit_profile .grdprofile .content_left .cntnbx #edtprof_accrdn .card .card-body .crdftr .btn-success {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px 50px;
+}
+
 #edit_profile .grdprofile .content_right {
   width: 300px;
   float: right;
