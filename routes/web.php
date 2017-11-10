@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('profile', [
 		    'as' => 'usr_profile', 'uses' => 'UsrController@profile'
 		]);
+		Route::get('account_settings', [
+		    'as' => 'usr_acctsttngs', 'uses' => 'UsrController@acctsttngs'
+		]);
 		Route::get('logout', [
 		    'as' => 'usr_logout', 'uses' => 'UsrController@logout'
 		]);

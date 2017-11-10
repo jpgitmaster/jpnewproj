@@ -42,10 +42,19 @@ class UsrController extends Controller
         ]);
     }
 
+    public function acctsttngs(){
+        return view('users.account_settings', [
+            'scripts'       => $this->import['scripts'],
+            'stylesheet'    => array_merge($this->import['stylesheet'], array(c_usr_acct_settings)),
+            'ngular'        =>  array_merge($this->import['ngular'], array(n_user_edit_profile))
+            
+        ]);
+    }
+    
     public function jobs(){
         return view('users.jobs', [
             'scripts'       => $this->import['scripts'],
-            'stylesheet'    => $this->import['stylesheet'],
+            'stylesheet'    => array_merge($this->import['stylesheet'], array(c_usr_job_list)),
             'ngular'        =>  array_merge($this->import['ngular'], array(n_user_edit_profile))
         ]);
     }

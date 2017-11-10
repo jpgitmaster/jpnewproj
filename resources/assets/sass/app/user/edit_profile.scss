@@ -1,14 +1,9 @@
 /* EDIT PROFILE */
 #edit_profile{
-	padding: 10px 20px;
-	.grdprofile{
-		float: left;
-		width: 100%;
-		padding: 20px 0 50px;
 
-		.content_left{
-			margin-right: 300px;
-			
+	.cntntwrpr{
+
+		.cntntwrpr_lft{
 			.cntnbx{
 				min-height: 590px;
 
@@ -78,11 +73,11 @@
 								margin: 5px 3px;
 							}
 							.crdftr{
-								text-align: center;
-							    padding: 25px 0 0;
+							    text-align: center;
+							    padding: 20px 0 0;
 							    float: left;
 							    width: 100%;
-							    margin: 15px 0 10px;
+							    margin: 15px 0 30px;
 							    border-top: 1px dashed #54c3ec;
 
 								.btn-success{
@@ -97,9 +92,7 @@
 			}
 		}
 		
-		.content_right{
-			width: 300px;
-			float: right;
+		.cntntwrpr_rght{
 
 			.avatar{
 				text-align: center;
@@ -225,13 +218,6 @@
 		}
 		
 		.cntnbx{
-			background-color: #FFF;
-			padding: 10px 20px 20px;
-			margin: 8px;
-			border: 1px solid #8ad3ef;
-			border-radius: 10px;
-			margin: 0 8px 15px;
-			
 			.ttl{
 				text-align: left;
 			}

@@ -27,14 +27,17 @@ class Controller extends BaseController
         define('c_ngmotion', 'plugins/angular-motion/dist/angular-motion.min.css');
     	define('c_bootstrap', 'plugins/bootstrap/dist/css/bootstrap.min.css');
         define('c_fawesome', 'plugins/font-awesome/css/font-awesome.min.css');
+        define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
 
         define('c_global', 'css/app/global.css');
         
         define('c_admn_masterpage', 'css/app/admin/masterpage.css');
         
         define('c_usr_masterpage', 'css/app/user/masterpage.css');
+        define('c_usr_job_list', 'css/app/user/job_list.css');
+        define('c_usr_acct_settings', 'css/app/user/acct_settings.css');
         define('c_usr_edit_profile', 'css/app/user/edit_profile.css');
-        define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
+        
 
         define('c_home', 'css/app/web/home.css');
     }

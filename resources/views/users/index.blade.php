@@ -52,6 +52,9 @@
           <div class="popover-body">
             <ul>
               <li>
+                <a href="{{route('usr_acctsttngs')}}">Account Settings</a>
+              </li>
+              <li>
                 <a href="{{route('usr_profile')}}">Edit Profile</a>
               </li>
               <li>

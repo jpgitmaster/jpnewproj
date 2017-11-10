@@ -1,0 +1,43 @@
+.cntntwrpr .cntntwrpr_lft {
+  /* JOBS */
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] {
+  display: -webkit-box;
+  display: flex;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb {
+  background-color: #FFF;
+  margin: 10px 8px;
+  border: 1px solid #8ad3ef;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbttl {
+  color: #FFF;
+  background-color: #54c3ec;
+  font: 16px segobb;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr {
+  margin: 15px 0;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr .btn {
+  border-radius: 0;
+  padding: 5px 20px;
+  font: 14px segobb;
+  text-transform: uppercase;
+  margin: 0 2px;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr .btn.btn-primary {
+  background-color: #0077c0;
+  border-color: #02639e;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbspc {
+  padding: 6px 10px;
+}
+
+/*# sourceMappingURL=job_list.css.map */

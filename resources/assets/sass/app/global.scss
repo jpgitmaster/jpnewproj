@@ -11,6 +11,20 @@ body, html{
   display: none;
 }
 
+.cntntwrpr{
+    float: left;
+    width: 100%;
+    
+    .cntntwrpr_lft{
+        margin-right: 300px;
+    }
+
+    .cntntwrpr_rght{
+        width: 300px;
+        float: right;
+    }
+}
+
 .btn{
     cursor: pointer;
     

@@ -6,7 +6,6 @@
   -ms-grid-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
   grid-template-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
   grid-template-areas: "hdr_left hdr_right" "content content" "footer footer" "ftr ftr";
-  /* JOBS */
 }
 
 #wrapper .hdr_left {
@@ -148,21 +147,15 @@
   grid-area: content;
   background-color: #F9F9F9;
   min-height: 600px;
+  padding: 30px 10px 50px;
 }
 
-#wrapper #jbs {
-  padding: 20px;
-}
-
-#wrapper #jbs [class*=col-] {
-  display: -webkit-box;
-  display: flex;
-}
-
-#wrapper #jbs [class*=col-] .jb {
-  padding: 20px;
+#wrapper .content .cntnbx {
   background-color: #FFF;
-  margin: 10px;
+  padding: 10px 20px 20px;
+  border: 1px solid #8ad3ef;
+  border-radius: 10px;
+  margin: 0 8px 15px;
 }
 
 #wrapper .footer {

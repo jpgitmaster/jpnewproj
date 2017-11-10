@@ -3,8 +3,8 @@
 
 @section('content')
 <div id="edit_profile" ng-controller="ctrlEditProfile">
-	<div class="grdprofile">
-		<div class="content_right">
+	<div class="cntntwrpr">
+		<div class="cntntwrpr_rght">
 			<div class="avatar cntnbx">
 				<div class="ttl">
 				    <h3>Display Picture</h3>
@@ -199,7 +199,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_left">
+		<div class="cntntwrpr_lft">
 			<div class="cntnbx">
 				<button class="btn btn-success pvw">
 					PREVIEW
@@ -243,61 +243,6 @@
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.lname" required>
 							            <label>Last Name <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-12">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prsnt_addrss" required>
-							            <label>Present Address <span>*</span></label>
-							            <span class="btmlbl">
-							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-12">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prmnnt_addrss" required>
-							            <label>Permanent Address </label>
-							            <span class="btmlbl">
-							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.email" required>
-							            <label>Email <span>*</span></label>
-							            <span class="btmlbl">
-							            	e.g. yourname@gmail.com
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.mobile" required>
-							            <label>Mobile No. <span>*</span></label>
-							            <span class="btmlbl">
-							            	e.g. 0917-123-4567
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.phone" required>
-							            <label>Phone No.</label>
-							            <span class="btmlbl">
-							            	e.g. (632) 765-4321
-							            </span>
 							        </div>
 		              			</div>
 		              		</div>
@@ -360,6 +305,90 @@
 							        </div>
 		              			</div>
 		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <textarea cols="30" rows="10" ng-model="usr.cobjectives" required></textarea>
+							            <label>Career Objectives <span>*</span></label>
+							        </div>
+		              			</div>
+		              		</div>
+		              	</div> 
+						<div class="crdftr" style="margin-top: 0;">
+			              	<button class="btn btn-success" type="submit">
+			              		Save Changes
+			              	</button>
+		              	</div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header" ng-click="collapseTab(2)">
+				        <div class="glyph">
+		                    <i class="fa fa-phone"></i>
+		                </div>
+				        Contact Details
+
+				        <i class="fa fa-chevron-down"></i>
+				    </div>
+				    <div class="collapse">
+				      <div class="card-body">
+				        <div class="row no-gutters">
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.email" required>
+							            <label>Email <span>*</span></label>
+							            <span class="btmlbl">
+							            	<strong>e.g.</strong> yourname@gmail.com
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.mobile" required>
+							            <label>Mobile No. <span>*</span></label>
+							            <span class="btmlbl">
+							            	<strong>e.g.</strong> 0917-123-4567
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.phone" required>
+							            <label>Phone No.</label>
+							            <span class="btmlbl">
+							            	<strong>e.g.</strong> (632) 765-4321
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.prsnt_addrss" required>
+							            <label>Present Address <span>*</span></label>
+							            <span class="btmlbl">
+							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+							            <input type="text" ng-model="usr.prmnnt_addrss" required>
+							            <label>Permanent Address </label>
+							            <span class="btmlbl">
+							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+							            </span>
+							        </div>
+		              			</div>
+		              		</div>
 		              	</div>
 						<div class="crdftr">
 			              	<button class="btn btn-success" type="submit">
@@ -370,7 +399,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(2)">
+				    <div class="card-header" ng-click="collapseTab(3)">
 				        <div class="glyph">
 		                    <i class="fa fa-graduation-cap"></i>
 		                </div>
@@ -385,7 +414,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(3)">
+				    <div class="card-header" ng-click="collapseTab(2)">
 				        <div class="glyph">
 		                    <i class="fa fa-stethoscope"></i>
 		                </div>

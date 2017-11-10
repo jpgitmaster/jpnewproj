@@ -1,0 +1,48 @@
+.cntntwrpr{
+
+	.cntntwrpr_lft{
+		/* JOBS */
+		#jbs{
+			[class*=col-]{
+				display: flex;
+
+				.jb{
+					background-color: #FFF;
+					margin: 10px 8px;
+					border: 1px solid #8ad3ef;
+
+					.jbttl{
+						color: #FFF;
+						background-color: #54c3ec;
+						font: 16px segobb;
+					}
+					.jbcntnt{
+						.cntr{
+							margin: 15px 0;
+
+							.btn{
+								border-radius: 0;
+								padding: 5px 20px;
+								font: 14px segobb;
+								text-transform: uppercase;
+								margin: 0 2px;
+
+								&.btn-primary{
+								    background-color: #0077c0;
+    								border-color: #02639e;
+								}
+							}
+						}
+					}
+					.jbspc{
+						padding: 6px 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.cntntwrpr_rght{
+	
+	}
+}

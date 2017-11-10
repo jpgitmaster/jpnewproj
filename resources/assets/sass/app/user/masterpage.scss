@@ -141,20 +141,14 @@
 		grid-area: content;
 		background-color: #F9F9F9;
 		min-height: 600px;
-	}
+		padding: 30px 10px 50px;
 
-	/* JOBS */
-	#jbs{
-		padding: 20px;
-
-		[class*=col-]{
-			display: flex;
-
-			.jb{
-				padding: 20px;
-				background-color: #FFF;
-				margin: 10px;
-			}
+		.cntnbx {
+		    background-color: #FFF;
+		    padding: 10px 20px 20px;
+		    border: 1px solid #8ad3ef;
+		    border-radius: 10px;
+		    margin: 0 8px 15px;
 		}
 	}
 
