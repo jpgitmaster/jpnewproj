@@ -166,6 +166,20 @@
     	padding: 20px 10px 30px;
 
     	.ftrbx{
+    		padding: 10px 8px;
+
+    		&.tp{ 
+    			margin-top: 22px;
+    			ul{
+    				li{
+    					padding-left: 0;
+    					a{
+    						font-style: normal;
+    					}
+    				}
+    			}
+    		}
+
     		h3 {
 			    margin: 10px 0 15px;
 			    color: #6dc5e6;

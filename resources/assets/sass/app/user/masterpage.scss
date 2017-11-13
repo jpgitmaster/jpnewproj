@@ -89,7 +89,7 @@
 
 				.dropdown-menu{
 			        top: 5px !important;
-				    left: -16px !important;
+				    left: -18px !important;
 				    min-width: 300px;
 				    border-color: #8ad3ef;
 					
@@ -147,8 +147,8 @@
 		    background-color: #FFF;
 		    padding: 10px 20px 20px;
 		    border: 1px solid #8ad3ef;
-		    border-radius: 10px;
 		    margin: 0 8px 15px;
+		    font-size: 14px;
 		}
 	}
 
@@ -158,6 +158,8 @@
     	padding: 20px 10px 30px;
 
     	.ftrbx{
+    		padding: 10px;
+    		
     		h3 {
 			    margin: 10px 0 15px;
 			    color: #6dc5e6;
@@ -165,6 +167,19 @@
 			    letter-spacing: 1px;
 			    line-height: 22px;
 			}
+
+			&.tp{ 
+    			margin-top: 22px;
+    			ul{
+    				li{
+    					padding-left: 0;
+    					a{
+    						font-style: normal;
+    					}
+    				}
+    			}
+    		}
+
 			ul{
 			    padding: 0;
 

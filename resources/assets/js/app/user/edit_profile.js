@@ -1,5 +1,5 @@
 'use strict'; 
-var usrContent = angular.module('usrContent', []);
+var usrContent = angular.module('usrContent', ['summernote']);
 
 usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', 'Usr',
 	function($scope, $rootScope, $timeout, $http, Usr) {
@@ -124,6 +124,16 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             current_num = num;
         }
     }
+
+
+    $scope.summernote_options = {
+        toolbar: [
+                ['edit',['undo','redo']],
+                ['style', ['bold', 'italic', 'underline']],
+                ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']]
+                
+            ]
+    };
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',

@@ -8,9 +8,11 @@
 }
 
 .cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb {
-  background-color: #FFF;
+  background-color: #fbfbfb;
   margin: 10px 8px;
-  border: 1px solid #8ad3ef;
+  box-shadow: 1px 1px 20px #cecece;
+  position: relative;
+  padding-bottom: 50px;
 }
 
 .cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbttl {
@@ -19,25 +21,47 @@
   font: 16px segobb;
 }
 
-.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr {
-  margin: 15px 0;
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .jbrate {
+  font: 18px segobb;
+  color: #369310;
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
-.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr .btn {
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .jbrate .crrncy {
+  font-size: 20px;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt p {
+  font-size: 14px;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbspc {
+  padding: 6px 15px;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbftr {
+  background-color: #e8e8e8;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbftr .btn {
   border-radius: 0;
   padding: 5px 20px;
-  font: 14px segobb;
+  font: 11px segobb;
+  letter-spacing: 1px;
   text-transform: uppercase;
   margin: 0 2px;
 }
 
-.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbcntnt .cntr .btn.btn-primary {
+.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbftr .btn.btn-primary {
   background-color: #0077c0;
   border-color: #02639e;
-}
-
-.cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb .jbspc {
-  padding: 6px 10px;
 }
 
 /*# sourceMappingURL=job_list.css.map */

@@ -5,7 +5,7 @@
 
 		.cntntwrpr_lft{
 			.cntnbx{
-				min-height: 590px;
+				min-height: 582px;
 
 				.pvw{
 					float: right;
@@ -84,6 +84,128 @@
 								    font-size: 14px;
 								    border-radius: 5px;
 								    padding: 10px 50px;
+								}
+							}
+							.nptgrp.txtarea{
+								.note-frame.panel{
+									border: 1px solid #0077c0;
+									.note-toolbar.panel-heading{
+										background: #FFF;
+										padding: 0 5px 4px;
+										border-bottom: 1px solid #0077c0;
+										.btn-default{
+											background-color: transparent;
+											border-color: transparent;
+											color: #0071b7;
+
+											&.dropdown-toggle::after{
+												display: none;
+											}
+										}
+									}
+									.note-editable.panel-body{
+										background-color: #FFF;
+										padding: 10px 15px;
+										min-height: 100px;
+										font-size: small;
+										ul{
+											padding-left: 20px;
+										}
+									}
+									
+									.note-statusbar{
+										background-color: transparent;
+
+										.note-resizebar{
+											padding-top: 0;
+											
+											.note-icon-bar{
+												border-top-color: #0077c0;
+											}
+										}
+									}
+									.dropdown-menu{
+										border-color: #0077c0;
+									}
+								}
+								label{
+									top: -13px;
+						            left: 0;
+						            font-size: 10px;
+						            letter-spacing: 1px;
+						            font-weight: bold;
+						            color: #0077c0;
+						            text-transform: uppercase;
+								}
+							}
+							.nptgrp.radio{
+								label{
+									top: -13px;
+						            left: 0;
+						            font-size: 10px;
+						            letter-spacing: 1px;
+						            font-weight: bold;
+						            color: #0077c0;
+						            text-transform: uppercase;
+								}
+								.rdbx{
+									position: relative;
+									float: left;
+									width: 100%;
+									clear: both;
+
+									.fmlbx{
+								    	width: 50%;
+								    	float: right;
+								    	padding: 0 0 0 3px;
+								    }
+									.mlbx{
+										width: 50%;
+										float: left;
+										padding: 0 3px 0 0;
+									}
+									.btnbx {
+									  display: none;
+									  & + label {
+									  	position: relative;
+									    pointer-events: auto;
+									    top: 0;
+									    left: 0;
+									    width: 100%;
+									    display: inline-block;
+									    padding: 6px 15px;
+									    font-size: 12px;
+									    margin: 0 !important;
+									    text-transform: capitalize;
+									    line-height: 20px;
+									    color: #333;
+									    text-align: center;
+									    vertical-align: middle;
+									    cursor: pointer;
+									    background-color: #FFF;
+									    border: 1px solid #0077c0;
+									    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+									    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+									  }
+
+									  &:checked + label{
+									    background-image: none; color: #FFF !important;
+									    outline: 0;
+									    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+									    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+									    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+									      /*background-color:#e0e0e0;*/
+									    
+									    &[for=female]{
+									      background-color: #fb2aa7; border: 1px solid #fb2aa7;
+									    }
+
+									    &[for=male]{
+									      background-color: #0077c0; border: 1px solid #0077c0;
+									    }
+									    &.qstnfaq{background-color: #0077c0; border: 1px solid #0077c0;}
+									  }
+									}
 								}
 							}
 						}
@@ -405,4 +527,7 @@
 		    text-align: center;
 		}
 	}
+}
+.note-popover.popover{
+	display: none;
 }

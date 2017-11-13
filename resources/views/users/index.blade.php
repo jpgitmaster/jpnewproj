@@ -70,7 +70,7 @@
     @yield('content')
   </div>
   <div class="footer">
-    <div class="no-gutter">
+    <div class="row no-gutters">
       <div class="col-lg-4">
         <div class="ftrbx">
           <h3>24/7 Global Nursing Solution &amp; Consulting Services LLC</h3>
@@ -111,6 +111,52 @@
                 <i class="fa fa-instagram"></i>
               </a>
             </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="ftrbx tp">
+          <h3>PARTNERS</h3>
+          <ul>
+            <li>
+              <a href="#">Partner1</a>
+            </li>
+            <li>
+              <a href="#">Partner2</a>
+            </li>
+            <li>
+              <a href="#">Partner3</a>
+            </li>
+            <li>
+              <a href="#">Partner4</a>
+            </li>
+            <li>
+              <a href="#">Partner5</a>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="ftrbx tp">
+          <h3>SPONSORS</h3>
+          <ul>
+            <li>
+              <a href="#">Sponsor1</a>
+            </li>
+            <li>
+              <a href="#">Sponsor2</a>
+            </li>
+            <li>
+              <a href="#">Sponsor3</a>
+            </li>
+            <li>
+              <a href="#">Sponsor4</a>
+            </li>
+            <li>
+              <a href="#">Sponsor5</a>
+            </li>
+            <li></li>
           </ul>
         </div>
       </div>

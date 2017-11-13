@@ -14,7 +14,7 @@ body, html{
 .cntntwrpr{
     float: left;
     width: 100%;
-    
+
     .cntntwrpr_lft{
         margin-right: 300px;
     }
@@ -48,7 +48,10 @@ body, html{
 }
 
 .nptgrp{
-    position: relative; width: 100%; margin-bottom: 20px; display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    display: inline-block;
 
     &.err{
         textarea, select, input[type=text], input[type=password]{

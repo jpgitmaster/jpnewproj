@@ -204,6 +204,22 @@
   padding: 20px 10px 30px;
 }
 
+#wrapper .footer .ftrbx {
+  padding: 10px 8px;
+}
+
+#wrapper .footer .ftrbx.tp {
+  margin-top: 22px;
+}
+
+#wrapper .footer .ftrbx.tp ul li {
+  padding-left: 0;
+}
+
+#wrapper .footer .ftrbx.tp ul li a {
+  font-style: normal;
+}
+
 #wrapper .footer .ftrbx h3 {
   margin: 10px 0 15px;
   color: #6dc5e6;

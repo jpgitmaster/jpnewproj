@@ -1,6 +1,6 @@
 /* EDIT PROFILE */
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx {
-  min-height: 590px;
+  min-height: 582px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx .pvw {
@@ -77,6 +77,141 @@
   font-size: 14px;
   border-radius: 5px;
   padding: 10px 50px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel {
+  border: 1px solid #0077c0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-toolbar.panel-heading {
+  background: #FFF;
+  padding: 0 5px 4px;
+  border-bottom: 1px solid #0077c0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-toolbar.panel-heading .btn-default {
+  background-color: transparent;
+  border-color: transparent;
+  color: #0071b7;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-toolbar.panel-heading .btn-default.dropdown-toggle::after {
+  display: none;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-editable.panel-body {
+  background-color: #FFF;
+  padding: 10px 15px;
+  min-height: 100px;
+  font-size: small;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-editable.panel-body ul {
+  padding-left: 20px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-statusbar {
+  background-color: transparent;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-statusbar .note-resizebar {
+  padding-top: 0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-statusbar .note-resizebar .note-icon-bar {
+  border-top-color: #0077c0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .dropdown-menu {
+  border-color: #0077c0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea label {
+  top: -13px;
+  left: 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #0077c0;
+  text-transform: uppercase;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio label {
+  top: -13px;
+  left: 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #0077c0;
+  text-transform: uppercase;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx {
+  position: relative;
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .fmlbx {
+  width: 50%;
+  float: right;
+  padding: 0 0 0 3px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .mlbx {
+  width: 50%;
+  float: left;
+  padding: 0 3px 0 0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx {
+  display: none;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx + label {
+  position: relative;
+  pointer-events: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: inline-block;
+  padding: 6px 15px;
+  font-size: 12px;
+  margin: 0 !important;
+  text-transform: capitalize;
+  line-height: 20px;
+  color: #333;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #FFF;
+  border: 1px solid #0077c0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label {
+  background-image: none;
+  color: #FFF !important;
+  outline: 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  /*background-color:#e0e0e0;*/
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=female] {
+  background-color: #fb2aa7;
+  border: 1px solid #fb2aa7;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=male] {
+  background-color: #0077c0;
+  border: 1px solid #0077c0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label.qstnfaq {
+  background-color: #0077c0;
+  border: 1px solid #0077c0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_rght .avatar {
@@ -406,6 +541,10 @@
   border: 5px inset #6dc5e6;
   overflow: hidden;
   text-align: center;
+}
+
+.note-popover.popover {
+  display: none;
 }
 
 /*# sourceMappingURL=edit_profile.css.map */

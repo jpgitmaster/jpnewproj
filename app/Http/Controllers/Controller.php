@@ -28,6 +28,7 @@ class Controller extends BaseController
     	define('c_bootstrap', 'plugins/bootstrap/dist/css/bootstrap.min.css');
         define('c_fawesome', 'plugins/font-awesome/css/font-awesome.min.css');
         define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
+        define('c_summernote', 'plugins/summernote/dist/summernote.css');
 
         define('c_global', 'css/app/global.css');
         
@@ -49,12 +50,14 @@ class Controller extends BaseController
         define('j_velocity', 'plugins/velocity/velocity.min.js');
         define('j_velocity_ui', 'plugins/velocity/velocity.ui.min.js');
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
+        define('j_summernote', 'plugins/summernote/dist/summernote.min.js');
     }
 
     public function import_ng(){
         define('n_ng', 'plugins/angular/angular.min.js');
         define('n_ngresource', 'plugins/angular/angular-resource.min.js');
         define('n_nganimate', 'plugins/angular/angular-animate.min.js');
+        define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.min.js');
 
         define('n_home', 'app/web/home.js');
 

@@ -248,9 +248,18 @@
 		              		</div>
 		              		<div class="col-lg-3">
 		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.gender" required>
-							            <label>Gender <span>*</span></label>
+		              				<div class="nptgrp radio">
+							            <label>Gender: <span>*</span></label>
+			              				<div class="rdbx">
+			              					<div class="mlbx">
+					                          <input type="radio" id="male" class="btnbx" ng-model="usr.gender" value="2" required>
+					                          <label for="male">Male</label>
+					                        </div>
+					                        <div class="fmlbx">
+					                          <input type="radio" id="female" class="btnbx" ng-model="usr.gender" value="1" required>
+					                          <label for="female">Female</label>
+					                        </div>
+			              				</div>
 							        </div>
 		              			</div>
 		              		</div>
@@ -307,8 +316,8 @@
 		              		</div>
 		              		<div class="col-lg-12">
 		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <textarea cols="30" rows="10" ng-model="usr.cobjectives" required></textarea>
+		              				<div class="nptgrp txtarea">
+							            <summernote ng-model="usr.cobjectives" config="summernote_options"></summernote>
 							            <label>Career Objectives <span>*</span></label>
 							        </div>
 		              			</div>
@@ -414,7 +423,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(2)">
+				    <div class="card-header" ng-click="collapseTab(4)">
 				        <div class="glyph">
 		                    <i class="fa fa-stethoscope"></i>
 		                </div>

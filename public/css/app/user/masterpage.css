@@ -98,7 +98,7 @@
 
 #wrapper .hdr_right .picture .dp .dropdown-menu {
   top: 5px !important;
-  left: -16px !important;
+  left: -18px !important;
   min-width: 300px;
   border-color: #8ad3ef;
 }
@@ -154,8 +154,8 @@
   background-color: #FFF;
   padding: 10px 20px 20px;
   border: 1px solid #8ad3ef;
-  border-radius: 10px;
   margin: 0 8px 15px;
+  font-size: 14px;
 }
 
 #wrapper .footer {
@@ -164,12 +164,28 @@
   padding: 20px 10px 30px;
 }
 
+#wrapper .footer .ftrbx {
+  padding: 10px;
+}
+
 #wrapper .footer .ftrbx h3 {
   margin: 10px 0 15px;
   color: #6dc5e6;
   font: 18px segobb;
   letter-spacing: 1px;
   line-height: 22px;
+}
+
+#wrapper .footer .ftrbx.tp {
+  margin-top: 22px;
+}
+
+#wrapper .footer .ftrbx.tp ul li {
+  padding-left: 0;
+}
+
+#wrapper .footer .ftrbx.tp ul li a {
+  font-style: normal;
 }
 
 #wrapper .footer .ftrbx ul {
