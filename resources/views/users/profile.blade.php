@@ -226,7 +226,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.fname" required>
-							            <label>First Name <span>*</span></label>
+							            <label class="nptlbl">First Name <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -234,7 +234,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.mname" required>
-							            <label>Middle Name <span>*</span></label>
+							            <label class="nptlbl">Middle Name <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -242,14 +242,14 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.lname" required>
-							            <label>Last Name <span>*</span></label>
+							            <label class="nptlbl">Last Name <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-3">
 		              			<div class="bx">
 		              				<div class="nptgrp radio">
-							            <label>Gender: <span>*</span></label>
+							            <label class="nptlbl">Gender: <span>*</span></label>
 			              				<div class="rdbx">
 			              					<div class="mlbx">
 					                          <input type="radio" id="male" class="btnbx" ng-model="usr.gender" value="2" required>
@@ -267,7 +267,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.bdate" required>
-							            <label>Birthdate <span>*</span></label>
+							            <label class="nptlbl">Birthdate <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>Format:</strong> mm/dd/yyyy
 							            </span>
@@ -278,7 +278,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.bplace" required>
-							            <label>Birthplace <span>*</span></label>
+							            <label class="nptlbl">Birthplace <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -286,7 +286,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.age" required>
-							            <label>Age <span>*</span></label>
+							            <label class="nptlbl">Age <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -294,7 +294,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.cstatus" required>
-							            <label>Civil Status <span>*</span></label>
+							            <label class="nptlbl">Civil Status <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -302,7 +302,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.country" required>
-							            <label>Country <span>*</span></label>
+							            <label class="nptlbl">Country <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -310,7 +310,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.nationality" required>
-							            <label>Nationality <span>*</span></label>
+							            <label class="nptlbl">Nationality <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -318,7 +318,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp txtarea">
 							            <summernote ng-model="usr.cobjectives" config="summernote_options"></summernote>
-							            <label>Career Objectives <span>*</span></label>
+							            <label class="nptlbl">Career Objectives <span>*</span></label>
 							        </div>
 		              			</div>
 		              		</div>
@@ -347,7 +347,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.email" required>
-							            <label>Email <span>*</span></label>
+							            <label class="nptlbl">Email <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> yourname@gmail.com
 							            </span>
@@ -358,7 +358,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.mobile" required>
-							            <label>Mobile No. <span>*</span></label>
+							            <label class="nptlbl">Mobile No. <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> 0917-123-4567
 							            </span>
@@ -369,7 +369,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp">
 							            <input type="text" ng-model="usr.phone" required>
-							            <label>Phone No.</label>
+							            <label class="nptlbl">Phone No.</label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> (632) 765-4321
 							            </span>
@@ -379,8 +379,8 @@
 		              		<div class="col-lg-12">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prsnt_addrss" required>
-							            <label>Present Address <span>*</span></label>
+							            <input type="text" ng-model="usr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
+							            <label class="nptlbl">Present Address <span>*</span></label>
 							            <span class="btmlbl">
 							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
 							            </span>
@@ -390,11 +390,16 @@
 		              		<div class="col-lg-12">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prmnnt_addrss" required>
-							            <label>Permanent Address </label>
+							            <input type="text" ng-model="usr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
+							            <label class="nptlbl">Permanent Address </label>
 							            <span class="btmlbl">
 							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
 							            </span>
+							            <label class="ctrl">
+									        Same as Present Address
+									        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
+									        <div class="ctrl_indicator"></div>
+									    </label>
 							        </div>
 		              			</div>
 		              		</div>

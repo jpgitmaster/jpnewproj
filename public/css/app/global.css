@@ -102,9 +102,9 @@ body, html {
   outline: none;
 }
 
-.nptgrp textarea:focus ~ label, .nptgrp textarea:valid ~ label, .nptgrp select:focus ~ label, .nptgrp select:valid ~ label, .nptgrp input[type=text]:focus ~ label, .nptgrp input[type=text]:valid ~ label,
-.nptgrp input[type=password]:focus ~ label,
-.nptgrp input[type=password]:valid ~ label {
+.nptgrp textarea:focus ~ .nptlbl, .nptgrp textarea:valid ~ .nptlbl, .nptgrp select:focus ~ .nptlbl, .nptgrp select:valid ~ .nptlbl, .nptgrp input[type=text]:focus ~ .nptlbl, .nptgrp input[type=text]:valid ~ .nptlbl,
+.nptgrp input[type=password]:focus ~ .nptlbl,
+.nptgrp input[type=password]:valid ~ .nptlbl {
   top: -13px;
   left: 0;
   font-size: 10px;
@@ -114,7 +114,7 @@ body, html {
   text-transform: uppercase;
 }
 
-.nptgrp label {
+.nptgrp .nptlbl {
   color: #5d5d5d;
   font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
   position: absolute;
@@ -126,13 +126,12 @@ body, html {
   -webkit-transition: 0.2s ease all;
 }
 
-.nptgrp label span {
+.nptgrp .nptlbl span {
   color: #f00;
 }
 
 .nptgrp .btmlbl {
   position: absolute;
-  bottom: -15px;
   right: 0;
   font-size: 11px;
   color: #999;
@@ -187,6 +186,60 @@ body, html {
 
 .nptgrp .popcntnr .popover .popover-body .rmve .fa {
   font-size: 14px;
+}
+
+.nptgrp .ctrl {
+  float: left;
+  font-family: arial;
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  padding-top: 1px;
+  cursor: pointer;
+  font-size: 12px;
+  pointer-events: auto;
+  left: 0;
+  top: 2px;
+}
+
+.nptgrp .ctrl input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.nptgrp .ctrl input:checked ~ .ctrl_indicator {
+  background: #0077c0;
+  border-color: #0077c0;
+}
+
+.nptgrp .ctrl input:checked ~ .ctrl_indicator:after {
+  display: block;
+}
+
+.nptgrp .ctrl .ctrl_indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background: #e6e6e6;
+  border: 1px solid #CCC;
+}
+
+.nptgrp .ctrl .ctrl_indicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 0;
+  width: 3px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .msgmdl {

@@ -156,13 +156,17 @@
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .fmlbx {
   width: 50%;
   float: right;
-  padding: 0 0 0 3px;
+  padding: 0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .fmlbx .btnbx + label {
+  border-left: 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .mlbx {
   width: 50%;
   float: left;
-  padding: 0 3px 0 0;
+  padding: 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx {
@@ -177,26 +181,23 @@
   width: 100%;
   display: inline-block;
   padding: 6px 15px;
-  font-size: 12px;
-  margin: 0 !important;
+  font: normal 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+  margin: 0;
   text-transform: capitalize;
   line-height: 20px;
-  color: #333;
+  color: #5d5d5d;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background-color: #FFF;
   border: 1px solid #0077c0;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  letter-spacing: 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label {
   background-image: none;
-  color: #FFF !important;
+  color: #FFF;
   outline: 0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  /*background-color:#e0e0e0;*/
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=female] {
@@ -205,11 +206,6 @@
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=male] {
-  background-color: #0077c0;
-  border: 1px solid #0077c0;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label.qstnfaq {
   background-color: #0077c0;
   border: 1px solid #0077c0;
 }

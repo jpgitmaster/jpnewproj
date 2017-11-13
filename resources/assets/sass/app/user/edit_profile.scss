@@ -157,12 +157,16 @@
 									.fmlbx{
 								    	width: 50%;
 								    	float: right;
-								    	padding: 0 0 0 3px;
+								    	padding: 0;
+
+								    	& .btnbx + label{
+								    		border-left: 0;
+								    	}
 								    }
 									.mlbx{
 										width: 50%;
 										float: left;
-										padding: 0 3px 0 0;
+										padding: 0;
 									}
 									.btnbx {
 									  display: none;
@@ -174,27 +178,24 @@
 									    width: 100%;
 									    display: inline-block;
 									    padding: 6px 15px;
-									    font-size: 12px;
-									    margin: 0 !important;
+									    font: normal 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+									    margin: 0;
 									    text-transform: capitalize;
 									    line-height: 20px;
-									    color: #333;
+									    color: #5d5d5d;
 									    text-align: center;
 									    vertical-align: middle;
 									    cursor: pointer;
 									    background-color: #FFF;
 									    border: 1px solid #0077c0;
-									    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
-									    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+									    letter-spacing: 0;
 									  }
 
 									  &:checked + label{
-									    background-image: none; color: #FFF !important;
+									    background-image: none;
+									    color: #FFF;
 									    outline: 0;
-									    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-									    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-									    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-									      /*background-color:#e0e0e0;*/
+									    
 									    
 									    &[for=female]{
 									      background-color: #fb2aa7; border: 1px solid #fb2aa7;
@@ -203,7 +204,6 @@
 									    &[for=male]{
 									      background-color: #0077c0; border: 1px solid #0077c0;
 									    }
-									    &.qstnfaq{background-color: #0077c0; border: 1px solid #0077c0;}
 									  }
 									}
 								}

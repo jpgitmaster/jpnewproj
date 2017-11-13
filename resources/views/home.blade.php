@@ -37,7 +37,12 @@
 		  				<div class="bx">
 			  				<div class="nptgrp {{$errors->login->has('email') ? 'err' : ''}}">
 					            <input type="text" name="email" value="{{ old('email') }}" ng-focus="l_email = true" ng-blur="l_email = false" required>
-					            <label>Email</label>
+					            <label class="nptlbl">Email</label>
+					            <label class="ctrl">
+							        Remember Me
+							        <input type="checkbox" />
+							        <div class="ctrl_indicator"></div>
+							    </label>
 					            @if ($errors->login->has('email'))
 					                <div class="am-flip-x popcntnr" ng-if="l_email === true" ng-cloak>
 					                    <div class="popover bs-popover-top">
@@ -49,20 +54,20 @@
 					                </div>
 					            @endif
 					        </div>
-					        <div class="rmmbr">
+					        <!-- <div class="rmmbr">
 					        	<label class="option">
 					                <input type="checkbox" name="rememberme" class="fcs">
 					                <span class="checkbox"></span>
 				                </label>
 					        	<label class="lbl">Remember Me</label>
-					        </div>
+					        </div> -->
 				        </div>
 		  			</div>
 		  			<div class="col-lg-6">
 		  				<div class="bx">
 			  				<div class="nptgrp {{$errors->login->has('pword') ? 'err' : ''}}">
 					            <input type="password" name="pword" ng-focus="l_pword = true" ng-blur="l_pword = false" required>
-					            <label>Password</label>
+					            <label class="nptlbl">Password</label>
 					            @if ($errors->login->has('pword'))
 					                <div class="am-flip-x popcntnr" ng-if="l_pword === true" ng-cloak>
 					                    <div class="popover bs-popover-top">
@@ -115,7 +120,7 @@
 	                <div class="col-lg-12">
 	                    <div class="nptgrp" ng-class="{'err': msg['error']['email']}">
 	                        <input type="text" ng-model="rgstr.email" ng-focus="fcs_email = true" ng-blur="fcs_email = false" required>
-	                        <label>Email</label>
+	                        <label class="nptlbl">Email</label>
 	                        <div class="am-flip-x popcntnr" ng-if="msg['error']['email'] && fcs_email === true" ng-cloak>
 	                        	<div class="popover bs-popover-top">
 								    <div class="arrow"></div>
@@ -129,7 +134,7 @@
 	                <div class="col-lg-12">
 	                    <div class="nptgrp" ng-class="{'err': msg['error']['pword']}">
 	                        <input type="password" ng-model="rgstr.pword" ng-focus="fcs_pword = true" ng-blur="fcs_pword = false" required>
-	                        <label>Password</label>
+	                        <label class="nptlbl">Password</label>
 	                        <div class="am-flip-x popcntnr" ng-if="msg['error']['pword'] && fcs_pword === true" ng-cloak>
 	                        	<div class="popover bs-popover-top">
 								    <div class="arrow"></div>
@@ -143,7 +148,7 @@
 	                <div class="col-lg-12">
 	                    <div class="nptgrp" ng-class="{'err': msg['error']['pword_confirmation']}">
 	                        <input type="password" ng-model="rgstr.pword_confirmation" ng-focus="fcs_pword_confirmation = true" ng-blur="fcs_pword_confirmation = false" required>
-	                        <label>Confirm Password</label>
+	                        <label class="nptlbl">Confirm Password</label>
 
 	                        <div class="am-flip-x popcntnr" ng-if="msg['error']['pword_confirmation'] && fcs_pword_confirmation === true" ng-cloak>
 	                        	<div class="popover bs-popover-top">
