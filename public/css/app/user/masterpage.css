@@ -3,8 +3,8 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
-  grid-template-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  -ms-grid-rows: minmax(124px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+  grid-template-rows: minmax(124px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
   grid-template-areas: "hdr_left hdr_right" "content content" "footer footer" "ftr ftr";
 }
 

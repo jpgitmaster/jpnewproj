@@ -1,7 +1,7 @@
 #wrapper{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: minmax(126px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
+	grid-template-rows: minmax(124px, auto) 1fr minmax(300px, auto) minmax(40px, auto);
 	grid-template-areas:
 		"hdr_left hdr_right"
 		"content content"

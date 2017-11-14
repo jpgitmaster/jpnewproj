@@ -404,7 +404,7 @@
 		              			</div>
 		              		</div>
 		              	</div>
-						<div class="crdftr">
+						<div class="crdftr" style="margin-top: 0;">
 			              	<button class="btn btn-success" type="submit">
 			              		Save Changes
 			              	</button>

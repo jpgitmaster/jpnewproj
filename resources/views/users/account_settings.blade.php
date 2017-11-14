@@ -14,6 +14,82 @@
 			    <h3>Account Settings</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
+			
+			<h3>Password</h3>
+			<div class="row no-gutters">
+          		<div class="col-lg-4">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.oldpass" required>
+				            <label class="nptlbl">Old Password <span>*</span></label>
+				        </div>
+          			</div>
+          		</div>
+          		<div class="col-lg-4">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.newpass" required>
+				            <label class="nptlbl">New Password <span>*</span></label>
+				        </div>
+          			</div>
+          		</div>
+          		<div class="col-lg-4">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.confirmpass" required>
+				            <label class="nptlbl">Confirm Password <span>*</span></label>
+				        </div>
+          			</div>
+          		</div>
+          	</div>
+			
+			<h3>Username</h3>
+			<div class="row no-gutters">
+          		<div class="col-lg-6">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.oldpass" required>
+				            <label class="nptlbl">Username <span>*</span></label>
+				        </div>
+          			</div>
+          		</div>
+          	</div>
+
+          	<h3>External Links</h3>
+          	<div class="row no-gutters">
+          		<div class="col-lg-6">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.website" required>
+				            <label class="nptlbl">Personal Website </label>
+				        </div>
+          			</div>
+          		</div>
+          		<div class="col-lg-6">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.fb" required>
+				            <label class="nptlbl">Facebook <span>*</span></label>
+				        </div>
+          			</div>
+          		</div>
+          		<div class="col-lg-6">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.twtr" required>
+				            <label class="nptlbl">Twitter </label>
+				        </div>
+          			</div>
+          		</div>
+          		<div class="col-lg-6">
+          			<div class="bx">
+          				<div class="nptgrp">
+				            <input type="text" ng-model="usr.ig" required>
+				            <label class="nptlbl">Instagram </label>
+				        </div>
+          			</div>
+          		</div>
+          	</div> 
 		</div>
 	</div>
 </div>
