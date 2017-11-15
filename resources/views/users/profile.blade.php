@@ -357,7 +357,7 @@
 		              		<div class="col-lg-4">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.mobile" required>
+							            <input type="text" ng-model="usr.mobile" ui-mask="+999-9999-999" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true" required>
 							            <label class="nptlbl">Mobile No. <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> 0917-123-4567
