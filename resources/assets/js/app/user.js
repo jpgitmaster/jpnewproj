@@ -15,7 +15,7 @@ usrApp.controller('ctrlHeader', ['$scope', '$rootScope', '$timeout', '$http', 'U
 	function($scope, $rootScope, $timeout, $http, Usr) {
 
 	Usr.query().$promise.then(function(data) {
-       $rootScope.usr = data;
+       $rootScope.usr = data[0];
    	});
 
 

@@ -11,7 +11,7 @@
 				    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="dsplaypc">
-					<span ng-if="!imgtarget && !usr[0]['imgname']" ng-cloak>
+					<span ng-if="!imgtarget && !usr['imgname']" ng-cloak>
 						<i class="fa fa-user-circle-o"></i>
 					</span>
 
@@ -26,11 +26,11 @@
 				            </div>
 				        </div>
 				    </span>
-				    <span ng-if="!imgtarget && usr[0]['imgname']" ng-cloak>
+				    <span ng-if="!imgtarget && usr['imgname']" ng-cloak>
 				    	<div class="prvw ltstdp">
 				            <div class="preview-pane">
 				                <div class="preview-container">
-				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
+				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
 				    			</div>
 				            </div>
 				        </div>
@@ -92,7 +92,7 @@
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr[0]['imgname']" ng-cloak>
+		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr['imgname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>
@@ -111,25 +111,25 @@
 				    </span>
 				    <div ng-if="!resume_loader" ng-cloak class="cntnt">
 					    <div class="fnticn">
-							<span ng-if="!usr[0]['rsmext']" ng-cloak>
+							<span ng-if="!usr['rsmext']" ng-cloak>
 								<i class="fa fa-file-text-o"></i>
 							</span>
-							<span ng-if="usr[0]['rsmext'] == 'doc' || usr[0]['rsmext'] == 'docx'" ng-cloak>
+							<span ng-if="usr['rsmext'] == 'doc' || usr['rsmext'] == 'docx'" ng-cloak>
 								<i class="fa fa-file-word-o"></i>
 							</span>
-							<span ng-if="usr[0]['rsmext'] == 'pdf'" ng-cloak>
+							<span ng-if="usr['rsmext'] == 'pdf'" ng-cloak>
 								<i class="fa fa-file-pdf-o"></i>
 							</span>
 						</div>
-						<div class="lbls" ng-class="{'nocntnt': !usr[0]['rsmname']}">
+						<div class="lbls" ng-class="{'nocntnt': !usr['rsmname']}">
 							<div class="lbl">
-								<strong>TYPE:</strong> <%=usr[0]['rsmext']%>
+								<strong>TYPE:</strong> <%=usr['rsmext']%>
 							</div>
 							<div class="lbl">
-								<strong>SIZE:</strong> <%=usr[0]['rsmsize'] / 1000 | number: 1%> KB
+								<strong>SIZE:</strong> <%=usr['rsmsize'] / 1000 | number: 1%> KB
 							</div>
 							<div class="lbl">
-								<a href="{{URL::asset('resumes')}}/<%=usr[0]['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
+								<a href="{{URL::asset('resumes')}}/<%=usr['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
 									Download Resume
 								</a>
 							</div>
@@ -192,7 +192,7 @@
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']" ng-cloak>
+		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr['rsmname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>
