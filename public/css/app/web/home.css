@@ -330,8 +330,14 @@
   margin: 5px 0 0;
 }
 
-#frmlgn .nptgrp > .popcntnr {
+#frmlgn .nptgrp .popcntnr {
   right: 0;
+}
+
+#frmlgn .nptgrp .ctrl {
+  position: absolute;
+  top: inherit;
+  bottom: -30px;
 }
 
 #frmlgn .rmmbr {

@@ -15,7 +15,85 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			
-			<h3>Password</h3>
+			<div class="lnr">
+				<div class="ttlnm">
+					<h4 class="ttl">Username</h4>
+				</div>
+				<div class="cntntdsc">
+					<div class="row no-gutters">
+						<div class="col-lg-12">
+							<div class="nptgrp lbld">
+								<a href="">
+									<span class="lbldcntnt">http://247globalnursingsolution.com/<span ng-if="usr.username" ng-cloak><%=usr.username | lowercase%></span></span>
+								</a>
+					        	<label class="lbl">Your Profile Link</label>
+					      	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="lnr">
+			  <div class="ttlnm">
+			    <h4 class="ttl">Password</h4>
+			  </div>
+			  <div class="cntntdsc">
+			    <div class="row no-gutters">
+			      <div class="col-lg-12">
+			        <div class="bx">
+			          <div class="nptgrp lbld">
+			            <span class="lbldcntnt pscode">* * * * * *</span>
+			            <label class="lbl">Updated about 2 months ago</label>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="lnr">
+				<div class="ttlnm">
+					<h4 class="ttl">External Links</h4>
+				</div>
+				<div class="cntntdsc">
+					<div class="row no-gutters">
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Personal Website</label>
+						      	</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Facebook</label>
+						      	</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Twitter</label>
+						      	</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Instagram</label>
+						      	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <h3>Password</h3>
 			<div class="row no-gutters">
           		<div class="col-lg-4">
           			<div class="bx">
@@ -38,18 +116,6 @@
           				<div class="nptgrp">
 				            <input type="text" ng-model="usr.confirmpass" required>
 				            <label class="nptlbl">Confirm Password <span>*</span></label>
-				        </div>
-          			</div>
-          		</div>
-          	</div>
-			
-			<h3>Username</h3>
-			<div class="row no-gutters">
-          		<div class="col-lg-6">
-          			<div class="bx">
-          				<div class="nptgrp">
-				            <input type="text" ng-model="usr.oldpass" required>
-				            <label class="nptlbl">Username <span>*</span></label>
 				        </div>
           			</div>
           		</div>
@@ -89,7 +155,7 @@
 				        </div>
           			</div>
           		</div>
-          	</div> 
+          	</div>  -->
 		</div>
 	</div>
 </div>

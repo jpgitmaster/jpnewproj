@@ -134,7 +134,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
                 
             ]
     };
-    $scope.usr = {};
     $scope.makeSameAddress = function(check){
         if(check == true){
             $scope.usr.prmnnt_addrss = angular.copy($scope.usr.prsnt_addrss);

@@ -1,2 +1,65 @@
+.cntntwrpr_lft .cntnbx {
+  overflow: hidden;
+}
+
+.cntntwrpr_lft .cntnbx .lnr {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .ttlnm {
+  float: left;
+  width: 150px;
+  position: relative;
+  top: 10px;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .ttlnm .ttl {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc {
+  margin-left: 150px;
+  padding: 0 10px;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld {
+  margin-bottom: 15px;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld a {
+  color: #0077c0;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld a:hover {
+  text-decoration: none;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld .lbldcntnt {
+  width: 100%;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld .lbldcntnt.pscode {
+  font-size: 22px;
+  position: relative;
+  top: 10px;
+  margin-top: -15px;
+  float: left;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld .lbl {
+  position: relative;
+  left: 0;
+  top: 0;
+  border-top: 1px solid #CCC;
+  font-size: 12 px;
+  width: 100%;
+  clear: both;
+}
 
 /*# sourceMappingURL=acct_settings.css.map */

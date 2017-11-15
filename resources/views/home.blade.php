@@ -38,11 +38,6 @@
 			  				<div class="nptgrp {{$errors->login->has('email') ? 'err' : ''}}">
 					            <input type="text" name="email" value="{{ old('email') }}" ng-focus="l_email = true" ng-blur="l_email = false" required>
 					            <label class="nptlbl">Email</label>
-					            <label class="ctrl">
-							        Remember Me
-							        <input type="checkbox" />
-							        <div class="ctrl_indicator"></div>
-							    </label>
 					            @if ($errors->login->has('email'))
 					                <div class="am-flip-x popcntnr" ng-if="l_email === true" ng-cloak>
 					                    <div class="popover bs-popover-top">
@@ -53,14 +48,12 @@
 										</div>
 					                </div>
 					            @endif
+					            <label class="ctrl">
+							        Remember Me
+							        <input type="checkbox" />
+							        <div class="ctrl_indicator"></div>
+							    </label>
 					        </div>
-					        <!-- <div class="rmmbr">
-					        	<label class="option">
-					                <input type="checkbox" name="rememberme" class="fcs">
-					                <span class="checkbox"></span>
-				                </label>
-					        	<label class="lbl">Remember Me</label>
-					        </div> -->
 				        </div>
 		  			</div>
 		  			<div class="col-lg-6">
