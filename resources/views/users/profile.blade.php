@@ -221,113 +221,115 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				        <div class="row no-gutters">
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.fname" required>
-							            <label class="nptlbl">First Name <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.mname" required>
-							            <label class="nptlbl">Middle Name <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.lname" required>
-							            <label class="nptlbl">Last Name <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-3">
-		              			<div class="bx">
-		              				<div class="nptgrp radio">
-							            <label class="nptlbl">Gender: <span>*</span></label>
-			              				<div class="rdbx">
-			              					<div class="mlbx">
-					                          <input type="radio" id="male" class="btnbx" ng-model="usr.gender" value="2" required>
-					                          <label for="male">Male</label>
-					                        </div>
-					                        <div class="fmlbx">
-					                          <input type="radio" id="female" class="btnbx" ng-model="usr.gender" value="1" required>
-					                          <label for="female">Female</label>
-					                        </div>
-			              				</div>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.bdate" required>
-							            <label class="nptlbl">Birthdate <span>*</span></label>
-							            <span class="btmlbl">
-							            	<strong>Format:</strong> mm/dd/yyyy
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.bplace" required>
-							            <label class="nptlbl">Birthplace <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-1">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.age" required>
-							            <label class="nptlbl">Age <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.cstatus" required>
-							            <label class="nptlbl">Civil Status <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.country" required>
-							            <label class="nptlbl">Country <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.nationality" required>
-							            <label class="nptlbl">Nationality <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-12">
-		              			<div class="bx">
-		              				<div class="nptgrp txtarea">
-							            <summernote ng-model="usr.cobjectives" config="summernote_options"></summernote>
-							            <label class="nptlbl">Career Objectives <span>*</span></label>
-							        </div>
-		              			</div>
-		              		</div>
-		              	</div> 
-						<div class="crdftr" style="margin-top: 0;">
-			              	<button class="btn btn-success" type="submit">
-			              		Save Changes
-			              	</button>
-		              	</div>
+				      	<form ng-submit="savePersonalInfo(usr)"  method="POST" novalidate>
+					        <div class="row no-gutters">
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.fname" required>
+								            <label class="nptlbl">First Name <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.mname" required>
+								            <label class="nptlbl">Middle Name <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.lname" required>
+								            <label class="nptlbl">Last Name <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-3">
+			              			<div class="bx">
+			              				<div class="nptgrp radio">
+								            <label class="nptlbl">Gender: <span>*</span></label>
+				              				<div class="rdbx">
+				              					<div class="mlbx">
+						                          <input type="radio" id="male" class="btnbx" ng-model="usr.gender" value="2" required>
+						                          <label for="male">Male</label>
+						                        </div>
+						                        <div class="fmlbx">
+						                          <input type="radio" id="female" class="btnbx" ng-model="usr.gender" value="1" required>
+						                          <label for="female">Female</label>
+						                        </div>
+				              				</div>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.bdate" required>
+								            <label class="nptlbl">Birthdate <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>Format:</strong> mm/dd/yyyy
+								            </span>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.bplace" required>
+								            <label class="nptlbl">Birthplace <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-1">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.age" required>
+								            <label class="nptlbl">Age <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.cstatus" required>
+								            <label class="nptlbl">Civil Status <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.country" required>
+								            <label class="nptlbl">Country <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="usr.nationality" required>
+								            <label class="nptlbl">Nationality <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-12">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea">
+								            <summernote ng-model="usr.cobjectives" config="summernote_options"></summernote>
+								            <label class="nptlbl">Career Objectives <span>*</span></label>
+								        </div>
+			              			</div>
+			              		</div>
+			              	</div> 
+							<div class="crdftr" style="margin-top: 0;">
+				              	<button class="btn btn-success" type="submit">
+				              		Save Changes
+				              	</button>
+			              	</div>
+		              	</form>
 				      </div>
 				    </div>
 				  </div>

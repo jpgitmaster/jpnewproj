@@ -140,6 +140,23 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         }
     }
 
+    $scope.savePersonalInfo = function(usr){
+        // console.log(usr);
+        $http({
+            method: 'POST',
+            url: '/user/save_personal_info',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+
+                fd.append('user', angular.toJson(data.user));
+                return fd;
+            },
+            data: {user: usr}
+        }).then(function(result){
+            console.log(result.data);
+        });
+    }
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
