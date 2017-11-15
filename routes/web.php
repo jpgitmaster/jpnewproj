@@ -51,6 +51,10 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('logout', [
 		    'as' => 'usr_logout', 'uses' => 'UsrController@logout'
 		]);
+
+		Route::post('save_personal_info', [
+		    'as' => 'save_personal_info', 'uses' => 'UsrController@save_personal_info'
+		]);
 	});
 });
 

@@ -276,6 +276,16 @@ class UsrController extends Controller
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
+    public function save_personal_info(Request $request){
+        $current_user = DB::table('personal_info')->where('genid', Auth::user()->genid)->count();
+
+        if($current_user):
+            print_r('update');
+        else:
+            print_r('add');
+        endif;
+    }
+
     public function get_current_user(){
         $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
         $users = DB::table('users')
