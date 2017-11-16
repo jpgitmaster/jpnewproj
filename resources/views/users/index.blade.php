@@ -32,18 +32,18 @@
     <div class="picture">
       <div class="pctrname">
         <div class="ttl">
-            <h3 ng-if="usr['email']" ng-cloak>
-              <%=usr['email']%>
+            <h3 ng-if="usr[0]['email']" ng-cloak>
+              <%=usr[0]['email']%>
             </h3>
             <div class="btmbrdr"><hr></div>
         </div>
       </div>
       <div class="dp">
         <div data-toggle="dropdown" class="drpdwn">
-          <span ng-if="usr['imgname']" ng-cloak>
-            <img ng-src="{{URL::asset('avatars')}}/<%=usr['imgname']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
+          <span ng-if="usr[0]['imgname']" ng-cloak>
+            <img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
           </span>
-          <span ng-if="!usr['imgname']" ng-cloak>
+          <span ng-if="!usr[0]['imgname']" ng-cloak>
             <i class="fa fa-user-circle-o"></i>
           </span>
         </div>

@@ -5,7 +5,8 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
 	function($scope, $rootScope, $timeout, $http, Usr) {
 
 	Usr.query().$promise.then(function(data) {
-       $rootScope.usr = data[0];
+       $rootScope.usr = data;
+       $scope.nptusr = $rootScope.usr[0];
    	});
 
 	$scope.imgForm = function(imgtarget){
@@ -136,27 +137,10 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     };
     $scope.makeSameAddress = function(check){
         if(check == true){
-            $scope.usr.prmnnt_addrss = angular.copy($scope.usr.prsnt_addrss);
+            $scope.nptusr.prmnnt_addrss = angular.copy($scope.nptusr.prsnt_addrss);
         }
     }
 
-    $scope.savePersonalInfo = function(usr){
-        // console.log(usr);
-        $http({
-            method: 'POST',
-            url: '/user/save_personal_info',
-            headers: { 'Content-Type': undefined },
-            transformRequest: function (data) {
-                var fd = new FormData();
-
-                fd.append('user', angular.toJson(data.user));
-                return fd;
-            },
-            data: {user: usr}
-        }).then(function(result){
-            console.log(result.data);
-        });
-    }
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',

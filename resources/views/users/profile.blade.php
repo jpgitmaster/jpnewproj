@@ -11,7 +11,7 @@
 				    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="dsplaypc">
-					<span ng-if="!imgtarget && !usr['imgname']" ng-cloak>
+					<span ng-if="!imgtarget && !usr[0]['imgname']" ng-cloak>
 						<i class="fa fa-user-circle-o"></i>
 					</span>
 
@@ -26,11 +26,11 @@
 				            </div>
 				        </div>
 				    </span>
-				    <span ng-if="!imgtarget && usr['imgname']" ng-cloak>
+				    <span ng-if="!imgtarget && usr[0]['imgname']" ng-cloak>
 				    	<div class="prvw ltstdp">
 				            <div class="preview-pane">
 				                <div class="preview-container">
-				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
+				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
 				    			</div>
 				            </div>
 				        </div>
@@ -92,7 +92,7 @@
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr['imgname']" ng-cloak>
+		                <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr[0]['imgname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>
@@ -111,25 +111,25 @@
 				    </span>
 				    <div ng-if="!resume_loader" ng-cloak class="cntnt">
 					    <div class="fnticn">
-							<span ng-if="!usr['rsmext']" ng-cloak>
+							<span ng-if="!usr[0]['rsmext']" ng-cloak>
 								<i class="fa fa-file-text-o"></i>
 							</span>
-							<span ng-if="usr['rsmext'] == 'doc' || usr['rsmext'] == 'docx'" ng-cloak>
+							<span ng-if="usr[0]['rsmext'] == 'doc' || usr[0]['rsmext'] == 'docx'" ng-cloak>
 								<i class="fa fa-file-word-o"></i>
 							</span>
-							<span ng-if="usr['rsmext'] == 'pdf'" ng-cloak>
+							<span ng-if="usr[0]['rsmext'] == 'pdf'" ng-cloak>
 								<i class="fa fa-file-pdf-o"></i>
 							</span>
 						</div>
-						<div class="lbls" ng-class="{'nocntnt': !usr['rsmname']}">
+						<div class="lbls" ng-class="{'nocntnt': !usr[0]['rsmname']}">
 							<div class="lbl">
-								<strong>TYPE:</strong> <%=usr['rsmext']%>
+								<strong>TYPE:</strong> <%=usr[0]['rsmext']%>
 							</div>
 							<div class="lbl">
-								<strong>SIZE:</strong> <%=usr['rsmsize'] / 1000 | number: 1%> KB
+								<strong>SIZE:</strong> <%=usr[0]['rsmsize'] / 1000 | number: 1%> KB
 							</div>
 							<div class="lbl">
-								<a href="{{URL::asset('resumes')}}/<%=usr['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
+								<a href="{{URL::asset('resumes')}}/<%=usr[0]['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
 									Download Resume
 								</a>
 							</div>
@@ -192,7 +192,7 @@
 								</div>
 			                </div>
 		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr['rsmname']" ng-cloak>
+		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']" ng-cloak>
 			            	<i class="fa fa-trash"></i>
 						</button>
 		            </div>
@@ -221,12 +221,12 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<form ng-submit="savePersonalInfo(usr)"  method="POST" novalidate>
+				      	<form ng-submit="savePersonalInfo(usr)" method="POST" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.fname" required>
+								            <input type="text" ng-model="nptusr.fname" required>
 								            <label class="nptlbl">First Name <span>*</span></label>
 								        </div>
 			              			</div>
@@ -234,7 +234,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.mname" required>
+								            <input type="text" ng-model="nptusr.mname" required>
 								            <label class="nptlbl">Middle Name <span>*</span></label>
 								        </div>
 			              			</div>
@@ -242,7 +242,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.lname" required>
+								            <input type="text" ng-model="nptusr.lname" required>
 								            <label class="nptlbl">Last Name <span>*</span></label>
 								        </div>
 			              			</div>
@@ -253,11 +253,11 @@
 								            <label class="nptlbl">Gender: <span>*</span></label>
 				              				<div class="rdbx">
 				              					<div class="mlbx">
-						                          <input type="radio" id="male" class="btnbx" ng-model="usr.gender" value="2" required>
+						                          <input type="radio" id="male" class="btnbx" ng-model="nptusr.gender" value="2" required>
 						                          <label for="male">Male</label>
 						                        </div>
 						                        <div class="fmlbx">
-						                          <input type="radio" id="female" class="btnbx" ng-model="usr.gender" value="1" required>
+						                          <input type="radio" id="female" class="btnbx" ng-model="nptusr.gender" value="1" required>
 						                          <label for="female">Female</label>
 						                        </div>
 				              				</div>
@@ -267,7 +267,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.bdate" required>
+								            <input type="text" ng-model="nptusr.bdate" required>
 								            <label class="nptlbl">Birthdate <span>*</span></label>
 								            <span class="btmlbl">
 								            	<strong>Format:</strong> mm/dd/yyyy
@@ -278,7 +278,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.bplace" required>
+								            <input type="text" ng-model="nptusr.bplace" required>
 								            <label class="nptlbl">Birthplace <span>*</span></label>
 								        </div>
 			              			</div>
@@ -286,7 +286,7 @@
 			              		<div class="col-lg-1">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.age" required>
+								            <input type="text" ng-model="nptusr.age" required>
 								            <label class="nptlbl">Age <span>*</span></label>
 								        </div>
 			              			</div>
@@ -294,7 +294,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.cstatus" required>
+								            <input type="text" ng-model="nptusr.cstatus" required>
 								            <label class="nptlbl">Civil Status <span>*</span></label>
 								        </div>
 			              			</div>
@@ -302,7 +302,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.country" required>
+								            <input type="text" ng-model="nptusr.country" required>
 								            <label class="nptlbl">Country <span>*</span></label>
 								        </div>
 			              			</div>
@@ -310,7 +310,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="usr.nationality" required>
+								            <input type="text" ng-model="nptusr.nationality" required>
 								            <label class="nptlbl">Nationality <span>*</span></label>
 								        </div>
 			              			</div>
@@ -318,7 +318,7 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp txtarea">
-								            <summernote ng-model="usr.cobjectives" config="summernote_options"></summernote>
+								            <summernote ng-model="nptusr.cobjectives" config="summernote_options"></summernote>
 								            <label class="nptlbl">Career Objectives <span>*</span></label>
 								        </div>
 			              			</div>
@@ -348,7 +348,7 @@
 		              		<div class="col-lg-4">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.email" required>
+							            <input type="text" ng-model="nptusr.email" required>
 							            <label class="nptlbl">Email <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> yourname@gmail.com
@@ -359,7 +359,7 @@
 		              		<div class="col-lg-4">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.mobile" ui-mask="+999-9999-999" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true" required>
+							            <input type="text" ng-model="nptusr.mobile" required>
 							            <label class="nptlbl">Mobile No. <span>*</span></label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> 0917-123-4567
@@ -370,7 +370,7 @@
 		              		<div class="col-lg-4">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.phone" required>
+							            <input type="text" ng-model="nptusr.phone" required>
 							            <label class="nptlbl">Phone No.</label>
 							            <span class="btmlbl">
 							            	<strong>e.g.</strong> (632) 765-4321
@@ -381,7 +381,7 @@
 		              		<div class="col-lg-12">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
+							            <input type="text" ng-model="nptusr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
 							            <label class="nptlbl">Present Address <span>*</span></label>
 							            <span class="btmlbl">
 							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
@@ -392,7 +392,7 @@
 		              		<div class="col-lg-12">
 		              			<div class="bx">
 		              				<div class="nptgrp">
-							            <input type="text" ng-model="usr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
+							            <input type="text" ng-model="nptusr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
 							            <label class="nptlbl">Permanent Address </label>
 							            <span class="btmlbl">
 							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code

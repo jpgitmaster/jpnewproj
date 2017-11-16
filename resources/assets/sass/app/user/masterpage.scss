@@ -11,11 +11,11 @@
 	.hdr_left{
 		grid-area: hdr_left;
 		background-color: #FFF;
-		padding: 15px;
+		padding: 12px 15px;
 		border-bottom: 1px solid #8ad3ef;
 
 		.logo{
-			margin: 8px 0 0 10px;
+			margin: 11px 0 0 10px;
 		    text-decoration: none;
 		    display: inline-block;
 		    width: 410px;
@@ -48,7 +48,7 @@
 	.hdr_right{
 		grid-area: hdr_right;
 		background-color: #FFF;
-		padding: 15px;
+		padding: 12px 15px;
 		border-bottom: 1px solid #8ad3ef;
 
 		.picture{

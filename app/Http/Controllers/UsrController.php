@@ -277,7 +277,7 @@ class UsrController extends Controller
     }
 
     public function save_personal_info(Request $request){
-        $current_user = DB::table('personal_info')->where('genid', Auth::user()->genid)->count();
+        $current_user = DB::table('personal_information')->where('genid', Auth::user()->genid)->count();
 
         if($current_user):
             print_r('update');
