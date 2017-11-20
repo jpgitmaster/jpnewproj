@@ -221,7 +221,7 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<form ng-submit="savePersonalInfo(nptusr)" novalidate>
+				      	<form ng-submit="savePersonalInfo(nptusr)" method="POST" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
@@ -472,12 +472,12 @@
 			              			</div>
 			              		</div>
 			              	</div>
+			              	<div class="crdftr" style="margin-top: 0;">
+				              	<button class="btn btn-success" type="submit">
+				              		Save Changes
+				              	</button>
+			              	</div>
 			            </form>
-						<div class="crdftr" style="margin-top: 0;">
-			              	<button class="btn btn-success" type="submit">
-			              		Save Changes
-			              	</button>
-		              	</div>
 				      </div>
 				    </div>
 				  </div>
