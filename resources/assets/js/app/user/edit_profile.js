@@ -63,6 +63,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     $scope.timestamp = function(){
     	return Date.now();
     }
+    
+    $scope.updateUsr = function(){
+    	Usr.query().$promise.then(function(data) {
+            $rootScope.usr = data;
+            $scope.nptusr = data[0];
+        });
+    }
+    $scope.updateUsr();
+
 
     $scope.deleteRecord = function(num){
     	$http({
