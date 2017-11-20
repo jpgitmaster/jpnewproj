@@ -139,6 +139,11 @@
 								}
 							}
 							.nptgrp.radio{
+								&.err{
+									.rdbx .btnbx + label{
+										border: 1px solid #923f3f;
+									}
+								}
 								label{
 									top: -13px;
 						            left: 0;
@@ -336,7 +341,6 @@
 					}
 			    }
 			}
-
 		}
 		
 		.cntnbx{

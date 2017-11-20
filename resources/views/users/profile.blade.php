@@ -221,37 +221,61 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<form ng-submit="savePersonalInfo(usr)" method="POST" novalidate>
+				      	<form ng-submit="savePersonalInfo(nptusr)" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.fname" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['fname']}">
+								            <input type="text" ng-model="nptusr.fname" ng-focus="fcs_fname = true" ng-blur="fcs_fname = false" required>
 								            <label class="nptlbl">First Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['fname'] && fcs_fname === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['fname'][0] %>
+												    </div>
+												</div>
+							                </div>
 								        </div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.mname" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['mname']}">
+								            <input type="text" ng-model="nptusr.mname" ng-focus="fcs_mname = true" ng-blur="fcs_mname = false" required>
 								            <label class="nptlbl">Middle Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['mname'] && fcs_mname === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['mname'][0] %>
+												    </div>
+												</div>
+							                </div>
 								        </div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.lname" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['lname']}">
+								            <input type="text" ng-model="nptusr.lname" ng-focus="fcs_lname = true" ng-blur="fcs_lname = false" required>
 								            <label class="nptlbl">Last Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['lname'] && fcs_lname === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['lname'][0] %>
+												    </div>
+												</div>
+							                </div>
 								        </div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-3">
 			              			<div class="bx">
-			              				<div class="nptgrp radio">
+			              				<div class="nptgrp radio" ng-class="{'err': msg['error']['prsnl']['gender']}">
 								            <label class="nptlbl">Gender: <span>*</span></label>
-				              				<div class="rdbx">
+				              				<div class="rdbx" ng-mouseover="fcs_gndr = true" ng-mouseover="fcs_gndr = true" ng-mouseleave="fcs_gndr = false">
 				              					<div class="mlbx">
 						                          <input type="radio" id="male" class="btnbx" ng-model="nptusr.gender" value="2" required>
 						                          <label for="male">Male</label>
@@ -261,14 +285,30 @@
 						                          <label for="female">Female</label>
 						                        </div>
 				              				</div>
+				              				<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['gender'] && fcs_gndr === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['gender'][0] %>
+												    </div>
+												</div>
+							                </div>
 								        </div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.bdate" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bdate']}">
+								            <input type="text" ng-model="nptusr.bdate" ng-focus="fcs_bdate = true" ng-blur="fcs_bdate = false" required>
 								            <label class="nptlbl">Birthdate <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bdate'] && fcs_bdate === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['bdate'][0] %>
+												    </div>
+												</div>
+							                </div>
 								            <span class="btmlbl">
 								            	<strong>Format:</strong> mm/dd/yyyy
 								            </span>
@@ -277,9 +317,17 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.bplace" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bplace']}">
+								            <input type="text" ng-model="nptusr.bplace" ng-focus="fcs_bplace = true" ng-blur="fcs_bplace = false" required>
 								            <label class="nptlbl">Birthplace <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bplace'] && fcs_bplace === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['bplace'][0] %>
+												    </div>
+												</div>
+							                </div>
 								        </div>
 			              			</div>
 			              		</div>
@@ -293,32 +341,49 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.cstatus" required>
-								            <label class="nptlbl">Civil Status <span>*</span></label>
-								        </div>
+			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
+				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="nptusr.cstatus">
+												<strong><%= cs.name  %></strong>
+												<div class="clearfix"></div>
+											</div>
+											<label class="nptlbl">Civil Status <span>*</span></label>
+											<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cstatus'] && fcs_cstatus === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['cstatus'][0] %>
+												    </div>
+												</div>
+							                </div>
+			              				</div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.country" required>
-								            <label class="nptlbl">Country <span>*</span></label>
-								        </div>
+			              				<div class="nptgrp txtarea">
+			              					<div custom-select="c as c.en_short_name for c in countries | filter: {en_short_name: $searchTerm}" ng-model="nptusr.country">
+												<strong><%= c.en_short_name  %></strong>
+												<div class="clearfix"></div>
+											</div>
+											<label class="nptlbl">Countries <span>*</span></label>
+			              				</div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.nationality" required>
-								            <label class="nptlbl">Nationality <span>*</span></label>
-								        </div>
+			              				<div class="nptgrp txtarea">
+				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="nptusr.nationality">
+												<strong><%= n.nationality  %></strong>
+												<div class="clearfix"></div>
+											</div>
+											<label class="nptlbl">Nationality <span>*</span></label>
+			              				</div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp txtarea">
-								            <summernote ng-model="nptusr.cobjectives" config="summernote_options"></summernote>
+								            <summernote ng-model="smmrnte" config="summernote_options"></summernote>
 								            <label class="nptlbl">Career Objectives <span>*</span></label>
 								        </div>
 			              			</div>

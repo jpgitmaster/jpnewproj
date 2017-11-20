@@ -29,6 +29,8 @@ class Controller extends BaseController
         define('c_fawesome', 'plugins/font-awesome/css/font-awesome.min.css');
         define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
         define('c_summernote', 'plugins/summernote/dist/summernote.css');
+        
+        define('c_ngselect', 'plugins/ng-custom-select/css/style.css');
 
         define('c_global', 'css/app/global.css');
         
@@ -56,13 +58,18 @@ class Controller extends BaseController
     public function import_ng(){
         define('n_ng', 'plugins/angular/angular.min.js');
         define('n_ngresource', 'plugins/angular/angular-resource.min.js');
+        define('n_ngsanitize', 'plugins/angular/angular-sanitize.min.js');
         define('n_nganimate', 'plugins/angular/angular-animate.min.js');
-        define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.min.js');
+        define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.js');
+
+        define('n_ngselect', 'plugins/ng-custom-select/js/customselect.js');
+        define('n_ngfilter', 'plugins/ng-custom-select/angular-filter.js');
 
         define('n_home', 'app/web/home.js');
 
         // USER
         define('n_user', 'app/user.js');
         define('n_user_edit_profile', 'app/user/edit_profile.js');
+        define('n_user_job_list', 'app/user/job_list.js');
     }
 }

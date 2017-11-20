@@ -2,7 +2,7 @@
 @section('title', 'Jobs')
 
 @section('content')
-<div class="cntntwrpr">
+<div class="cntntwrpr" ng-controller="ctrlJobList">
 	<div class="cntntwrpr_rght">
 		<div class="cntnbx">
 			<div class="ttl">

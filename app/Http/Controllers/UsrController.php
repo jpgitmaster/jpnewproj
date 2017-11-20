@@ -19,7 +19,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
-            'ngular'    => [n_ng, n_ngresource, n_nganimate, n_summernote, n_user]
+            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
         $this->msg = [];
@@ -36,8 +36,8 @@ class UsrController extends Controller
     public function profile(){
     	return view('users.profile', [
             'scripts'       => array_merge($this->import['scripts'], [j_summernote, j_jcrop]),
-            'stylesheet'    => array_merge($this->import['stylesheet'], [c_summernote, c_jcrop, c_usr_edit_profile]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_user_edit_profile])
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_ngselect, c_summernote, c_jcrop, c_usr_edit_profile]),
+            'ngular'        =>  array_merge($this->import['ngular'], [n_ngselect, n_ngfilter, n_user_edit_profile])
             
         ]);
     }
@@ -46,7 +46,7 @@ class UsrController extends Controller
         return view('users.account_settings', [
             'scripts'       => $this->import['scripts'],
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_acct_settings]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_user_edit_profile])
+            'ngular'        =>  array_merge($this->import['ngular'], [n_user_job_list])
             
         ]);
     }
@@ -55,7 +55,7 @@ class UsrController extends Controller
         return view('users.jobs', [
             'scripts'       => $this->import['scripts'],
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_job_list]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_user_edit_profile])
+            'ngular'        =>  array_merge($this->import['ngular'], [n_user_job_list])
         ]);
     }
 
@@ -278,12 +278,45 @@ class UsrController extends Controller
 
     public function save_personal_info(Request $request){
         $current_user = DB::table('personal_information')->where('genid', Auth::user()->genid)->count();
+        
+        $replace_names = [
+            'fname'     => 'First Name',
+            'mname'     => 'Middle Name',
+            'lname'     => 'Last Name',
+            'gender'     => 'Gender',
+            'bdate'     => 'Birthdate',
+            'bplace'     => 'Birthplace'
+        ];
+        $usr = $request->all();
+        $usr = json_decode($usr['user'], true);
+        $usr = $usr ? $usr : [];
+        $validate = Validator::make($usr, [
+            'fname' => 'required|max:20',
+            'mname' => 'required|max:20',
+            'lname' => 'required|max:20',
+            'bdate' => 'required',
+            'bplace' => 'required',
+            'gender' => 'required',
+            'cstatus' => 'required'
+        ]);
+        $validate->setAttributeNames($replace_names);
+        $has_error = $this->hasError($validate);
 
-        if($current_user):
-            print_r('update');
+        if($has_error == true):
+            $this->msg['error']['prsnl'] = $validate->messages()->toArray();
         else:
-            print_r('add');
+            if($current_user):
+                print_r('update');
+            else:
+                print_r('add');
+            endif;
         endif;
+        print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+    }
+
+    public function get_countries(){
+        $countries = DB::table('countries')->get();
+        return json_encode($countries, JSON_PRETTY_PRINT);
     }
 
     public function get_current_user(){
