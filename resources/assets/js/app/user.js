@@ -1,8 +1,14 @@
 'use strict';
-var usrApp = angular.module('usrApp', ['ngResource', 'ngAnimate', 'usrHeader', 'usrContent']);
+
+var usrApp = angular.module('usrApp', ['ngSanitize', 'ngResource', 'ngAnimate', 'usrHeader', 'usrContent']);
 
 usrApp.factory('Usr', function ($resource) {
     return $resource('/user', {}, {
+        query : { method: 'GET', isArray: true }
+    });
+});
+usrApp.factory('Countries', function ($resource) {
+    return $resource('/countries', {}, {
         query : { method: 'GET', isArray: true }
     });
 });
@@ -25,7 +31,7 @@ usrHeader.controller('ctrlHeader', ['$scope', '$rootScope', '$timeout', '$http',
   });
 
 
-    $scope.timestamp = function(){
-    	return Date.now();
-    }
+  $scope.timestamp = function(){
+  	return Date.now();
+  }
 }]);

@@ -54,11 +54,14 @@ body, html{
     display: inline-block;
 
     &.err{
-        textarea, select, input[type=text], input[type=password]{
+        textarea, select, input[type=text], input[type=password], .custom-select .dropdown-toggle{
             border: 1px solid #923f3f;
         }
     }
-    
+    select{
+        height: 34px;
+    }
+
     textarea, select, input[type=text],
     input[type=password]{
         border: 1px solid #0077c0; padding: 8px 10px; font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif; width: 100%;

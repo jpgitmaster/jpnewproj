@@ -1,8 +1,16 @@
 'use strict'; 
-var usrContent = angular.module('usrContent', ['summernote']);
+var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr',
-	function($scope, $rootScope, $timeout, $http, $q, Usr) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr', 'Countries',
+	function($scope, $rootScope, $timeout, $http, $q, Usr, Countries) {
+
+    $scope.updateUsr = function(){
+        Usr.query().$promise.then(function(data) {
+            $rootScope.usr = data;
+        });
+    }
+
+    $scope.countries = Countries.query();
 
 	$scope.imgForm = function(imgtarget){
 		$timeout(function(){
@@ -55,6 +63,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     $scope.timestamp = function(){
     	return Date.now();
     }
+    
     $scope.updateUsr = function(){
     	Usr.query().$promise.then(function(data) {
             $rootScope.usr = data;
@@ -62,6 +71,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         });
     }
     $scope.updateUsr();
+
 
     $scope.deleteRecord = function(num){
     	$http({
@@ -140,23 +150,32 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         }
     }
 
-    $scope.savePersonalInfo = function(usr){
-        console.log(usr);
+    $scope.savePersonalInfo = function(nptusr){
+        console.log(nptusr);
         // $http({
         //     method: 'POST',
         //     url: '/user/save_personal_info',
         //     headers: { 'Content-Type': undefined },
         //     transformRequest: function (data) {
         //         var fd = new FormData();
-
         //         fd.append('user', angular.toJson(data.user));
         //         return fd;
         //     },
         //     data: {user: usr}
         // }).then(function(result){
-        //     console.log(result.data);
+        //     $scope.msg = result.data;
+        //     console.log($scope.msg);
         // });
     }
+
+    $scope.cstatus = [
+        {id: 1, name: 'Single'},
+        {id: 2, name: 'Married'},
+        {id: 3, name: 'Legally separated'},
+        {id: 4, name: 'Annulled'},
+        {id: 5, name: 'Widow'},
+        {id: 6, name: 'Widower'}
+    ];
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',

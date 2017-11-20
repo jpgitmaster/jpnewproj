@@ -85,8 +85,12 @@ body, html {
   display: inline-block;
 }
 
-.nptgrp.err textarea, .nptgrp.err select, .nptgrp.err input[type=text], .nptgrp.err input[type=password] {
+.nptgrp.err textarea, .nptgrp.err select, .nptgrp.err input[type=text], .nptgrp.err input[type=password], .nptgrp.err .custom-select .dropdown-toggle {
   border: 1px solid #923f3f;
+}
+
+.nptgrp select {
+  height: 34px;
 }
 
 .nptgrp textarea, .nptgrp select, .nptgrp input[type=text],
