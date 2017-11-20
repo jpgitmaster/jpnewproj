@@ -409,68 +409,70 @@
 				    </div>
 				    <div class="collapse">
 				      <div class="card-body">
-				        <div class="row no-gutters">
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="nptusr.email" required>
-							            <label class="nptlbl">Email <span>*</span></label>
-							            <span class="btmlbl">
-							            	<strong>e.g.</strong> yourname@gmail.com
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="nptusr.mobile" required>
-							            <label class="nptlbl">Mobile No. <span>*</span></label>
-							            <span class="btmlbl">
-							            	<strong>e.g.</strong> 0917-123-4567
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-4">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="nptusr.phone" required>
-							            <label class="nptlbl">Phone No.</label>
-							            <span class="btmlbl">
-							            	<strong>e.g.</strong> (632) 765-4321
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-12">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="nptusr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
-							            <label class="nptlbl">Present Address <span>*</span></label>
-							            <span class="btmlbl">
-							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-							            </span>
-							        </div>
-		              			</div>
-		              		</div>
-		              		<div class="col-lg-12">
-		              			<div class="bx">
-		              				<div class="nptgrp">
-							            <input type="text" ng-model="nptusr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
-							            <label class="nptlbl">Permanent Address </label>
-							            <span class="btmlbl">
-							            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-							            </span>
-							            <label class="ctrl">
-									        Same as Present Address
-									        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
-									        <div class="ctrl_indicator"></div>
-									    </label>
-							        </div>
-		              			</div>
-		              		</div>
-		              	</div>
+				        <form ng-submit="saveContactDtls(nptusr)" method="POST" novalidate>
+					        <div class="row no-gutters">
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="nptusr.email" required>
+								            <label class="nptlbl">Email <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>e.g.</strong> yourname@gmail.com
+								            </span>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="nptusr.mobile" required>
+								            <label class="nptlbl">Mobile No. <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>e.g.</strong> 0917-123-4567
+								            </span>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="nptusr.phone" required>
+								            <label class="nptlbl">Phone No.</label>
+								            <span class="btmlbl">
+								            	<strong>e.g.</strong> (632) 765-4321
+								            </span>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-12">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="nptusr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
+								            <label class="nptlbl">Present Address <span>*</span></label>
+								            <span class="btmlbl">
+								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+								            </span>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-12">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+								            <input type="text" ng-model="nptusr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
+								            <label class="nptlbl">Permanent Address </label>
+								            <span class="btmlbl">
+								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+								            </span>
+								            <label class="ctrl">
+										        Same as Present Address
+										        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
+										        <div class="ctrl_indicator"></div>
+										    </label>
+								        </div>
+			              			</div>
+			              		</div>
+			              	</div>
+			            </form>
 						<div class="crdftr" style="margin-top: 0;">
 			              	<button class="btn btn-success" type="submit">
 			              		Save Changes

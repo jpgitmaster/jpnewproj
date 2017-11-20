@@ -1,19 +1,17 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', 'Usr', 'Countries',
-	function($scope, $rootScope, $timeout, $http, Usr, Countries) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr', 'Countries',
+	function($scope, $rootScope, $timeout, $http, $q, Usr, Countries) {
 
-	Usr.query().$promise.then(function(data) {
-       $rootScope.usr = data;
-       // $scope.nptusr = $rootScope.usr[0];
-   	});
+    $scope.updateUsr = function(){
+        Usr.query().$promise.then(function(data) {
+            $rootScope.usr = data;
+        });
+    }
 
     $scope.countries = Countries.query();
 
-    $scope.updateUsr = function(){
-        $rootScope.usr = Usr.query();
-    }
 	$scope.imgForm = function(imgtarget){
 		$timeout(function(){
             $scope.imgtarget = imgtarget;
@@ -55,7 +53,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             	$scope.msg = '';
             }else{
                 $scope.msg = msg;
-                $rootScope.usr = Usr.query();
+                $scope.updateUsr();
 	            $scope.cancelUpload();
 	            angular.element('#cropModal').modal('hide');
             }
@@ -139,26 +137,26 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     };
     $scope.makeSameAddress = function(check){
         if(check == true){
-            $scope.nptusr.prmnnt_addrss = angular.copy($scope.nptusr.prsnt_addrss);
+            $scope.usr.prmnnt_addrss = angular.copy($scope.usr.prsnt_addrss);
         }
     }
 
-    $scope.savePersonalInfo = function(usr){
-        // console.log(usr);
-        $http({
-            method: 'POST',
-            url: '/user/save_personal_info',
-            headers: { 'Content-Type': undefined },
-            transformRequest: function (data) {
-                var fd = new FormData();
-                fd.append('user', angular.toJson(data.user));
-                return fd;
-            },
-            data: {user: usr}
-        }).then(function(result){
-            $scope.msg = result.data;
-            console.log($scope.msg);
-        });
+    $scope.savePersonalInfo = function(nptusr){
+        console.log(nptusr);
+        // $http({
+        //     method: 'POST',
+        //     url: '/user/save_personal_info',
+        //     headers: { 'Content-Type': undefined },
+        //     transformRequest: function (data) {
+        //         var fd = new FormData();
+        //         fd.append('user', angular.toJson(data.user));
+        //         return fd;
+        //     },
+        //     data: {user: usr}
+        // }).then(function(result){
+        //     $scope.msg = result.data;
+        //     console.log($scope.msg);
+        // });
     }
 
     $scope.cstatus = [
@@ -169,7 +167,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         {id: 5, name: 'Widow'},
         {id: 6, name: 'Widower'}
     ];
-    
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',

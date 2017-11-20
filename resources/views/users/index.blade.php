@@ -28,7 +28,7 @@
       </div>
     </a>
   </div>
-  <div class="hdr_right" ng-controller="ctrlHeader">
+  <div class="hdr_right" ng-app="usrHeader" ng-controller="ctrlHeader">
     <div class="picture">
       <div class="pctrname">
         <div class="ttl">
