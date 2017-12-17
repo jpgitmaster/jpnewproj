@@ -19,9 +19,6 @@ usrApp.controller('ctrlApp', ['$scope', '$rootScope', '$timeout', '$http', '$q',
   var deferred = $q.defer();
   $rootScope.usr = Usr.query();
   
-  $scope.$on('testingjp', function(data){
-    $rootScope.usr = data;
-  });
   // Usr.query().$promise.then(function(data) {
  //     $rootScope.usr = data;
  //     deferred.resolve($rootScope.usr);

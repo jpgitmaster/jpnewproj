@@ -221,12 +221,12 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<form name="formLogin" ng-submit="savePersonalInfo(nptusr)" novalidate>
+				      	<form name="formLogin" ng-submit="savePersonalInfo(frm1)" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['fname']}" ng-mouseover="fcs_fname = true" ng-mouseleave="fcs_fname = false">
-								            <input type="text" ng-model="nptusr.fname" required>
+								            <input type="text" ng-model="frm1.fname" required>
 								            <label class="nptlbl">First Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['fname'] && fcs_fname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -242,7 +242,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['mname']}" ng-mouseover="fcs_mname = true" ng-mouseleave="fcs_mname = false">
-								            <input type="text" ng-model="nptusr.mname" required>
+								            <input type="text" ng-model="frm1.mname" required>
 								            <label class="nptlbl">Middle Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['mname'] && fcs_mname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -258,7 +258,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['lname']}" ng-mouseover="fcs_lname = true" ng-mouseleave="fcs_lname = false">
-								            <input type="text" ng-model="nptusr.lname" required>
+								            <input type="text" ng-model="frm1.lname" required>
 								            <label class="nptlbl">Last Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['lname'] && fcs_lname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -277,11 +277,11 @@
 								            <label class="nptlbl">Gender: <span>*</span></label>
 				              				<div class="rdbx" ng-mouseover="fcs_gndr = true" ng-mouseleave="fcs_gndr = false">
 				              					<div class="mlbx">
-						                          <input type="radio" id="male" class="btnbx" ng-model="nptusr.gender" value="2" required>
+						                          <input type="radio" id="male" class="btnbx" ng-model="frm1.gender" value="2" required>
 						                          <label for="male">Male</label>
 						                        </div>
 						                        <div class="fmlbx">
-						                          <input type="radio" id="female" class="btnbx" ng-model="nptusr.gender" value="1" required>
+						                          <input type="radio" id="female" class="btnbx" ng-model="frm1.gender" value="1" required>
 						                          <label for="female">Female</label>
 						                        </div>
 				              				</div>
@@ -298,8 +298,9 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
+			              				<input type="hidden" ng-model="frm1.age" required>
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bdate']}" ng-mouseover="fcs_bdate = true" ng-mouseleave="fcs_bdate = false">
-								            <input type="text" ng-model="nptusr.bdate" required>
+								            <input type="text" ng-model="frm1.bdate" ng-change="getAge(frm1.bdate)" required>
 								            <label class="nptlbl">Birthdate <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bdate'] && fcs_bdate === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -318,7 +319,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bplace']}" ng-mouseover="fcs_bplace = true" ng-mouseleave="fcs_bplace = false">
-								            <input type="text" ng-model="nptusr.bplace" required>
+								            <input type="text" ng-model="frm1.bplace" required>
 								            <label class="nptlbl">Birthplace <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bplace'] && fcs_bplace === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -334,8 +335,8 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
-				              				<input type="hidden" ng-model="nptusr.cstatus">
-				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="nptusr.cstatus = cvlstatus['id']">
+				              				<input type="hidden" ng-model="frm1.cstatus">
+				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="frm1.cstatus = cvlstatus['id']">
 												<strong><%= cs.name  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -354,9 +355,9 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['country']}" ng-mouseover="fcs_country = true" ng-mouseleave="fcs_country = false">
-			              					<input type="hidden" ng-model="nptusr.country">
-			              					<div custom-select="c as c.en_short_name for c in countries | filter: {en_short_name: $searchTerm}" ng-model="country" ng-change="nptusr.country = country['en_short_name']">
-												<strong><%= c.en_short_name  %></strong>
+			              					<input type="hidden" ng-model="frm1.country">
+			              					<div custom-select="c as c.country for c in countries | filter: {country: $searchTerm}" ng-model="country" ng-change="frm1.country = country['id']">
+												<strong><%= c.country  %></strong>
 												<div class="clearfix"></div>
 											</div>
 											<label class="nptlbl">Countries <span>*</span></label>
@@ -374,8 +375,8 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['nationality']}" ng-mouseover="fcs_nationality = true" ng-mouseleave="fcs_nationality = false">
-			              					<input type="hidden" ng-model="nptusr.nationality">
-				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="ntnlty" ng-change="nptusr.nationality = ntnlty['nationality']">
+			              					<input type="hidden" ng-model="frm1.nationality">
+				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="ntnlty" ng-change="frm1.nationality = ntnlty['id']">
 												<strong><%= n.nationality  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -394,10 +395,10 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['cobjctves']}" ng-mouseover="fcs_cobjctves = true" ng-mouseleave="fcs_cobjctves = false">
-								            <textarea ng-model="nptusr.cobjctves" maxlength="200" required></textarea>
+								            <textarea ng-model="frm1.cobjctves" maxlength="200" required></textarea>
 								            <label class="nptlbl">Career Objectives <span>*</span></label>
 								            <div class="totlngth">
-							            		<%= 200 - nptusr.cobjctves.length %> Character<%= nptusr.cobjctves.length >= 199 ? '' : 's' %> Remaining
+							            		<%= 200 - frm1.cobjctves.length %> Character<%= frm1.cobjctves.length >= 199 ? '' : 's' %> Remaining
 								            </div>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cobjctves'] && fcs_cobjctves === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -439,12 +440,12 @@
 				    </div>
 				    <div class="collapse">
 				      <div class="card-body">
-				        <form ng-submit="saveContactDtls(nptusr)" method="POST" novalidate>
+				        <form ng-submit="saveContactDtls(frm2)" method="POST" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.email" required>
+								            <input type="text" ng-model="frm2.email" required>
 								            <label class="nptlbl">Email <span>*</span></label>
 								            <span class="btmlbl">
 								            	<strong>e.g.</strong> yourname@gmail.com
@@ -455,7 +456,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.mobile" ng-pattern="/^\d+$/" required>
+								            <input type="text" ng-model="frm2.mobile" ng-pattern="/^\d+$/" required>
 								            <label class="nptlbl">Mobile No. <span>*</span></label>
 								            <span class="btmlbl">
 								            	<strong>e.g.</strong> 0917-123-4567
@@ -466,7 +467,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.phone" required>
+								            <input type="text" ng-model="frm2.phone" required>
 								            <label class="nptlbl">Phone No.</label>
 								            <span class="btmlbl">
 								            	<strong>e.g.</strong> (632) 765-4321
@@ -477,7 +478,7 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.prsnt_addrss" ng-change="makeSameAddress(check)" required>
+								            <input type="text" ng-model="frm2.prsnt_addrss" ng-change="makeSameAddress(check)" required>
 								            <label class="nptlbl">Present Address <span>*</span></label>
 								            <span class="btmlbl">
 								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
@@ -488,7 +489,7 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
+								            <input type="text" ng-model="frm2.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
 								            <label class="nptlbl">Permanent Address </label>
 								            <span class="btmlbl">
 								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code

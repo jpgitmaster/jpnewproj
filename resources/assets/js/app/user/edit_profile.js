@@ -135,26 +135,26 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     };
     $scope.makeSameAddress = function(check){
         if(check == true){
-            $scope.usr.prmnnt_addrss = angular.copy($scope.usr.prsnt_addrss);
+            $scope.frm2.prmnnt_addrss = angular.copy($scope.frm2.prsnt_addrss);
         }
     }
 
-    $scope.savePersonalInfo = function(nptusr){
-        console.log(nptusr);
-        // $http({
-        //     method: 'POST',
-        //     url: '/user/save_personal_info',
-        //     headers: { 'Content-Type': undefined },
-        //     transformRequest: function (data) {
-        //         var fd = new FormData();
-        //         fd.append('user', angular.toJson(data.user));
-        //         return fd;
-        //     },
-        //     data: {user: usr}
-        // }).then(function(result){
-        //     $scope.msg = result.data;
-        //     console.log($scope.msg);
-        // });
+    $scope.savePersonalInfo = function(frm1){
+        // console.log(frm1);
+        $http({
+            method: 'POST',
+            url: '/user/save_personal_info',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+                fd.append('user', angular.toJson(data.user));
+                return fd;
+            },
+            data: {user: frm1}
+        }).then(function(result){
+            $scope.msg = result.data;
+            console.log($scope.msg);
+        });
     }
 
     $scope.cstatus = [
@@ -165,6 +165,31 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         {id: 5, name: 'Widow'},
         {id: 6, name: 'Widower'}
     ];
+
+    $scope.getAge = function(bday){
+        var current_date    = new Date();
+
+        var current_yr          = current_date.getFullYear();
+        var current_mo          = current_date.getMonth();
+        
+        var bdate           = new Date(bday);
+        if ( Object.prototype.toString.call(bdate) === "[object Date]" ) {
+
+            if (!isNaN(bdate.getTime())){
+                var bdate_yr        = bdate.getFullYear();
+                var bdate_mo        = bdate.getMonth();
+                var your_yr         = current_yr - bdate_yr;
+                var your_mo         = current_mo - bdate_mo;
+                if(your_mo < 0 || (your_mo === 0 && current_date.getDate() < bdate.getDate())){
+                    your_yr--;
+                }
+
+                $scope.frm1.age = your_yr;
+                // console.log($scope.frm1.age);
+            }
+        }
+
+    }
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',

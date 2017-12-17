@@ -312,41 +312,40 @@ class UsrController extends Controller
         if($has_error == true):
             $this->msg['error']['prsnl'] = $validate->messages()->toArray();
         else:
+            DB::table('primary_info')
+            ->where('genid', Auth::user()->genid)
+            ->update([
+                'fname'     => $usr['fname'],
+                'mname'     => $usr['mname'],
+                'lname'     => $usr['lname']
+            ]);
+            if(isset($usr['bdate'])):
+                $usr['bdate'] = date('Y-m-d', strtotime($usr['bdate']));
+            endif;
             if($current_user):
-                DB::table('primary_info')
-                    ->where('genid', Auth::user()->genid)
-                    ->update([
-                        'fname'     => $usr['fname'],
-                        'mname'     => $usr['mname'],
-                        'lname'     => $usr['lname']
-                    ]);
                 DB::table('personal_information')
                     ->where('genid', Auth::user()->genid)
                     ->update([
-                        'bdate'       => $usr['bdate'],
+                        'age'         => $usr['age'],
+                        'bday'        => $usr['bdate'],
                         'bplace'      => $usr['bplace'],
                         'gender'      => $usr['gender'],
                         'cstatus'     => $usr['cstatus'],
                         'country'     => $usr['country'],
                         'nationality' => $usr['nationality'],
-                        'cobjctves'   => $usr['cobjctves']
+                        'objectives'   => $usr['cobjctves']
                     ]);
             else:
-                DB::table('primary_info')->insert([
-                    'genid' => Auth::user()->genid,
-                    'fname'         => $usr['fname'],
-                    'mname'         => $usr['mname'],
-                    'lname'         => $usr['lname']
-                ]);
                 DB::table('personal_information')->insert([
                     'genid' => Auth::user()->genid,
-                    'bdate'         => $usr['bdate'],
+                    'age'           => $usr['age'],
+                    'bday'         => $usr['bdate'],
                     'bplace'        => $usr['bplace'],
                     'gender'        => $usr['gender'],
                     'cstatus'       => $usr['cstatus'],
                     'country'       => $usr['country'],
                     'nationality'   => $usr['nationality'],
-                    'cobjctves'     => $usr['cobjctves']
+                    'objectives'     => $usr['cobjctves']
                 ]);
             endif;
         endif;
