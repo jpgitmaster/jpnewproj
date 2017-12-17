@@ -79,6 +79,16 @@
   padding: 10px 50px;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea label, #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.cstmdrpdwn label {
+  top: -13px;
+  left: 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #0077c0;
+  text-transform: uppercase;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel {
   border: 1px solid #0077c0;
 }
@@ -93,6 +103,10 @@
   background-color: transparent;
   border-color: transparent;
   color: #0071b7;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-toolbar.panel-heading .btn-default.active {
+  background-color: #E9E9E9;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-toolbar.panel-heading .btn-default.dropdown-toggle::after {
@@ -126,14 +140,13 @@
   border-color: #0077c0;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea label {
-  top: -13px;
-  left: 0;
-  font-size: 10px;
-  letter-spacing: 1px;
-  font-weight: bold;
-  color: #0077c0;
-  text-transform: uppercase;
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .popcntnr {
+  right: -20px;
+  bottom: 60px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.cstmdrpdwn .popcntnr {
+  bottom: 34px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio.err .rdbx .btnbx + label {

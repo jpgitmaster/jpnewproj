@@ -19,7 +19,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
-            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_user]
+            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_ngselect, n_ngfilter, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
         $this->msg = [];
@@ -37,7 +37,7 @@ class UsrController extends Controller
     	return view('users.profile', [
             'scripts'       => array_merge($this->import['scripts'], [j_summernote, j_jcrop]),
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_ngselect, c_summernote, c_jcrop, c_usr_edit_profile]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_ngselect, n_ngfilter, n_user_edit_profile])
+            'ngular'        =>  array_merge($this->import['ngular'], [n_user_edit_profile])
             
         ]);
     }
@@ -280,24 +280,31 @@ class UsrController extends Controller
         $current_user = DB::table('personal_information')->where('genid', Auth::user()->genid)->count();
         
         $replace_names = [
-            'fname'     => 'First Name',
-            'mname'     => 'Middle Name',
-            'lname'     => 'Last Name',
-            'gender'     => 'Gender',
-            'bdate'     => 'Birthdate',
-            'bplace'     => 'Birthplace'
+            'fname'       => 'First Name',
+            'mname'       => 'Middle Name',
+            'lname'       => 'Last Name',
+            'gender'      => 'Gender',
+            'bdate'       => 'Birthdate',
+            'bplace'      => 'Birthplace',
+            'cstatus'     => 'Civil Status',
+            'country'     => 'Country',
+            'nationality' => 'Nationality',
+            'cobjctves'   => 'Career Objectives'
         ];
         $usr = $request->all();
         $usr = json_decode($usr['user'], true);
         $usr = $usr ? $usr : [];
         $validate = Validator::make($usr, [
-            'fname' => 'required|max:20',
-            'mname' => 'required|max:20',
-            'lname' => 'required|max:20',
-            'bdate' => 'required',
-            'bplace' => 'required',
-            'gender' => 'required',
-            'cstatus' => 'required'
+            'fname'       => 'required|max:20',
+            'mname'       => 'required|max:20',
+            'lname'       => 'required|max:20',
+            'bdate'       => 'required|date|date_format:m/d/Y',
+            'bplace'      => 'required',
+            'gender'      => 'required',
+            'cstatus'     => 'required',
+            'country'     => 'required',
+            'nationality' => 'required',
+            'cobjctves'   => 'required|max:200',
         ]);
         $validate->setAttributeNames($replace_names);
         $has_error = $this->hasError($validate);
@@ -306,9 +313,41 @@ class UsrController extends Controller
             $this->msg['error']['prsnl'] = $validate->messages()->toArray();
         else:
             if($current_user):
-                print_r('update');
+                DB::table('primary_info')
+                    ->where('genid', Auth::user()->genid)
+                    ->update([
+                        'fname'     => $usr['fname'],
+                        'mname'     => $usr['mname'],
+                        'lname'     => $usr['lname']
+                    ]);
+                DB::table('personal_information')
+                    ->where('genid', Auth::user()->genid)
+                    ->update([
+                        'bdate'       => $usr['bdate'],
+                        'bplace'      => $usr['bplace'],
+                        'gender'      => $usr['gender'],
+                        'cstatus'     => $usr['cstatus'],
+                        'country'     => $usr['country'],
+                        'nationality' => $usr['nationality'],
+                        'cobjctves'   => $usr['cobjctves']
+                    ]);
             else:
-                print_r('add');
+                DB::table('primary_info')->insert([
+                    'genid' => Auth::user()->genid,
+                    'fname'         => $usr['fname'],
+                    'mname'         => $usr['mname'],
+                    'lname'         => $usr['lname']
+                ]);
+                DB::table('personal_information')->insert([
+                    'genid' => Auth::user()->genid,
+                    'bdate'         => $usr['bdate'],
+                    'bplace'        => $usr['bplace'],
+                    'gender'        => $usr['gender'],
+                    'cstatus'       => $usr['cstatus'],
+                    'country'       => $usr['country'],
+                    'nationality'   => $usr['nationality'],
+                    'cobjctves'     => $usr['cobjctves']
+                ]);
             endif;
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));

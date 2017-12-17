@@ -2,32 +2,32 @@
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr', 'Countries',
-	function($scope, $rootScope, $timeout, $http, $q, Usr, Countries) {
+    function($scope, $rootScope, $timeout, $http, $q, Usr, Countries) {
 
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
             $rootScope.usr = data;
         });
     }
-
+    
     $scope.countries = Countries.query();
 
-	$scope.imgForm = function(imgtarget){
-		$timeout(function(){
+    $scope.imgForm = function(imgtarget){
+        $timeout(function(){
             $scope.imgtarget = imgtarget;
         }, 10);
-	}
+    }
 
-	$scope.img_coordinates = function(coordinates){
+    $scope.img_coordinates = function(coordinates){
         $scope.coordinates = coordinates;
     }
 
     $scope.cancelUpload = function(){
         $scope.imgtarget = '';
-    	angular.element('.upload').val('');
-    	angular.element('#target').data('Jcrop').destroy();
-    	angular.element('#target').attr('src', '');
-	}
+        angular.element('.upload').val('');
+        angular.element('#target').data('Jcrop').destroy();
+        angular.element('#target').attr('src', '');
+    }
 
     $scope.uploadFile = function(files){
         $http({
@@ -45,36 +45,25 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             },
             data: {img_files: files, coordinates: $scope.coordinates}
         }).then(function(result){
-        	console.log(result.data);
-   			
-   			var msg = result.data;
+            console.log(result.data);
+            
+            var msg = result.data;
 
-   			if(!msg['dp']['success']){
-            	$scope.msg = '';
+            if(!msg['dp']['success']){
+                $scope.msg = '';
             }else{
                 $scope.msg = msg;
                 $scope.updateUsr();
-	            $scope.cancelUpload();
-	            angular.element('#cropModal').modal('hide');
+                $scope.timestamp();
+                $scope.cancelUpload();
+                angular.element('#cropModal').modal('hide');
             }
         });
     }
 
-    $scope.timestamp = function(){
-    	return Date.now();
-    }
-    
-    $scope.updateUsr = function(){
-    	Usr.query().$promise.then(function(data) {
-            $rootScope.usr = data;
-            $scope.nptusr = data[0];
-        });
-    }
-    $scope.updateUsr();
-
 
     $scope.deleteRecord = function(num){
-    	$http({
+        $http({
             method: 'POST',
             url: '/delete_record',
             headers: { 'Content-Type': undefined },
@@ -86,16 +75,16 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             },
             data: {num: num}
         }).then(function(result){
-        	var msg = result.data;
-        	var msg_dtl = [];
-        	if(msg['dpimg']){
-        		msg_dtl = msg['dpimg']['dlt']['success'];
-        	}
-        	if(msg['rsm']){
-        		msg_dtl = msg['rsm']['dlt']['success'];
-        	}
-        	if(!msg_dtl){
-            	$scope.msg = '';
+            var msg = result.data;
+            var msg_dtl = [];
+            if(msg['dpimg']){
+                msg_dtl = msg['dpimg']['dlt']['success'];
+            }
+            if(msg['rsm']){
+                msg_dtl = msg['rsm']['dlt']['success'];
+            }
+            if(!msg_dtl){
+                $scope.msg = '';
             }else{
                 $scope.msg = msg;
                 $rootScope.usr = Usr.query();
@@ -104,14 +93,14 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     }
 
     $scope.clsbbl = function(num){
-    	switch(num){
-    		case 0:
-    			$scope.dltdp = false;
-    			break;
-    		case 1:
-    			$scope.dltrsm = false;
-    			break;
-    	}
+        switch(num){
+            case 0:
+                $scope.dltdp = false;
+                break;
+            case 1:
+                $scope.dltrsm = false;
+                break;
+        }
     }
 
     angular.element('#edtprof_accrdn .card:nth-child(1) .collapse').collapse('show');
@@ -179,37 +168,37 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
-	function($parse, $http, $timeout){
-	return {
-	    restrict: 'A',
-	    link: function(scope, elm, attrs){
-	        elm.bind('change', function(){
-	            
-	            var files = elm[0].files;
-	            $parse(attrs.fileInput).assign(scope, files);
-	            scope.$apply();
-	            
-	            scope.shw_avatarmdl = true;
-	            scope.loader = true;
+    function($parse, $http, $timeout){
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs){
+            elm.bind('change', function(){
+                
+                var files = elm[0].files;
+                $parse(attrs.fileInput).assign(scope, files);
+                scope.$apply();
+                
+                scope.shw_avatarmdl = true;
+                scope.loader = true;
 
-	            $http({
-	                method: 'POST',
-	                url: "/validate_dp",
-	                headers: { 'Content-Type': undefined },
-	                transformRequest: function (data) {
-	                    var fd = new FormData();
-	                    angular.forEach(data.img_files, function(file){
-	                       fd.append('file', file);
-	                    });
-	                    return fd;
-	                },
-	                data: {img_files: files}
-	            }).then(function(result){
-	            	var msg = result.data;
+                $http({
+                    method: 'POST',
+                    url: "/validate_dp",
+                    headers: { 'Content-Type': undefined },
+                    transformRequest: function (data) {
+                        var fd = new FormData();
+                        angular.forEach(data.img_files, function(file){
+                           fd.append('file', file);
+                        });
+                        return fd;
+                    },
+                    data: {img_files: files}
+                }).then(function(result){
+                    var msg = result.data;
                     scope.shw_avatarmdl = false;
                     
                     if(!msg['dp']['error']['file']){
-                    	angular.element('#cropModal').appendTo('body').modal({
+                        angular.element('#cropModal').appendTo('body').modal({
                             backdrop: 'static'
                         });
                         var file = files[0];
@@ -217,62 +206,62 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
                             var reader = new FileReader();
                             reader.readAsDataURL(file);
                             reader.onload = function(e) {
-                            	var imgTarget = e.target.result;
-                            	scope.imgForm(imgTarget);
+                                var imgTarget = e.target.result;
+                                scope.imgForm(imgTarget);
                             }
                         }(file));
                         scope.msg = '';
                     }else{
                         scope.msg = msg;
                     }
-	            });
-	        });
-	    }
-	}
+                });
+            });
+        }
+    }
 }]);
 
 usrContent.directive('fileResume', ['$parse', '$http', '$timeout',
-	function($parse, $http, $timeout){
-	return {
-	    restrict: 'A',
-	    link: function(scope, elm, attrs){
-	        elm.bind('change', function(){
-	            var files = elm[0].files;
-	            $parse(attrs.fileResume).assign(scope, files);
-	            scope.$apply();
-	            
-	            scope.resume_loader = true;
+    function($parse, $http, $timeout){
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs){
+            elm.bind('change', function(){
+                var files = elm[0].files;
+                $parse(attrs.fileResume).assign(scope, files);
+                scope.$apply();
+                
+                scope.resume_loader = true;
 
-	            $http({
-	                method: 'POST',
-	                url: "/upload_resume",
-	                headers: { 'Content-Type': undefined },
-	                transformRequest: function (data) {
-	                    var fd = new FormData();
-	                    angular.forEach(data.resumefiles, function(file){
-	                       fd.append('file', file);
-	                    });
-	                    return fd;
-	                },
-	                data: {resumefiles: files}
-	            }).then(function(result){
-	            	var msg = result.data;
+                $http({
+                    method: 'POST',
+                    url: "/upload_resume",
+                    headers: { 'Content-Type': undefined },
+                    transformRequest: function (data) {
+                        var fd = new FormData();
+                        angular.forEach(data.resumefiles, function(file){
+                           fd.append('file', file);
+                        });
+                        return fd;
+                    },
+                    data: {resumefiles: files}
+                }).then(function(result){
+                    var msg = result.data;
                     console.log(msg);
                     $timeout(function(){
-                    	scope.resume_loader = false;
-                    	scope.updateUsr();
-                    	if(!msg['resume']){
-	                    	scope.msg = '';
-	                    }else{
-	                        scope.msg = msg;
-	                    }
-	                    angular.element('.preview_resume .upload').val('');
-	                    
+                        scope.resume_loader = false;
+                        scope.updateUsr();
+                        if(!msg['resume']){
+                            scope.msg = '';
+                        }else{
+                            scope.msg = msg;
+                        }
+                        angular.element('.preview_resume .upload').val('');
+                        
                     }, 500);
-	            });
-	        });
-	    }
-	}
+                });
+            });
+        }
+    }
 }]);
 
 
@@ -282,13 +271,13 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
         link: function (scope, element, attrs)
         {
             $(function(){
-            	$('#cropModal').on('shown.bs.modal', function () {
-            		
-            		$timeout(function(){
-            			scope.loader = false;
-            			$('.imgcropper, .prvw').hide().delay('200').fadeIn();
-            		}, 1000)
-				  var jcrop_api,
+                $('#cropModal').on('shown.bs.modal', function () {
+                    
+                    $timeout(function(){
+                        scope.loader = false;
+                        $('.imgcropper, .prvw').hide().delay('200').fadeIn();
+                    }, 1000)
+                  var jcrop_api,
                   boundx,
                   boundy,
 
@@ -318,26 +307,26 @@ usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', functi
                     jcrop_api.animateTo([510, 300, 190, 100]);
                   });
 
-	                function updatePreview(c){
-	                    var imgx = Math.round(c.x);
-	                    var imgy = Math.round(c.y);
-	                    var imgw = Math.round(c.w);
-	                    var imgh = Math.round(c.h);
-	                    var imgw2 = xsize;
-	                    var imgh2 = ysize;
-	                    scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
-	                    if (parseInt(c.w) > 0){
-	                      var rx = xsize / c.w;
-	                      var ry = ysize / c.h;
-	                      $pimg.css({
-	                        width: Math.round(rx * boundx) + 'px',
-	                        height: Math.round(ry * boundy) + 'px',
-	                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
-	                        marginTop: '-' + Math.round(ry * c.y) + 'px'
-	                      });
-	                  	}
-	                };
-				})
+                    function updatePreview(c){
+                        var imgx = Math.round(c.x);
+                        var imgy = Math.round(c.y);
+                        var imgw = Math.round(c.w);
+                        var imgh = Math.round(c.h);
+                        var imgw2 = xsize;
+                        var imgh2 = ysize;
+                        scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
+                        if (parseInt(c.w) > 0){
+                          var rx = xsize / c.w;
+                          var ry = ysize / c.h;
+                          $pimg.css({
+                            width: Math.round(rx * boundx) + 'px',
+                            height: Math.round(ry * boundy) + 'px',
+                            marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                            marginTop: '-' + Math.round(ry * c.y) + 'px'
+                          });
+                        }
+                    };
+                })
             });
         }
     };

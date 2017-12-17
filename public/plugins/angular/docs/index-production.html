@@ -27,20 +27,21 @@
 
 
       addTag('link', {rel: 'stylesheet', href: 'components/bootstrap-3.1.1/css/bootstrap.min.css', type: 'text/css'});
+      addTag('link', {rel: 'stylesheet', href: 'components/open-sans-fontface-1.4.0/open-sans.css', type: 'text/css'});
       addTag('link', {rel: 'stylesheet', href: 'css/prettify-theme.css', type: 'text/css'});
       addTag('link', {rel: 'stylesheet', href: 'css/angular-topnav.css', type: 'text/css'});
       addTag('link', {rel: 'stylesheet', href: 'css/docs.css', type: 'text/css'});
       addTag('link', {rel: 'stylesheet', href: 'css/animations.css', type: 'text/css'});
       
 
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-resource.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-cookies.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-sanitize.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-touch.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-animate.min.js' }, sync);
-      addTag('script', {src: 'components/marked-0.3.6/marked.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-cookies.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-sanitize.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-touch.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js' }, sync);
+      addTag('script', {src: 'components/marked-0.3.6/lib/marked.js' }, sync);
       addTag('script', {src: 'js/angular-bootstrap/dropdown-toggle.min.js' }, sync);
       addTag('script', {src: 'components/lunr-0.7.2/lunr.min.js' }, sync);
       addTag('script', {src: 'components/google-code-prettify-1.0.1/src/prettify.js' }, sync);
@@ -49,7 +50,6 @@
       addTag('script', {src: 'https://code.angularjs.org/snapshot/docs/js/all-versions-data.js' }, sync);
       addTag('script', {src: 'js/pages-data.js' }, sync);
       addTag('script', {src: 'js/nav-data.js' }, sync);
-      addTag('script', {src: 'js/deployment-data-production.js' }, sync);
       addTag('script', {src: 'js/docs.min.js' }, sync);
       
 
@@ -91,7 +91,7 @@
 </head>
 <body class="homepage">
   <div id="wrapper">
-    <header class="header">
+    <header class="header" scroll-y-offset-element>
       <nav id="navbar-main" class="navbar navbar-fixed-top">
         <div class="navbar-inner" ng-controller="DocsSearchCtrl">
           <div class="container">
@@ -177,7 +177,7 @@
           </div>
         </div>
       </nav>
-      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top" scroll-y-offset-element>
+      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top">
         <div class="container main-grid main-header-grid">
           <div class="grid-left">
             <version-picker></version-picker>

@@ -86,130 +86,148 @@
 								    padding: 10px 50px;
 								}
 							}
-							.nptgrp.txtarea{
-								.note-frame.panel{
-									border: 1px solid #0077c0;
-									.note-toolbar.panel-heading{
-										background: #FFF;
-										padding: 0 5px 4px;
-										border-bottom: 1px solid #0077c0;
-										.btn-default{
+							.nptgrp{
+								&.txtarea, &.cstmdrpdwn{
+									label{
+										top: -13px;
+							            left: 0;
+							            font-size: 10px;
+							            letter-spacing: 1px;
+							            font-weight: bold;
+							            color: #0077c0;
+							            text-transform: uppercase;
+									}
+								}
+								&.txtarea{
+									.note-frame.panel{
+										border: 1px solid #0077c0;
+										.note-toolbar.panel-heading{
+											background: #FFF;
+											padding: 0 5px 4px;
+											border-bottom: 1px solid #0077c0;
+											.btn-default{
+												background-color: transparent;
+												border-color: transparent;
+												color: #0071b7;
+
+												&.active{
+													background-color: #E9E9E9;
+												}
+												&.dropdown-toggle::after{
+													display: none;
+												}
+											}
+										}
+										.note-editable.panel-body{
+											background-color: #FFF;
+											padding: 10px 15px;
+											min-height: 100px;
+											font-size: small;
+											ul{
+												padding-left: 20px;
+											}
+										}
+										
+										.note-statusbar{
 											background-color: transparent;
-											border-color: transparent;
-											color: #0071b7;
 
-											&.dropdown-toggle::after{
-												display: none;
+											.note-resizebar{
+												padding-top: 0;
+												
+												.note-icon-bar{
+													border-top-color: #0077c0;
+												}
 											}
 										}
-									}
-									.note-editable.panel-body{
-										background-color: #FFF;
-										padding: 10px 15px;
-										min-height: 100px;
-										font-size: small;
-										ul{
-											padding-left: 20px;
+										.dropdown-menu{
+											border-color: #0077c0;
 										}
 									}
-									
-									.note-statusbar{
-										background-color: transparent;
+									.popcntnr{
+									    right: -20px;
+									    bottom: 60px;
+									}
+								}
 
-										.note-resizebar{
-											padding-top: 0;
-											
-											.note-icon-bar{
-												border-top-color: #0077c0;
-											}
+								&.cstmdrpdwn{
+									.popcntnr{
+									    bottom: 34px;
+									}
+								}
+
+								&.radio{
+									&.err{
+										.rdbx .btnbx + label{
+											border: 1px solid #923f3f;
 										}
 									}
-									.dropdown-menu{
-										border-color: #0077c0;
+									label{
+										top: -13px;
+							            left: 0;
+							            font-size: 10px;
+							            letter-spacing: 1px;
+							            font-weight: bold;
+							            color: #0077c0;
+							            text-transform: uppercase;
 									}
-								}
-								label{
-									top: -13px;
-						            left: 0;
-						            font-size: 10px;
-						            letter-spacing: 1px;
-						            font-weight: bold;
-						            color: #0077c0;
-						            text-transform: uppercase;
-								}
-							}
-							.nptgrp.radio{
-								&.err{
-									.rdbx .btnbx + label{
-										border: 1px solid #923f3f;
-									}
-								}
-								label{
-									top: -13px;
-						            left: 0;
-						            font-size: 10px;
-						            letter-spacing: 1px;
-						            font-weight: bold;
-						            color: #0077c0;
-						            text-transform: uppercase;
-								}
-								.rdbx{
-									position: relative;
-									float: left;
-									width: 100%;
-									clear: both;
-
-									.fmlbx{
-								    	width: 50%;
-								    	float: right;
-								    	padding: 0;
-
-								    	& .btnbx + label{
-								    		border-left: 0;
-								    	}
-								    }
-									.mlbx{
-										width: 50%;
+									.rdbx{
+										position: relative;
 										float: left;
-										padding: 0;
-									}
-									.btnbx {
-									  display: none;
-									  & + label {
-									  	position: relative;
-									    pointer-events: auto;
-									    top: 0;
-									    left: 0;
-									    width: 100%;
-									    display: inline-block;
-									    padding: 6px 15px;
-									    font: normal 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
-									    margin: 0;
-									    text-transform: capitalize;
-									    line-height: 20px;
-									    color: #5d5d5d;
-									    text-align: center;
-									    vertical-align: middle;
-									    cursor: pointer;
-									    background-color: #FFF;
-									    border: 1px solid #0077c0;
-									    letter-spacing: 0;
-									  }
+										width: 100%;
+										clear: both;
 
-									  &:checked + label{
-									    background-image: none;
-									    color: #FFF;
-									    outline: 0;
-									    
-									    
-									    &[for=female]{
-									      background-color: #fb2aa7; border: 1px solid #fb2aa7;
-									    }
+										.fmlbx{
+									    	width: 50%;
+									    	float: right;
+									    	padding: 0;
 
-									    &[for=male]{
-									      background-color: #0077c0; border: 1px solid #0077c0;
+									    	& .btnbx + label{
+									    		border-left: 0;
+									    	}
 									    }
-									  }
+										.mlbx{
+											width: 50%;
+											float: left;
+											padding: 0;
+										}
+										.btnbx {
+										  display: none;
+										  & + label {
+										  	position: relative;
+										    pointer-events: auto;
+										    top: 0;
+										    left: 0;
+										    width: 100%;
+										    display: inline-block;
+										    padding: 6px 15px;
+										    font: normal 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+										    margin: 0;
+										    text-transform: capitalize;
+										    line-height: 20px;
+										    color: #5d5d5d;
+										    text-align: center;
+										    vertical-align: middle;
+										    cursor: pointer;
+										    background-color: #FFF;
+										    border: 1px solid #0077c0;
+										    letter-spacing: 0;
+										  }
+
+										  &:checked + label{
+										    background-image: none;
+										    color: #FFF;
+										    outline: 0;
+										    
+										    
+										    &[for=female]{
+										      background-color: #fb2aa7; border: 1px solid #fb2aa7;
+										    }
+
+										    &[for=male]{
+										      background-color: #0077c0; border: 1px solid #0077c0;
+										    }
+										  }
+										}
 									}
 								}
 							}

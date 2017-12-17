@@ -2,7 +2,7 @@
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.6.6/src/ng/directive/ngRepeat.js#L5' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.6.4/src/ng/directive/ngRepeat.js#L5' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -268,10 +268,7 @@ which can be used to associate the objects in the collection with the DOM elemen
 is specified, ng-repeat associates elements by identity. It is an error to have
 more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
 mapped to the same DOM element, which is not possible.)</p>
-<div class="alert alert-warning">
-  <strong>Note:</strong> the <code>track by</code> expression must come last - after any filters, and the alias expression.
-</div>
-
+<p>Note that the tracking expression must come last, after any filters, and the alias expression.</p>
 <p>For example: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>. This implies that the DOM elements
 will be associated by item identity in the array.</p>
 <p>For example: <code>item in items track by $id(item)</code>. A built in <code>$id()</code> function can be used to assign a unique
@@ -376,7 +373,7 @@ results by name or by age. New (entering) and removed (leaving) items are animat
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-ng-repeat')}}" name="example-ng-repeat"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-ng-repeat/index.html" name="example-ng-repeat"></iframe>
   </div>
 </div>
 

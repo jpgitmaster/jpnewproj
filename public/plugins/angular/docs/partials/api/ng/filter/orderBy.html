@@ -2,7 +2,7 @@
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.6.6/src/ng/filter/orderBy.js#L3' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.6.4/src/ng/filter/orderBy.js#L3' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -59,8 +59,6 @@ second, or <code>1</code> otherwise.</p>
 specified predicates can distinguish between two items, <code>orderBy</code> will automatically introduce a
 dummy predicate that returns the item&#39;s index as <code>value</code>.
 (If you are using a custom comparator, make sure it can handle this predicate as well.)</p>
-<p>If a custom comparator still can&#39;t distinguish between two items, then they will be sorted based
-on their index using the built-in comparator.</p>
 <p>Finally, in an attempt to simplify things, if a predicate returns an object as the extracted
 value for an item, <code>orderBy</code> will try to convert that object to a primitive value, before passing
 it to the comparator. The following rules govern the conversion:</p>
@@ -276,7 +274,7 @@ it defaults to the built-in comparator.</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-orderBy-static')}}" name="example-orderBy-static"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-orderBy-static/index.html" name="example-orderBy-static"></iframe>
   </div>
 </div>
 
@@ -325,7 +323,7 @@ a table sortable, by binding the <code>expression</code> and <code>reverse</code
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-orderBy-dynamic')}}" name="example-orderBy-dynamic"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-orderBy-dynamic/index.html" name="example-orderBy-dynamic"></iframe>
   </div>
 </div>
 
@@ -375,7 +373,7 @@ and retrieve the <code>orderBy</code> filter with <code>$filter(&#39;orderBy&#39
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-orderBy-call-manually')}}" name="example-orderBy-call-manually"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-orderBy-call-manually/index.html" name="example-orderBy-call-manually"></iframe>
   </div>
 </div>
 
@@ -426,7 +424,7 @@ argument - passing <code>false</code> retains the default sorting order, i.e. as
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-orderBy-custom-comparator')}}" name="example-orderBy-custom-comparator"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-orderBy-custom-comparator/index.html" name="example-orderBy-custom-comparator"></iframe>
   </div>
 </div>
 

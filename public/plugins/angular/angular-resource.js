@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6
+ * @license AngularJS v1.6.4
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -197,12 +197,7 @@ function shallowClearAndCopy(src, dst) {
  *     [requestType](https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType).
  *   - **`interceptor`** - `{Object=}` - The interceptor object has two optional methods -
  *     `response` and `responseError`. Both `response` and `responseError` interceptors get called
- *     with `http response` object. See {@link ng.$http $http interceptors}. In addition, the
- *     resource instance or array object is accessible by the `resource` property of the
- *     `http response` object.
- *     Keep in mind that the associated promise will be resolved with the value returned by the
- *     response interceptor, if one is specified. The default response interceptor returns
- *     `response.resource` (i.e. the resource instance or array).
+ *     with `http response` object. See {@link ng.$http $http interceptors}.
  *   - **`hasBody`** - `{boolean}` - allows to specify if a request body should be included or not.
  *     If not specified only POST, PUT and PATCH requests will have a body.
  *
@@ -277,7 +272,8 @@ function shallowClearAndCopy(src, dst) {
  *     {@link ngRoute.$routeProvider resolve section of $routeProvider.when()} to defer view
  *     rendering until the resource(s) are loaded.
  *
- *     On failure, the promise is rejected with the {@link ng.$http http response} object.
+ *     On failure, the promise is rejected with the {@link ng.$http http response} object, without
+ *     the `resource` property.
  *
  *     If an interceptor object was provided, the promise will instead be resolved with the value
  *     returned by the interceptor.
@@ -446,7 +442,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.6' }).
+  info({ angularVersion: '1.6.4' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 
@@ -497,7 +493,7 @@ angular.module('ngResource', ['ng']).
      *       $resourceProvider.defaults.actions.update = {
      *         method: 'PUT'
      *       };
-     *     }]);
+     *     });
      * ```
      *
      * Or you can even overwrite the whole `actions` list and specify your own:
@@ -785,9 +781,6 @@ angular.module('ngResource', ['ng']).
               response.resource = value;
 
               return response;
-            }, function(response) {
-              response.resource = value;
-              return $q.reject(response);
             });
 
             promise = promise['finally'](function() {
@@ -835,9 +828,7 @@ angular.module('ngResource', ['ng']).
 
             function cancelRequest(value) {
               promise.catch(noop);
-              if (timeoutDeferred !== null) {
-                timeoutDeferred.resolve(value);
-              }
+              timeoutDeferred.resolve(value);
             }
           };
 

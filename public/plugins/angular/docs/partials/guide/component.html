@@ -47,7 +47,7 @@ configuration which is suitable for a component-based application structure.</p>
       name="heroDetail.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  bindings: {&#10;    hero: &#39;=&#39;&#10;  }&#10;});</code></pre>
+      <pre><code>function HeroDetailController() {&#10;&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  controller: HeroDetailController,&#10;  bindings: {&#10;    hero: &#39;=&#39;&#10;  }&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -65,7 +65,7 @@ configuration which is suitable for a component-based application structure.</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-heroComponentSimple')}}" name="example-heroComponentSimple"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-heroComponentSimple/index.html" name="example-heroComponentSimple"></iframe>
   </div>
 </div>
 
@@ -342,7 +342,7 @@ it upwards to the heroList component, which updates the original data.</li>
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-heroComponentTree')}}" name="example-heroComponentTree"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-heroComponentTree/index.html" name="example-heroComponentTree"></iframe>
   </div>
 </div>
 
@@ -437,7 +437,7 @@ but they are guaranteed to be available just before the <code>$onInit</code> met
     </div>
   
 
-    <iframe class="runnable-example-frame" ng-src="{{getExampleIndex('examples/example-component-tabs-pane')}}" name="example-component-tabs-pane"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-component-tabs-pane/index.html" name="example-component-tabs-pane"></iframe>
   </div>
 </div>
 
@@ -450,13 +450,22 @@ advantage of this method is that you do not have to create any DOM elements. The
 shows how to do this for the <code>heroDetail</code> component from above.</p>
 <p>The examples use the <a href="http://jasmine.github.io/">Jasmine</a> testing framework.</p>
 <p><strong>Controller Test:</strong></p>
-<pre><code class="lang-js">describe(&#39;HeroDetailController&#39;, function() {
+<pre><code class="lang-js">describe(&#39;component: heroDetail&#39;, function() {
   var $componentController;
 
   beforeEach(module(&#39;heroApp&#39;));
   beforeEach(inject(function(_$componentController_) {
     $componentController = _$componentController_;
   }));
+
+  it(&#39;should expose a `hero` object&#39;, function() {
+    // Here we are passing actual bindings to the component
+    var bindings = {hero: {name: &#39;Wolverine&#39;}};
+    var ctrl = $componentController(&#39;heroDetail&#39;, null, bindings);
+
+    expect(ctrl.hero).toBeDefined();
+    expect(ctrl.hero.name).toBe(&#39;Wolverine&#39;);
+  });
 
   it(&#39;should call the `onDelete` binding, when deleting the hero&#39;, function() {
     var onDeleteSpy = jasmine.createSpy(&#39;onDelete&#39;);

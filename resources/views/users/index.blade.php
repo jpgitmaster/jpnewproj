@@ -16,7 +16,7 @@
 @endif
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" ng-controller="ctrlApp">
   <div class="hdr_left">
     <a href="/" class="logo">
       <div class="cmpnylogo">
@@ -41,7 +41,7 @@
       <div class="dp">
         <div data-toggle="dropdown" class="drpdwn">
           <span ng-if="usr[0]['imgname']" ng-cloak>
-            <img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture"  class="rounded-circle" />
+            <img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%><%=currentime%>" alt="Display Picture" class="rounded-circle" ng-cloak />
           </span>
           <span ng-if="!usr[0]['imgname']" ng-cloak>
             <i class="fa fa-user-circle-o"></i>

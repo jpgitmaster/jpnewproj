@@ -1462,11 +1462,6 @@ angular.module('navData', [])
             "type": "error"
           },
           {
-            "name": "missingattr",
-            "href": "error/$compile/missingattr",
-            "type": "error"
-          },
-          {
             "name": "multidir",
             "href": "error/$compile/multidir",
             "type": "error"

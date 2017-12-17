@@ -13,6 +13,25 @@ usrApp.factory('Countries', function ($resource) {
     });
 });
 
+usrApp.controller('ctrlApp', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr',
+  function($scope, $rootScope, $timeout, $http, $q, Usr) {
+    
+  var deferred = $q.defer();
+  $rootScope.usr = Usr.query();
+  
+  $scope.$on('testingjp', function(data){
+    $rootScope.usr = data;
+  });
+  // Usr.query().$promise.then(function(data) {
+ //     $rootScope.usr = data;
+ //     deferred.resolve($rootScope.usr);
+ //  });
+  $scope.currentime = '';
+  $scope.timestamp = function(){
+      $scope.currentime = '?time='+Date.now();
+  }
+}]);
+
 usrApp.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('<%=').endSymbol('%>');
 });
@@ -22,16 +41,5 @@ var usrHeader = angular.module('usrHeader', []);
 
 usrHeader.controller('ctrlHeader', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr',
 	function($scope, $rootScope, $timeout, $http, $q, Usr) {
-
-  var deferred = $q.defer();
-
-	Usr.query().$promise.then(function(data) {
-     $rootScope.usr = data;
-     deferred.resolve($rootScope.usr);
-  });
-
-
-  $scope.timestamp = function(){
-  	return Date.now();
-  }
+    var deferred = $q.defer();
 }]);

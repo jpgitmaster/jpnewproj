@@ -30,7 +30,7 @@
 				    	<div class="prvw ltstdp">
 				            <div class="preview-pane">
 				                <div class="preview-container">
-				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%>?<%=timestamp()%>" alt="Display Picture" />
+				    				<img ng-src="{{URL::asset('avatars')}}/<%=usr[0]['imgname']%><%=currentime%>" alt="Display Picture" ng-cloak />
 				    			</div>
 				            </div>
 				        </div>
@@ -128,8 +128,8 @@
 							<div class="lbl">
 								<strong>SIZE:</strong> <%=usr[0]['rsmsize'] / 1000 | number: 1%> KB
 							</div>
-							<div class="lbl">
-								<a href="{{URL::asset('resumes')}}/<%=usr[0]['rsmname']%>?<%=timestamp()%>" target="_blank" class="btn btn-success">
+							<div class="lbl" ng-if="usr[0]['rsmname']" ng-cloak>
+								<a href="{{URL::asset('resumes')}}/<%=usr[0]['rsmname']%>" target="_blank" class="btn btn-success">
 									Download Resume
 								</a>
 							</div>
@@ -221,12 +221,12 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<form ng-submit="savePersonalInfo(nptusr)" method="POST" novalidate>
+				      	<form name="formLogin" ng-submit="savePersonalInfo(nptusr)" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['fname']}">
-								            <input type="text" ng-model="nptusr.fname" ng-focus="fcs_fname = true" ng-blur="fcs_fname = false" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['fname']}" ng-mouseover="fcs_fname = true" ng-mouseleave="fcs_fname = false">
+								            <input type="text" ng-model="nptusr.fname" required>
 								            <label class="nptlbl">First Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['fname'] && fcs_fname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -241,8 +241,8 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['mname']}">
-								            <input type="text" ng-model="nptusr.mname" ng-focus="fcs_mname = true" ng-blur="fcs_mname = false" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['mname']}" ng-mouseover="fcs_mname = true" ng-mouseleave="fcs_mname = false">
+								            <input type="text" ng-model="nptusr.mname" required>
 								            <label class="nptlbl">Middle Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['mname'] && fcs_mname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -257,8 +257,8 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['lname']}">
-								            <input type="text" ng-model="nptusr.lname" ng-focus="fcs_lname = true" ng-blur="fcs_lname = false" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['lname']}" ng-mouseover="fcs_lname = true" ng-mouseleave="fcs_lname = false">
+								            <input type="text" ng-model="nptusr.lname" required>
 								            <label class="nptlbl">Last Name <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['lname'] && fcs_lname === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -271,11 +271,11 @@
 								        </div>
 			              			</div>
 			              		</div>
-			              		<div class="col-lg-3">
+			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp radio" ng-class="{'err': msg['error']['prsnl']['gender']}">
 								            <label class="nptlbl">Gender: <span>*</span></label>
-				              				<div class="rdbx" ng-mouseover="fcs_gndr = true" ng-mouseover="fcs_gndr = true" ng-mouseleave="fcs_gndr = false">
+				              				<div class="rdbx" ng-mouseover="fcs_gndr = true" ng-mouseleave="fcs_gndr = false">
 				              					<div class="mlbx">
 						                          <input type="radio" id="male" class="btnbx" ng-model="nptusr.gender" value="2" required>
 						                          <label for="male">Male</label>
@@ -298,8 +298,8 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bdate']}">
-								            <input type="text" ng-model="nptusr.bdate" ng-focus="fcs_bdate = true" ng-blur="fcs_bdate = false" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bdate']}" ng-mouseover="fcs_bdate = true" ng-mouseleave="fcs_bdate = false">
+								            <input type="text" ng-model="nptusr.bdate" required>
 								            <label class="nptlbl">Birthdate <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bdate'] && fcs_bdate === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -317,8 +317,8 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bplace']}">
-								            <input type="text" ng-model="nptusr.bplace" ng-focus="fcs_bplace = true" ng-blur="fcs_bplace = false" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bplace']}" ng-mouseover="fcs_bplace = true" ng-mouseleave="fcs_bplace = false">
+								            <input type="text" ng-model="nptusr.bplace" required>
 								            <label class="nptlbl">Birthplace <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bplace'] && fcs_bplace === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
@@ -331,18 +331,11 @@
 								        </div>
 			              			</div>
 			              		</div>
-			              		<div class="col-lg-1">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.age" required>
-								            <label class="nptlbl">Age <span>*</span></label>
-								        </div>
-			              			</div>
-			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
-				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="nptusr.cstatus">
+			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
+				              				<input type="hidden" ng-model="nptusr.cstatus">
+				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="nptusr.cstatus = cvlstatus['id']">
 												<strong><%= cs.name  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -360,34 +353,71 @@
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp txtarea">
-			              					<div custom-select="c as c.en_short_name for c in countries | filter: {en_short_name: $searchTerm}" ng-model="nptusr.country">
+			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['country']}" ng-mouseover="fcs_country = true" ng-mouseleave="fcs_country = false">
+			              					<input type="hidden" ng-model="nptusr.country">
+			              					<div custom-select="c as c.en_short_name for c in countries | filter: {en_short_name: $searchTerm}" ng-model="country" ng-change="nptusr.country = country['en_short_name']">
 												<strong><%= c.en_short_name  %></strong>
 												<div class="clearfix"></div>
 											</div>
 											<label class="nptlbl">Countries <span>*</span></label>
+											<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['country'] && fcs_country === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['country'][0] %>
+												    </div>
+												</div>
+							                </div>
 			              				</div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-4">
 			              			<div class="bx">
-			              				<div class="nptgrp txtarea">
-				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="nptusr.nationality">
+			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['nationality']}" ng-mouseover="fcs_nationality = true" ng-mouseleave="fcs_nationality = false">
+			              					<input type="hidden" ng-model="nptusr.nationality">
+				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="ntnlty" ng-change="nptusr.nationality = ntnlty['nationality']">
 												<strong><%= n.nationality  %></strong>
 												<div class="clearfix"></div>
 											</div>
 											<label class="nptlbl">Nationality <span>*</span></label>
+											<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['nationality'] && fcs_nationality === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['nationality'][0] %>
+												    </div>
+												</div>
+							                </div>
 			              				</div>
 			              			</div>
 			              		</div>
 			              		<div class="col-lg-12">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['cobjctves']}" ng-mouseover="fcs_cobjctves = true" ng-mouseleave="fcs_cobjctves = false">
+								            <textarea ng-model="nptusr.cobjctves" maxlength="200" required></textarea>
+								            <label class="nptlbl">Career Objectives <span>*</span></label>
+								            <div class="totlngth">
+							            		<%= 200 - nptusr.cobjctves.length %> Character<%= nptusr.cobjctves.length >= 199 ? '' : 's' %> Remaining
+								            </div>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cobjctves'] && fcs_cobjctves === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+												    <div class="arrow"></div>
+												    <div class="popover-body">
+												      <%= msg['error']['prsnl']['cobjctves'][0] %>
+												    </div>
+												</div>
+							                </div>
+								        </div>
+			              			</div>
+			              		</div>
+			              		<!-- <div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp txtarea">
 								            <summernote ng-model="smmrnte" config="summernote_options"></summernote>
 								            <label class="nptlbl">Career Objectives <span>*</span></label>
 								        </div>
 			              			</div>
-			              		</div>
+			              		</div> -->
 			              	</div> 
 							<div class="crdftr" style="margin-top: 0;">
 				              	<button class="btn btn-success" type="submit">
@@ -425,7 +455,7 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<div class="nptgrp">
-								            <input type="text" ng-model="nptusr.mobile" required>
+								            <input type="text" ng-model="nptusr.mobile" ng-pattern="/^\d+$/" required>
 								            <label class="nptlbl">Mobile No. <span>*</span></label>
 								            <span class="btmlbl">
 								            	<strong>e.g.</strong> 0917-123-4567
