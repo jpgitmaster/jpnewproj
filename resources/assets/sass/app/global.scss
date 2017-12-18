@@ -76,6 +76,9 @@ body, html{
             text-transform: uppercase;
         }
     }
+    textarea{
+        min-height: 80px;
+    }
 
     .nptlbl{
         color: #5d5d5d;

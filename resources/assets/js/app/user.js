@@ -7,6 +7,11 @@ usrApp.factory('Usr', function ($resource) {
         query : { method: 'GET', isArray: true }
     });
 });
+usrApp.factory('PersnlInfo', function ($resource) {
+    return $resource('/user/personal_info', {}, {
+        query : { method: 'GET', isArray: false }
+    });
+});
 usrApp.factory('Countries', function ($resource) {
     return $resource('/countries', {}, {
         query : { method: 'GET', isArray: true }

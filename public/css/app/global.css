@@ -118,6 +118,10 @@ body, html {
   text-transform: uppercase;
 }
 
+.nptgrp textarea {
+  min-height: 80px;
+}
+
 .nptgrp .nptlbl {
   color: #5d5d5d;
   font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;

@@ -60,6 +60,26 @@
   transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body {
+  position: relative;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .frmldr {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  z-index: 9;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .frmldr svg {
+  display: inline-block;
+  margin-top: 60px;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .bx {
   margin: 5px 3px;
 }
@@ -211,18 +231,18 @@
   letter-spacing: 0;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx.actv + label, #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label {
   background-image: none;
   color: #FFF;
   outline: 0;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=female] {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx.actv + label[for=female], #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=female] {
   background-color: #fb2aa7;
   border: 1px solid #fb2aa7;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=male] {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx.actv + label[for=male], #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=male] {
   background-color: #0077c0;
   border: 1px solid #0077c0;
 }

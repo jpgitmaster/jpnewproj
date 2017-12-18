@@ -69,6 +69,23 @@
 							}
 						}
 						.card-body{
+							position: relative;
+
+							.frmldr{
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								left: 0;
+								right: 0;
+								background-color: rgba(255, 255, 255, 0.8);
+								text-align: center;
+								z-index: 9;
+
+								svg{
+									display: inline-block;
+									margin-top: 60px;
+								}
+							}
 							.bx{
 								margin: 5px 3px;
 							}
@@ -213,7 +230,7 @@
 										    letter-spacing: 0;
 										  }
 
-										  &:checked + label{
+										  &.actv + label, &:checked + label{
 										    background-image: none;
 										    color: #FFF;
 										    outline: 0;

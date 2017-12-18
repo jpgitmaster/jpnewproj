@@ -1,8 +1,8 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr', 'Countries',
-    function($scope, $rootScope, $timeout, $http, $q, Usr, Countries) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo) {
 
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
@@ -10,7 +10,8 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
         });
     }
     
-    $scope.countries = Countries.query();
+    $scope.countries    = Countries.query();
+    $scope.frm1         = PersnlInfo.query();
 
     $scope.imgForm = function(imgtarget){
         $timeout(function(){
@@ -138,9 +139,21 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             $scope.frm2.prmnnt_addrss = angular.copy($scope.frm2.prsnt_addrss);
         }
     }
-
+    $scope.level1Options = {
+        onSelect: function (item) {
+            console.log(item);
+            // We're simulation the population of the nested options
+            var items = [];
+            for (var i = 1; i <= 5; i++) {
+                items.push(item + ': ' + 'Nested ' + i);
+            }
+            $scope.nestedItemsLevel2 = items;
+        }
+    };
+    $scope.frm1_loader = false;
     $scope.savePersonalInfo = function(frm1){
-        // console.log(frm1);
+        console.log(frm1);
+        $scope.frm1_loader = true;
         $http({
             method: 'POST',
             url: '/user/save_personal_info',
@@ -152,8 +165,11 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
             },
             data: {user: frm1}
         }).then(function(result){
-            $scope.msg = result.data;
-            console.log($scope.msg);
+            $timeout(function(){
+                $scope.msg = result.data;
+                $scope.frm1_loader = false;
+                console.log($scope.msg);
+            }, 500);
         });
     }
 
@@ -169,9 +185,9 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$timeout', '$
     $scope.getAge = function(bday){
         var current_date    = new Date();
 
-        var current_yr          = current_date.getFullYear();
-        var current_mo          = current_date.getMonth();
-        
+        var current_yr      = current_date.getFullYear();
+        var current_mo      = current_date.getMonth();
+
         var bdate           = new Date(bday);
         if ( Object.prototype.toString.call(bdate) === "[object Date]" ) {
 

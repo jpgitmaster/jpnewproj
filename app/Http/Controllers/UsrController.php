@@ -284,12 +284,12 @@ class UsrController extends Controller
             'mname'       => 'Middle Name',
             'lname'       => 'Last Name',
             'gender'      => 'Gender',
-            'bdate'       => 'Birthdate',
+            'bday'       => 'Birthdate',
             'bplace'      => 'Birthplace',
             'cstatus'     => 'Civil Status',
             'country'     => 'Country',
             'nationality' => 'Nationality',
-            'cobjctves'   => 'Career Objectives'
+            'objectives'   => 'Career Objectives'
         ];
         $usr = $request->all();
         $usr = json_decode($usr['user'], true);
@@ -298,13 +298,13 @@ class UsrController extends Controller
             'fname'       => 'required|max:20',
             'mname'       => 'required|max:20',
             'lname'       => 'required|max:20',
-            'bdate'       => 'required|date|date_format:m/d/Y',
+            'bday'       => 'required|date|date_format:m/d/Y',
             'bplace'      => 'required',
             'gender'      => 'required',
             'cstatus'     => 'required',
             'country'     => 'required',
             'nationality' => 'required',
-            'cobjctves'   => 'required|max:200',
+            'objectives'   => 'required|max:200',
         ]);
         $validate->setAttributeNames($replace_names);
         $has_error = $this->hasError($validate);
@@ -319,33 +319,33 @@ class UsrController extends Controller
                 'mname'     => $usr['mname'],
                 'lname'     => $usr['lname']
             ]);
-            if(isset($usr['bdate'])):
-                $usr['bdate'] = date('Y-m-d', strtotime($usr['bdate']));
+            if(isset($usr['bday'])):
+                $usr['bday'] = date('Y-m-d', strtotime($usr['bday']));
             endif;
             if($current_user):
                 DB::table('personal_information')
                     ->where('genid', Auth::user()->genid)
                     ->update([
                         'age'         => $usr['age'],
-                        'bday'        => $usr['bdate'],
+                        'bday'        => $usr['bday'],
                         'bplace'      => $usr['bplace'],
                         'gender'      => $usr['gender'],
                         'cstatus'     => $usr['cstatus'],
                         'country'     => $usr['country'],
                         'nationality' => $usr['nationality'],
-                        'objectives'   => $usr['cobjctves']
+                        'objectives'   => $usr['objectives']
                     ]);
             else:
                 DB::table('personal_information')->insert([
                     'genid' => Auth::user()->genid,
                     'age'           => $usr['age'],
-                    'bday'         => $usr['bdate'],
+                    'bday'         => $usr['bday'],
                     'bplace'        => $usr['bplace'],
                     'gender'        => $usr['gender'],
                     'cstatus'       => $usr['cstatus'],
                     'country'       => $usr['country'],
                     'nationality'   => $usr['nationality'],
-                    'objectives'     => $usr['cobjctves']
+                    'objectives'     => $usr['objectives']
                 ]);
             endif;
         endif;
@@ -366,11 +366,12 @@ class UsrController extends Controller
             ->leftJoin('resumes', function ($join) {
                 $join->on('users.genid', '=', 'resumes.genid');
             })
-            // ->join('avatars', 'users.genid', '=', 'avatars.genid')->whereNotNull('avatars.genid')
-            // ->join('resumes', 'users.genid', '=', 'resumes.genid')
-            // ->join('personal_information', 'users.genid', '=', 'personal_information.genid')
+            ->leftJoin('primary_info', 'users.genid', '=', 'primary_info.genid')
+            ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
             ->select(
-                'email', 'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
+                'email', 'fname', 'mname', 'lname', 'bday', 'bplace', 'age',
+                'gender', 'cstatus', 'country', 'nationality', 'objectives',
+                'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
             )->where('users.genid', Auth::user()->genid)
             ->orderBy('users.id', 'desc')
             ->get();
@@ -419,6 +420,22 @@ class UsrController extends Controller
         return json_encode($users, JSON_PRETTY_PRINT);
         // dd($users);
         // return response()->json($users);
+    }
+
+    public function get_personal_info(){
+        $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
+        $users = DB::table('primary_info')
+            ->leftJoin('personal_information', 'primary_info.genid', '=', 'primary_info.genid')
+            ->select(
+                'fname', 'mname', 'lname', 'bday', 'bplace', 'age',
+                'gender', 'cstatus', 'country', 'nationality', 'objectives'
+            )->where('primary_info.genid', Auth::user()->genid)
+            ->orderBy('primary_info.id', 'desc')
+            ->get();
+        if(isset($users[0]->bday)):
+            $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
+        endif;
+        return json_encode($users[0], JSON_PRETTY_PRINT);
     }
 
     public function hasError($validate){

@@ -221,6 +221,11 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
+				      	<div class="frmldr" ng-if="frm1_loader" ng-cloak>
+			                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+						    </svg>
+					    </div>
 				      	<form name="formLogin" ng-submit="savePersonalInfo(frm1)" novalidate>
 					        <div class="row no-gutters">
 			              		<div class="col-lg-4">
@@ -277,11 +282,11 @@
 								            <label class="nptlbl">Gender: <span>*</span></label>
 				              				<div class="rdbx" ng-mouseover="fcs_gndr = true" ng-mouseleave="fcs_gndr = false">
 				              					<div class="mlbx">
-						                          <input type="radio" id="male" class="btnbx" ng-model="frm1.gender" value="2" required>
+						                          <input type="radio" id="male" class="btnbx" ng-class="{'actv': frm1.gender == 2}" ng-model="frm1.gender" value="2" required>
 						                          <label for="male">Male</label>
 						                        </div>
 						                        <div class="fmlbx">
-						                          <input type="radio" id="female" class="btnbx" ng-model="frm1.gender" value="1" required>
+						                          <input type="radio" id="female" class="btnbx" ng-class="{'actv': frm1.gender == 1}" ng-model="frm1.gender" value="1" required>
 						                          <label for="female">Female</label>
 						                        </div>
 				              				</div>
@@ -299,14 +304,14 @@
 			              		<div class="col-lg-4">
 			              			<div class="bx">
 			              				<input type="hidden" ng-model="frm1.age" required>
-			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bdate']}" ng-mouseover="fcs_bdate = true" ng-mouseleave="fcs_bdate = false">
-								            <input type="text" ng-model="frm1.bdate" ng-change="getAge(frm1.bdate)" required>
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bday']}" ng-mouseover="fcs_bday = true" ng-mouseleave="fcs_bday = false">
+								            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" required>
 								            <label class="nptlbl">Birthdate <span>*</span></label>
-								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bdate'] && fcs_bdate === true" ng-cloak>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bday'] && fcs_bday === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
 												    <div class="arrow"></div>
 												    <div class="popover-body">
-												      <%= msg['error']['prsnl']['bdate'][0] %>
+												      <%= msg['error']['prsnl']['bday'][0] %>
 												    </div>
 												</div>
 							                </div>
@@ -336,7 +341,7 @@
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
 				              				<input type="hidden" ng-model="frm1.cstatus">
-				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="frm1.cstatus = cvlstatus['id']">
+				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="frm1.cstatus = cvlstatus['id']" custom-select-options="level1Options">
 												<strong><%= cs.name  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -394,17 +399,17 @@
 			              		</div>
 			              		<div class="col-lg-12">
 			              			<div class="bx">
-			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['cobjctves']}" ng-mouseover="fcs_cobjctves = true" ng-mouseleave="fcs_cobjctves = false">
-								            <textarea ng-model="frm1.cobjctves" maxlength="200" required></textarea>
+			              				<div class="nptgrp txtarea" ng-class="{'err': msg['error']['prsnl']['objectives']}" ng-mouseover="fcs_objectives = true" ng-mouseleave="fcs_objectives = false">
+								            <textarea ng-model="frm1.objectives" maxlength="200" required></textarea>
 								            <label class="nptlbl">Career Objectives <span>*</span></label>
 								            <div class="totlngth">
-							            		<%= 200 - frm1.cobjctves.length %> Character<%= frm1.cobjctves.length >= 199 ? '' : 's' %> Remaining
+							            		<%= 200 - frm1.objectives.length %> Character<%= frm1.objectives.length >= 199 ? '' : 's' %> Remaining
 								            </div>
-								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cobjctves'] && fcs_cobjctves === true" ng-cloak>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['objectives'] && fcs_objectives === true" ng-cloak>
 					                        	<div class="popover bs-popover-top">
 												    <div class="arrow"></div>
 												    <div class="popover-body">
-												      <%= msg['error']['prsnl']['cobjctves'][0] %>
+												      <%= msg['error']['prsnl']['objectives'][0] %>
 												    </div>
 												</div>
 							                </div>

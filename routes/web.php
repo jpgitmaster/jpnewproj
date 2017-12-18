@@ -58,6 +58,10 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_personal_info', [
 		    'as' => 'save_personal_info', 'uses' => 'UsrController@save_personal_info'
 		]);
+
+		Route::get('personal_info', [
+		    'as' => 'personal_info', 'uses' => 'UsrController@get_personal_info'
+		]);
 	});
 });
 
