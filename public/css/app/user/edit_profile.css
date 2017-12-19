@@ -89,11 +89,60 @@
   padding: 20px 0 0;
   float: left;
   width: 100%;
-  margin: 15px 0 30px;
+  margin: 0 0 30px;
   border-top: 1px dashed #54c3ec;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btn-success {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns {
+  position: relative;
+  display: inline-block;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp {
+  margin: 0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr {
+  position: absolute;
+  right: -35px;
+  left: -35px;
+  bottom: -8px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover {
+  border-color: #8ad3ef;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .arrow {
+  border-top-color: #8ad3ef;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .arrow::before {
+  border-top-color: #8ad3ef;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .popover-body {
+  padding: 10px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .popover-body p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #505050;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .popover-body .btns {
+  display: block;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .popover-body .btns .btn {
+  padding: 5px 30px;
+  display: inline-block;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .btn-success {
   font-size: 14px;
   border-radius: 5px;
   padding: 10px 50px;

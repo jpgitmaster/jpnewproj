@@ -425,10 +425,46 @@
 			              			</div>
 			              		</div> -->
 			              	</div> 
-							<div class="crdftr" style="margin-top: 0;">
-				              	<button class="btn btn-success" type="submit">
-				              		Save Changes
-				              	</button>
+							<div class="crdftr">
+								<div class="btmctns">
+									<div class="nptgrp am-flip-x ng-scope">
+										<div class="popcntnr">
+						                    <div class="popover bs-popover-top">
+											    <div class="arrow"></div>
+											    <div class="popover-body">
+											    	<div ng-if="!msg['rsm']['dlt']['success']">
+												    	<p>
+												    		Are you sure you want save your changes?
+												    	</p>
+												    	<div class="btns">
+												    		<button class="btn btn-primary" type="submit">
+												    			Yes
+												    		</button>
+												    		<button class="btn btn-danger" type="submit">
+												    			No
+												    		</button>
+												    	</div>
+											    	</div>
+											    </div>
+											</div>
+						                </div>
+					                </div>
+									{{-- <div class="popover bs-popover-top" ng-class="{'success': msg['prsnl']['success']}">
+									    <div class="arrow"></div>
+									    <div class="popover-body">
+									    	<span class="rmve" ng-click="msg['prsnl']['success'] = ''">
+					            				<i class="fa fa-close"></i>
+		  			            			</span>
+											<p ng-if="msg['prsnl']['success']" ng-cloak>
+												<%=msg['prsnl']['success']%>
+												Lorem Ipsum Dolor ekek...
+											</p>
+									    </div>
+									</div> --}}
+					              	<button class="btn btn-success" type="button">
+					              		Save Changes
+					              	</button>
+				              	</div>
 			              	</div>
 		              	</form>
 				      </div>

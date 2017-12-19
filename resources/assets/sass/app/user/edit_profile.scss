@@ -94,14 +94,55 @@
 							    padding: 20px 0 0;
 							    float: left;
 							    width: 100%;
-							    margin: 15px 0 30px;
+							    margin: 0 0 30px;
 							    border-top: 1px dashed #54c3ec;
 
-								.btn-success{
-								    font-size: 14px;
-								    border-radius: 5px;
-								    padding: 10px 50px;
-								}
+							    .btmctns{
+							    	position: relative;
+							    	display: inline-block;
+
+							    	.nptgrp{
+							    		margin: 0;
+							    		.popcntnr {
+										    position: absolute;
+										    right: -35px;
+										    left: -35px;
+										    bottom: -8px;
+
+										    .popover {
+											    border-color: #8ad3ef;
+											    .arrow{
+											    	border-top-color: #8ad3ef;
+											    	&::before {
+													    border-top-color: #8ad3ef;
+													}
+											    }
+											    .popover-body{
+											    	padding: 10px;
+											    	p{
+										    		    margin-bottom: 10px;
+													    font-size: 14px;
+													    font-weight: bold;
+													    text-align: center;
+													    color: #505050;
+											    	}
+											    	.btns{
+											    		display: block;
+											    		.btn{
+											    			padding: 5px 30px;
+											    			display: inline-block;
+											    		}
+											    	}
+											    }
+											}
+										}
+							    	}
+							    	.btn-success{
+									    font-size: 14px;
+									    border-radius: 5px;
+									    padding: 10px 50px;
+									}
+							    }
 							}
 							.nptgrp{
 								&.txtarea, &.cstmdrpdwn{
