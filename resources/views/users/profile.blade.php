@@ -341,7 +341,7 @@
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
 				              				<input type="hidden" ng-model="frm1.cstatus">
-				              				<div custom-select="cs.id as cs.name for cs in cstatus | filter: {name: $searchTerm} track by cs.id" ng-model="cvlstatus">
+				              				<div custom-select="cs.id as cs.name for cs in cstatus | filter: {name: $searchTerm} track by cs.id" ng-model="cvlstatus" custom-select-options="select_status">
 												<strong><%= cs.name  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -361,7 +361,7 @@
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['country']}" ng-mouseover="fcs_country = true" ng-mouseleave="fcs_country = false">
 			              					<input type="hidden" ng-model="frm1.country">
-			              					<div custom-select="c as c.country for c in countries | filter: {country: $searchTerm}" ng-model="country" ng-change="frm1.country = country['id']">
+			              					<div custom-select="c.id as c.country for c in countries | filter: {country: $searchTerm} track by c.id" ng-model="country" custom-select-options="select_country">
 												<strong><%= c.country  %></strong>
 												<div class="clearfix"></div>
 											</div>
@@ -381,7 +381,7 @@
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['nationality']}" ng-mouseover="fcs_nationality = true" ng-mouseleave="fcs_nationality = false">
 			              					<input type="hidden" ng-model="frm1.nationality">
-				              				<div custom-select="n as n.nationality for n in countries | filter: {nationality: $searchTerm}" ng-model="ntnlty" ng-change="frm1.nationality = ntnlty['id']">
+				              				<div custom-select="n.id as n.nationality for n in countries | filter: {nationality: $searchTerm} track by n.id" ng-model="nationality" custom-select-options="select_nationality">
 												<strong><%= n.nationality  %></strong>
 												<div class="clearfix"></div>
 											</div>

@@ -11,7 +11,35 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     }
     
     $scope.countries    = Countries.query();
-    $scope.frm1         = PersnlInfo.query();
+    PersnlInfo.query().$promise.then(function(data) {
+        $scope.frm1 = data;
+        $scope.cvlstatus = $scope.frm1.cstatus;
+        $scope.country = $scope.frm1.country;
+        $scope.nationality = $scope.frm1.nationality;
+    });
+    $scope.select_status = {
+        onSelect: function (item) {
+            $scope.frm1.cstatus = item.id;
+        }
+    };
+    $scope.select_country = {
+        onSelect: function (item) {
+            $scope.frm1.country = item.id;
+        }
+    };
+    $scope.select_nationality = {
+        onSelect: function (item) {
+            $scope.frm1.nationality = item.id;
+        }
+    };
+    $scope.cstatus = [
+        {id: 1, name: 'Single'},
+        {id: 2, name: 'Married'},
+        {id: 3, name: 'Legally separated'},
+        {id: 4, name: 'Annulled'},
+        {id: 5, name: 'Widow'},
+        {id: 6, name: 'Widower'}
+    ];
 
     $scope.imgForm = function(imgtarget){
         $timeout(function(){
@@ -161,16 +189,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             }, 500);
         });
     }
-    $scope.cvlstatus = '2';
-    $scope.cstatus = [
-        {id: '1', name: 'Single'},
-        {id: '2', name: 'Married'},
-        {id: '3', name: 'Legally separated'},
-        {id: '4', name: 'Annulled'},
-        {id: '5', name: 'Widow'},
-        {id: '6', name: 'Widower'}
-    ];
-
+    
     $scope.getAge = function(bday){
         var current_date    = new Date();
 
