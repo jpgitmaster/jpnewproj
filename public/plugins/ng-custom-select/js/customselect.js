@@ -51,7 +51,8 @@
 	});
 
 	module.directive('customSelect', ['$parse', '$compile', '$timeout', '$q', 'customSelectDefaults', function ($parse, $compile, $timeout, $q, baseOptions) {
-		var CS_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?\s+for\s+(?:([\$\w][\$\w\d]*))\s+in\s+(.*)$/;
+		var CS_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?\s+for\s+(?:([\$\w][\$\w\d]*))\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?$/;
+		var VALUES_REGEXP = /^.+?(?=\||$)/;
 
 		return {
 			restrict: 'A',
@@ -66,7 +67,7 @@
 
 				if (!match) {
 					throw new Error("Expected expression in form of " +
-						"'_select_ (as _label_)? for _value_ in _collection_'" +
+						"'_select_ (as _label_)? for _value_ in _collection_[ track by _id_]'" +
 						" but got '" + customSelect + "'.");
 				}
 
@@ -78,6 +79,8 @@
 					valueFn = $parse(match[2] ? match[1] : valueName),
 					values = match[4],
 					valuesFn = $parse(values),
+					track = match[5],
+					trackByExpr = track ? " track by " + track : "",
 					dependsOn = attrs.csDependsOn;
 
 				var options = getOptions(),
@@ -98,7 +101,7 @@
 							'<input class="' + attrs.selectClass + '" type="text" autocomplete="off" ng-model="searchTerm" />' +
 						'</div>' +
 						'<ul role="menu">' +
-							'<li role="presentation" ng-repeat="' + valueName + ' in matches">' +
+							'<li role="presentation" ng-repeat="' + valueName + ' in matches' + trackByExpr + '">' +
 								'<a role="menuitem" tabindex="-1" href ng-click="select(' + valueName + ')">' +
 									itemTemplate +
 								'</a>' +
@@ -136,14 +139,16 @@
 					}
 					childScope.$apply(function () {
 						lastSearch = '';
+						childScope.searchTerm = '';
 					});
+					
 					focusedIndex = -1;
 					inputElement.focus();
 
-                    // If filter is not async, perform search in case model changed
-                    if (!options.async) {
-                        getMatches('');
-                    }
+					// If filter is not async, perform search in case model changed
+					//if (!options.async) {
+					//	getMatches();
+					//}
 				});
 				
 				if (dependsOn) {
@@ -172,14 +177,13 @@
 						case 27: // Esc
 							anchorElement.dropdown('toggle');
 							break;
+						case 9: // Tab
 						case 13: // Enter
 							selectFromInput();
+							childScope.searchTerm = undefined;
 							break;
 						case 40: // Down
 							focusFirst();
-							break;
-						case 9:// Tab
-							anchorElement.dropdown('toggle');
 							break;
 					}
 				});
@@ -237,6 +241,19 @@
 					(term && options.searchDelay) || 0);
 				});
 
+				if (!options.async) {
+					var m = values.match(VALUES_REGEXP);
+					if (m) {
+						var originalValues = m[0];
+						scope.$watchCollection(originalValues, function (value) {
+							if (angular.isArray(value)) {
+
+								getMatches();
+							}
+						});
+					}
+				}
+
 				// Support for autofocus
 				if ('autofocus' in attrs) {
 					anchorElement.focus();
@@ -290,6 +307,9 @@
 				}
 
 				function getMatches(searchTerm) {
+					if (searchTerm === undefined) {
+						searchTerm = (childScope.searchTerm || "").trim();
+					}
 					var locals = { $searchTerm: searchTerm }
 					$q.when(valuesFn(scope, locals)).then(function (matches) {
 						if (!matches) return;
@@ -343,7 +363,7 @@
 					};
 
 					childScope.add = function () {
-						$q.when(options.onAdd(), function (item) {
+						$q.when(options.onAdd(childScope.searchTerm), function (item) {
 							if (!item) return;
 
 							var locals = {};

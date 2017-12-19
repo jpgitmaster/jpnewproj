@@ -341,7 +341,7 @@
 			              			<div class="bx">
 			              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
 				              				<input type="hidden" ng-model="frm1.cstatus">
-				              				<div custom-select="cs as cs.name for cs in cstatus | filter: {name: $searchTerm}" ng-model="cvlstatus" ng-change="frm1.cstatus = cvlstatus['id']" custom-select-options="level1Options">
+				              				<div custom-select="cs.id as cs.name for cs in cstatus | filter: {name: $searchTerm} track by cs.id" ng-model="cvlstatus">
 												<strong><%= cs.name  %></strong>
 												<div class="clearfix"></div>
 											</div>

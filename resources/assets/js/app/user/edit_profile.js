@@ -139,17 +139,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $scope.frm2.prmnnt_addrss = angular.copy($scope.frm2.prsnt_addrss);
         }
     }
-    $scope.level1Options = {
-        onSelect: function (item) {
-            console.log(item);
-            // We're simulation the population of the nested options
-            var items = [];
-            for (var i = 1; i <= 5; i++) {
-                items.push(item + ': ' + 'Nested ' + i);
-            }
-            $scope.nestedItemsLevel2 = items;
-        }
-    };
     $scope.frm1_loader = false;
     $scope.savePersonalInfo = function(frm1){
         console.log(frm1);
@@ -172,14 +161,14 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             }, 500);
         });
     }
-
+    $scope.cvlstatus = '2';
     $scope.cstatus = [
-        {id: 1, name: 'Single'},
-        {id: 2, name: 'Married'},
-        {id: 3, name: 'Legally separated'},
-        {id: 4, name: 'Annulled'},
-        {id: 5, name: 'Widow'},
-        {id: 6, name: 'Widower'}
+        {id: '1', name: 'Single'},
+        {id: '2', name: 'Married'},
+        {id: '3', name: 'Legally separated'},
+        {id: '4', name: 'Annulled'},
+        {id: '5', name: 'Widow'},
+        {id: '6', name: 'Widower'}
     ];
 
     $scope.getAge = function(bday){
