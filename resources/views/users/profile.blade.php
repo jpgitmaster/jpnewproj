@@ -221,10 +221,16 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-				      	<div class="frmldr" ng-if="frm1_loader" ng-cloak>
-			                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+				      	<div class="frmldr" ng-if="!frm1_loader" ng-cloak>
+			                <!-- <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 						      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
-						    </svg>
+						    </svg> -->
+						    <div style="margin-top: 80px; display: inline-block; color: #54c3ec;">
+						    	<p style="font: 30px segobl;">
+						    		Successfully Updated &nbsp;
+						    		<i class="fa fa-check-circle" style="font-size: 40px;"></i>
+						    	</p>
+						    </div>
 					    </div>
 				      	<form name="formLogin" ng-submit="savePersonalInfo(frm1)" novalidate>
 					        <div class="row no-gutters">
@@ -427,7 +433,7 @@
 			              	</div> 
 							<div class="crdftr">
 								<div class="btmctns">
-									<div class="nptgrp am-flip-x ng-scope">
+									<div class="nptgrp am-flip-x" ng-if="frm1cnfrm" ng-cloak>
 										<div class="popcntnr">
 						                    <div class="popover bs-popover-top">
 											    <div class="arrow"></div>
@@ -440,7 +446,7 @@
 												    		<button class="btn btn-primary" type="submit">
 												    			Yes
 												    		</button>
-												    		<button class="btn btn-danger" type="submit">
+												    		<button class="btn btn-danger" type="button" ng-click="clsbbl(2)">
 												    			No
 												    		</button>
 												    	</div>
@@ -449,19 +455,7 @@
 											</div>
 						                </div>
 					                </div>
-									{{-- <div class="popover bs-popover-top" ng-class="{'success': msg['prsnl']['success']}">
-									    <div class="arrow"></div>
-									    <div class="popover-body">
-									    	<span class="rmve" ng-click="msg['prsnl']['success'] = ''">
-					            				<i class="fa fa-close"></i>
-		  			            			</span>
-											<p ng-if="msg['prsnl']['success']" ng-cloak>
-												<%=msg['prsnl']['success']%>
-												Lorem Ipsum Dolor ekek...
-											</p>
-									    </div>
-									</div> --}}
-					              	<button class="btn btn-success" type="button">
+					              	<button class="btn btn-success" ng-click="frm1cnfrm = !frm1cnfrm" type="button">
 					              		Save Changes
 					              	</button>
 				              	</div>

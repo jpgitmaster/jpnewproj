@@ -100,13 +100,14 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp {
   margin: 0;
+  display: block;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr {
   position: absolute;
   right: -35px;
   left: -35px;
-  bottom: -8px;
+  bottom: -4px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover {

@@ -129,6 +129,9 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             case 1:
                 $scope.dltrsm = false;
                 break;
+            case 2:
+                $scope.frm1cnfrm = false;
+                break;
         }
     }
 
