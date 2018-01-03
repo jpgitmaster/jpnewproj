@@ -53,6 +53,7 @@ class Controller extends BaseController
         define('j_velocity_ui', 'plugins/velocity/velocity.ui.min.js');
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
         define('j_summernote', 'plugins/summernote/dist/summernote.min.js');
+        define('j_chart', 'plugins/chart/src/chart.js');
     }
 
     public function import_ng(){
@@ -61,6 +62,7 @@ class Controller extends BaseController
         define('n_ngsanitize', 'plugins/angular/angular-sanitize.min.js');
         define('n_nganimate', 'plugins/angular/angular-animate.min.js');
         define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.js');
+        define('n_chart', 'plugins/angular-chart/angular-chart.min.js');
 
         define('n_ngselect', 'plugins/ng-custom-select/js/customselect.js');
         define('n_ngfilter', 'plugins/ng-custom-select/angular-filter.js');
@@ -71,5 +73,6 @@ class Controller extends BaseController
         define('n_user', 'app/user.js');
         define('n_user_edit_profile', 'app/user/edit_profile.js');
         define('n_user_job_list', 'app/user/job_list.js');
+        define('n_user_calendar', 'app/user/usr_calendar.js');
     }
 }

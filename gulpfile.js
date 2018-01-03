@@ -19,4 +19,5 @@ elixir(function(mix) {
     mix.webpack('app/user.js', 'public/app');
     mix.webpack('app/user/edit_profile.js', 'public/app/user');
     mix.webpack('app/user/job_list.js', 'public/app/user');
+    mix.webpack('app/user/usr_calendar.js', 'public/app/user');
 });

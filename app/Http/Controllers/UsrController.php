@@ -19,7 +19,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
-            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_ngselect, n_ngfilter, n_user]
+            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_chart, n_ngselect, n_ngfilter, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
         $this->msg = [];
@@ -453,5 +453,13 @@ class UsrController extends Controller
         Auth::guard('jp_user')->logout();
         Session::forget('usr_role');
         return redirect()->route('home_index');
+    }
+
+    public function calendar(){
+        return view('users.calendar', [
+            'scripts'       => array_merge($this->import['scripts'], [j_chart]),
+            'stylesheet'    => $this->import['stylesheet'],
+            'ngular'        =>  array_merge($this->import['ngular'], [n_user_calendar])
+        ]);
     }
 }

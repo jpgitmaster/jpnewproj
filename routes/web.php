@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('dashboard', [
 		    'as' => 'usr_dashboard', 'uses' => 'UsrController@dashboard'
 		]);
+		Route::get('calendar', [
+		    'as' => 'usr_calendar', 'uses' => 'UsrController@calendar'
+		]);
 		Route::get('profile', [
 		    'as' => 'usr_profile', 'uses' => 'UsrController@profile'
 		]);
