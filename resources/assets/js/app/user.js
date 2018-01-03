@@ -1,6 +1,6 @@
 'use strict';
 
-var usrApp = angular.module('usrApp', ['chart.js', 'ngSanitize', 'ngResource', 'ngAnimate', 'usrHeader', 'usrContent']);
+var usrApp = angular.module('usrApp', ['ngSanitize', 'ngResource', 'ngAnimate', 'usrHeader', 'usrContent']);
 
 usrApp.factory('Usr', function ($resource) {
     return $resource('/user', {}, {

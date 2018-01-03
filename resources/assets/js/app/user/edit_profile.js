@@ -9,7 +9,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $rootScope.usr = data;
         });
     }
-    
+
     $scope.countries    = Countries.query();
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
@@ -170,9 +170,21 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $scope.frm2.prmnnt_addrss = angular.copy($scope.frm2.prsnt_addrss);
         }
     }
+
     $scope.frm1_loader = false;
+    $scope.forms = [
+        {'form':  'PersonalInfo', 'cardnum': 0, 'actvcard': 1, 'actvform': 0},
+        {'form':  'ContactDetails', 'cardnum': 1, 'actvcard': 0, 'actvform': 0},
+    ];
+    
+    $scope.openForm = function(cardnum, card){
+        if(card == 1){
+            $scope.forms[cardnum]['actvform'] = 1;
+        }
+    }
+    
     $scope.savePersonalInfo = function(frm1){
-        console.log(frm1);
+        // console.log(frm1);
         $scope.frm1_loader = true;
         $http({
             method: 'POST',
@@ -185,11 +197,14 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             },
             data: {user: frm1}
         }).then(function(result){
+            $scope.msg = result.data;
+            if(!$scope.msg['error']){
+                $scope.forms[0]['actvform'] = 0;
+            }
             $timeout(function(){
-                $scope.msg = result.data;
                 $scope.frm1_loader = false;
-                console.log($scope.msg);
             }, 500);
+            console.log($scope.msg);
         });
     }
     
