@@ -187,7 +187,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $scope.forms[cardnum]['actvform'] = 0;
             $scope.forms[cardnum]['actvcard'] = 1;
         }
-        console.log(card);
+        // console.log(card);
         if($scope.msg['success']){
             $scope.msg['success'] = '';
         }
@@ -250,6 +250,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
 
     $scope.get_selection = function(arr, arr_id){
         return $filter('filter')(arr, {id: arr_id})[0].name;
+    }
+
+    $scope.get_country = function(arr, arr_id, idntfr){
+        if(idntfr == 1){
+            return $filter('filter')(arr, {id: arr_id})[0].country;
+        }
+        if(idntfr == 2){
+            return $filter('filter')(arr, {id: arr_id})[0].nationality;
+        }
     }
 }]);
 

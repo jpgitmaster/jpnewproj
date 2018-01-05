@@ -296,6 +296,36 @@
 							        	</label>
 							      	</div>
 						    	</div>
+						    	<div class="col-lg-4">
+						    		<div class="nptgrp lbld">
+										<span class="lbldcntnt">
+											<%= frm1.gender ? get_selection(cstatus, frm1.cstatus) : '&nbsp;' %>
+										</span>
+							        	<label class="lbl">
+							        		Civil Status
+							        	</label>
+							      	</div>
+						    	</div>
+						    	<div class="col-lg-4">
+						    		<div class="nptgrp lbld">
+										<span class="lbldcntnt">
+											<%= frm1.country ? get_country(countries, frm1.country, 1) : '&nbsp;' %>
+										</span>
+							        	<label class="lbl">
+							        		Country
+							        	</label>
+							      	</div>
+						    	</div>
+						    	<div class="col-lg-4">
+						    		<div class="nptgrp lbld">
+										<span class="lbldcntnt">
+											<%= frm1.nationality ? get_country(countries, frm1.nationality, 2) : '&nbsp;' %>
+										</span>
+							        	<label class="lbl">
+							        		Nationality
+							        	</label>
+							      	</div>
+						    	</div>
 						    </div>
 		              		<button type="button" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">test</button>
 		              	</div>
@@ -443,7 +473,7 @@
 													<strong><%= c.country  %></strong>
 													<div class="clearfix"></div>
 												</div>
-												<label class="nptlbl">Countries <span>*</span></label>
+												<label class="nptlbl">Country <span>*</span></label>
 												<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['country'] && fcs_country === true" ng-cloak>
 						                        	<div class="popover bs-popover-top">
 													    <div class="arrow"></div>
