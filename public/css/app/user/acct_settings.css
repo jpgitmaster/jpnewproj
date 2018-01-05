@@ -42,6 +42,7 @@
 
 .cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld .lbldcntnt {
   width: 100%;
+  font-weight: bold;
 }
 
 .cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld .lbldcntnt.pscode {
@@ -57,7 +58,7 @@
   left: 0;
   top: 0;
   border-top: 1px solid #CCC;
-  font-size: 12 px;
+  font-size: 12px;
   width: 100%;
   clear: both;
 }

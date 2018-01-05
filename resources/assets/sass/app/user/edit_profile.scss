@@ -75,7 +75,7 @@
 							
 							.cls{
 							    position: absolute;
-							    right: 10px;
+							    right: 5px;
 							    top: 5px;
 							    outline: none;
 							    border: 0;
@@ -83,6 +83,10 @@
 							    font-size: 25px;
 							    color: #54c3ec;
 							    cursor: pointer;
+
+							    &:hover{
+							    	color: #2fb3e4;
+							    }
 							}
 
 							.frmldr{
@@ -302,6 +306,27 @@
 										    }
 										  }
 										}
+									}
+								}
+
+								&.lbld{
+									margin: 0 5px 15px;
+									display: inherit;
+									width: auto;
+
+									.lbldcntnt {
+									    width: 100%;
+									    font-weight: bold;
+									    color: #3a3a3a;
+									}
+									.lbl {
+									    position: relative;
+									    left: 0;
+									    top: 0;
+									    border-top: 1px solid #CCC;
+									    font-size: 12px;
+									    width: 100%;
+									    clear: both;
 									}
 								}
 							}

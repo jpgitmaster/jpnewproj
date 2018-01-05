@@ -9,7 +9,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $rootScope.usr = data;
         });
     }
-
+    $scope.msg = [];
     $scope.countries    = Countries.query();
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
@@ -178,7 +178,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     ];
     
     $scope.openForm = function(cardnum, card){
-        console.log(card);
         if(card == 1){
             $scope.forms[cardnum]['actvform'] = 1;
             $scope.forms[cardnum]['actvcard'] = 0;
@@ -187,6 +186,10 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         if(card == 0){
             $scope.forms[cardnum]['actvform'] = 0;
             $scope.forms[cardnum]['actvcard'] = 1;
+        }
+        console.log(card);
+        if($scope.msg['success']){
+            $scope.msg['success'] = '';
         }
     }
     
@@ -238,6 +241,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             }
         }
 
+    }
+
+    $scope.gender = [
+        {id: 1, name: 'Female'},
+        {id: 2, name: 'Male'}
+    ];
+
+    $scope.get_selection = function(arr, arr_id){
+        return $filter('filter')(arr, {id: arr_id})[0].name;
     }
 }]);
 
