@@ -227,6 +227,9 @@
 						    </svg>
 					    </div>
 					    <div class="am-fade" ng-if="forms[0]['actvform']" ng-cloak>
+					    	<button type="button" class="cls" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">
+					          <i class="fa fa-times"></i>
+					        </button>
 					      	<form name="formProf1" ng-submit="savePersonalInfo(frm1)" novalidate>
 						        <div class="row no-gutters">
 				              		<div class="col-lg-4">

@@ -178,8 +178,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     ];
     
     $scope.openForm = function(cardnum, card){
+        console.log(card);
         if(card == 1){
             $scope.forms[cardnum]['actvform'] = 1;
+            $scope.forms[cardnum]['actvcard'] = 0;
+        }
+
+        if(card == 0){
+            $scope.forms[cardnum]['actvform'] = 0;
+            $scope.forms[cardnum]['actvcard'] = 1;
         }
     }
     
