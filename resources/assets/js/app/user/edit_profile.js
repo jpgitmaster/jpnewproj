@@ -178,19 +178,23 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     ];
     
     $scope.openForm = function(cardnum, card){
-        if(card == 1){
-            $scope.forms[cardnum]['actvform'] = 1;
-            $scope.forms[cardnum]['actvcard'] = 0;
+        switch(card){
+            case 0:
+                $scope.forms[cardnum]['actvform'] = 0;
+                $scope.forms[cardnum]['actvcard'] = 1;
+                break;
+            case 1:
+                $scope.forms[cardnum]['actvform'] = 1;
+                $scope.forms[cardnum]['actvcard'] = 0;
+                break;
         }
-
-        if(card == 0){
-            $scope.forms[cardnum]['actvform'] = 0;
-            $scope.forms[cardnum]['actvcard'] = 1;
-        }
+        
         // console.log(card);
         if($scope.msg['success']){
             $scope.msg['success'] = '';
         }
+
+        angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
     }
     
     $scope.savePersonalInfo = function(frm1){
@@ -211,9 +215,10 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             if(!$scope.msg['error']){
                 $scope.forms[0]['actvform'] = 0;
             }
+            angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
             $timeout(function(){
                 $scope.frm1_loader = false;
-            }, 500);
+            }, 200);
             console.log($scope.msg);
         });
     }
@@ -248,16 +253,21 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         {id: 2, name: 'Male'}
     ];
 
-    $scope.get_selection = function(arr, arr_id){
-        return $filter('filter')(arr, {id: arr_id})[0].name;
-    }
-
-    $scope.get_country = function(arr, arr_id, idntfr){
-        if(idntfr == 1){
-            return $filter('filter')(arr, {id: arr_id})[0].country;
-        }
-        if(idntfr == 2){
-            return $filter('filter')(arr, {id: arr_id})[0].nationality;
+    var fltr = '';
+    $scope.getfltrvalue = function(arr, arr_id, idntfr){
+        if(arr){
+            switch(idntfr){
+                case 0:
+                    fltr = $filter('filter')(arr, {id: arr_id})[0].name;
+                    break;
+                case 1:
+                    fltr = $filter('filter')(arr, {id: arr_id})[0].country;
+                    break;
+                case 2:
+                    fltr = $filter('filter')(arr, {id: arr_id})[0].nationality;
+                    break;
+            }
+            return fltr;
         }
     }
 }]);
