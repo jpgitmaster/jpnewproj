@@ -228,6 +228,7 @@
 							    </svg>
 						    </div>
 						    <div ng-if="!forms[0]['actvform']" ng-cloak>
+						    	
 			              		<div ng-if="msg['success']['prsnl']" ng-cloak>
 			              			<div style="width: 100%; text-align: center; display: inline-block; color: #54c3ec;">
 								    	<p style="font: 30px segobl;">
@@ -338,7 +339,11 @@
 								      	</div>
 							    	</div>
 							    </div>
-			              		<button type="button" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">test</button>
+							    <div class="btnedt" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">
+						    		<button class="btn btn-primary" type="button">
+						    			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+						    		</button>
+						    	</div>
 			              	</div>
 			              	<div class="clearfix"></div>
 						    <div ng-if="forms[0]['actvform']" ng-cloak>
