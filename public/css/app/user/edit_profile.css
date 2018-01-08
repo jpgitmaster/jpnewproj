@@ -63,18 +63,7 @@
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body {
   position: relative;
   padding: 50px 15px 0;
-  min-height: 300px;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .btnedt {
-  text-align: center;
-  float: left;
-  width: 100%;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .btnedt .btn {
-  font-size: 15px;
-  margin-bottom: 30px;
+  min-height: 450px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls {
@@ -170,12 +159,6 @@
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .nptgrp .popcntnr .popover .popover-body .btns .btn {
   padding: 5px 30px;
   display: inline-block;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr .btmctns .btn-success {
-  font-size: 14px;
-  border-radius: 5px;
-  padding: 10px 50px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea label, #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.cstmdrpdwn label {
@@ -346,6 +329,7 @@
   font-size: 12px;
   width: 100%;
   clear: both;
+  margin-bottom: 15px;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_rght .avatar {

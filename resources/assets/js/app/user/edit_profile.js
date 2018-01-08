@@ -190,9 +190,9 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         }
         
         // console.log(card);
-        // if($scope.msg['success']){
-        //     $scope.msg['success'] = '';
-        // }
+        if($scope.msg['success']){
+            $scope.msg['success'] = '';
+        }
 
         angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
     }

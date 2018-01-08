@@ -66,6 +66,7 @@ class Controller extends BaseController
 
         define('n_ngselect', 'plugins/ng-custom-select/js/customselect.js');
         define('n_ngfilter', 'plugins/ng-custom-select/angular-filter.js');
+        define('n_ngvertilize', 'plugins/angular-vertilize/angular-vertilize.min.js');
 
         define('n_home', 'app/web/home.js');
 

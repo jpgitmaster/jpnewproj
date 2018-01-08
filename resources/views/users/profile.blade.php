@@ -230,8 +230,14 @@
 						    <div ng-if="!forms[0]['actvform']" ng-cloak>
 						    	
 			              		<div ng-if="msg['success']['prsnl']" ng-cloak>
-			              			<div style="width: 100%; text-align: center; display: inline-block; color: #54c3ec;">
-								    	<p style="font: 30px segobl;">
+			              			<div style="width: 100%;
+									    text-align: center;
+									    display: inline-block;
+									    color: #54c3ec;
+									    margin-top: -30px;
+									    position: relative;
+									    top: -15px;">
+								    	<p style="font: 30px segobl; margin: 0;">
 								    		<%= msg['success']['prsnl'] %> &nbsp;
 								    		<i class="fa fa-check-circle" style="font-size: 40px;"></i>
 								    	</p>
@@ -339,11 +345,13 @@
 								      	</div>
 							    	</div>
 							    </div>
-							    <div class="btnedt" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">
-						    		<button class="btn btn-primary" type="button">
-						    			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-						    		</button>
-						    	</div>
+							    <div class="crdftr">
+									<div class="btmctns">
+							    		<button class="btn btn-primary" type="button" ng-click="openForm(forms[0]['cardnum'], 1)">
+							    			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+							    		</button>
+								    </div>
+								</div>
 			              	</div>
 			              	<div class="clearfix"></div>
 						    <div ng-if="forms[0]['actvform']" ng-cloak>
@@ -548,7 +556,7 @@
 										        </div>
 					              			</div>
 					              		</div> -->
-					              	</div> 
+					              	</div>
 									<div class="crdftr">
 										<div class="btmctns">
 											<!-- <div class="nptgrp am-flip-x" ng-if="frm1cnfrm" ng-cloak>
@@ -576,7 +584,7 @@
 							              	<button class="btn btn-success" ng-click="frm1cnfrm = !frm1cnfrm" type="button">
 							              		Save Changes
 							              	</button> -->
-							              	<button class="btn btn-success" type="submit">
+							              	<button class="btn btn-success pvw" type="submit">
 							              		Save Changes
 							              	</button>
 						              	</div>
