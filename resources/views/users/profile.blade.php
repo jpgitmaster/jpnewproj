@@ -236,10 +236,10 @@
 									    color: #54c3ec;
 									    margin-top: -30px;
 									    position: relative;
-									    top: -15px;">
-								    	<p style="font: 30px segobl; margin: 0;">
+									    top: -20px;">
+								    	<p style="font: 28px segobl; margin: 0;">
 								    		<%= msg['success']['prsnl'] %> &nbsp;
-								    		<i class="fa fa-check-circle" style="font-size: 40px;"></i>
+								    		<i class="fa fa-check-circle" style="font-size: 35px;"></i>
 								    	</p>
 								    </div>
 			              		</div>

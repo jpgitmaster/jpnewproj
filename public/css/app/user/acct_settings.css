@@ -57,7 +57,7 @@
   position: relative;
   left: 0;
   top: 0;
-  border-top: 1px solid #CCC;
+  border-top: 1px dotted #CCC;
   font-size: 12px;
   width: 100%;
   clear: both;
