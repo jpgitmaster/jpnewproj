@@ -18,13 +18,21 @@
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-header {
+  outline: none;
   background-color: #54c3ec;
+  border: 1px solid #FFF;
+  text-align: left;
   color: #FFF;
   cursor: pointer;
   border-radius: 0;
   padding: 6px 15px;
   font: 20px segobb;
   text-shadow: 1px 0 0 #2e90b5;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-header:disabled {
+  background-color: #a1d8ec;
+  cursor: not-allowed;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-header .glyph {

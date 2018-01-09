@@ -211,13 +211,13 @@
 
 				<div id="edtprof_accrdn">
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(1)">
+				    <button class="card-header" ng-click="collapseTab(1)" type="button">
 				    	<div class="glyph">
 		                    <i class="fa fa-address-card"></i>
 		                </div>
 				        Personal Information
 				        <i class="fa fa-chevron-down"></i>
-				    </div>
+				    </button>
 
 				    <div class="collapse">
 				      <div class="card-body">
@@ -596,14 +596,14 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(2)">
-				        <div class="glyph">
+				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!forms[1]['actvcard']">
+				        <span class="glyph">
 		                    <i class="fa fa-phone"></i>
-		                </div>
+		                </span>
 				        Contact Details
 
 				        <i class="fa fa-chevron-down"></i>
-				    </div>
+				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
 				        <form ng-submit="saveContactDtls(frm2)" method="POST" novalidate>
@@ -679,14 +679,14 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(3)">
+				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="true">
 				        <div class="glyph">
 		                    <i class="fa fa-graduation-cap"></i>
 		                </div>
 				        Educational Background
 
 				        <i class="fa fa-chevron-down"></i>
-				    </div>
+				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
 				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
@@ -694,14 +694,14 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <div class="card-header" ng-click="collapseTab(4)">
+				    <button class="card-header" ng-click="collapseTab(4)" type="button" ng-disabled="true">
 				        <div class="glyph">
 		                    <i class="fa fa-stethoscope"></i>
 		                </div>
 				        Employment History
 
 				        <i class="fa fa-chevron-down"></i>
-				    </div>
+				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
 				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.

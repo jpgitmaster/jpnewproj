@@ -218,6 +218,8 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
             $timeout(function(){
                 $scope.frm1_loader = false;
+                $scope.collapseTab(2);
+                $scope.forms[1]['actvcard'] = 1;
             }, 200);
             console.log($scope.msg);
         });
