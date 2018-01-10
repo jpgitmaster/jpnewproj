@@ -219,6 +219,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             $timeout(function(){
                 $scope.frm1_loader = false;
             }, 200);
+            $scope.collapseTab(2);
             console.log($scope.msg);
         });
     }
