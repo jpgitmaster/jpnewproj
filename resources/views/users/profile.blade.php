@@ -229,7 +229,7 @@
 						    </div>
 						    <div ng-if="!forms[0]['actvform']" ng-cloak>
 						    	
-			              		<div ng-if="msg['success']['prsnl']" ng-cloak>
+			              		<div ng-if="msg['success']['prsnl']['updated']" ng-cloak>
 			              			<div style="width: 100%;
 									    text-align: center;
 									    display: inline-block;
@@ -238,7 +238,7 @@
 									    position: relative;
 									    top: -20px;">
 								    	<p style="font: 28px segobl; margin: 0;">
-								    		<%= msg['success']['prsnl'] %> &nbsp;
+								    		<%= msg['success']['prsnl']['updated'] %> &nbsp;
 								    		<i class="fa fa-check-circle" style="font-size: 35px;"></i>
 								    	</p>
 								    </div>

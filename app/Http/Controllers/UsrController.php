@@ -335,7 +335,7 @@ class UsrController extends Controller
                         'nationality' => $usr['nationality'],
                         'objectives'   => $usr['objectives']
                     ]);
-                $this->msg['success']['prsnl'] = 'Successfully Updated';
+                $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
             else:
                 DB::table('personal_information')->insert([
                     'genid' => Auth::user()->genid,
@@ -348,7 +348,7 @@ class UsrController extends Controller
                     'nationality'   => $usr['nationality'],
                     'objectives'     => $usr['objectives']
                 ]);
-                $this->msg['success']['prsnl'] = 'Successfully Added';
+                $this->msg['success']['prsnl']['added'] = 'Successfully Added';
             endif;
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));

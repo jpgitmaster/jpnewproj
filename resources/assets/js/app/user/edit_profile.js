@@ -11,6 +11,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     }
     $scope.msg = [];
     $scope.countries    = Countries.query();
+    $scope.frm1 = [];
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
         $scope.cvlstatus = $scope.frm1.cstatus;
@@ -218,8 +219,10 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
             $timeout(function(){
                 $scope.frm1_loader = false;
-                $scope.collapseTab(2);
-                $scope.forms[1]['actvcard'] = 1;
+                if($scope.msg['success']['prsnl']['added']){
+                    $scope.collapseTab(2);
+                    $scope.forms[1]['actvcard'] = 1;
+                }
             }, 200);
             console.log($scope.msg);
         });
@@ -257,7 +260,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
 
     var fltr = '';
     $scope.getfltrvalue = function(arr, arr_id, idntfr){
-        if(arr){
+        if($filter('filter')(arr, {id: arr_id})[0]){
             switch(idntfr){
                 case 0:
                     fltr = $filter('filter')(arr, {id: arr_id})[0].name;
