@@ -1,8 +1,10 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
+
+    $scope.proform = ProfForms.query();
 
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
@@ -221,7 +223,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
                 $scope.frm1_loader = false;
                 if($scope.msg['success']['prsnl']['added']){
                     $scope.collapseTab(2);
-                    $scope.forms[1]['actvcard'] = 1;
+                    $scope.proform['contactdetails'] = 1;
                 }
             }, 200);
             console.log($scope.msg);
