@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 	    'as' => 'delete_record', 'uses' => 'UsrController@delete_record'
 	]);
 	Route::prefix('user')->group(function () {
+		Route::get('profile_forms', [
+		    'as' => 'profile_forms', 'uses' => 'UsrController@get_profile_forms'
+		]);
 		Route::get('dashboard', [
 		    'as' => 'usr_dashboard', 'uses' => 'UsrController@dashboard'
 		]);

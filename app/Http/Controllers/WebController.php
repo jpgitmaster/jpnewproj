@@ -129,6 +129,14 @@ class WebController extends Controller
                 $usr->role           = 1;
                 $usr->remember_token = $user['token'];
 
+                DB::table('profile_forms')->insert([
+                    'genid' => $gen_id,
+                    'personalinfo'     => 1,
+                    'contactdetails'   => 0,
+                    'educationalbg'    => 0,
+                    'emphistory'       => 0,
+                    'charreference'    => 0
+                ]);
                 $usr->save();
                 if( count($mailer->failures()) > 0 ):
                     print_r(count($mailer->failures()));

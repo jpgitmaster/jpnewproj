@@ -12,6 +12,12 @@ usrApp.factory('PersnlInfo', function ($resource) {
         query : { method: 'GET', isArray: false }
     });
 });
+usrApp.factory('ProfForms', function ($resource) {
+    return $resource('/user/profile_forms', {}, {
+        query : { method: 'GET', isArray: false }
+    });
+});
+
 usrApp.factory('Countries', function ($resource) {
     return $resource('/countries', {}, {
         query : { method: 'GET', isArray: true }

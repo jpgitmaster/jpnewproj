@@ -335,7 +335,7 @@ class UsrController extends Controller
                         'nationality' => $usr['nationality'],
                         'objectives'   => $usr['objectives']
                     ]);
-                $this->msg['success']['prsnl'] = 'Successfully Updated';
+                $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
             else:
                 DB::table('personal_information')->insert([
                     'genid' => Auth::user()->genid,
@@ -348,7 +348,12 @@ class UsrController extends Controller
                     'nationality'   => $usr['nationality'],
                     'objectives'     => $usr['objectives']
                 ]);
-                $this->msg['success']['prsnl'] = 'Successfully Added';
+                DB::table('profile_forms')
+                    ->where('genid', Auth::user()->genid)
+                    ->update([
+                        'contactdetails'     => 1
+                    ]);
+                $this->msg['success']['prsnl']['added'] = 'Successfully Added';
             endif;
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
@@ -359,8 +364,16 @@ class UsrController extends Controller
         return json_encode($countries, JSON_PRETTY_PRINT);
     }
 
+    public function get_profile_forms(){
+        $users = DB::table('profile_forms')
+            ->select(
+                'personalinfo', 'contactdetails', 'educationalbg', 'emphistory', 'charreference'
+            )->where('genid', Auth::user()->genid)
+            ->get();
+        return json_encode($users[0], JSON_PRETTY_PRINT);
+    }
+
     public function get_current_user(){
-        $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
         $users = DB::table('users')
             ->leftJoin('avatars', function ($join) {
                 $join->on('users.genid', '=', 'avatars.genid');
@@ -425,7 +438,6 @@ class UsrController extends Controller
     }
 
     public function get_personal_info(){
-        $count_avatars = DB::table('avatars')->where('genid', Auth::user()->genid)->count();
         $users = DB::table('primary_info')
             ->leftJoin('personal_information', 'primary_info.genid', '=', 'primary_info.genid')
             ->select(

@@ -1,8 +1,10 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo) {
+usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
+
+    $scope.proform = ProfForms.query();
 
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
@@ -11,6 +13,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     }
     $scope.msg = [];
     $scope.countries    = Countries.query();
+    $scope.frm1 = [];
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
         $scope.cvlstatus = $scope.frm1.cstatus;
@@ -218,6 +221,10 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
             $timeout(function(){
                 $scope.frm1_loader = false;
+                if($scope.msg['success']['prsnl']['added']){
+                    $scope.collapseTab(2);
+                    $scope.proform['contactdetails'] = 1;
+                }
             }, 200);
             $scope.collapseTab(2);
             console.log($scope.msg);
@@ -256,7 +263,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
 
     var fltr = '';
     $scope.getfltrvalue = function(arr, arr_id, idntfr){
-        if(arr){
+        if($filter('filter')(arr, {id: arr_id})[0]){
             switch(idntfr){
                 case 0:
                     fltr = $filter('filter')(arr, {id: arr_id})[0].name;

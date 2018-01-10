@@ -22,7 +22,10 @@
 						box-shadow: 0 0 10px #e8e8e8;
 
 						.card-header{
+							outline: none;
 							background-color: #54c3ec;
+						    border: 1px solid #FFF;
+						    text-align: left;
 						    color: #FFF;
 						    cursor: pointer;
 						    border-radius: 0;
@@ -30,6 +33,10 @@
 						    font: 20px segobb;
 						    text-shadow: 1px 0 0 #2e90b5;
 
+						    &:disabled{
+						    	background-color: #a1d8ec;
+						    	cursor: not-allowed;
+						    }
 							.glyph{
 								background-color: #FFF;
 								color: #5cc2e8;
