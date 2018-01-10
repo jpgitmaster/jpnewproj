@@ -78,6 +78,7 @@
 
 #wrapper .sldr .sldr_left .ceo_testi .popover {
   position: relative;
+  z-index: 9;
   max-width: 450px;
   border-color: #6dc6e6;
   background-color: #6dc6e6;

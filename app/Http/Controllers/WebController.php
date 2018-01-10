@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Session;
+use DB;
 
 use App\Usr;
 use App\Mail\MailNewRegistrants;
@@ -129,6 +130,9 @@ class WebController extends Controller
                 $usr->role           = 1;
                 $usr->remember_token = $user['token'];
 
+                DB::table('primary_info')->insert([
+                    'genid' => $gen_id
+                ]);
                 DB::table('profile_forms')->insert([
                     'genid' => $gen_id,
                     'personalinfo'     => 1,

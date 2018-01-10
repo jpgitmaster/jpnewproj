@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2018 at 04:03 PM
+-- Generation Time: Jan 10, 2018 at 05:13 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -41,7 +41,7 @@ CREATE TABLE `avatars` (
 --
 
 INSERT INTO `avatars` (`id`, `genid`, `imgname`, `imgext`, `imgfolder`, `imgadded`, `imgchanged`) VALUES
-(6, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110517121717.jpg', 'jpg', 'avatars', '2017-11-05 20:06:07', '2017-12-17 17:03:55');
+(1, 'mxveM7GQUhDVxEyhXQm5', 'mxveM7GQUhDVxEyhXQm5011118.jpg', 'jpg', 'avatars', '2018-01-11 00:11:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -329,13 +329,6 @@ CREATE TABLE `personal_information` (
   `objectives` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `personal_information`
---
-
-INSERT INTO `personal_information` (`id`, `genid`, `bday`, `bplace`, `age`, `gender`, `cstatus`, `country`, `nationality`, `objectives`) VALUES
-(2, 'qlMRixkSp2cwYsNBjETW', '1987-05-14', 'Valenzuela', 30, 2, 5, 240, 1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut');
-
 -- --------------------------------------------------------
 
 --
@@ -345,9 +338,9 @@ INSERT INTO `personal_information` (`id`, `genid`, `bday`, `bplace`, `age`, `gen
 CREATE TABLE `primary_info` (
   `id` int(11) NOT NULL,
   `genid` varchar(20) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `mname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL
+  `fname` varchar(50) DEFAULT NULL,
+  `mname` varchar(50) DEFAULT NULL,
+  `lname` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -355,7 +348,30 @@ CREATE TABLE `primary_info` (
 --
 
 INSERT INTO `primary_info` (`id`, `genid`, `fname`, `mname`, `lname`) VALUES
-(20, 'qlMRixkSp2cwYsNBjETW', 'JP', 'Lascano', 'Vasquez');
+(1, 'mxveM7GQUhDVxEyhXQm5', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_forms`
+--
+
+CREATE TABLE `profile_forms` (
+  `id` int(11) NOT NULL,
+  `genid` varchar(20) NOT NULL,
+  `personalinfo` int(1) NOT NULL,
+  `contactdetails` int(1) NOT NULL,
+  `educationalbg` int(1) NOT NULL,
+  `emphistory` int(1) NOT NULL,
+  `charreference` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profile_forms`
+--
+
+INSERT INTO `profile_forms` (`id`, `genid`, `personalinfo`, `contactdetails`, `educationalbg`, `emphistory`, `charreference`) VALUES
+(1, 'mxveM7GQUhDVxEyhXQm5', 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -379,7 +395,7 @@ CREATE TABLE `resumes` (
 --
 
 INSERT INTO `resumes` (`id`, `genid`, `rsmname`, `rsmext`, `rsmsize`, `rsmfolder`, `rsmadded`, `rsmchanged`) VALUES
-(17, 'qlMRixkSp2cwYsNBjETW', 'qlMRixkSp2cwYsNBjETW110817121717.docx', 'docx', '41798', 'resumes', '2017-11-08 08:34:30', '2017-12-17 19:35:54');
+(1, 'mxveM7GQUhDVxEyhXQm5', 'mxveM7GQUhDVxEyhXQm5011118.pdf', 'pdf', '148176', 'resumes', '2018-01-11 00:11:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -406,7 +422,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `genid`, `email`, `password`, `remember`, `remember_token`, `activated`, `act_updated`, `act_created`, `act_activated`, `role`) VALUES
-(3, 'qlMRixkSp2cwYsNBjETW', 'vasquezjp14@gmail.com', '$2y$10$ZSoUpxrjw462TZv6exxga.3qSmof4Xz7YkhiTGoahQqdS7KOfnmJK', 0, 'spdYoBaeK7GxVim8dXZwlm6vfTekpNDfvN8SCNcdetVKCHPjKt0MXIvrSogP', 1, '2017-10-31 09:25:21', '2017-10-30 15:31:48', '2017-10-31 09:25:21', 1);
+(1, 'mxveM7GQUhDVxEyhXQm5', 'vasquezjp14@gmail.com', '$2y$10$z8/EvQBXwARfh5r6e161EOtd8Mkc5/qBvqzPcuOIfowkqdvCwEATO', 0, 'xdSeCyD8MZLtYQrt9marzXauP6yBoVrmqSVYrJ9I', 1, '2018-01-11 00:10:23', '2018-01-11 00:09:21', '2018-01-11 00:10:23', 1);
 
 --
 -- Indexes for dumped tables
@@ -441,6 +457,12 @@ ALTER TABLE `primary_info`
   ADD UNIQUE KEY `genid` (`genid`);
 
 --
+-- Indexes for table `profile_forms`
+--
+ALTER TABLE `profile_forms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `resumes`
 --
 ALTER TABLE `resumes`
@@ -463,7 +485,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `avatars`
 --
 ALTER TABLE `avatars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `countries`
 --
@@ -473,22 +495,27 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `primary_info`
 --
 ALTER TABLE `primary_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `profile_forms`
+--
+ALTER TABLE `profile_forms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `resumes`
 --
 ALTER TABLE `resumes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

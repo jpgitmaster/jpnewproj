@@ -226,7 +226,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
                     $scope.proform['contactdetails'] = 1;
                 }
             }, 200);
-            $scope.collapseTab(2);
             console.log($scope.msg);
         });
     }
