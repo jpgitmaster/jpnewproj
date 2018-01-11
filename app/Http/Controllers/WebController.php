@@ -135,7 +135,7 @@ class WebController extends Controller
                 ]);
                 DB::table('profile_forms')->insert([
                     'genid' => $gen_id,
-                    'personalinfo'     => 1,
+                    'personalinfo'     => 0,
                     'contactdetails'   => 0,
                     'educationalbg'    => 0,
                     'emphistory'       => 0,

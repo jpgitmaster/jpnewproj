@@ -211,7 +211,7 @@
 
 				<div id="edtprof_accrdn">
 				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(1)" type="button" ng-disabled="!proform['personalinfo']">
+				    <button class="card-header" ng-click="collapseTab(1)" type="button">
 				    	<div class="glyph">
 		                    <i class="fa fa-address-card"></i>
 		                </div>
@@ -221,142 +221,18 @@
 
 				    <div class="collapse">
 				      <div class="card-body">
-
 				      	<div class="crdbdy">
-					      	<div class="frmldr" ng-if="frm1_loader" ng-cloak>
+					      	<div class="frmldr" ng-if="!forms[0] || frm1_loader" ng-cloak>
 				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div>
 						    <div ng-if="!forms[0]['actvform']" ng-cloak>
-						    	
-			              		<div ng-if="msg['success']['prsnl']['updated']" ng-cloak>
-			              			<div style="width: 100%;
-									    text-align: center;
-									    display: inline-block;
-									    color: #54c3ec;
-									    margin-top: -30px;
-									    position: relative;
-									    top: -20px;">
-								    	<p style="font: 28px segobl; margin: 0;">
-								    		<%= msg['success']['prsnl']['updated'] %> &nbsp;
-								    		<i class="fa fa-check-circle" style="font-size: 35px;"></i>
-								    	</p>
-								    </div>
-			              		</div>
-			              		<div class="row no-gutters">
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.fname ? frm1.fname : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		First Name
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.mname ? frm1.mname : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Middle Name
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.lname ? frm1.lname : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Last Name
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.gender ? getfltrvalue(gender, frm1.gender, 0) : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Gender
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.bday ? frm1.bday : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Gender
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.bplace ? frm1.bplace : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Gender
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.gender ? getfltrvalue(cstatus, frm1.cstatus, 0) : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Civil Status
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.country ? getfltrvalue(countries, frm1.country, 1) : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Country
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-4">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.nationality ? getfltrvalue(countries, frm1.nationality, 2) : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Nationality
-								        	</label>
-								      	</div>
-							    	</div>
-							    	<div class="col-lg-12">
-							    		<div class="nptgrp lbld">
-											<span class="lbldcntnt">
-												<%= frm1.objectives ? frm1.objectives : '&nbsp;' %>
-											</span>
-								        	<label class="lbl">
-								        		Career Objectives
-								        	</label>
-								      	</div>
-							    	</div>
-							    </div>
-							    <div class="crdftr">
-									<div class="btmctns">
-							    		<button class="btn btn-primary" type="button" ng-click="openForm(forms[0]['cardnum'], 1)">
-							    			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-							    		</button>
-								    </div>
-								</div>
+						    	<div ng-include src="'/user/lbl_personal_info'"></div>
 			              	</div>
 			              	<div class="clearfix"></div>
 						    <div ng-if="forms[0]['actvform']" ng-cloak>
-						    	<button type="button" class="cls" ng-click="openForm(forms[0]['cardnum'], forms[0]['actvcard'])">
+						    	<button type="button" class="cls" ng-click="openForm(forms[0]['cardnum'], 0)">
 						          <i class="fa fa-times"></i>
 						        </button>
 						      	<form name="formProf1" ng-submit="savePersonalInfo(frm1)" novalidate>
@@ -538,7 +414,7 @@
 										            <div class="totlngth">
 									            		<%= 200 - frm1.objectives.length %> Character<%= frm1.objectives.length >= 199 ? '' : 's' %> Remaining
 										            </div>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['objectives'] && fcs_objectives === true" ng-cloak>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['objectives'] && fcs_objectives === true" ng-cloak style="bottom: 90px;">
 							                        	<div class="popover bs-popover-top">
 														    <div class="arrow"></div>
 														    <div class="popover-body">
@@ -597,12 +473,11 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!proform['contactdetails']">
+				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!proform['personalinfo']">
 				        <span class="glyph">
 		                    <i class="fa fa-phone"></i>
 		                </span>
 				        Contact Details
-
 				        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">

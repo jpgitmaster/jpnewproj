@@ -5,7 +5,43 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
 
     $scope.proform = ProfForms.query();
+    $scope.frm1_loader = false;
+    ProfForms.query().$promise.then(function(data) {
+        $scope.proform = data;
+        var actvfrm = 0;
+        switch(data['personalinfo']){
+            case 0:
+                actvfrm = 1;
+                break;
+            case 1:
+                actvfrm = 0;
+                break;
+        }
+        $scope.forms = [
+            {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
+            {'form':  'ContactDetails', 'cardnum': 0, 'actvform': 0},
+        ];
+    });
+    
+    $scope.openForm = function(cardnum, card){
+        switch(card){
+            case 0:
+                $scope.forms[cardnum]['actvform'] = 0;
+                $scope.forms[cardnum]['actvcard'] = 1;
+                break;
+            case 1:
+                $scope.forms[cardnum]['actvform'] = 1;
+                $scope.forms[cardnum]['actvcard'] = 0;
+                break;
+        }
+        
+        // console.log(card);
+        if($scope.msg['success']){
+            $scope.msg['success'] = '';
+        }
 
+        angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
+    }
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
             $rootScope.usr = data;
@@ -174,32 +210,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         }
     }
 
-    $scope.frm1_loader = false;
-    $scope.forms = [
-        {'form':  'PersonalInfo', 'cardnum': 0, 'actvcard': 1, 'actvform': 0},
-        {'form':  'ContactDetails', 'cardnum': 1, 'actvcard': 0, 'actvform': 0},
-    ];
-    
-    $scope.openForm = function(cardnum, card){
-        switch(card){
-            case 0:
-                $scope.forms[cardnum]['actvform'] = 0;
-                $scope.forms[cardnum]['actvcard'] = 1;
-                break;
-            case 1:
-                $scope.forms[cardnum]['actvform'] = 1;
-                $scope.forms[cardnum]['actvcard'] = 0;
-                break;
-        }
-        
-        // console.log(card);
-        if($scope.msg['success']){
-            $scope.msg['success'] = '';
-        }
-
-        angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
-    }
-    
     $scope.savePersonalInfo = function(frm1){
         // console.log(frm1);
         $scope.frm1_loader = true;
@@ -221,9 +231,11 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
             angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
             $timeout(function(){
                 $scope.frm1_loader = false;
-                if($scope.msg['success']['prsnl']['added']){
-                    $scope.collapseTab(2);
-                    $scope.proform['contactdetails'] = 1;
+                if($scope.msg['success']){
+                    if($scope.msg['success']['prsnl']['added']){
+                        $scope.collapseTab(2);
+                        $scope.proform['personalinfo'] = 1;
+                    }
                 }
             }, 200);
             console.log($scope.msg);

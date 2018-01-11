@@ -337,21 +337,21 @@ class UsrController extends Controller
                     ]);
                 $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
             else:
-                DB::table('personal_information')->insert([
-                    'genid' => Auth::user()->genid,
-                    'age'           => $usr['age'],
-                    'bday'         => $usr['bday'],
-                    'bplace'        => $usr['bplace'],
-                    'gender'        => $usr['gender'],
-                    'cstatus'       => $usr['cstatus'],
-                    'country'       => $usr['country'],
-                    'nationality'   => $usr['nationality'],
-                    'objectives'     => $usr['objectives']
-                ]);
+                // DB::table('personal_information')->insert([
+                //     'genid' => Auth::user()->genid,
+                //     'age'           => $usr['age'],
+                //     'bday'         => $usr['bday'],
+                //     'bplace'        => $usr['bplace'],
+                //     'gender'        => $usr['gender'],
+                //     'cstatus'       => $usr['cstatus'],
+                //     'country'       => $usr['country'],
+                //     'nationality'   => $usr['nationality'],
+                //     'objectives'     => $usr['objectives']
+                // ]);
                 DB::table('profile_forms')
                     ->where('genid', Auth::user()->genid)
                     ->update([
-                        'contactdetails'     => 1
+                        'personalinfo'     => 1
                     ]);
                 $this->msg['success']['prsnl']['added'] = 'Successfully Added';
             endif;
@@ -475,5 +475,9 @@ class UsrController extends Controller
             'stylesheet'    => $this->import['stylesheet'],
             'ngular'        =>  array_merge($this->import['ngular'], [n_user_calendar])
         ]);
+    }
+
+    public function lbl_personal_info(){
+        return view('users.form_labels.personal_info', []);
     }
 }

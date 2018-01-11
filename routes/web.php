@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('personal_info', [
 		    'as' => 'personal_info', 'uses' => 'UsrController@get_personal_info'
 		]);
+		Route::get('lbl_personal_info', [
+		    'as' => 'lbl_personal_info', 'uses' => 'UsrController@lbl_personal_info'
+		]);
 	});
 });
 
