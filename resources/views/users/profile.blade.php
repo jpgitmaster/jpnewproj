@@ -482,75 +482,99 @@
 				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
-				        <form ng-submit="saveContactDtls(frm2)" method="POST" novalidate>
-					        <div class="row no-gutters">
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="frm2.email" required>
-								            <label class="nptlbl">Email <span>*</span></label>
-								            <span class="btmlbl">
-								            	<strong>e.g.</strong> yourname@gmail.com
-								            </span>
-								        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="frm2.mobile" ng-pattern="/^\d+$/" required>
-								            <label class="nptlbl">Mobile No. <span>*</span></label>
-								            <span class="btmlbl">
-								            	<strong>e.g.</strong> 0917-123-4567
-								            </span>
-								        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="frm2.phone" required>
-								            <label class="nptlbl">Phone No.</label>
-								            <span class="btmlbl">
-								            	<strong>e.g.</strong> (632) 765-4321
-								            </span>
-								        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-12">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="frm2.prsnt_addrss" ng-change="makeSameAddress(check)" required>
-								            <label class="nptlbl">Present Address <span>*</span></label>
-								            <span class="btmlbl">
-								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-								            </span>
-								        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-12">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-								            <input type="text" ng-model="frm2.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
-								            <label class="nptlbl">Permanent Address </label>
-								            <span class="btmlbl">
-								            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-								            </span>
-								            <label class="ctrl">
-										        Same as Present Address
-										        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
-										        <div class="ctrl_indicator"></div>
-										    </label>
-								        </div>
-			              			</div>
-			              		</div>
-			              	</div>
-			              	<div class="crdftr" style="margin-top: 0;">
-				              	<button class="btn btn-success" type="submit">
-				              		Save Changes
-				              	</button>
-			              	</div>
-			            </form>
+					    <div class="crdbdy">
+					      	<div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
+				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+							    </svg>
+						    </div>
+					      	
+					      	<div ng-if="!forms[1]['actvform']" ng-cloak>
+					      		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia amet nisi, debitis nesciunt eaque. Optio sit quis rem, accusantium quas sint obcaecati ab veritatis alias. Id eaque expedita ab iusto.
+					      		<div class="crdftr">
+									<div class="btmctns">
+										<button class="btn btn-primary" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
+											Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+										</button>
+									</div>
+								</div>
+					      	</div>
+					      	<div class="clearfix"></div>
+					      	<div ng-if="forms[1]['actvform']" ng-cloak>
+					      		<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
+						          <i class="fa fa-times"></i>
+						        </button>
+						        <form ng-submit="saveContactDtls(frm2)" method="POST" novalidate>
+							        <div class="row no-gutters">
+					              		<div class="col-lg-4">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm2.email" required>
+										            <label class="nptlbl">Email <span>*</span></label>
+										            <span class="btmlbl">
+										            	<strong>e.g.</strong> yourname@gmail.com
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-4">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm2.mobile" ng-pattern="/^\d+$/" required>
+										            <label class="nptlbl">Mobile No. <span>*</span></label>
+										            <span class="btmlbl">
+										            	<strong>e.g.</strong> 0917-123-4567
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-4">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm2.phone" required>
+										            <label class="nptlbl">Phone No.</label>
+										            <span class="btmlbl">
+										            	<strong>e.g.</strong> (632) 765-4321
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-12">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm2.prsnt_addrss" ng-change="makeSameAddress(check)" required>
+										            <label class="nptlbl">Present Address <span>*</span></label>
+										            <span class="btmlbl">
+										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-12">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm2.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
+										            <label class="nptlbl">Permanent Address </label>
+										            <span class="btmlbl">
+										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+										            </span>
+										            <label class="ctrl">
+												        Same as Present Address
+												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
+												        <div class="ctrl_indicator"></div>
+												    </label>
+										        </div>
+					              			</div>
+					              		</div>
+					              	</div>
+					              	<div class="crdftr" style="margin-top: 0;">
+						              	<button class="btn btn-success" type="submit">
+						              		Save Changes
+						              	</button>
+					              	</div>
+					            </form>
+					      	</div>
+					    </div>
 				      </div>
 				    </div>
 				  </div>

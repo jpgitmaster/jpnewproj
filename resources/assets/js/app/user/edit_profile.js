@@ -6,15 +6,26 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
 
     $scope.proform = ProfForms.query();
     $scope.frm1_loader = false;
+    $scope.frm2_loader = false;
     ProfForms.query().$promise.then(function(data) {
         $scope.proform = data;
-        var actvfrm = 0;
+        var actvfrm = 0,
+            actvfrm2 = 0;
         switch(data['personalinfo']){
             case 0:
                 actvfrm = 1;
                 break;
             case 1:
                 actvfrm = 0;
+                break;
+        }
+
+        switch(data['contactdetails']){
+            case 0:
+                actvfrm2 = 1;
+                break;
+            case 1:
+                actvfrm2 = 0;
                 break;
         }
         $timeout(function(){
@@ -24,7 +35,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         }, 200);
         $scope.forms = [
             {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
-            {'form':  'ContactDetails', 'cardnum': 0, 'actvform': 0},
+            {'form':  'ContactDetails', 'cardnum': 1, 'actvform': actvfrm2},
         ];
     });
     
@@ -32,11 +43,9 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         switch(card){
             case 0:
                 $scope.forms[cardnum]['actvform'] = 0;
-                $scope.forms[cardnum]['actvcard'] = 1;
                 break;
             case 1:
                 $scope.forms[cardnum]['actvform'] = 1;
-                $scope.forms[cardnum]['actvcard'] = 0;
                 break;
         }
         
@@ -44,8 +53,8 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         if($scope.msg['success']){
             $scope.msg['success'] = '';
         }
-
-        angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
+        var fadefrm = cardnum+1;
+        angular.element('.card:nth-child('+fadefrm+') .crdbdy').hide().delay(200).fadeIn();
     }
     $scope.updateUsr = function(){
         Usr.query().$promise.then(function(data) {
