@@ -48,7 +48,7 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
         });
     }
     $scope.msg = [];
-    $scope.countries    = Countries.query();
+    $scope.countries = Countries.query();
     $scope.frm1 = [];
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
