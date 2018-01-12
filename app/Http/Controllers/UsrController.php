@@ -19,7 +19,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
-            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_chart, n_ngselect, n_ngfilter, n_ngvertilize, n_user]
+            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_ngselect, n_ngfilter, n_ngvertilize, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
         $this->msg = [];
@@ -337,17 +337,17 @@ class UsrController extends Controller
                     ]);
                 $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
             else:
-                // DB::table('personal_information')->insert([
-                //     'genid' => Auth::user()->genid,
-                //     'age'           => $usr['age'],
-                //     'bday'         => $usr['bday'],
-                //     'bplace'        => $usr['bplace'],
-                //     'gender'        => $usr['gender'],
-                //     'cstatus'       => $usr['cstatus'],
-                //     'country'       => $usr['country'],
-                //     'nationality'   => $usr['nationality'],
-                //     'objectives'     => $usr['objectives']
-                // ]);
+                DB::table('personal_information')->insert([
+                    'genid' => Auth::user()->genid,
+                    'age'           => $usr['age'],
+                    'bday'         => $usr['bday'],
+                    'bplace'        => $usr['bplace'],
+                    'gender'        => $usr['gender'],
+                    'cstatus'       => $usr['cstatus'],
+                    'country'       => $usr['country'],
+                    'nationality'   => $usr['nationality'],
+                    'objectives'     => $usr['objectives']
+                ]);
                 DB::table('profile_forms')
                     ->where('genid', Auth::user()->genid)
                     ->update([

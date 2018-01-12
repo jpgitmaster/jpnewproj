@@ -17,6 +17,11 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
                 actvfrm = 0;
                 break;
         }
+        $timeout(function(){
+            if(!data['contactdetails']){
+                $scope.collapseTab(2);
+            }
+        }, 200);
         $scope.forms = [
             {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
             {'form':  'ContactDetails', 'cardnum': 0, 'actvform': 0},
