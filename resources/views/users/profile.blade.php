@@ -504,7 +504,7 @@
 					      		<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
 						          <i class="fa fa-times"></i>
 						        </button>
-						        <form ng-submit="saveContactDtls(frm2)" method="POST" novalidate>
+						        <form ng-submit="saveContactDetails(frm2)" method="POST" novalidate>
 							        <div class="row no-gutters">
 					              		<div class="col-lg-4">
 					              			<div class="bx">

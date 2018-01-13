@@ -1,8 +1,9 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
 
-usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'ProfForms',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
+usrContent.controller('ctrlEditProfile',
+    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'CntctDtls', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, CntctDtls, ProfForms) {
 
     $scope.proform = ProfForms.query();
     $scope.frm1_loader = false;
@@ -64,11 +65,15 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     $scope.msg = [];
     $scope.countries = Countries.query();
     $scope.frm1 = [];
+    $scope.frm2 = [];
     PersnlInfo.query().$promise.then(function(data) {
         $scope.frm1 = data;
         $scope.cvlstatus = $scope.frm1.cstatus;
         $scope.country = $scope.frm1.country;
         $scope.nationality = $scope.frm1.nationality;
+    });
+    CntctDtls.query().$promise.then(function(data) {
+        $scope.frm2 = data;
     });
     $scope.select_status = {
         onSelect: function (item) {
@@ -225,7 +230,6 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
     }
 
     $scope.savePersonalInfo = function(frm1){
-        // console.log(frm1);
         $scope.frm1_loader = true;
         $http({
             method: 'POST',
@@ -249,6 +253,38 @@ usrContent.controller('ctrlEditProfile', ['$scope', '$rootScope', '$filter', '$t
                     if($scope.msg['success']['prsnl']['added']){
                         $scope.collapseTab(2);
                         $scope.proform['personalinfo'] = 1;
+                    }
+                }
+            }, 200);
+            console.log($scope.msg);
+        });
+    }
+
+    $scope.saveContactDetails = function(frm2){
+        // console.log(frm2);
+        $scope.frm2_loader = true;
+        $http({
+            method: 'POST',
+            url: '/user/save_contact_details',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+                fd.append('user', angular.toJson(data.user));
+                return fd;
+            },
+            data: {user: frm2}
+        }).then(function(result){
+            $scope.msg = result.data;
+            if(!$scope.msg['error']){
+                $scope.forms[1]['actvform'] = 0;
+            }
+            angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
+            $timeout(function(){
+                $scope.frm2_loader = false;
+                if($scope.msg['success']){
+                    if($scope.msg['success']['cntctdtls']['added']){
+                        $scope.collapseTab(3);
+                        $scope.proform['contactdetails'] = 1;
                     }
                 }
             }, 200);

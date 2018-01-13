@@ -12,6 +12,11 @@ usrApp.factory('PersnlInfo', function ($resource) {
         query : { method: 'GET', isArray: false }
     });
 });
+usrApp.factory('CntctDtls', function ($resource) {
+    return $resource('/user/contact_dtls', {}, {
+        query : { method: 'GET', isArray: false }
+    });
+});
 usrApp.factory('ProfForms', function ($resource) {
     return $resource('/user/profile_forms', {}, {
         query : { method: 'GET', isArray: false }

@@ -359,6 +359,17 @@ class UsrController extends Controller
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
+    public function save_contact_details(Request $request){
+        $current_user = DB::table('contact_details')->where('genid', Auth::user()->genid)->count();
+
+        $replace_names = [];
+        $usr = $request->all();
+        $usr = json_decode($usr['user'], true);
+        $usr = $usr ? $usr : [];
+
+        print_r($usr);
+    }  
+
     public function get_countries(){
         $countries = DB::table('countries')->get();
         return json_encode($countries, JSON_PRETTY_PRINT);
@@ -449,6 +460,17 @@ class UsrController extends Controller
         if(isset($users[0]->bday)):
             $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
         endif;
+        return json_encode($users[0], JSON_PRETTY_PRINT);
+    }
+
+    public function get_contact_details(){
+        $users = DB::table('users')
+            ->leftJoin('contact_details', 'users.genid', '=', 'users.genid')
+            ->select(
+                'email', 'mobile', 'telno', 'present_address', 'permanent_address'
+            )->where('users.genid', Auth::user()->genid)
+            ->orderBy('users.id', 'desc')
+            ->get();
         return json_encode($users[0], JSON_PRETTY_PRINT);
     }
 

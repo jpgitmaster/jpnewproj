@@ -71,6 +71,13 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('lbl_personal_info', [
 		    'as' => 'lbl_personal_info', 'uses' => 'UsrController@lbl_personal_info'
 		]);
+
+		Route::post('save_contact_details', [
+		    'as' => 'save_contact_details', 'uses' => 'UsrController@save_contact_details'
+		]);
+		Route::get('contact_dtls', [
+		    'as' => 'contact_dtls', 'uses' => 'UsrController@get_contact_details'
+		]);
 	});
 });
 
