@@ -37,7 +37,7 @@ class UsrController extends Controller
     	return view('users.profile', [
             'scripts'       => array_merge($this->import['scripts'], [j_summernote, j_jcrop]),
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_ngselect, c_summernote, c_jcrop, c_usr_edit_profile]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_user_edit_profile])
+            'ngular'        =>  array_merge($this->import['ngular'], [n_ngmask, n_user_edit_profile])
             
         ]);
     }
@@ -362,12 +362,31 @@ class UsrController extends Controller
     public function save_contact_details(Request $request){
         $current_user = DB::table('contact_details')->where('genid', Auth::user()->genid)->count();
 
-        $replace_names = [];
+        $replace_names = [
+            'email'       => 'Email',
+            'mobile'      => 'Mobile No.',
+            'telno'       => 'Telephone No.',
+            'present_address'   => 'Present Address',
+            'permanent_address' => 'Permanent Address'
+        ];
         $usr = $request->all();
         $usr = json_decode($usr['user'], true);
         $usr = $usr ? $usr : [];
 
-        print_r($usr);
+        $validate = Validator::make($usr, [
+            'email'       => 'required|max:50',
+            'mobile'      => 'required|max:20',
+            'telno'       => 'max:20',
+            'present_address'        => 'required',
+            'permanent_address'      => 'required'
+        ]);
+        $validate->setAttributeNames($replace_names);
+        $has_error = $this->hasError($validate);
+        if($has_error == true):
+            $this->msg['error']['cntctdls'] = $validate->messages()->toArray();
+        else:
+        endif;
+        print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }  
 
     public function get_countries(){

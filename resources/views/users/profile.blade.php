@@ -314,7 +314,7 @@
 					              			<div class="bx">
 					              				<input type="hidden" ng-model="frm1.age" required>
 					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bday']}" ng-mouseover="fcs_bday = true" ng-mouseleave="fcs_bday = false">
-										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" required>
+										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" ui-mask="99/99/9999" required>
 										            <label class="nptlbl">Birthdate <span>*</span></label>
 										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bday'] && fcs_bday === true" ng-cloak>
 							                        	<div class="popover bs-popover-top">

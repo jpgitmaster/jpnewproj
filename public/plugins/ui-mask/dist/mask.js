@@ -18,11 +18,11 @@ angular.module('ui.mask', [])
                 'A': /[a-zA-Z]/,
                 '*': /[a-zA-Z0-9]/
             },
-            clearOnBlur: true,
-            clearOnBlurPlaceholder: false,
+            clearOnBlur: false,
+            clearOnBlurPlaceholder: true,
             escChar: '\\',
             eventsToHandle: ['input', 'keyup', 'click', 'focus'],
-            addDefaultPlaceholder: true,
+            addDefaultPlaceholder: false,
             allowInvalidValue: false
         })
         .provider('uiMask.Config', function() {

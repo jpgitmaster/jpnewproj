@@ -1,5 +1,5 @@
 'use strict'; 
-var usrContent = angular.module('usrContent', ['summernote', 'AxelSoft']);
+var usrContent = angular.module('usrContent', ['summernote', 'ui.mask', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile',
     ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'CntctDtls', 'ProfForms',
