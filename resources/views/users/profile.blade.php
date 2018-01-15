@@ -287,9 +287,17 @@
 					              		</div>
 					              		<div class="col-lg-6">
 					              			<div class="bx">
-					              				<div class="nptgrp">
+					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['mobile']}" ng-mouseover="fcs_mobile = true" ng-mouseleave="fcs_mobile = false">
 										            <input type="text" ng-model="frm1.mobile" required>
 										            <label class="nptlbl">Mobile No. <span>*</span></label>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['mobile'] && fcs_mobile === true" ng-cloak>
+							                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['prsnl']['mobile'][0] %>
+														    </div>
+														</div>
+									                </div>
 										            <span class="btmlbl">
 										            	<strong>e.g.</strong> 0917-123-4567
 										            </span>
@@ -298,9 +306,17 @@
 					              		</div>
 					              		<div class="col-lg-6">
 					              			<div class="bx">
-					              				<div class="nptgrp">
+					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['phone']}" ng-mouseover="fcs_phone = true" ng-mouseleave="fcs_phone = false">
 										            <input type="text" ng-model="frm1.phone" required>
 										            <label class="nptlbl">Phone No.</label>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['phone'] && fcs_phone === true" ng-cloak>
+							                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['prsnl']['phone'][0] %>
+														    </div>
+														</div>
+									                </div>
 										            <span class="btmlbl">
 										            	<strong>e.g.</strong> (632) 765-4321
 										            </span>
@@ -309,9 +325,17 @@
 					              		</div>
 					              		<div class="col-lg-12">
 					              			<div class="bx">
-					              				<div class="nptgrp">
+					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['present_address']}" ng-mouseover="fcs_present_address = true" ng-mouseleave="fcs_present_address = false">
 										            <input type="text" ng-model="frm1.present_address" ng-change="makeSameAddress(check)" required>
 										            <label class="nptlbl">Present Address <span>*</span></label>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['present_address'] && fcs_present_address === true" ng-cloak>
+							                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['prsnl']['present_address'][0] %>
+														    </div>
+														</div>
+									                </div>
 										            <span class="btmlbl">
 										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
 										            </span>
@@ -320,9 +344,17 @@
 					              		</div>
 					              		<div class="col-lg-12">
 					              			<div class="bx">
-					              				<div class="nptgrp">
+					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['permanent_address']}" ng-mouseover="fcs_permanent_address = true" ng-mouseleave="fcs_permanent_address = false">
 										            <input type="text" ng-model="frm1.permanent_address" ng-change="makeSameAddress(check)" required>
 										            <label class="nptlbl">Permanent Address </label>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['permanent_address'] && fcs_permanent_address === true" ng-cloak>
+							                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['prsnl']['permanent_address'][0] %>
+														    </div>
+														</div>
+									                </div>
 										            <span class="btmlbl">
 										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
 										            </span>
