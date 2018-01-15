@@ -328,7 +328,7 @@
 										            </span>
 										            <label class="ctrl">
 												        Same as Present Address
-												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
+												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" ng-checked="frm1.present_address == frm1.permanent_address" />
 												        <div class="ctrl_indicator"></div>
 												    </label>
 										        </div>
