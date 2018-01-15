@@ -283,6 +283,10 @@ class UsrController extends Controller
             'fname'       => 'First Name',
             'mname'       => 'Middle Name',
             'lname'       => 'Last Name',
+            'mobile'      => 'Mobile No.',
+            'phone'       => 'Telephone No.',
+            'present_address'   => 'Present Address',
+            'permanent_address' => 'Permanent Address',
             'gender'      => 'Gender',
             'bday'       => 'Birthdate',
             'bplace'      => 'Birthplace',
@@ -298,7 +302,11 @@ class UsrController extends Controller
             'fname'       => 'required|max:20',
             'mname'       => 'required|max:20',
             'lname'       => 'required|max:20',
-            'bday'       => 'required|date|date_format:m/d/Y',
+            'mobile'      => 'required|max:20',
+            'phone'       => 'max:20',
+            'present_address'        => 'required|max:250',
+            'permanent_address'      => 'max:250',
+            'bday'        => 'required|date|date_format:m/d/Y',
             'bplace'      => 'required',
             'gender'      => 'required',
             'cstatus'     => 'required',
@@ -312,7 +320,7 @@ class UsrController extends Controller
         if($has_error == true):
             $this->msg['error']['prsnl'] = $validate->messages()->toArray();
         else:
-            DB::table('primary_info')
+            DB::table('users')
             ->where('genid', Auth::user()->genid)
             ->update([
                 'fname'     => $usr['fname'],
@@ -326,6 +334,10 @@ class UsrController extends Controller
                 DB::table('personal_information')
                     ->where('genid', Auth::user()->genid)
                     ->update([
+                        'mobile'      => $usr['mobile'],
+                        'phone'       => $usr['phone'],
+                        'present_address' => $usr['present_address'],
+                        'permanent_address'  => $usr['permanent_address'],
                         'age'         => $usr['age'],
                         'bday'        => $usr['bday'],
                         'bplace'      => $usr['bplace'],
@@ -339,6 +351,10 @@ class UsrController extends Controller
             else:
                 DB::table('personal_information')->insert([
                     'genid' => Auth::user()->genid,
+                    'mobile'      => $usr['mobile'],
+                    'phone'       => $usr['phone'],
+                    'present_address' => $usr['present_address'],
+                    'permanent_address'  => $usr['permanent_address'],
                     'age'           => $usr['age'],
                     'bday'         => $usr['bday'],
                     'bplace'        => $usr['bplace'],
@@ -359,31 +375,21 @@ class UsrController extends Controller
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
-    public function save_contact_details(Request $request){
-        $current_user = DB::table('contact_details')->where('genid', Auth::user()->genid)->count();
+    public function save_employment_history(Request $request){
+        $current_user = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
 
         $replace_names = [
-            'email'       => 'Email',
-            'mobile'      => 'Mobile No.',
-            'telno'       => 'Telephone No.',
-            'present_address'   => 'Present Address',
-            'permanent_address' => 'Permanent Address'
+            
         ];
         $usr = $request->all();
         $usr = json_decode($usr['user'], true);
         $usr = $usr ? $usr : [];
 
-        $validate = Validator::make($usr, [
-            'email'       => 'required|max:50',
-            'mobile'      => 'required|max:20',
-            'telno'       => 'max:20',
-            'present_address'        => 'required',
-            'permanent_address'      => 'required'
-        ]);
+        $validate = Validator::make($usr, []);
         $validate->setAttributeNames($replace_names);
         $has_error = $this->hasError($validate);
         if($has_error == true):
-            $this->msg['error']['cntctdls'] = $validate->messages()->toArray();
+            $this->msg['error']['emphstry'] = $validate->messages()->toArray();
         else:
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
@@ -397,7 +403,7 @@ class UsrController extends Controller
     public function get_profile_forms(){
         $users = DB::table('profile_forms')
             ->select(
-                'personalinfo', 'contactdetails', 'educationalbg', 'emphistory', 'charreference'
+                'personalinfo', 'educationalbg', 'emphistory', 'charreference'
             )->where('genid', Auth::user()->genid)
             ->get();
         return json_encode($users[0], JSON_PRETTY_PRINT);
@@ -411,10 +417,9 @@ class UsrController extends Controller
             ->leftJoin('resumes', function ($join) {
                 $join->on('users.genid', '=', 'resumes.genid');
             })
-            ->leftJoin('primary_info', 'users.genid', '=', 'primary_info.genid')
             ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
             ->select(
-                'email', 'fname', 'mname', 'lname', 'bday', 'bplace', 'age',
+                'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
                 'gender', 'cstatus', 'country', 'nationality', 'objectives',
                 'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
             )->where('users.genid', Auth::user()->genid)
@@ -468,28 +473,17 @@ class UsrController extends Controller
     }
 
     public function get_personal_info(){
-        $users = DB::table('primary_info')
-            ->leftJoin('personal_information', 'primary_info.genid', '=', 'primary_info.genid')
+        $users = DB::table('users')
+            ->leftJoin('personal_information', 'users.genid', '=', 'users.genid')
             ->select(
-                'fname', 'mname', 'lname', 'bday', 'bplace', 'age',
+                'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
                 'gender', 'cstatus', 'country', 'nationality', 'objectives'
-            )->where('primary_info.genid', Auth::user()->genid)
-            ->orderBy('primary_info.id', 'desc')
+            )->where('users.genid', Auth::user()->genid)
+            ->orderBy('users.id', 'desc')
             ->get();
         if(isset($users[0]->bday)):
             $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
         endif;
-        return json_encode($users[0], JSON_PRETTY_PRINT);
-    }
-
-    public function get_contact_details(){
-        $users = DB::table('users')
-            ->leftJoin('contact_details', 'users.genid', '=', 'users.genid')
-            ->select(
-                'email', 'mobile', 'telno', 'present_address', 'permanent_address'
-            )->where('users.genid', Auth::user()->genid)
-            ->orderBy('users.id', 'desc')
-            ->get();
         return json_encode($users[0], JSON_PRETTY_PRINT);
     }
 

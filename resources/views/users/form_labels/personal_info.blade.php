@@ -43,6 +43,47 @@
 	    	</label>
 	  	</div>
 	</div>
+	<div class="col-lg-6">
+		<div class="nptgrp lbld">
+			<span class="lbldcntnt">
+				<%= frm1.mobile ? frm1.mobile : '&nbsp;' %>
+			</span>
+	    	<label class="lbl">
+	    		Mobile No.
+	    	</label>
+	  	</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="nptgrp lbld">
+			<span class="lbldcntnt">
+				<%= frm1.phone ? frm1.phone : '&nbsp;' %>
+			</span>
+	    	<label class="lbl">
+	    		Telephone No.
+	    	</label>
+	  	</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="nptgrp lbld">
+			<span class="lbldcntnt">
+				<%= frm1.permanent_address ? frm1.permanent_address : '&nbsp;' %>
+			</span>
+	    	<label class="lbl">
+	    		Permanent Address
+	    	</label>
+	  	</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="nptgrp lbld">
+			<span class="lbldcntnt">
+				<%= frm1.present_address ? frm1.present_address : '&nbsp;' %>
+			</span>
+	    	<label class="lbl">
+	    		Present Address
+	    	</label>
+	  	</div>
+	</div>
+	
 	<div class="col-lg-4">
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">

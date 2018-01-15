@@ -2,8 +2,8 @@
 var usrContent = angular.module('usrContent', ['summernote', 'ui.mask', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile',
-    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'CntctDtls', 'ProfForms',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, CntctDtls, ProfForms) {
+    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
 
     $scope.proform = ProfForms.query();
     $scope.frm1_loader = false;
@@ -21,7 +21,7 @@ usrContent.controller('ctrlEditProfile',
                 break;
         }
 
-        switch(data['contactdetails']){
+        switch(data['educationalbg']){
             case 0:
                 actvfrm2 = 1;
                 break;
@@ -30,13 +30,13 @@ usrContent.controller('ctrlEditProfile',
                 break;
         }
         $timeout(function(){
-            if(!data['contactdetails']){
+            if(data['personalinfo'] && !data['educationalbg']){
                 $scope.collapseTab(2);
             }
         }, 200);
         $scope.forms = [
             {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
-            {'form':  'ContactDetails', 'cardnum': 1, 'actvform': actvfrm2},
+            {'form':  'EducationalBg', 'cardnum': 1, 'actvform': actvfrm2},
         ];
     });
     
@@ -72,9 +72,9 @@ usrContent.controller('ctrlEditProfile',
         $scope.country = $scope.frm1.country;
         $scope.nationality = $scope.frm1.nationality;
     });
-    CntctDtls.query().$promise.then(function(data) {
-        $scope.frm2 = data;
-    });
+    // CntctDtls.query().$promise.then(function(data) {
+    //     $scope.frm2 = data;
+    // });
     $scope.select_status = {
         onSelect: function (item) {
             $scope.frm1.cstatus = item.id;
@@ -225,7 +225,7 @@ usrContent.controller('ctrlEditProfile',
     };
     $scope.makeSameAddress = function(check){
         if(check == true){
-            $scope.frm2.prmnnt_addrss = angular.copy($scope.frm2.prsnt_addrss);
+            $scope.frm1.permanent_address = angular.copy($scope.frm1.present_address);
         }
     }
 
@@ -260,12 +260,12 @@ usrContent.controller('ctrlEditProfile',
         });
     }
 
-    $scope.saveContactDetails = function(frm2){
+    $scope.saveEmploymentHistory = function(frm2){
         // console.log(frm2);
         $scope.frm2_loader = true;
         $http({
             method: 'POST',
-            url: '/user/save_contact_details',
+            url: '/user/save_employment_history',
             headers: { 'Content-Type': undefined },
             transformRequest: function (data) {
                 var fd = new FormData();
@@ -282,9 +282,9 @@ usrContent.controller('ctrlEditProfile',
             $timeout(function(){
                 $scope.frm2_loader = false;
                 if($scope.msg['success']){
-                    if($scope.msg['success']['cntctdtls']['added']){
+                    if($scope.msg['success']['emphstry']['added']){
                         $scope.collapseTab(3);
-                        $scope.proform['contactdetails'] = 1;
+                        $scope.proform['educationalbg'] = 1;
                     }
                 }
             }, 200);

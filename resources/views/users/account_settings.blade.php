@@ -32,10 +32,36 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="lnr">
+				<div class="ttlnm" style="top: -5px;">
+					<h4 class="ttl">Emails</h4>
+				</div>
+				<div class="cntntdsc">
+					<div class="row no-gutters">
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Permanent Email</label>
+						      	</div>
+					      	</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="bx">
+								<div class="nptgrp lbld">
+									<span class="lbldcntnt"></span>
+						        	<label class="lbl">Alternate Email</label>
+						      	</div>
+					      	</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<div class="lnr">
-			  <div class="ttlnm">
+			  <div class="ttlnm" style="top: 15px;">
 			    <h4 class="ttl">Password</h4>
 			  </div>
 			  <div class="cntntdsc">

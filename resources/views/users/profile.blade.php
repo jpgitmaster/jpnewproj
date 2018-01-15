@@ -285,6 +285,55 @@
 										        </div>
 					              			</div>
 					              		</div>
+					              		<div class="col-lg-6">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm1.mobile" required>
+										            <label class="nptlbl">Mobile No. <span>*</span></label>
+										            <span class="btmlbl">
+										            	<strong>e.g.</strong> 0917-123-4567
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-6">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm1.phone" required>
+										            <label class="nptlbl">Phone No.</label>
+										            <span class="btmlbl">
+										            	<strong>e.g.</strong> (632) 765-4321
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-12">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm1.present_address" ng-change="makeSameAddress(check)" required>
+										            <label class="nptlbl">Present Address <span>*</span></label>
+										            <span class="btmlbl">
+										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+										            </span>
+										        </div>
+					              			</div>
+					              		</div>
+					              		<div class="col-lg-12">
+					              			<div class="bx">
+					              				<div class="nptgrp">
+										            <input type="text" ng-model="frm1.permanent_address" ng-change="makeSameAddress(check)" required>
+										            <label class="nptlbl">Permanent Address </label>
+										            <span class="btmlbl">
+										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
+										            </span>
+										            <label class="ctrl">
+												        Same as Present Address
+												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
+												        <div class="ctrl_indicator"></div>
+												    </label>
+										        </div>
+					              			</div>
+					              		</div>
 					              		<div class="col-lg-4">
 					              			<div class="bx">
 					              				<div class="nptgrp radio" ng-class="{'err': msg['error']['prsnl']['gender']}">
@@ -314,7 +363,7 @@
 					              			<div class="bx">
 					              				<input type="hidden" ng-model="frm1.age" required>
 					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bday']}" ng-mouseover="fcs_bday = true" ng-mouseleave="fcs_bday = false">
-										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" ui-mask="99/99/9999" required>
+										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" required>
 										            <label class="nptlbl">Birthdate <span>*</span></label>
 										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bday'] && fcs_bday === true" ng-cloak>
 							                        	<div class="popover bs-popover-top">
@@ -474,10 +523,11 @@
 				  </div>
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!proform['personalinfo']">
-				        <span class="glyph">
-		                    <i class="fa fa-phone"></i>
-		                </span>
-				        Contact Details
+				        <div class="glyph">
+		                    <i class="fa fa-graduation-cap"></i>
+		                </div>
+				        Educational Background
+
 				        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
@@ -504,68 +554,10 @@
 					      		<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
 						          <i class="fa fa-times"></i>
 						        </button>
-						        <form ng-submit="saveContactDetails(frm2)" method="POST" novalidate>
+						        <form ng-submit="saveEmploymentHistory(frm2)" method="POST" novalidate>
 							        <div class="row no-gutters">
-					              		<div class="col-lg-4">
-					              			<div class="bx">
-					              				<div class="nptgrp">
-										            <input type="text" ng-model="frm2.email" required>
-										            <label class="nptlbl">Email <span>*</span></label>
-										            <span class="btmlbl">
-										            	<strong>e.g.</strong> yourname@gmail.com
-										            </span>
-										        </div>
-					              			</div>
-					              		</div>
-					              		<div class="col-lg-4">
-					              			<div class="bx">
-					              				<div class="nptgrp">
-										            <input type="text" ng-model="frm2.mobile" ng-pattern="/^\d+$/" required>
-										            <label class="nptlbl">Mobile No. <span>*</span></label>
-										            <span class="btmlbl">
-										            	<strong>e.g.</strong> 0917-123-4567
-										            </span>
-										        </div>
-					              			</div>
-					              		</div>
-					              		<div class="col-lg-4">
-					              			<div class="bx">
-					              				<div class="nptgrp">
-										            <input type="text" ng-model="frm2.phone" required>
-										            <label class="nptlbl">Phone No.</label>
-										            <span class="btmlbl">
-										            	<strong>e.g.</strong> (632) 765-4321
-										            </span>
-										        </div>
-					              			</div>
-					              		</div>
-					              		<div class="col-lg-12">
-					              			<div class="bx">
-					              				<div class="nptgrp">
-										            <input type="text" ng-model="frm2.prsnt_addrss" ng-change="makeSameAddress(check)" required>
-										            <label class="nptlbl">Present Address <span>*</span></label>
-										            <span class="btmlbl">
-										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-										            </span>
-										        </div>
-					              			</div>
-					              		</div>
-					              		<div class="col-lg-12">
-					              			<div class="bx">
-					              				<div class="nptgrp">
-										            <input type="text" ng-model="frm2.prmnnt_addrss" ng-change="makeSameAddress(check)" required>
-										            <label class="nptlbl">Permanent Address </label>
-										            <span class="btmlbl">
-										            	Unit No., House/Bldg./St. No. + Street Name, Postal Code
-										            </span>
-										            <label class="ctrl">
-												        Same as Present Address
-												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" />
-												        <div class="ctrl_indicator"></div>
-												    </label>
-										        </div>
-					              			</div>
-					              		</div>
+					              		
+					              		
 					              	</div>
 					              	<div class="crdftr" style="margin-top: 0;">
 						              	<button class="btn btn-success" type="submit">
@@ -579,22 +571,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="!proform['educationalbg']">
-				        <div class="glyph">
-		                    <i class="fa fa-graduation-cap"></i>
-		                </div>
-				        Educational Background
-
-				        <i class="fa fa-chevron-down"></i>
-				    </button>
-				    <div class="collapse">
-				      <div class="card-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-				      </div>
-				    </div>
-				  </div>
-				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(4)" type="button" ng-disabled="!proform['emphistory']">
+				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="!proform['emphistory']">
 				        <div class="glyph">
 		                    <i class="fa fa-stethoscope"></i>
 		                </div>
@@ -609,7 +586,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(5)" type="button" ng-disabled="!proform['charreference']">
+				    <button class="card-header" ng-click="collapseTab(4)" type="button" ng-disabled="!proform['charreference']">
 				        <div class="glyph">
 		                    <i class="fa fa-users"></i>
 		                </div>

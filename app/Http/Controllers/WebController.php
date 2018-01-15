@@ -130,13 +130,9 @@ class WebController extends Controller
                 $usr->role           = 1;
                 $usr->remember_token = $user['token'];
 
-                DB::table('primary_info')->insert([
-                    'genid' => $gen_id
-                ]);
                 DB::table('profile_forms')->insert([
                     'genid' => $gen_id,
                     'personalinfo'     => 0,
-                    'contactdetails'   => 0,
                     'educationalbg'    => 0,
                     'emphistory'       => 0,
                     'charreference'    => 0
