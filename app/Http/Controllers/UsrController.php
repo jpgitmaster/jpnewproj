@@ -19,7 +19,7 @@ class UsrController extends Controller
     	$this->import = [
             'stylesheet' => [c_ngmotion, c_fawesome, c_bootstrap, c_global, c_usr_masterpage],
             'scripts' => [j_jquery, j_popper, j_bootstrap, j_velocity, j_velocity_ui],
-            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_summernote, n_ngselect, n_ngfilter, n_ngvertilize, n_user]
+            'ngular'    => [n_ng, n_ngsanitize, n_ngresource, n_nganimate, n_ngvertilize, n_user]
         ];
         date_default_timezone_set('Asia/Manila');
         $this->msg = [];
@@ -37,7 +37,7 @@ class UsrController extends Controller
     	return view('users.profile', [
             'scripts'       => array_merge($this->import['scripts'], [j_summernote, j_jcrop]),
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_ngselect, c_summernote, c_jcrop, c_usr_edit_profile]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_ngmask, n_user_edit_profile])
+            'ngular'        =>  array_merge($this->import['ngular'], [n_summernote, n_ngselect, n_ngfilter, n_ngmask, n_user_edit_profile])
             
         ]);
     }
@@ -506,9 +506,9 @@ class UsrController extends Controller
 
     public function calendar(){
         return view('users.calendar', [
-            'scripts'       => array_merge($this->import['scripts'], [j_chart]),
-            'stylesheet'    => $this->import['stylesheet'],
-            'ngular'        =>  array_merge($this->import['ngular'], [n_user_calendar])
+            'scripts'       => array_merge($this->import['scripts'], [j_moment, j_fullcalendar, j_fullcalendar_gcal]),
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_fullcalendar]),
+            'ngular'        =>  array_merge($this->import['ngular'], [n_ui_bootstrap, n_uicalendar, n_user_calendar])
         ]);
     }
 

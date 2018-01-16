@@ -1,36 +1,47 @@
 'use strict'; 
-var usrContent = angular.module('usrContent', []);
+var usrContent = angular.module('usrContent', ['ui.calendar', 'ui.bootstrap']);
 
-usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', 'Usr',
-	function($scope, $rootScope, $timeout, $http, Usr) {
+usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', 'uiCalendarConfig',
+	function($scope, $rootScope, $timeout, $http, $compile, uiCalendarConfig) {
 
-	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-	  $scope.series = ['Series A', 'Series B'];
-	  $scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90]
-	  ];
-	  $scope.onClick = function (points, evt) {
-	    console.log(points, evt);
-	  };
-	  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-	  $scope.options = {
-	    scales: {
-	      yAxes: [
-	        {
-	          id: 'y-axis-1',
-	          type: 'linear',
-	          display: true,
-	          position: 'left'
-	        },
-	        {
-	          id: 'y-axis-2',
-	          type: 'linear',
-	          display: true,
-	          position: 'right'
-	        }
-	      ]
-	    }
-	  };
+	var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $scope.eventSource = {};
 
+    /* event source that contains custom events on the scope */
+    $scope.events = [
+      // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+    ];
+
+    // $scope.jpevents = [
+    //   {title: 'JP Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+    // ];
+
+    $scope.addEvent = function() {
+      $scope.events.push({
+        title: 'Open Sesame',
+        start: new Date(y, m, d - 5),
+        end: new Date(y, m, d - 2),
+        className: ['openSesame']
+      });
+    };
+
+
+
+	$scope.uiConfig = {
+      calendar:{
+        editable: true,
+        header:{
+          left: 'title',
+          // center: 'today',
+          right: 'prev,next'
+        }
+      }
+    };
+    /* event sources array*/
+    // $scope.eventSources = [$scope.jpevents, $scope.events];
+    $scope.eventSources = [$scope.events];
 }]);

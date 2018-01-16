@@ -29,7 +29,8 @@ class Controller extends BaseController
         define('c_fawesome', 'plugins/font-awesome/css/font-awesome.min.css');
         define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
         define('c_summernote', 'plugins/summernote/dist/summernote.css');
-        
+        define('c_fullcalendar', 'plugins/fullcalendar/fullcalendar.min.css');
+
         define('c_ngselect', 'plugins/ng-custom-select/css/style.css');
 
         define('c_global', 'css/app/global.css');
@@ -54,6 +55,9 @@ class Controller extends BaseController
         define('j_bootstrap', 'plugins/bootstrap/dist/js/bootstrap.min.js');
         define('j_summernote', 'plugins/summernote/dist/summernote.min.js');
         define('j_chart', 'plugins/chart/src/chart.js');
+        define('j_moment', 'plugins/moment/min/moment.min.js');
+        define('j_fullcalendar', 'plugins/fullcalendar/fullcalendar.min.js');
+        define('j_fullcalendar_gcal', 'plugins/fullcalendar/gcal.min.js');
     }
 
     public function import_ng(){
@@ -63,6 +67,10 @@ class Controller extends BaseController
         define('n_nganimate', 'plugins/angular/angular-animate.min.js');
         define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.js');
         define('n_chart', 'plugins/angular-chart/angular-chart.min.js');
+        define('n_uicalendar', 'plugins/ui-calendar/src/calendar.js');
+        
+
+        define('n_ui_bootstrap', 'plugins/ui-bootstrap-tpls-2.5.0.min.js');
 
         define('n_ngselect', 'plugins/ng-custom-select/js/customselect.js');
         define('n_ngfilter', 'plugins/ng-custom-select/angular-filter.js');
