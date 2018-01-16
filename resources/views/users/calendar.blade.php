@@ -4,7 +4,7 @@
 @section('content')
 <div class="cntntwrpr" ng-controller="ctrlCalendar">
 	<div class="cntntwrpr_rght" style="width: 450px;">
-		<div class="cntnbx" style="overflow-y: hidden;">
+		<div class="cntnbx" style="display: inline-block;">
 			<div class="ttl">
 			    <h3>Guest Add Schedule</h3>
 			    <div class="btmbrdr"><hr></div>
@@ -14,7 +14,10 @@
 					<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" ng-model="schd.sdate" required>
+					            <input type="text" name="sdate" ng-model="schd.sdate"
+					            ng-click="open_calendar($event, $index, 'sdate')" is-open="sdate.open[$index]" show-button-bar="false" datepicker-options="MinDate" uib-datepicker-popup="MM/dd/yyyy"
+					            readonly required>
+					            {{-- <input type="text" name="empsdate" ng-model="emp.empsdate" class="form-control" ng-focus="fcsempsdate = true" ng-blur="fcsempsdate = false" ng-click="open_calendar($event, $index, 'empsdate')" is-open="empsdate.open[$index]" show-button-bar="false" datepicker-options="MaxCurrentDate" uib-datepicker-popup="MM/dd/yyyy" ng-disabled="usr.workexperience == 1" readonly required> --}}
 					            <label class="nptlbl">Check-in <span>*</span></label>
 					        </div>
 	          			</div>
@@ -22,7 +25,10 @@
 	          		<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" ng-model="schd.edate" required>
+					            <input type="text" name="edate" ng-model="schd.edate"
+					            ng-click="open_calendar($event, $index, 'edate')" is-open="edate.open[$index]" datepicker-options="MaxDate" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly
+					            required>
+					            {{-- <input type="text" name="empedate" ng-model="emp.empedate" class="form-control" ng-focus="fcsempedate = true" ng-blur="fcsempedate = false" ng-click="open_calendar($event, $index, 'empedate')" is-open="empedate.open[$index]" datepicker-options="dateOptions" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly ng-disabled="emp.ispresent || usr.workexperience == 1" required> --}}
 					            <label class="nptlbl">Check-out <span>*</span></label>
 					        </div>
 	          			</div>
@@ -124,6 +130,23 @@
 	.fc-view-container, .fc-toolbar.fc-header-toolbar{
 		float: left;
 		width: 100%;
+	}
+	.fc-day-grid-event{
+		border-radius: 0;
+		background-color: #6dc5e6;
+		padding: 4px 2px;
+		border: 0;
+	}
+	.btn-default:disabled{
+		cursor: not-allowed;
+	}
+	.btn-default {
+	    color: #333;
+	    background-color: #fff;
+	    border-color: #ccc;
+	}
+	.fc-day-grid-event .fc-content{
+		color: #FFF;
 	}
 </style>
 @endsection
