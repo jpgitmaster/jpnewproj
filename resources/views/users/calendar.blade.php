@@ -148,5 +148,18 @@
 	.fc-day-grid-event .fc-content{
 		color: #FFF;
 	}
+	.btn-info.active{
+	    background-color: #007bff;
+	    background-image: none;
+	    border-color: #005dc1;
+	    color: #FFF;
+	    border-radius: 0;
+	}
+	.uib-datepicker-popup.dropdown-menu,
+	.uib-datepicker-popup.dropdown-menu li,
+	.uib-datepicker-popup.dropdown-menu div{
+		box-shadow: none;
+		outline: none;
+	}
 </style>
 @endsection
