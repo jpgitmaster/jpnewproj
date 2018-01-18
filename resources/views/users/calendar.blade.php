@@ -9,7 +9,7 @@
 			    <h3>Guest Add Schedule</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<form ng-submit="addSchedule(schd)" style="margin-top: 10px; float: left; width: 100%;">
+			<form ng-submit="GuestSched(schd)" style="margin-top: 10px; float: left; width: 100%;">
 				<div class="row no-gutters">
 					<div class="col-lg-6">
 	          			<div class="bx">
@@ -26,14 +26,14 @@
 	          			<div class="bx">
 	          				<div class="nptgrp">
 					            <input type="text" name="edate" ng-model="schd.edate"
-					            ng-click="open_calendar($event, $index, 'edate')" is-open="edate.open[$index]" datepicker-options="MaxDate" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly
+					            ng-click="open_calendar($event, $index, 'edate')" is-open="edate.open[$index]" datepicker-options="NoWeeks" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly
 					            required>
 					            {{-- <input type="text" name="empedate" ng-model="emp.empedate" class="form-control" ng-focus="fcsempedate = true" ng-blur="fcsempedate = false" ng-click="open_calendar($event, $index, 'empedate')" is-open="empedate.open[$index]" datepicker-options="dateOptions" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly ng-disabled="emp.ispresent || usr.workexperience == 1" required> --}}
 					            <label class="nptlbl">Check-out <span>*</span></label>
 					        </div>
 	          			</div>
 	          		</div>
-	          		<div class="col-lg-12">
+	          		{{-- <div class="col-lg-12">
 	          			<div class="bx">
 	          				<div class="nptgrp">
 					            <select ng-model="schd.roomtype" required>
@@ -47,35 +47,38 @@
 					            <label class="nptlbl">Room Type <span>*</span></label>
 					        </div>
 	          			</div>
-	          		</div>
-	          		<button class="btn btn-primary" ng-click="addEvent()" type="button" style="width: 100%;">ADD EVENT</button>
+	          		</div> --}}
 				</div>
+				<button class="btn btn-primary" type="submit" style="width: 100%;">ADD SCHEDULE</button>
 			</form>
 		</div>
-		<div class="cntnbx" style="overflow-y: hidden;">
+		<div class="cntnbx" style="display: inline-block;">
 			<div class="ttl">
 			    <h3>Admin Add Schedule</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<form ng-submit="addSchedule(schd)" style="margin-top: 10px; float: left; width: 100%;">
+			<form ng-submit="AdminSched(schd)" style="margin-top: 10px; float: left; width: 100%;">
 				<div class="row no-gutters">
 					<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" ng-model="schd.fromdate" required>
+					            <input type="text" name="fromdate" ng-model="schd.fromdate" ng-click="open_calendar($event, $index, 'fromdate')" datepicker-options="MinDate" is-open="fromdate.open[$index]" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly required>
 					            <label class="nptlbl">From <span>*</span></label>
+					            {{-- <input type="text" name="edate" ng-model="schd.edate"
+					            ng-click="open_calendar($event, $index, 'edate')" is-open="edate.open[$index]" datepicker-options="NoWeeks" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly
+					            required> --}}
 					        </div>
 	          			</div>
 	          		</div>
 	          		<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" ng-model="schd.todate" required>
+					            <input type="text" name="todate" ng-model="schd.todate" ng-click="open_calendar($event, $index, 'todate')" is-open="todate.open[$index]" datepicker-options="NoWeeks" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly required>
 					            <label class="nptlbl">To <span>*</span></label>
 					        </div>
 	          			</div>
 	          		</div>
-	          		<div class="col-lg-3">
+	          		{{-- <div class="col-lg-3">
 	          			<div class="bx">
 	          				<div class="nptgrp">
 					            <input type="text" ng-model="schd.rmno" required>
@@ -99,8 +102,8 @@
 					            <label class="nptlbl">Reason <span>*</span></label>
 					        </div>
 	          			</div>
-	          		</div>
-	          		<button class="btn btn-primary" ng-click="addEvent()" type="button" style="width: 100%;">ADD EVENT</button>
+	          		</div> --}}
+	          		<button class="btn btn-primary" type="submit" style="width: 100%;">ADD ADMIN SCHEDULE</button>
 				</div>
 			</form>
 		</div>
@@ -127,15 +130,28 @@
 		overflow-y: hidden;
 		min-height: 600px;
 	}
+	.fc-axis{ width: 42px !important; }
 	.fc-view-container, .fc-toolbar.fc-header-toolbar{
 		float: left;
 		width: 100%;
 	}
 	.fc-day-grid-event{
 		border-radius: 0;
-		background-color: #6dc5e6;
 		padding: 4px 2px;
 		border: 0;
+	}
+	.guest{
+		background-color: #6dc5e6;
+	}
+	.guest .fc-content{
+		color: #FFF;
+	}
+
+	.admin{
+		background-color: #0077c0;
+	}
+	.admin .fc-content{
+		color: #f00;
 	}
 	.btn-default:disabled{
 		cursor: not-allowed;
@@ -145,9 +161,7 @@
 	    background-color: #fff;
 	    border-color: #ccc;
 	}
-	.fc-day-grid-event .fc-content{
-		color: #FFF;
-	}
+	
 	.btn-info.active{
 	    background-color: #007bff;
 	    background-image: none;
