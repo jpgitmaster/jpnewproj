@@ -69,6 +69,29 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
           left: 'prev,next today',
           center: 'title',
           right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        navLinks: true, // can click day/week names to navigate views
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+            var title = prompt('Event Title:');
+            var eventData;
+            if (title) {
+              // eventData = {
+              //   title: title,
+              //   start: start,
+              //   end: end
+              // };
+              $scope.admin_scheds.push({
+                title: title,
+                start: start.clone().format('YYYY-MM-DD'),
+                end: end.clone().format('YYYY-MM-DD'),
+                className: ['admin'],
+                currentTimezone: 'Asia/Manila' // an option!
+              });
+              $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+            }
+            $('#calendar').fullCalendar('unselect');
         }
       }
     };
