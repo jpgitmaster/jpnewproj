@@ -1,9 +1,16 @@
 'use strict'; 
 var usrContent = angular.module('usrContent', ['ui.calendar', 'ui.bootstrap']);
 
-usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig',
-	function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig) {
+usrContent.factory('Schd', function ($resource) {
+    return $resource('/user/views_scheds', {}, {
+        query : { method: 'GET', isArray: true }
+    });
+});
+usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig', 'Schd',
+	function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
 
+    $scope.scheds = Schd.query();
+    
     $scope.open_calendar = function($event, index, datepicker){
         $scope[datepicker] = {}; $scope[datepicker].open = {};
         $event.preventDefault();
@@ -80,21 +87,40 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         var activities = $filter('filter')($scope.activities, {id: schd.activity})[0],
             admn_sdate = moment(schd.fromdate).startOf('day'),
             admn_edate = moment(schd.todate).startOf('day');
-      $scope.admin_scheds.push({
-        title: schd.ttl,
-        color: activities.background,
-        textColor: activities.color,
-        start: admn_sdate.clone().format('YYYY-MM-DD'),
-        end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
-        className: ['admin'],
-        currentTimezone: 'Asia/Manila' // an option!
-      });
-      $scope.schd = {};
-      console.log($scope.admin_scheds);
+
+        $http({
+            method: 'POST',
+            url: '/user/save_calendar',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+                fd.append('sched', angular.toJson(data.sched));
+                return fd;
+            },
+            data: {sched: schd}
+        }).then(function(result){
+            $scope.msg = result.data;
+            console.log(result.data);
+
+            $scope.admin_scheds.push({
+                genid: 32132,
+                title: schd.ttl,
+                color: activities.background,
+                textColor: activities.color,
+                start: admn_sdate.clone().format('YYYY-MM-DD'),
+                end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
+                className: 'admin',
+                // currentTimezone: 'Asia/Manila' // an option!
+            });
+            $scope.schd = {};
+            // console.log($scope.admin_scheds);
+        });
     };
 
 
-
+    $scope.alertOnEventClick = function( date, jsEvent, view){
+        console.log(date.genid);
+    };
 	$scope.uiConfig = {
       calendar:{
         editable: true,
@@ -127,6 +153,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         //     }
         //     $('#calendar').fullCalendar('unselect');
         // }
+        eventClick: $scope.alertOnEventClick
       }
     };
     /* event sources array*/

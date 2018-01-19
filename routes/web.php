@@ -75,6 +75,13 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_employment_history', [
 		    'as' => 'save_employment_history', 'uses' => 'UsrController@save_employment_history'
 		]);
+
+		Route::get('views_scheds', [
+		    'as' => 'views_scheds', 'uses' => 'UsrController@views_scheds'
+		]);
+		Route::post('save_calendar', [
+		    'as' => 'save_calendar', 'uses' => 'UsrController@save_calendar'
+		]);
 	});
 });
 
