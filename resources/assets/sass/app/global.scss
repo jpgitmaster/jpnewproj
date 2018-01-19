@@ -64,32 +64,43 @@ body, html{
 
     textarea, select, input[type=text],
     input[type=password]{
-        border: 1px solid #0077c0; padding: 8px 10px; font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif; width: 100%;
+        border: 1px solid #0077c0;
+        padding: 8px 10px;
+        font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+        width: 100%;
         &:focus{outline:none;}
-        &:focus ~ .nptlbl, &:valid ~ .nptlbl{
-            top: -13px;
-            left: 0;
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: bold;
-            color: #0077c0;
-            text-transform: uppercase;
-        }
+        // &:focus ~ .nptlbl, &:valid ~ .nptlbl{
+        //     top: -13px;
+        //     left: 0;
+        //     font-size: 10px;
+        //     letter-spacing: 1px;
+        //     font-weight: bold;
+        //     color: #0077c0;
+        //     text-transform: uppercase;
+        // }
     }
     textarea{
         min-height: 80px;
     }
 
     .nptlbl{
-        color: #5d5d5d;
-        font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+        // color: #5d5d5d;
+        // font: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
         position: absolute;
-        pointer-events: none;
-        left: 10px;
-        top: 9px;
-        transition:0.2s ease all; 
-        -moz-transition:0.2s ease all; 
-        -webkit-transition:0.2s ease all;
+        // pointer-events: none;
+        // left: 10px;
+        // top: 9px;
+        // transition:0.2s ease all; 
+        // -moz-transition:0.2s ease all; 
+        // -webkit-transition:0.2s ease all;
+
+        top: -13px;
+        left: 0;
+        font-size: 10px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: #0077c0;
+        text-transform: uppercase;
 
         span{
             color: #f00;

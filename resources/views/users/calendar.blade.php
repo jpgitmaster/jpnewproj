@@ -57,7 +57,7 @@
 			    <h3>Admin Add Schedule</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<form ng-submit="AdminSched(schd)" style="margin-top: 10px; float: left; width: 100%;">
+			<form ng-submit="AdminSched(schd, '#000', '#F00')" style="margin-top: 10px; float: left; width: 100%;">
 				<div class="row no-gutters">
 					<div class="col-lg-6">
 	          			<div class="bx">

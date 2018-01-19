@@ -45,12 +45,16 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
       console.log($scope.guest_scheds);
     };
 
-    $scope.AdminSched = function(schd) {
-        var admn_sdate = moment(schd.fromdate).startOf('day');
-        var admn_edate = moment(schd.todate).startOf('day');
+    $scope.AdminSched = function(schd, clr, bg) {
+        var bg = bg ? bg : '#6dc5e6',
+            clr = clr ? clr : '#FFF',
+            admn_sdate = moment(schd.fromdate).startOf('day'),
+            admn_edate = moment(schd.todate).startOf('day');
         // console.log(todayDate);
       $scope.admin_scheds.push({
         // title: 'Open Sesame',
+        color: clr,
+        background: bg,
         start: admn_sdate.clone().format('YYYY-MM-DD'),
         end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
         className: ['admin'],
