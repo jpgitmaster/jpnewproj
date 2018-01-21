@@ -339,6 +339,27 @@ usrContent.controller('ctrlEditProfile',
             return fltr;
         }
     }
+
+    $scope.emps = [{
+        'company'        : "",
+        'position'       : "",
+        'salary'         : "",
+        'sdate'          : "",
+        'edate'          : ""
+    }];
+
+    $scope.addEmp = function(emp){
+        $scope.emps.unshift({
+            'company'        : "",
+            'position'       : "",
+            'salary'         : "",
+            'sdate'          : "",
+            'edate'          : ""
+        });
+        // if(typeof $scope.msg['error']['emp'] != "undefined"){
+        //     $scope.msg['error']['emp'].splice(0, 0, {});
+        // }
+    }
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
