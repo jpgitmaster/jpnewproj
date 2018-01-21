@@ -182,6 +182,12 @@ body, html{
             &:checked ~ .ctrl_indicator:after {
                 display: block;
             }
+
+            &:disabled ~ .ctrl_indicator {
+                background: #E9E9E9;
+                border-color: #CCC;
+                cursor: not-allowed;
+            }
         }
 
         .ctrl_indicator {
@@ -190,8 +196,9 @@ body, html{
             left: 0;
             height: 15px;
             width: 15px;
-            background: #e6e6e6;
-            border: 1px solid #CCC;
+            background: #FFF;
+            border: 1px solid #0077c0;
+
 
             &:after {
                 box-sizing: unset;

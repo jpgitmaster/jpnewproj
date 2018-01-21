@@ -698,7 +698,7 @@
 											            </span>
 											            <label class="ctrl">
 													        Present Employer
-													        <input type="checkbox" ng-model="emp.ispresent" />
+													        <input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
 													        <div class="ctrl_indicator"></div>
 													    </label>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['edate'] && fcs_edate === true" ng-cloak>

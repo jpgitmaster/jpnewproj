@@ -83,6 +83,8 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry {
   background-color: #F9F9F9;
+  display: inline-block;
+  width: 100%;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry .bgwht {

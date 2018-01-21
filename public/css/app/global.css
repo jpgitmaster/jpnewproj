@@ -217,14 +217,20 @@ body, html {
   display: block;
 }
 
+.nptgrp .ctrl input:disabled ~ .ctrl_indicator {
+  background: #E9E9E9;
+  border-color: #CCC;
+  cursor: not-allowed;
+}
+
 .nptgrp .ctrl .ctrl_indicator {
   position: absolute;
   top: 2px;
   left: 0;
   height: 15px;
   width: 15px;
-  background: #e6e6e6;
-  border: 1px solid #CCC;
+  background: #FFF;
+  border: 1px solid #0077c0;
 }
 
 .nptgrp .ctrl .ctrl_indicator:after {

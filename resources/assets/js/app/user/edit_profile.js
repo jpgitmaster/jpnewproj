@@ -360,6 +360,15 @@ usrContent.controller('ctrlEditProfile',
         //     $scope.msg['error']['emp'].splice(0, 0, {});
         // }
     }
+    $scope.checked = 0;
+    $scope.clearEndate = function(index, ispresent){
+        if(ispresent == 1){
+            $scope.emps[index].edate = '';
+            $scope.checked++;
+        }else{
+            $scope.checked--;
+        }
+    }
 }]);
 
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
