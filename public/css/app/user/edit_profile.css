@@ -81,6 +81,17 @@
   padding: 50px 15px 0;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry {
+  background-color: #F9F9F9;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry .bgwht {
+  background-color: #FFF;
+  padding: 30px 15px 15px;
+  float: left;
+  width: 100%;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls {
   position: absolute;
   right: 5px;
@@ -573,6 +584,15 @@
   padding: 5px 60px;
   background-color: #0077c0;
   border-color: #02639e;
+}
+
+#edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc {
+  float: right;
+  padding: 6px 10px;
+}
+
+#edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc:disabled {
+  cursor: not-allowed;
 }
 
 #cropModal .modal-content {

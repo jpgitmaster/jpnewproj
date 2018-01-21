@@ -395,7 +395,7 @@
 					              			<div class="bx">
 					              				<input type="hidden" ng-model="frm1.age" required>
 					              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['bday']}" ng-mouseover="fcs_bday = true" ng-mouseleave="fcs_bday = false">
-										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" required>
+										            <input type="text" ng-model="frm1.bday" ng-change="getAge(frm1.bday)" ui-mask="99/99/9999" model-view-value="true" required>
 										            <label class="nptlbl">Birthdate <span>*</span></label>
 										            <div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['bday'] && fcs_bday === true" ng-cloak>
 							                        	<div class="popover bs-popover-top">
@@ -563,7 +563,7 @@
 				        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
-				      <div class="card-body">
+				      <div class="card-body bggry">
 					    <div class="crdbdy">
 					      	<div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
 				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -613,14 +613,14 @@
 							        	</div>
 							        	<div class="col-lg-3">
 							        		<div class="bx" ng-if="emp.wrkexperience && emp.wrkexperience != 1" ng-cloak>
-							        			<button ng-click="addEmp(emp)" ng-disabled="emps.length > 4" class="btn btn-success" type="button" style="float: right;">
-							                    	Add More
+							        			<button ng-click="addEmp(emp)" ng-disabled="emps.length > 4" class="btn btn-success btnwrkxprnc" type="button">
+							                    	Add Work Experience
 							                	</button>
 							        		</div>
 							        	</div>
 					              	</div>
 					              	<div class="am-fade" ng-if="emp.wrkexperience && emp.wrkexperience != 1" ng-cloak>
-						              	<div class="row no-gutters" ng-repeat="emp in emps | limitTo: 4">
+						              	<div class="am-fade bgwht row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 						              		<div class="col-lg-8">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['company']}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
@@ -672,7 +672,7 @@
 						              		<div class="col-lg-4">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
-											            <input type="text" ng-model="emp.sdate" required>
+											            <input type="text" ng-model="emp.sdate" ui-mask="99/99/9999" model-view-value="true" required>
 											            <label class="nptlbl">Start Date <span>*</span></label>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['sdate'] && fcs_sdate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
@@ -688,7 +688,7 @@
 						              		<div class="col-lg-4">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
-											            <input type="text" ng-model="emp.edate" required>
+											            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" required>
 											            <label class="nptlbl">End Date <span>*</span></label>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['edate'] && fcs_edate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">

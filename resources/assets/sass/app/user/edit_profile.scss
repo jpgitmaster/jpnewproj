@@ -80,7 +80,16 @@
 							position: relative;
 							padding: 50px 15px 0;
 							
+							&.bggry{
+								background-color: #F9F9F9;
 
+								.bgwht{
+									background-color: #FFF;
+									padding: 30px 15px 15px;
+									float: left;
+									width: 100%;
+								}
+							}
 							.cls{
 							    position: absolute;
 							    right: 5px;
@@ -554,6 +563,15 @@
 					padding: 5px 60px;
 					background-color: #0077c0;
 					border-color: #02639e;
+				}
+
+				&.btnwrkxprnc{
+					float: right;
+					padding: 6px 10px;
+
+					&:disabled{
+						cursor: not-allowed;
+					}
 				}
 			}
 		}
