@@ -504,6 +504,10 @@ class UsrController extends Controller
         return redirect()->route('home_index');
     }
 
+    public function lbl_personal_info(){
+        return view('users.form_labels.personal_info', []);
+    }
+
     public function calendar(){
         return view('users.calendar', [
             'scripts'       => array_merge($this->import['scripts'], [j_moment, j_fullcalendar, j_fullcalendar_gcal]),
@@ -512,7 +516,66 @@ class UsrController extends Controller
         ]);
     }
 
-    public function lbl_personal_info(){
-        return view('users.form_labels.personal_info', []);
+    public function save_calendar(Request $request){
+        $schd = $request->all();
+        $schd = json_decode($schd['sched'], true);
+        $schd = $schd ? $schd : [];
+        if(isset($schd['fromdate'])):
+            $schd['fromdate'] = date('Y-m-d', strtotime($schd['fromdate']));
+        endif;
+        if(isset($schd['todate'])):
+            $schd['todate'] = date('Y-m-d', strtotime($schd['todate']));
+        endif;
+
+        // generated id
+        $gen_id  = $this->get_genid(20);
+
+        DB::table('personal_information')->insert([
+            'genid' => $gen_id,
+            'activity'        => $schd['activity'],
+            'datefrom'        => $schd['fromdate'],
+            'dateto'          => $schd['todate'],
+            'acitivity_type'  => $schd['acitivity_type'],
+            'room_type'       => $schd['room_type'],
+            'reason'          => $schd['reason']
+        ]);
+        // print_r($schd);
+    }
+
+    public function views_scheds(){
+        $scheds = DB::table('calendar_schedules')
+            ->select(
+                'genid', 'activity', 'datefrom', 'dateto', 'acitivity_type', 'room_type', 'reason')
+            ->orderBy('calendar_schedules.id', 'desc')
+            ->get();
+        return json_encode($scheds, JSON_PRETTY_PRINT);
+    }
+
+    public function crypto_rand_secure($min, $max){
+        $range = $max - $min;
+        if ($range < 1) return $min; // not so random...
+        $log = ceil(log($range, 2));
+        $bytes = (int) ($log / 8) + 1; // length in bytes
+        $bits = (int) $log + 1; // length in bits
+        $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter; // discard irrelevant bits
+        } while ($rnd > $range);
+        return $min + $rnd;
+    }
+
+    public function get_genid($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+
+        for ($i=0; $i < $length; $i++) {
+            $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
+        }
+
+        return $token;
     }
 }
