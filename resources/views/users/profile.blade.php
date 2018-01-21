@@ -674,6 +674,9 @@
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
 											            <input type="text" ng-model="emp.sdate" ui-mask="99/99/9999" model-view-value="true" required>
 											            <label class="nptlbl">Start Date <span>*</span></label>
+											            <span class="btmlbl">
+											            	<strong>Format:</strong> mm/dd/yyyy
+											            </span>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['sdate'] && fcs_sdate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
@@ -688,8 +691,16 @@
 						              		<div class="col-lg-4">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
-											            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" required>
+											            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="emp.ispresent" required>
 											            <label class="nptlbl">End Date <span>*</span></label>
+											            <span class="btmlbl">
+											            	<strong>Format:</strong> mm/dd/yyyy
+											            </span>
+											            <label class="ctrl">
+													        Present Employer
+													        <input type="checkbox" ng-model="emp.ispresent" />
+													        <div class="ctrl_indicator"></div>
+													    </label>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['edate'] && fcs_edate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>

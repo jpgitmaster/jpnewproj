@@ -69,6 +69,7 @@ body, html{
         font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif;
         width: 100%;
         &:focus{outline:none;}
+        &:disabled{ cursor: not-allowed; }
         // &:focus ~ .nptlbl, &:valid ~ .nptlbl{
         //     top: -13px;
         //     left: 0;
