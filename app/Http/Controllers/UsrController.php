@@ -510,7 +510,7 @@ class UsrController extends Controller
 
     public function calendar(){
         return view('users.calendar', [
-            'scripts'       => array_merge($this->import['scripts'], [j_moment, j_fullcalendar, j_fullcalendar_gcal]),
+            'scripts'       => array_merge([j_moment, j_moment_timezone], $this->import['scripts'], [j_fullcalendar]),
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_fullcalendar]),
             'ngular'        =>  array_merge($this->import['ngular'], [n_ui_bootstrap, n_uicalendar, n_user_calendar])
         ]);
@@ -520,32 +520,32 @@ class UsrController extends Controller
         $schd = $request->all();
         $schd = json_decode($schd['sched'], true);
         $schd = $schd ? $schd : [];
-        if(isset($schd['fromdate'])):
-            $schd['fromdate'] = date('Y-m-d', strtotime($schd['fromdate']));
+        if(isset($schd['start'])):
+            $schd['start'] = date('Y-m-d', strtotime($schd['start']));
         endif;
-        if(isset($schd['todate'])):
-            $schd['todate'] = date('Y-m-d', strtotime($schd['todate']));
+        if(isset($schd['end'])):
+            $schd['end'] = date('Y-m-d', strtotime($schd['end']));
         endif;
 
-        // generated id
-        $gen_id  = $this->get_genid(20);
 
-        DB::table('personal_information')->insert([
-            'genid' => $gen_id,
-            'activity'        => $schd['activity'],
-            'datefrom'        => $schd['fromdate'],
-            'dateto'          => $schd['todate'],
-            'acitivity_type'  => $schd['acitivity_type'],
+        DB::table('calendar_schedules')->insert([
+            'genid' => $this->get_genid(20),
+            'title'        => $schd['title'],
+            'start'        => $schd['start'],
+            'end'          => $schd['end'],
+            'textColor'    => $schd['textColor'],
+            'color'         => $schd['color'],
+            'activity_type'  => $schd['activity_type'],
             'room_type'       => $schd['room_type'],
             'reason'          => $schd['reason']
         ]);
-        // print_r($schd);
+        print_r($schd);
     }
 
     public function views_scheds(){
         $scheds = DB::table('calendar_schedules')
             ->select(
-                'genid', 'activity', 'datefrom', 'dateto', 'acitivity_type', 'room_type', 'reason')
+                'genid', 'title', 'start', 'end', 'textColor', 'color', 'activity_type', 'room_type', 'reason')
             ->orderBy('calendar_schedules.id', 'desc')
             ->get();
         return json_encode($scheds, JSON_PRETTY_PRINT);

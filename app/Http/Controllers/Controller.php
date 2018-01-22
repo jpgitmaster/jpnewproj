@@ -56,8 +56,8 @@ class Controller extends BaseController
         define('j_summernote', 'plugins/summernote/dist/summernote.min.js');
         define('j_chart', 'plugins/chart/src/chart.js');
         define('j_moment', 'plugins/moment/min/moment.min.js');
+        define('j_moment_timezone', 'plugins/moment/moment-timezone.js');
         define('j_fullcalendar', 'plugins/fullcalendar/fullcalendar.min.js');
-        define('j_fullcalendar_gcal', 'plugins/fullcalendar/gcal.min.js');
     }
 
     public function import_ng(){
@@ -68,6 +68,7 @@ class Controller extends BaseController
         define('n_summernote', 'plugins/angular-summernote/dist/angular-summernote.js');
         define('n_chart', 'plugins/angular-chart/angular-chart.min.js');
         define('n_uicalendar', 'plugins/ui-calendar/src/calendar.js');
+        define('n_ngmoment', 'plugins/angular-moment/angular-moment.min.js');
         
 
         define('n_ui_bootstrap', 'plugins/ui-bootstrap-tpls-2.5.0.min.js');

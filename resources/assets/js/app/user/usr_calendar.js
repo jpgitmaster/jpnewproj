@@ -9,8 +9,6 @@ usrContent.factory('Schd', function ($resource) {
 usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig', 'Schd',
 	function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
 
-    $scope.scheds = Schd.query();
-    
     $scope.open_calendar = function($event, index, datepicker){
         $scope[datepicker] = {}; $scope[datepicker].open = {};
         $event.preventDefault();
@@ -47,8 +45,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     }
     
     $scope.activities = [
-        {id: 1, name: 'Reserved', color: '#FFF', background: '#17b13c'},
-        {id: 2, name: 'Out of Service', color: '#FFF', background: '#a6a6a6'},
+        {id: 1, name: 'Reserved', textColor: '#FFF', color: '#17b13c'},
+        {id: 2, name: 'Out of Service', textColor: '#FFF', color: '#a6a6a6'},
     ]
 
     // $scope.MaxDate = {
@@ -64,7 +62,25 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     $scope.admin_scheds = [
 
     ];
+    Schd.query().$promise.then(function(data) {
+        // $scope.admin_scheds = data;
 
+        angular.forEach(data, function(value, key){
+            var d_start = new Date(value.start);
+            var d_end = new Date(value.end);
+            console.log(d_end.getDate());
+            angular.element('.calendar').fullCalendar('option', 'timezone', 'Asia/Manila');
+            $scope.admin_scheds.push({
+                genid: value.genid,
+                title: value.title,
+                color: value.color,
+                textColor: value.textColor,
+                start: new Date(d_start.getFullYear(), d_start.getMonth(), d_start.getDate()),
+                end: new Date(d_end.getFullYear(), d_end.getMonth(), d_end.getDate()),
+                className: 'admin'
+            });
+        });
+    });
     // $scope.jpevents = [
     //   {title: 'JP Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
     // ];
@@ -83,10 +99,24 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
       console.log($scope.guest_scheds);
     };
 
-    $scope.AdminSched = function(schd) {
-        var activities = $filter('filter')($scope.activities, {id: schd.activity})[0],
-            admn_sdate = moment(schd.fromdate).startOf('day'),
-            admn_edate = moment(schd.todate).startOf('day');
+
+    $scope.schd = {};
+    var activities = {},
+        sked = {};
+    $scope.AdminSched = function(sked) {
+        if(sked.activity_type){
+            activities = $filter('filter')($scope.activities, {id: sked.activity_type})[0];
+        }
+        var admn_sdate = moment(sked.start).startOf('day'),
+            admn_edate = moment(sked.end).startOf('day');
+        
+        if(activities.color){
+            sked.color = activities.color;
+        }
+
+        if(activities.textColor){
+            sked.textColor = activities.textColor;
+        }
 
         $http({
             method: 'POST',
@@ -97,16 +127,16 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 fd.append('sched', angular.toJson(data.sched));
                 return fd;
             },
-            data: {sched: schd}
+            data: {sched: sked}
         }).then(function(result){
             $scope.msg = result.data;
             console.log(result.data);
 
             $scope.admin_scheds.push({
                 genid: 32132,
-                title: schd.ttl,
-                color: activities.background,
-                textColor: activities.color,
+                title: sked.title,
+                color: activities.color,
+                textColor: activities.textColor,
                 start: admn_sdate.clone().format('YYYY-MM-DD'),
                 end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
                 className: 'admin',
@@ -121,10 +151,10 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     $scope.alertOnEventClick = function( date, jsEvent, view){
         console.log(date.genid);
     };
+
 	$scope.uiConfig = {
       calendar:{
         editable: true,
-        timezone: 'Asia/Manila',
         header:{
           left: 'prev,next today',
           center: 'title',
@@ -153,7 +183,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         //     }
         //     $('#calendar').fullCalendar('unselect');
         // }
-        eventClick: $scope.alertOnEventClick
+        eventClick: $scope.alertOnEventClick,
+        ignoreTimezone: false
       }
     };
     /* event sources array*/

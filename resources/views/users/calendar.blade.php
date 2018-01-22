@@ -14,7 +14,7 @@
 					<div class="col-lg-12">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" ng-model="schd.ttl" required>
+					            <input type="text" ng-model="schd.title" required>
 					            <label class="nptlbl">Activity <span>*</span></label>
 					        </div>
 	          			</div>
@@ -22,7 +22,7 @@
 					<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" name="fromdate" ng-model="schd.fromdate" ng-click="open_calendar($event, $index, 'fromdate')" datepicker-options="MinDate" is-open="fromdate.open[$index]" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" ng-change="getMax(schd.fromdate, 1)" readonly required>
+					            <input type="text" name="fromdate" ng-model="schd.start" ng-click="open_calendar($event, $index, 'fromdate')" datepicker-options="MinDate" is-open="fromdate.open[$index]" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" ng-change="getMax(schd.start, 1)" readonly required>
 					            <label class="nptlbl">From <span>*</span></label>
 					        </div>
 	          			</div>
@@ -30,7 +30,7 @@
 	          		<div class="col-lg-6">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <input type="text" name="todate" ng-model="schd.todate" ng-click="open_calendar($event, $index, 'todate', schd.todate)" is-open="todate.open[$index]" datepicker-options="MaxDateTo" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly required>
+					            <input type="text" name="todate" ng-model="schd.end" ng-click="open_calendar($event, $index, 'todate', schd.end)" is-open="todate.open[$index]" datepicker-options="MaxDateTo" show-button-bar="false" uib-datepicker-popup="MM/dd/yyyy" readonly required>
 					            <label class="nptlbl">To <span>*</span></label>
 					        </div>
 	          			</div>
@@ -38,7 +38,7 @@
 	          		<div class="col-lg-12">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <select ng-model="schd.activity" required>
+					            <select ng-model="schd.activity_type" required>
 					            	<option value=""></option>
 					            	<option ng-repeat="actvty in activities" ng-value="actvty.id"><%=actvty.name%></option>
 					            </select>
@@ -68,7 +68,7 @@
 	          		<div class="col-lg-12">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <select ng-model="schd.rmtype" required>
+					            <select ng-model="schd.room_type" required>
 					            	<option value=""></option>
 					            	<option value="0">Econo</option>
 					            	<option value="1">Premium</option>
@@ -83,7 +83,7 @@
 	          		<div class="col-lg-12">
 	          			<div class="bx">
 	          				<div class="nptgrp">
-					            <textarea ng-model="schd.title" required>
+					            <textarea ng-model="schd.reason" required>
 					            </textarea>
 					            <label class="nptlbl">Reason <span>*</span></label>
 					        </div>
@@ -106,7 +106,6 @@
 					            <input type="text" name="sdate" ng-model="schd.sdate"
 					            ng-click="open_calendar($event, $index, 'sdate')" is-open="sdate.open[$index]" show-button-bar="false" datepicker-options="MinDate" uib-datepicker-popup="MM/dd/yyyy" ng-change="getMax(schd.sdate, 0)"
 					            readonly required>
-					            <input type="text" name="empsdate" ng-model="emp.empsdate" class="form-control" ng-focus="fcsempsdate = true" ng-blur="fcsempsdate = false" ng-click="open_calendar($event, $index, 'empsdate')" is-open="empsdate.open[$index]" show-button-bar="false" datepicker-options="MaxCurrentDate" uib-datepicker-popup="MM/dd/yyyy" ng-disabled="usr.workexperience == 1" readonly required>
 					            <label class="nptlbl">Check-in <span>*</span></label>
 					        </div>
 	          			</div>
