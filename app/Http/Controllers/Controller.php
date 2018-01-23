@@ -57,7 +57,7 @@ class Controller extends BaseController
         define('j_chart', 'plugins/chart/src/chart.js');
         define('j_moment', 'plugins/moment/min/moment.min.js');
         define('j_moment_timezone', 'plugins/moment/moment-timezone.js');
-        define('j_fullcalendar', 'plugins/fullcalendar/fullcalendar.min.js');
+        define('j_fullcalendar', 'plugins/fullcalendar/fullcalendar.js');
     }
 
     public function import_ng(){

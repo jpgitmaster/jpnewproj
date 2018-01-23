@@ -66,18 +66,19 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         // $scope.admin_scheds = data;
 
         angular.forEach(data, function(value, key){
-            var d_start = new Date(value.start);
-            var d_end = new Date(value.end);
-            console.log(d_end.getDate());
-            angular.element('.calendar').fullCalendar('option', 'timezone', 'Asia/Manila');
+            moment.tz.add('Asia/Manila|+08 +09|-80 -90|010101010|-1kJI0 AL0 cK10 65X0 mXB0 vX0 VK10 1db0|24e6');
+            // console.log(moment(value.end).add(9, 'hours').tz("Asia/Manila").format());
             $scope.admin_scheds.push({
                 genid: value.genid,
                 title: value.title,
                 color: value.color,
                 textColor: value.textColor,
-                start: new Date(d_start.getFullYear(), d_start.getMonth(), d_start.getDate()),
-                end: new Date(d_end.getFullYear(), d_end.getMonth(), d_end.getDate()),
+                start: moment(value.start).tz("Asia/Manila").format('YYYY-MM-DD'),
+                end: moment(value.end).add(1, 'day').tz("Asia/Manila").format('YYYY-MM-DD'),
+                reason: value.reason,
                 className: 'admin'
+                // currentTimezone: 'Asia/Manila',
+                // allDay: true
             });
         });
     });
@@ -93,8 +94,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         // title: 'Open Sesame',
         start: sdate.clone().format('YYYY-MM-DD'),
         end: edate.clone().add(1, 'day').format('YYYY-MM-DD'),
-        className: ['guest'],
-        currentTimezone: 'Asia/Manila' // an option!
+        className: ['guest']
+        // currentTimezone: 'Asia/Manila' // an option!
       });
       console.log($scope.guest_scheds);
     };
@@ -139,7 +140,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 textColor: activities.textColor,
                 start: admn_sdate.clone().format('YYYY-MM-DD'),
                 end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
-                className: 'admin',
+                className: 'admin'
                 // currentTimezone: 'Asia/Manila' // an option!
             });
             $scope.schd = {};
@@ -147,9 +148,10 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         });
     };
 
-
+    // $scope.slctd = {};
     $scope.alertOnEventClick = function( date, jsEvent, view){
-        console.log(date.genid);
+        $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
+        console.log($scope.slctd);
     };
 
 	$scope.uiConfig = {
@@ -183,8 +185,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         //     }
         //     $('#calendar').fullCalendar('unselect');
         // }
-        eventClick: $scope.alertOnEventClick,
-        ignoreTimezone: false
+        eventClick: $scope.alertOnEventClick
+        // ignoreTimezone: true
       }
     };
     /* event sources array*/

@@ -130,6 +130,23 @@
 			</div>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, vel? Aperiam nobis delectus dolor vero. Animi soluta, repellat dolor, neque error, esse aliquid nulla repudiandae natus ipsa voluptatem consectetur numquam?
 		</div> --}}
+		<div class="cntnbx" ng-if="slctd" ng-cloak>
+			<div class="ttl">
+			    <h3>Selected</h3>
+			    <div class="btmbrdr"><hr></div>
+			</div>
+			<ul>
+				<li>
+					<strong>Activity:</strong> 
+					<%= slctd.title %>
+				</li>
+				<li>
+					<strong>Reason:</strong>
+					<%= slctd.reason %>
+				</li>
+			</ul>
+		</div>
+
 	</div>
 	<div class="cntntwrpr_lft" style="margin-right: 450px;">
 		<div class="cntnbx clndr">
