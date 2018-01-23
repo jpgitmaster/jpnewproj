@@ -130,7 +130,7 @@
 			</div>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, vel? Aperiam nobis delectus dolor vero. Animi soluta, repellat dolor, neque error, esse aliquid nulla repudiandae natus ipsa voluptatem consectetur numquam?
 		</div> --}}
-		<div class="cntnbx" ng-if="slctd" ng-cloak>
+		{{-- <div class="cntnbx" ng-if="slctd" ng-cloak>
 			<div class="ttl">
 			    <h3>Selected</h3>
 			    <div class="btmbrdr"><hr></div>
@@ -145,7 +145,7 @@
 					<%= slctd.reason %>
 				</li>
 			</ul>
-		</div>
+		</div> --}}
 
 	</div>
 	<div class="cntntwrpr_lft" style="margin-right: 450px;">
@@ -155,6 +155,10 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
+			<div id="popoverContent" style="display: none;">
+				<h1><%=slctd.title%></h1>
+				<p><%=slctd.reason%></p>
+			</div>
 		</div>
 	</div>
 </div>

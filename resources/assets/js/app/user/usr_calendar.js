@@ -149,11 +149,17 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     };
 
     // $scope.slctd = {};
-    $scope.alertOnEventClick = function( date, jsEvent, view){
-        $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-        console.log($scope.slctd);
-    };
+    // $scope.alertOnEventClick = function( date, jsEvent, view){
+    //     $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
+    //     console.log($scope.slctd);
+    // };
 
+    var popTemplate = [
+    '<div class="clndrppovr popover am-flip-x">',
+    '<div class="arrow"></div>',
+    '<div class="popover-body"></div>',
+    '</div>'].join('');
+    var popoverElement;
 	$scope.uiConfig = {
       calendar:{
         editable: true,
@@ -185,11 +191,57 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         //     }
         //     $('#calendar').fullCalendar('unselect');
         // }
-        eventClick: $scope.alertOnEventClick
-        // ignoreTimezone: true
+        // eventClick: $scope.alertOnEventClick,
+        eventClick: function (date, jsEvent, view) {
+            $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
+            popoverElement = $(jsEvent.currentTarget);
+        },
+        select: function (date, jsEvent, view) {
+            $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
+            closePopovers();
+            popoverElement = $(jsEvent.target);
+            $(jsEvent.target).popover({
+                content: function () {
+                    return $("#popoverContent").html();
+                },
+                template: popTemplate,
+                placement: 'top',
+                html: true,
+                trigger: 'click',
+                animation: true,
+                container: 'body'
+            }).popover('show');
+        },
+        eventRender: function (event, element) {
+            element.popover({
+                content: function () {
+                    return $("#popoverContent").html();
+                },
+                template: popTemplate,
+                placement: 'top',
+                html: true,
+                trigger: 'click',
+                animation: true,
+                container: 'body'
+            }).popover('show');
+
+        }
       }
     };
+
+    function closePopovers() {
+        $('.popover').not(this).popover('hide');
+    }
     /* event sources array*/
     // $scope.eventSources = [$scope.jpevents, $scope.events];
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
+
+    angular.element('body').on('click', function (e) {
+        // close the popover if: click outside of the popover || click on the close button of the popover
+        if (popoverElement && ((!popoverElement.is(e.target) && popoverElement.has(e.target).length === 0 && $('.popover').has(e.target).length === 0) || (popoverElement.has(e.target) && e.target.id === 'closepopover'))) {
+
+            ///$('.popover').popover('hide'); --> works
+            closePopovers();
+        }
+    });
 }]);
