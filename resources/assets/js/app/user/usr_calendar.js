@@ -7,7 +7,7 @@ usrContent.factory('Schd', function ($resource) {
     });
 });
 usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig', 'Schd',
-	function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
+    function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
 
     $scope.open_calendar = function($event, index, datepicker){
         $scope[datepicker] = {}; $scope[datepicker].open = {};
@@ -149,18 +149,21 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     };
 
     // $scope.slctd = {};
-    // $scope.alertOnEventClick = function( date, jsEvent, view){
-    //     $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-    //     console.log($scope.slctd);
-    // };
+    $scope.islct = false;
+    $scope.alertOnEventClick = function( date, jsEvent, view){
+        $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
+        $scope.islct = true;
+        $timeout(function(){
+            angular.element('.slctd_data').prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
+        }, 20);
+        console.log(jsEvent.target);
+    };
 
-    var popTemplate = [
-    '<div class="clndrppovr popover am-flip-x">',
-    '<div class="arrow"></div>',
-    '<div class="popover-body"></div>',
-    '</div>'].join('');
-    var popoverElement;
-	$scope.uiConfig = {
+    $scope.testClick = function(){
+        console.log('working');
+    }
+
+    $scope.uiConfig = {
       calendar:{
         editable: true,
         header:{
@@ -169,8 +172,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
           right: 'month,agendaWeek,agendaDay,listWeek'
         },
         navLinks: true, // can click day/week names to navigate views
-        // selectable: true,
-        selectHelper: true,
+        selectable: false,
+        selectHelper: false,
         // select: function(start, end) {
         //     var title = prompt('Event Title:');
         //     var eventData;
@@ -191,57 +194,11 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         //     }
         //     $('#calendar').fullCalendar('unselect');
         // }
-        // eventClick: $scope.alertOnEventClick,
-        eventClick: function (date, jsEvent, view) {
-            $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-            popoverElement = $(jsEvent.currentTarget);
-        },
-        select: function (date, jsEvent, view) {
-            $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-            closePopovers();
-            popoverElement = $(jsEvent.target);
-            $(jsEvent.target).popover({
-                content: function () {
-                    return $("#popoverContent").html();
-                },
-                template: popTemplate,
-                placement: 'top',
-                html: true,
-                trigger: 'click',
-                animation: true,
-                container: 'body'
-            }).popover('show');
-        },
-        eventRender: function (event, element) {
-            element.popover({
-                content: function () {
-                    return $("#popoverContent").html();
-                },
-                template: popTemplate,
-                placement: 'top',
-                html: true,
-                trigger: 'click',
-                animation: true,
-                container: 'body'
-            }).popover('show');
-
-        }
+        eventClick: $scope.alertOnEventClick
+        // ignoreTimezone: true
       }
     };
-
-    function closePopovers() {
-        $('.popover').not(this).popover('hide');
-    }
     /* event sources array*/
     // $scope.eventSources = [$scope.jpevents, $scope.events];
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
-
-    angular.element('body').on('click', function (e) {
-        // close the popover if: click outside of the popover || click on the close button of the popover
-        if (popoverElement && ((!popoverElement.is(e.target) && popoverElement.has(e.target).length === 0 && $('.popover').has(e.target).length === 0) || (popoverElement.has(e.target) && e.target.id === 'closepopover'))) {
-
-            ///$('.popover').popover('hide'); --> works
-            closePopovers();
-        }
-    });
 }]);

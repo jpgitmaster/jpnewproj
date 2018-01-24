@@ -130,12 +130,13 @@
 			</div>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, vel? Aperiam nobis delectus dolor vero. Animi soluta, repellat dolor, neque error, esse aliquid nulla repudiandae natus ipsa voluptatem consectetur numquam?
 		</div> --}}
-		{{-- <div class="cntnbx" ng-if="slctd" ng-cloak>
+		<!-- <div class="cntnbx" ng-if="slctd" ng-cloak>
 			<div class="ttl">
 			    <h3>Selected</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<ul>
+			
+			<ul class="slctd_data">
 				<li>
 					<strong>Activity:</strong> 
 					<%= slctd.title %>
@@ -145,7 +146,7 @@
 					<%= slctd.reason %>
 				</li>
 			</ul>
-		</div> --}}
+		</div> -->
 
 	</div>
 	<div class="cntntwrpr_lft" style="margin-right: 450px;">
@@ -155,9 +156,15 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
-			<div id="popoverContent" style="display: none;">
-				<h1><%=slctd.title%></h1>
-				<p><%=slctd.reason%></p>
+			<div ng-show="islct" ng-cloak class="slctd_data" style="position: absolute; top: inherit; left: 0; right: 0; bottom: 33px; max-width: 330px;">
+				<div class="popover bs-popover-top" style="max-width: 100%; width: 100%; position: relative; margin: 0;">
+				    <div class="arrow"></div>
+				    <div class="popover-body">
+				    	<button class="btn btn-primary" ng-click="testClick()" type="button">test</button>
+				    	<h1><%= slctd.title %></h1>
+				    	<p><%= slctd.reason %></p>
+				    </div>
+			    </div>
 			</div>
 		</div>
 	</div>
@@ -204,6 +211,20 @@
 	.uib-datepicker-popup.dropdown-menu div{
 		box-shadow: none;
 		outline: none;
+	}
+	.fc-title{float: left;}
+	.fc-content{display: inline-block;}
+	.fc-event-container{position: relative;}
+	.fc-day-grid-event{padding: 0;}
+	.fc-content, .fc-title{overflow: inherit !important; width: 100%; padding: 2px 4px;}
+	.popover.bs-popover-top .arrow{
+		left: 0;
+	    right: 0;
+	    position: absolute;
+	    margin: 0 auto;
+	}
+	.popover.bs-popover-top .arrow::after, .popover.bs-popover-top .arrow::before {
+	    margin-left: 0;
 	}
 </style>
 @endsection
