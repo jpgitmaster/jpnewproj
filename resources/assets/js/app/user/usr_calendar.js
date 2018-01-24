@@ -7,7 +7,7 @@ usrContent.factory('Schd', function ($resource) {
     });
 });
 usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig', 'Schd',
-	function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
+    function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
 
     $scope.open_calendar = function($event, index, datepicker){
         $scope[datepicker] = {}; $scope[datepicker].open = {};
@@ -140,7 +140,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 textColor: activities.textColor,
                 start: admn_sdate.clone().format('YYYY-MM-DD'),
                 end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
-                className: 'admin'
+                className: 'admin',
+                readon: admn_sdate.reason
                 // currentTimezone: 'Asia/Manila' // an option!
             });
             $scope.schd = {};
@@ -149,12 +150,21 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     };
 
     // $scope.slctd = {};
+    $scope.islct = false;
     $scope.alertOnEventClick = function( date, jsEvent, view){
         $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-        console.log($scope.slctd);
+        $scope.islct = true;
+        $timeout(function(){
+            angular.element('.slctd_data').prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
+        }, 20);
+        console.log($scope.islct);
     };
 
-	$scope.uiConfig = {
+    $scope.testClick = function(){
+        angular.element('.slctd_data').fadeOut('fast');
+    }
+
+    $scope.uiConfig = {
       calendar:{
         editable: true,
         header:{
@@ -163,8 +173,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
           right: 'month,agendaWeek,agendaDay,listWeek'
         },
         navLinks: true, // can click day/week names to navigate views
-        // selectable: true,
-        selectHelper: true,
+        selectable: false,
+        selectHelper: false,
         // select: function(start, end) {
         //     var title = prompt('Event Title:');
         //     var eventData;
@@ -192,4 +202,25 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     /* event sources array*/
     // $scope.eventSources = [$scope.jpevents, $scope.events];
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
+
+    $scope.addActivityType = function(typ){
+        console.log(typ);
+    }
+    $scope.typ = {};
+}]);
+usrContent.directive('colorPicker', ['$parse', '$http', '$timeout',
+    function($parse, $http, $timeout){
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs){
+            elm.ColorPicker({
+                onSubmit: function(hsb, hex, rgb, el) {
+                    console.log(hex);
+                    scope.typ.color = '#'+hex;
+                    $(el).val('#'+hex);
+                    $(el).ColorPickerHide();
+                }
+            });
+        }
+    }
 }]);
