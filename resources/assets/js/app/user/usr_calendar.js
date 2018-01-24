@@ -140,7 +140,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 textColor: activities.textColor,
                 start: admn_sdate.clone().format('YYYY-MM-DD'),
                 end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
-                className: 'admin'
+                className: 'admin',
+                readon: admn_sdate.reason
                 // currentTimezone: 'Asia/Manila' // an option!
             });
             $scope.schd = {};
@@ -156,11 +157,11 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         $timeout(function(){
             angular.element('.slctd_data').prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
         }, 20);
-        console.log(jsEvent.target);
+        console.log($scope.islct);
     };
 
     $scope.testClick = function(){
-        console.log('working');
+        angular.element('.slctd_data').fadeOut('fast');
     }
 
     $scope.uiConfig = {
@@ -201,4 +202,25 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     /* event sources array*/
     // $scope.eventSources = [$scope.jpevents, $scope.events];
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
+
+    $scope.addActivityType = function(typ){
+        console.log(typ);
+    }
+    $scope.typ = {};
+}]);
+usrContent.directive('colorPicker', ['$parse', '$http', '$timeout',
+    function($parse, $http, $timeout){
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs){
+            elm.ColorPicker({
+                onSubmit: function(hsb, hex, rgb, el) {
+                    console.log(hex);
+                    scope.typ.color = '#'+hex;
+                    $(el).val('#'+hex);
+                    $(el).ColorPickerHide();
+                }
+            });
+        }
+    }
 }]);

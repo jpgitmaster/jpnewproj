@@ -30,6 +30,7 @@ class Controller extends BaseController
         define('c_jcrop', 'plugins/jcrop/css/jquery.jcrop.min.css');
         define('c_summernote', 'plugins/summernote/dist/summernote.css');
         define('c_fullcalendar', 'plugins/fullcalendar/fullcalendar.min.css');
+        define('c_colorpicker', 'plugins/colorpicker/css/colorpicker.css');
 
         define('c_ngselect', 'plugins/ng-custom-select/css/style.css');
 
@@ -58,6 +59,7 @@ class Controller extends BaseController
         define('j_moment', 'plugins/moment/min/moment.min.js');
         define('j_moment_timezone', 'plugins/moment/moment-timezone.js');
         define('j_fullcalendar', 'plugins/fullcalendar/fullcalendar.js');
+        define('j_colorpicker', 'plugins/colorpicker/js/colorpicker.js');
     }
 
     public function import_ng(){
