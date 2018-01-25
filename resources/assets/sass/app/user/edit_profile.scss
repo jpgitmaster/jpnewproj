@@ -179,6 +179,21 @@
 							    }
 							}
 							.nptgrp{
+								.input-group{
+				    			.input-group-addon{
+				    				padding: 0;
+				    				border: 0;
+				    				position: absolute;
+
+				    				select{
+				    					padding: 8px 0 8px 5px;
+				    				}
+				    			}
+
+				    			input[type=text]{
+			    					padding-left: 75px;
+			    				}
+				    		}
 								&.txtarea, &.cstmdrpdwn{
 									label{
 										top: -13px;

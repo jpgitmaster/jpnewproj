@@ -189,6 +189,20 @@
   display: inline-block;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp .input-group .input-group-addon {
+  padding: 0;
+  border: 0;
+  position: absolute;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp .input-group .input-group-addon select {
+  padding: 8px 0 8px 5px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp .input-group input[type=text] {
+  padding-left: 75px;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea label, #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.cstmdrpdwn label {
   top: -13px;
   left: 0;

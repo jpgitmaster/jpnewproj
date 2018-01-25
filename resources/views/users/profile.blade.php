@@ -656,16 +656,25 @@
 						              		<div class="col-lg-4">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['salary']}" ng-mouseover="fcs_salary = true" ng-mouseleave="fcs_salary = false">
-											            <input type="text" ng-model="emp.salary" required>
-											            <label class="nptlbl">Salary Rate <span>*</span></label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>
-								                        	<div class="popover bs-popover-top">
-															    <div class="arrow"></div>
-															    <div class="popover-body">
-															      <%= msg['error']['emp'][$index]['salary'][0] %>
-															    </div>
-															</div>
-										                </div>
+						              					<div class="input-group">
+						              						<span class="input-group-addon">
+																	        <select name="currency" ng-model="emp.currency" required ng-init="emp.currency='1'">
+																						<option ng-repeat="crncy in currencies" value="<%=crncy.id%>">
+																							<%=crncy.name%>
+																						</option>
+																					</select>
+																	    </span>
+												            	<input type="text" ng-model="emp.salary" currency-input maxlength="8" required>
+												            </div>
+											            	<label class="nptlbl">Salary Rate <span>*</span></label>
+												            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>
+									                        	<div class="popover bs-popover-top">
+																    <div class="arrow"></div>
+																    <div class="popover-body">
+																      <%= msg['error']['emp'][$index]['salary'][0] %>
+																    </div>
+																	</div>
+										            </div>
 											        </div>
 						              			</div>
 						              		</div>
