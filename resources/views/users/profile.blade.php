@@ -565,11 +565,11 @@
 				    <div class="collapse">
 				      <div class="card-body bggry">
 					    <div class="crdbdy">
-					      	<div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
+					      	{{-- <div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
 				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
-						    </div>
+						    </div> --}}
 					      	
 					      	<div ng-if="!forms[1]['actvform']" ng-cloak>
 					      		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia amet nisi, debitis nesciunt eaque. Optio sit quis rem, accusantium quas sint obcaecati ab veritatis alias. Id eaque expedita ab iusto.
@@ -696,12 +696,8 @@
 											            <span class="btmlbl">
 											            	<strong>Format:</strong> mm/dd/yyyy
 											            </span>
-											            <label class="ctrl">
-													        Present Employer
-													        <input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
-													        <div class="ctrl_indicator"></div>
-													    </label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak>
+											            
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak style="bottom: 57px;">
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
@@ -709,6 +705,11 @@
 															    </div>
 															</div>
 										                </div>
+										                <label class="ctrl">
+													        Present Employer
+													        <input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
+													        <div class="ctrl_indicator"></div>
+													    </label>
 											        </div>
 						              			</div>
 						              		</div>

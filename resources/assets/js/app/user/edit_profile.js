@@ -261,7 +261,6 @@ usrContent.controller('ctrlEditProfile',
     }
 
     $scope.saveEmploymentHistory = function(emp, wrk){
-        // console.log(frm2);
         $scope.frm2_loader = true;
         $http({
             method: 'POST',
@@ -346,20 +345,22 @@ usrContent.controller('ctrlEditProfile',
         'position'       : "",
         'salary'         : "",
         'sdate'          : "",
-        'edate'          : ""
+        'edate'          : "",
+        'ispresent'      : ""
     }];
-
+    $scope.msg['error'] = [];
     $scope.addEmp = function(emp){
         $scope.emps.unshift({
             'company'        : "",
             'position'       : "",
             'salary'         : "",
             'sdate'          : "",
-            'edate'          : ""
+            'edate'          : "",
+            'ispresent'      : ""
         });
-        // if(typeof $scope.msg['error']['emp'] != "undefined"){
-        //     $scope.msg['error']['emp'].splice(0, 0, {});
-        // }
+        if(typeof $scope.msg['error']['emp'] != "undefined"){
+            $scope.msg['error']['emp'].splice(0, 0, {});
+        }
     }
     $scope.checked = 0;
     $scope.clearEndate = function(index, ispresent){

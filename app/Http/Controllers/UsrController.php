@@ -386,23 +386,31 @@ class UsrController extends Controller
         $usr['wrk'] = json_decode($rqst['wrk'], true);
         $usr['emp'] = json_decode($rqst['emp'], true);
         $usr = $usr ? $usr : [];
+        $messages = [];
+        $loop_error = 0;
 
         for ($i = 0; $i < count($usr['emp']); $i++):
-
+            if(isset($usr['emp'][$i]['ispresent'])):
+                if($usr['emp'][$i]['ispresent'] == 1):
+                    $validate_edate[$i] = '';
+                else:
+                    $validate_edate[$i] = 'required|date|date_format:m/d/Y';
+                endif;
+            endif;
             $validate = Validator::make($usr['emp'][$i], [
                 'company'   => 'required|max:200',
                 'position'  => 'required|max:100',
                 'salary'    => 'required|numeric',
                 'sdate'  => 'required|date|date_format:m/d/Y',
-                'edate'  => 'required|date|date_format:m/d/Y'
+                'edate'  => $validate_edate[$i] ? $validate_edate[$i] : '',
             ], $messages);
             $validate->setAttributeNames($replace_names);
-            $msg['error']['emp'][] = $validate->messages()->toArray();
+            $this->msg['error']['emp'][] = $validate->messages()->toArray();
             $has_error = $this->hasError($validate);
             $loop_error += count($validate->messages()->toArray());
         endfor;
         if($has_error == true || $loop_error > 0):
-            $msg['has_error'] = true;
+            $this->msg['has_error'] = true;
         else:
         endif;
         // print_r($usr['emp']);
