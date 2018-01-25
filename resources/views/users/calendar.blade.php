@@ -181,7 +181,7 @@
 	</div>
 </div>
 <style>
-	.clndr{
+	#wrapper .content .cntnbx.clndr{
 		overflow-y: hidden;
 		min-height: 600px;
 	}
@@ -192,11 +192,7 @@
 		float: left;
 		width: 100%;
 	}
-	.fc-day-grid-event{
-		border-radius: 0;
-		padding: 4px 2px;
-		border: 0;
-	}
+	
 	.guest{
 		background-color: #6dc5e6;
 	}
@@ -225,10 +221,17 @@
 		box-shadow: none;
 		outline: none;
 	}
+	.calendar{margin-top: 15px; float: left; width: 100%;}
 	.fc-title{float: left;}
 	.fc-content{display: inline-block;}
 	.fc-event-container{position: relative;}
-	.fc-day-grid-event{padding: 0;}
+	.fc-day-grid-event{
+		border-radius: 0;
+		padding: 0;
+		border: 0;
+		margin: 0 2px 2px;
+	}
+	tr:first-child>td>.fc-day-grid-event{margin: 0 2px 2px;}
 	.fc-content, .fc-title{overflow: inherit !important; width: 100%; padding: 2px 4px;}
 	.popover.bs-popover-top .arrow{
 		left: 0;
