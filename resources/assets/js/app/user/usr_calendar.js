@@ -200,6 +200,11 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         eventDrop: function(event, delta, revertFunc, jsEvent, ui, view){
            console.log('Event Droped to make dayDelta ' + delta);
         },
+        eventResizeStart: function( event, jsEvent, ui, view ) {
+            console.log('test');
+            angular.element('.slctd_data').hide();
+            angular.element('.fc-event-container').css('position', 'inherit')
+        },
         eventResize: function(event, delta, revertFunc, jsEvent, ui, view ){
            console.log('Event Resized to make dayDelta ' + delta);
         }
