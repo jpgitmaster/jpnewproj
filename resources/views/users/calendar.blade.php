@@ -177,16 +177,6 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
-			<div ng-if="islct" ng-cloak class="slctd_data" style="position: absolute; top: inherit; left: 0; right: 0; bottom: 33px; max-width: 330px; display: none;">
-				<div class="popover bs-popover-top" style="max-width: 100%; width: 100%; position: relative; margin: 0;">
-				    <div class="arrow"></div>
-				    <div class="popover-body">
-				    	<button class="btn btn-primary" ng-click="testClick()" type="button">test</button>
-				    	<h1><%= slctd.title %></h1>
-				    	<p><%= slctd.reason %></p>
-				    </div>
-			    </div>
-			</div>
 		</div>
 	</div>
 </div>
@@ -195,6 +185,8 @@
 		overflow-y: hidden;
 		min-height: 600px;
 	}
+	.fc-toolbar button:focus{z-index: inherit;}
+	.fc-day-grid-container{overflow: initial !important;}
 	.fc-axis{ width: 42px !important; }
 	.fc-view-container, .fc-toolbar.fc-header-toolbar{
 		float: left;

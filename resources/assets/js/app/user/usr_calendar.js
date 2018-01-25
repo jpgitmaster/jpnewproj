@@ -76,7 +76,8 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 start: moment(value.start).tz("Asia/Manila").format('YYYY-MM-DD'),
                 end: moment(value.end).add(1, 'day').tz("Asia/Manila").format('YYYY-MM-DD'),
                 reason: value.reason,
-                className: 'admin'
+                className: 'admin',
+                stick: true
                 // currentTimezone: 'Asia/Manila',
                 // allDay: true
             });
@@ -148,21 +149,20 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
             // console.log($scope.admin_scheds);
         });
     };
-
-    // $scope.slctd = {};
-    $scope.islct = false;
+    $scope.testClick = function(){
+        // angular.element('.slctd_data').fadeOut('fast');
+        console.log('test');
+    }
     $scope.alertOnEventClick = function( date, jsEvent, view){
         $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
-        $scope.islct = true;
-        $timeout(function(){
-            angular.element('.slctd_data').prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
-        }, 20);
-        console.log($scope.islct);
-    };
-
-    $scope.testClick = function(){
+        // var iclone = angular.copy(angular.element('.slctd_data').clone());
         angular.element('.slctd_data').fadeOut('fast');
-    }
+        var tpl = $compile('<div class="slctd_data" style="position: absolute; top: inherit; left: 0; right: 0; bottom: 33px; max-width: 330px; display: none;"><div class="popover bs-popover-top" style="max-width: 100%; width: 100%; position: relative; margin: 0;"><div class="arrow"></div><div class="popover-body"><button class="btn btn-primary" ng-click="testClick()" type="button">test</button><h1>'+$scope.slctd.title+'</h1><p>'+$scope.slctd.reason+'</p></div></div></div>')($scope);
+        $timeout(function(){
+            angular.element(tpl).prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
+        }, 20);
+        // console.log($scope.islct);
+    };
 
     $scope.uiConfig = {
       calendar:{
