@@ -156,33 +156,22 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
-			<div ng-if="islct" ng-cloak class="slctd_data" style="position: absolute; top: -116px; left: 0; right: 0; bottom: 0;">
-				<div class="popover bs-popover-top" style="max-width: 350px;">
-				    <div class="arrow"></div>
-				    <div class="popover-body">
-				    	<h1><%= slctd.title %></h1>
-				    	<p><%= slctd.reason %></p>
-				    </div>
-			    </div>
-			</div>
 		</div>
 	</div>
 </div>
 <style>
-	.clndr{
+	#wrapper .content .cntnbx.clndr{
 		overflow-y: hidden;
 		min-height: 600px;
 	}
+	.fc-toolbar button:focus{z-index: inherit;}
+	.fc-day-grid-container{overflow: initial !important;}
 	.fc-axis{ width: 42px !important; }
 	.fc-view-container, .fc-toolbar.fc-header-toolbar{
 		float: left;
 		width: 100%;
 	}
-	.fc-day-grid-event{
-		border-radius: 0;
-		padding: 4px 2px;
-		border: 0;
-	}
+	
 	.guest{
 		background-color: #6dc5e6;
 	}
@@ -211,10 +200,17 @@
 		box-shadow: none;
 		outline: none;
 	}
+	.calendar{margin-top: 15px; float: left; width: 100%;}
 	.fc-title{float: left;}
 	.fc-content{display: inline-block;}
 	.fc-event-container{position: relative;}
-	.fc-day-grid-event{padding: 0;}
+	.fc-day-grid-event{
+		border-radius: 0;
+		padding: 0;
+		border: 0;
+		margin: 0 2px 2px;
+	}
+	tr:first-child>td>.fc-day-grid-event{margin: 0 2px 2px;}
 	.fc-content, .fc-title{overflow: inherit !important; width: 100%; padding: 2px 4px;}
 	.popover.bs-popover-top .arrow{
 		left: 0;
