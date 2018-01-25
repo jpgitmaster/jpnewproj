@@ -586,13 +586,13 @@
 					      		<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
 						          <i class="fa fa-times"></i>
 						        </button>
-						        <form ng-submit="saveEmploymentHistory(emp)" method="POST" novalidate>
+						        <form ng-submit="saveEmploymentHistory(emps, wrk)" method="POST" novalidate>
 							        <div class="row no-gutters">
 							        	<div class="col-lg-3"></div>
 							        	<div class="col-lg-6">
 							        		<div class="bx">
-					              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false">
-					              				<select ng-model="emp.wrkexperience" required>
+					              				<div class="nptgrp" ng-class="{'err': msg['error']['wrk']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false">
+					              				<select ng-model="wrk.wrkexperience" required>
 								                      <option value=""></option>
 								                      <option ng-value="1">No Work Experience</option>
 								                      <option ng-value="2">1-3 Yrs. of Experience</option>
@@ -600,11 +600,11 @@
 								                      <option ng-value="4">7 yrs. and Above</option>
 								                    </select>
 										            <label class="nptlbl">Work Experience <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['wrkexperience'] && fcs_wrkexperience === true" ng-cloak>
+										            <div class="am-flip-x popcntnr" ng-if="msg['error']['wrk']['wrkexperience'] && fcs_wrkexperience === true" ng-cloak>
 							                        	<div class="popover bs-popover-top">
 														    <div class="arrow"></div>
 														    <div class="popover-body">
-														      <%= msg['error']['emphstry']['wrkexperience'][0] %>
+														      <%= msg['error']['wrk']['wrkexperience'][0] %>
 														    </div>
 														</div>
 									                </div>
@@ -612,25 +612,25 @@
 					              			</div>
 							        	</div>
 							        	<div class="col-lg-3">
-							        		<div class="bx" ng-if="emp.wrkexperience && emp.wrkexperience != 1" ng-cloak>
+							        		<div class="bx" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
 							        			<button ng-click="addEmp(emp)" ng-disabled="emps.length > 4" class="btn btn-success btnwrkxprnc" type="button">
 							                    	Add Work Experience
 							                	</button>
 							        		</div>
 							        	</div>
 					              	</div>
-					              	<div class="am-fade" ng-if="emp.wrkexperience && emp.wrkexperience != 1" ng-cloak>
+					              	<div class="am-fade" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
 						              	<div class="am-fade bgwht row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 						              		<div class="col-lg-8">
 						              			<div class="bx">
-						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['company']}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
+						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['company'][0]}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
 											            <input type="text" ng-model="emp.company" required>
 											            <label class="nptlbl">Employer Name <span>*</span></label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['company'] && fcs_company === true" ng-cloak>
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['company'][0] && fcs_company === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
-															      <%= msg['error']['emphstry']['company'][0] %>
+															      <%= msg['error']['emp'][$index]['company'][0] %>
 															    </div>
 															</div>
 										                </div>
@@ -639,14 +639,14 @@
 						              		</div>
 						              		<div class="col-lg-4">
 						              			<div class="bx">
-						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['position']}" ng-mouseover="fcs_position = true" ng-mouseleave="fcs_position = false">
+						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['position']}" ng-mouseover="fcs_position = true" ng-mouseleave="fcs_position = false">
 											            <input type="text" ng-model="emp.position" required>
 											            <label class="nptlbl">Position <span>*</span></label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['position'] && fcs_position === true" ng-cloak>
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['position'] && fcs_position === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
-															      <%= msg['error']['emphstry']['position'][0] %>
+															      <%= msg['error']['emp'][$index]['position'][0] %>
 															    </div>
 															</div>
 										                </div>
@@ -655,14 +655,14 @@
 						              		</div>
 						              		<div class="col-lg-4">
 						              			<div class="bx">
-						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['salary']}" ng-mouseover="fcs_salary = true" ng-mouseleave="fcs_salary = false">
+						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['salary']}" ng-mouseover="fcs_salary = true" ng-mouseleave="fcs_salary = false">
 											            <input type="text" ng-model="emp.salary" required>
 											            <label class="nptlbl">Salary Rate <span>*</span></label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['salary'] && fcs_salary === true" ng-cloak>
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
-															      <%= msg['error']['emphstry']['salary'][0] %>
+															      <%= msg['error']['emp'][$index]['salary'][0] %>
 															    </div>
 															</div>
 										                </div>
@@ -671,17 +671,17 @@
 						              		</div>
 						              		<div class="col-lg-4">
 						              			<div class="bx">
-						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
+						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
 											            <input type="text" ng-model="emp.sdate" ui-mask="99/99/9999" model-view-value="true" required>
 											            <label class="nptlbl">Start Date <span>*</span></label>
 											            <span class="btmlbl">
 											            	<strong>Format:</strong> mm/dd/yyyy
 											            </span>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['sdate'] && fcs_sdate === true" ng-cloak>
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['sdate'] && fcs_sdate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
-															      <%= msg['error']['emphstry']['sdate'][0] %>
+															      <%= msg['error']['emp'][$index]['sdate'][0] %>
 															    </div>
 															</div>
 										                </div>
@@ -690,7 +690,7 @@
 						              		</div>
 						              		<div class="col-lg-4">
 						              			<div class="bx">
-						              				<div class="nptgrp" ng-class="{'err': msg['error']['emphstry']['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
+						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
 											            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="emp.ispresent" required>
 											            <label class="nptlbl">End Date <span>*</span></label>
 											            <span class="btmlbl">
@@ -701,11 +701,11 @@
 													        <input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
 													        <div class="ctrl_indicator"></div>
 													    </label>
-											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emphstry']['edate'] && fcs_edate === true" ng-cloak>
+											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak>
 								                        	<div class="popover bs-popover-top">
 															    <div class="arrow"></div>
 															    <div class="popover-body">
-															      <%= msg['error']['emphstry']['edate'][0] %>
+															      <%= msg['error']['emp'][$index]['edate'][0] %>
 															    </div>
 															</div>
 										                </div>

@@ -123,34 +123,13 @@
 				<button class="btn btn-primary" type="submit" style="width: 100%;">ADD SCHEDULE</button>
 			</form>
 		</div> --}}
-		<div class="cntnbx">
+		{{-- <div class="cntnbx">
 			<div class="ttl">
-			    <h3>Add Activity Type</h3>
+			    <h3>Sponsors</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<form ng-submit="addActivityType(typ)">
-				<div class="row no-gutters">
-					<div class="col-lg-4">
-						<div class="bx">
-	          				<div class="nptgrp">
-					            <input type="text" ng-model="typ.color" color-picker />
-					            <label class="nptlbl">Color <span>*</span></label>
-					        </div>
-	          			</div>
-					</div>
-					<div class="col-lg-8">
-						<div class="bx">
-	          				<div class="nptgrp">
-					            <input type="text" ng-model="typ.name" />
-					            <label class="nptlbl">Name <span>*</span></label>
-					        </div>
-	          			</div>
-					</div>
-					
-				</div>
-				<button class="btn btn-primary" type="submit" style="width: 100%;">ADD ACTIVITY TYPE</button>
-			</form>
-		</div>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, vel? Aperiam nobis delectus dolor vero. Animi soluta, repellat dolor, neque error, esse aliquid nulla repudiandae natus ipsa voluptatem consectetur numquam?
+		</div> --}}
 		<!-- <div class="cntnbx" ng-if="slctd" ng-cloak>
 			<div class="ttl">
 			    <h3>Selected</h3>
@@ -177,11 +156,10 @@
 			    <div class="btmbrdr"><hr></div>
 			</div>
 			<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
-			<div ng-if="islct" ng-cloak class="slctd_data" style="position: absolute; top: inherit; left: 0; right: 0; bottom: 33px; max-width: 330px; display: none;">
-				<div class="popover bs-popover-top" style="max-width: 100%; width: 100%; position: relative; margin: 0;">
+			<div ng-if="islct" ng-cloak class="slctd_data" style="position: absolute; top: -116px; left: 0; right: 0; bottom: 0;">
+				<div class="popover bs-popover-top" style="max-width: 350px;">
 				    <div class="arrow"></div>
 				    <div class="popover-body">
-				    	<button class="btn btn-primary" ng-click="testClick()" type="button">test</button>
 				    	<h1><%= slctd.title %></h1>
 				    	<p><%= slctd.reason %></p>
 				    </div>
