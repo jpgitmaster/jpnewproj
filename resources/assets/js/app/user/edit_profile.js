@@ -260,7 +260,7 @@ usrContent.controller('ctrlEditProfile',
         });
     }
 
-    $scope.saveEmploymentHistory = function(frm2){
+    $scope.saveEmploymentHistory = function(emp, wrk){
         // console.log(frm2);
         $scope.frm2_loader = true;
         $http({
@@ -269,25 +269,26 @@ usrContent.controller('ctrlEditProfile',
             headers: { 'Content-Type': undefined },
             transformRequest: function (data) {
                 var fd = new FormData();
-                fd.append('user', angular.toJson(data.user));
+                fd.append('emp', angular.toJson(data.emp));
+                fd.append('wrk', angular.toJson(data.wrk));
                 return fd;
             },
-            data: {user: frm2}
+            data: {emp: emp, wrk: wrk}
         }).then(function(result){
             $scope.msg = result.data;
-            if(!$scope.msg['error']){
-                $scope.forms[1]['actvform'] = 0;
-            }
-            angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
-            $timeout(function(){
-                $scope.frm2_loader = false;
-                if($scope.msg['success']){
-                    if($scope.msg['success']['emphstry']['added']){
-                        $scope.collapseTab(3);
-                        $scope.proform['educationalbg'] = 1;
-                    }
-                }
-            }, 200);
+            // if(!$scope.msg['error']){
+            //     $scope.forms[1]['actvform'] = 0;
+            // }
+            // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
+            // $timeout(function(){
+            //     $scope.frm2_loader = false;
+            //     if($scope.msg['success']){
+            //         if($scope.msg['success']['emphstry']['added']){
+            //             $scope.collapseTab(3);
+            //             $scope.proform['educationalbg'] = 1;
+            //         }
+            //     }
+            // }, 200);
             console.log($scope.msg);
         });
     }
