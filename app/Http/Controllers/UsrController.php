@@ -571,6 +571,25 @@ class UsrController extends Controller
         print_r($schd);
     }
 
+    public function drop_resize_sched(Request $request){
+        $evnt = $request->all();
+        $evnt = json_decode($evnt['evnt'], true);
+        $evnt = $evnt ? $evnt : [];
+        
+        if(isset($evnt['start'])):
+            $evnt['start'] = date('Y-m-d', strtotime($evnt['start']));
+        endif;
+        if(isset($evnt['end'])):
+            $evnt['end'] = date('Y-m-d', strtotime($evnt['end']));
+        endif;
+        DB::table('calendar_schedules')
+            ->where('genid', $evnt['genid'])
+            ->update([
+                'start'     => $evnt['start'],
+                'end'       => $evnt['end']
+            ]);
+    }
+
     public function views_scheds(){
         $scheds = DB::table('calendar_schedules')
             ->select(

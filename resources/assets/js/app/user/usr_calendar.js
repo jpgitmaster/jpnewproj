@@ -198,15 +198,44 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         // }
         eventClick: $scope.alertOnEventClick,
         eventDrop: function(event, delta, revertFunc, jsEvent, ui, view){
-           console.log('Event Droped to make dayDelta ' + delta);
+            // console.log(event.genid);
+            // console.log(event.start.format());
+            var edate = moment(event.end.format()).startOf('day');
+           $http({
+                method: 'POST',
+                url: '/user/drop_resize_sched',
+                headers: { 'Content-Type': undefined },
+                transformRequest: function (data) {
+                    var fd = new FormData();
+                    fd.append('evnt', angular.toJson(data));
+                    return fd;
+                },
+                data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
+            }).then(function(result){
+                $scope.msg = result.data;
+                console.log(result.data);
+            });
         },
         eventResizeStart: function( event, jsEvent, ui, view ) {
-            console.log('test');
             angular.element('.slctd_data').hide();
             angular.element('.fc-event-container').css('position', 'inherit')
         },
         eventResize: function(event, delta, revertFunc, jsEvent, ui, view ){
-           console.log('Event Resized to make dayDelta ' + delta);
+            var edate = moment(event.end.format()).startOf('day');
+           $http({
+                method: 'POST',
+                url: '/user/drop_resize_sched',
+                headers: { 'Content-Type': undefined },
+                transformRequest: function (data) {
+                    var fd = new FormData();
+                    fd.append('evnt', angular.toJson(data));
+                    return fd;
+                },
+                data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
+            }).then(function(result){
+                $scope.msg = result.data;
+                console.log(result.data);
+            });
         }
         // ignoreTimezone: true
       }

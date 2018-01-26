@@ -82,6 +82,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_calendar', [
 		    'as' => 'save_calendar', 'uses' => 'UsrController@save_calendar'
 		]);
+		Route::post('drop_resize_sched', [
+		    'as' => 'drop_resize_sched', 'uses' => 'UsrController@drop_resize_sched'
+		]);
 	});
 });
 
