@@ -664,7 +664,7 @@
 																						</option>
 																					</select>
 																	    </span>
-												            	<input type="text" ng-model="emp.salary" currency-input maxlength="8" required>
+												            	<input type="text" ng-model="emp.salary" currency-input maxlength="12" required>
 												            </div>
 											            	<label class="nptlbl">Salary Rate <span>*</span></label>
 												            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>

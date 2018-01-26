@@ -400,7 +400,7 @@ class UsrController extends Controller
             $validate = Validator::make($usr['emp'][$i], [
                 'company'   => 'required|max:200',
                 'position'  => 'required|max:100',
-                'salary'    => 'required|numeric',
+                'salary'    => 'required|numeric|min:10',
                 'sdate'  => 'required|date|date_format:m/d/Y',
                 'edate'  => $validate_edate[$i] ? $validate_edate[$i] : '',
             ], $messages);
