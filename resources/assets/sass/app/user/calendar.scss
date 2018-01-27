@@ -1,0 +1,136 @@
+#wrapper .cntntwrpr{
+	.cntntwrpr_rght{
+		width: 450px;
+
+		.cntnbx{
+			display: inline-block;
+
+			form{
+				margin-top: 10px;
+				float: left;
+				width: 100%;
+
+				.uib-datepicker-popup.dropdown-menu{
+					padding: 5px;
+					div{
+						box-shadow: none;
+						outline: none;
+					}
+					.btn.btn-default{
+					  color: #333;
+					  background-color: #fff;
+					  border-color: #ccc;
+
+					  &:disabled{
+							cursor: not-allowed;
+						}
+
+						&.btn-info{
+							&.active{
+							    background-color: #007bff;
+							    background-image: none;
+							    border-color: #005dc1;
+							    color: #FFF;
+							    border-radius: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.cntntwrpr_lft{
+		margin-right: 450px;
+
+		.cntnbx.clndr{
+			overflow-y: hidden;
+			min-height: 600px;
+
+			.guest{
+				background-color: #6dc5e6;
+				.fc-content{
+					color: #FFF;
+				}
+			}
+			.calendar{
+				margin-top: 15px;
+				float: left;
+				width: 100%;
+
+				tr:first-child>td>.fc-day-grid-event{
+					margin: 0 2px 2px;
+				}
+
+				.fc-toolbar{
+					button{
+						&:focus{
+							z-index: inherit;
+						}
+					}
+				}
+				.fc-day-grid-container{
+					overflow: initial !important;
+
+					.fc-event-container{
+						position: relative;
+
+						.slctd_data{
+				    	position: absolute;
+				    	z-index: 9;
+				    	top: inherit;
+				    	left: 0;
+				    	right: 0;
+				    	bottom: 33px;
+				    	max-width: 330px;
+				    	display: none;
+				    	
+				    	.popover.bs-popover-top{
+				    		max-width: 100%;
+				    		width: 100%;
+				    		position: relative;
+				    		margin: 0;
+
+				    		.arrow{
+									left: 0;
+								  right: 0;
+								  position: absolute;
+								  margin: 0 auto;
+
+								  &::after, &::before {
+									    margin-left: 0;
+									}
+								}
+				    	}
+				    }
+						.fc-day-grid-event{
+					    border-radius: 0;
+					    padding: 2px 6px;
+					    border: 0;
+					    margin: 0 2px 2px;
+
+							.fc-content, .fc-title{
+								overflow: inherit;
+								width: 100%;
+								padding: 0;
+							}
+
+							.fc-title{
+								float: left;
+							}
+							.fc-content{
+								display: inline-block;
+							}
+						}
+					}
+				}
+				.fc-axis{
+					width: 42px !important;
+				}
+				.fc-view-container, .fc-toolbar.fc-header-toolbar{
+					float: left;
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -156,10 +156,10 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     $scope.alertOnEventClick = function( date, jsEvent, view){
         $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
         // var iclone = angular.copy(angular.element('.slctd_data').clone());
-        angular.element('.slctd_data').fadeOut('fast');
-        var tpl = $compile('<div class="slctd_data" style="position: absolute; z-index: 9; top: inherit; left: 0; right: 0; bottom: 33px; max-width: 330px; display: none;"><div class="popover bs-popover-top" style="max-width: 100%; width: 100%; position: relative; margin: 0;"><div class="arrow"></div><div class="popover-body"><button class="btn btn-primary" ng-click="testClick()" type="button">test</button><h1>'+$scope.slctd.title+'</h1><p>'+$scope.slctd.reason+'</p></div></div></div>')($scope);
+        angular.element('.slctd_data').fadeOut('fast').remove();
+        var tpl = $compile('<div class="slctd_data"><div class="popover bs-popover-top"><div class="arrow"></div><div class="popover-body"><button class="btn btn-primary" ng-click="testClick()" type="button">test</button><h1>'+$scope.slctd.title+'</h1><p>'+$scope.slctd.reason+'</p></div></div></div>')($scope);
         $timeout(function(){
-            angular.element(tpl).prependTo($(jsEvent.target).closest('.fc-event-container')).hide().delay(100).fadeIn();
+            angular.element(tpl).prependTo($(jsEvent.target).closest('.fc-event-container').css('position', 'relative')).hide().delay(100).fadeIn();
         }, 20);
         // console.log($scope.islct);
     };

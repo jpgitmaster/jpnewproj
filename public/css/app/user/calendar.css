@@ -1,0 +1,140 @@
+#wrapper .cntntwrpr .cntntwrpr_rght {
+  width: 450px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx {
+  display: inline-block;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .uib-datepicker-popup.dropdown-menu {
+  padding: 5px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .uib-datepicker-popup.dropdown-menu div {
+  box-shadow: none;
+  outline: none;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .uib-datepicker-popup.dropdown-menu .btn.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .uib-datepicker-popup.dropdown-menu .btn.btn-default:disabled {
+  cursor: not-allowed;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .uib-datepicker-popup.dropdown-menu .btn.btn-default.btn-info.active {
+  background-color: #007bff;
+  background-image: none;
+  border-color: #005dc1;
+  color: #FFF;
+  border-radius: 0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft {
+  margin-right: 450px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr {
+  overflow-y: hidden;
+  min-height: 600px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .guest {
+  background-color: #6dc5e6;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .guest .fc-content {
+  color: #FFF;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar {
+  margin-top: 15px;
+  float: left;
+  width: 100%;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar tr:first-child > td > .fc-day-grid-event {
+  margin: 0 2px 2px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-toolbar button:focus {
+  z-index: inherit;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container {
+  overflow: initial !important;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container {
+  position: relative;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data {
+  position: absolute;
+  z-index: 9;
+  top: inherit;
+  left: 0;
+  right: 0;
+  bottom: 33px;
+  max-width: 330px;
+  display: none;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow {
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: 0 auto;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow::after, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow::before {
+  margin-left: 0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event {
+  border-radius: 0;
+  padding: 2px 6px;
+  border: 0;
+  margin: 0 2px 2px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-content, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-title {
+  overflow: inherit;
+  width: 100%;
+  padding: 0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-title {
+  float: left;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-content {
+  display: inline-block;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-axis {
+  width: 42px !important;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-view-container, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-toolbar.fc-header-toolbar {
+  float: left;
+  width: 100%;
+}
+
+/*# sourceMappingURL=calendar.css.map */

@@ -9,6 +9,7 @@ elixir(function(mix) {
     mix.sass('app/user/job_list.scss', 'public/css/app/user');
     mix.sass('app/user/acct_settings.scss', 'public/css/app/user');
     mix.sass('app/user/edit_profile.scss', 'public/css/app/user');
+    mix.sass('app/user/calendar.scss', 'public/css/app/user');
 });
 
 elixir(function(mix) {

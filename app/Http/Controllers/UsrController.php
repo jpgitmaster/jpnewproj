@@ -540,7 +540,7 @@ class UsrController extends Controller
     public function calendar(){
         return view('users.calendar', [
             'scripts'       => array_merge([j_moment, j_moment_timezone], $this->import['scripts'], [j_fullcalendar, j_colorpicker]),
-            'stylesheet'    => array_merge($this->import['stylesheet'], [c_fullcalendar, c_colorpicker]),
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_calendar, c_fullcalendar, c_colorpicker]),
             'ngular'        =>  array_merge($this->import['ngular'], [n_ui_bootstrap, n_uicalendar, n_user_calendar])
         ]);
     }

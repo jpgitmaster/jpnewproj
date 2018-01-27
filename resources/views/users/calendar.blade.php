@@ -3,13 +3,13 @@
 
 @section('content')
 <div class="cntntwrpr" ng-controller="ctrlCalendar">
-	<div class="cntntwrpr_rght" style="width: 450px;">
-		<div class="cntnbx" style="display: inline-block;">
+	<div class="cntntwrpr_rght">
+		<div class="cntnbx">
 			<div class="ttl">
 			    <h3>Admin Add Schedule</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
-			<form ng-submit="AdminSched(schd)" style="margin-top: 10px; float: left; width: 100%;">
+			<form ng-submit="AdminSched(schd)">
 				<div class="row no-gutters">
 					<div class="col-lg-12">
 	          			<div class="bx">
@@ -149,7 +149,7 @@
 		</div> -->
 
 	</div>
-	<div class="cntntwrpr_lft" style="margin-right: 450px;">
+	<div class="cntntwrpr_lft">
 		<div class="cntnbx clndr">
 			<div class="ttl">
 			    <h3>Calendar</h3>
@@ -159,67 +159,4 @@
 		</div>
 	</div>
 </div>
-<style>
-	#wrapper .content .cntnbx.clndr{
-		overflow-y: hidden;
-		min-height: 600px;
-	}
-	.fc-toolbar button:focus{z-index: inherit;}
-	.fc-day-grid-container{overflow: initial !important;}
-	.fc-axis{ width: 42px !important; }
-	.fc-view-container, .fc-toolbar.fc-header-toolbar{
-		float: left;
-		width: 100%;
-	}
-	
-	.guest{
-		background-color: #6dc5e6;
-	}
-	.guest .fc-content{
-		color: #FFF;
-	}
-	.btn-default:disabled{
-		cursor: not-allowed;
-	}
-	.btn-default {
-	    color: #333;
-	    background-color: #fff;
-	    border-color: #ccc;
-	}
-	
-	.btn-info.active{
-	    background-color: #007bff;
-	    background-image: none;
-	    border-color: #005dc1;
-	    color: #FFF;
-	    border-radius: 0;
-	}
-	.uib-datepicker-popup.dropdown-menu,
-	.uib-datepicker-popup.dropdown-menu li,
-	.uib-datepicker-popup.dropdown-menu div{
-		box-shadow: none;
-		outline: none;
-	}
-	.calendar{margin-top: 15px; float: left; width: 100%;}
-	.fc-title{float: left;}
-	.fc-content{display: inline-block;}
-	.fc-event-container{position: relative;}
-	.fc-day-grid-event{
-		border-radius: 0;
-		padding: 0;
-		border: 0;
-		margin: 0 2px 2px;
-	}
-	tr:first-child>td>.fc-day-grid-event{margin: 0 2px 2px;}
-	.fc-content, .fc-title{overflow: inherit !important; width: 100%; padding: 2px 4px;}
-	.popover.bs-popover-top .arrow{
-		left: 0;
-	    right: 0;
-	    position: absolute;
-	    margin: 0 auto;
-	}
-	.popover.bs-popover-top .arrow::after, .popover.bs-popover-top .arrow::before {
-	    margin-left: 0;
-	}
-</style>
 @endsection
