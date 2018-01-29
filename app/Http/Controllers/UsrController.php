@@ -540,8 +540,8 @@ class UsrController extends Controller
     public function calendar(){
         return view('users.calendar', [
             'scripts'       => array_merge([j_moment, j_moment_timezone], $this->import['scripts'], [j_fullcalendar, j_colorpicker]),
-            'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_calendar, c_fullcalendar, c_colorpicker]),
-            'ngular'        =>  array_merge($this->import['ngular'], [n_ui_bootstrap, n_uicalendar, n_user_calendar])
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_calendar, c_fullcalendar, c_colorpicker, c_ngselect]),
+            'ngular'        =>  array_merge($this->import['ngular'], [n_ui_bootstrap, n_uicalendar, n_ngselect, n_ngfilter, n_user_calendar])
         ]);
     }
 
@@ -569,6 +569,18 @@ class UsrController extends Controller
             'reason'          => $schd['reason']
         ]);
         print_r($schd);
+    }
+
+    public function save_activity_type(Request $request){
+        $actvty = $request->all();
+        $actvty = json_decode($actvty['actvty'], true);
+        DB::table('activity_type')->insert([
+            'name'        => $actvty['name'],
+            'color'        => $actvty['bgcolor'],
+            'textColor'    => $actvty['txtcolor'],
+            'description'  => $actvty['description']
+        ]);
+        print_r($actvty);
     }
 
     public function drop_resize_sched(Request $request){
@@ -599,6 +611,16 @@ class UsrController extends Controller
         return json_encode($scheds, JSON_PRETTY_PRINT);
     }
 
+    public function views_activity_type(){
+        $actvty = DB::table('activity_type')
+            ->select(
+                'id', 'name', 'textColor', 'color', 'description')
+            ->orderBy('activity_type.id', 'desc')
+            ->get();
+        return json_encode($actvty, JSON_PRETTY_PRINT);
+    }
+
+    
     public function crypto_rand_secure($min, $max){
         $range = $max - $min;
         if ($range < 1) return $min; // not so random...

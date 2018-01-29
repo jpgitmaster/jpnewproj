@@ -39,6 +39,44 @@
   border-radius: 0;
 }
 
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx form .btn.btn-primary {
+  width: 100%;
+  clear: both;
+  float: left;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx .nptgrp .clrbgnpt {
+  position: absolute;
+  right: 1px;
+  width: 33px;
+  height: 32px;
+  top: 1px;
+  z-index: 9;
+  border-left: 1px solid #0077c0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx .nptgrp.cstmdrpdwn .brclr {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin: 2px 8px 0 0;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx .nptgrp.cstmdrpdwn .custom-select > .dropdown-menu > ul > li > a:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_rght .cntnbx .nptgrp.cstmdrpdwn label {
+  top: -13px;
+  left: 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #0077c0;
+  text-transform: uppercase;
+}
+
 #wrapper .cntntwrpr .cntntwrpr_lft {
   margin-right: 450px;
 }
@@ -74,11 +112,11 @@
   overflow: initial !important;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container {
   position: relative;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data {
   position: absolute;
   z-index: 9;
   top: inherit;
@@ -89,38 +127,38 @@
   display: none;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top {
   max-width: 100%;
   width: 100%;
   position: relative;
   margin: 0;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .arrow {
   left: 0;
   right: 0;
   position: absolute;
   margin: 0 auto;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow::after, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .arrow::before {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .arrow::after, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .arrow::before {
   margin-left: 0;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .popover-body {
   position: relative;
   padding: 8px 10px;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl h3 {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl h3 {
   font: 18px segobb;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl hr {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl hr {
   margin: 2px 0 8px;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button {
   border: 0;
   background-color: transparent;
   position: absolute;
@@ -129,29 +167,29 @@
   outline: none;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button .fa {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button .fa {
   color: #6dc5e6;
   font-size: 20px;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .fc-day-grid-event {
   border-radius: 0;
   padding: 2px 6px;
   border: 0;
   margin: 0 2px 2px;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-content, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-title {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .fc-day-grid-event .fc-content, #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .fc-day-grid-event .fc-title {
   overflow: inherit;
   width: 100%;
   padding: 0;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-title {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .fc-day-grid-event .fc-title {
   float: left;
 }
 
-#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event .fc-content {
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-event-container .fc-day-grid-event .fc-content {
   display: inline-block;
 }
 

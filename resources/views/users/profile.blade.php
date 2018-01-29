@@ -432,17 +432,17 @@
 					              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['cstatus']}" ng-mouseover="fcs_cstatus = true" ng-mouseleave="fcs_cstatus = false">
 						              				<input type="hidden" ng-model="frm1.cstatus">
 						              				<div custom-select="cs.id as cs.name for cs in cstatus | filter: {name: $searchTerm} track by cs.id" ng-model="cvlstatus" custom-select-options="select_status">
-														<strong><%= cs.name  %></strong>
-														<div class="clearfix"></div>
-													</div>
-													<label class="nptlbl">Civil Status <span>*</span></label>
-													<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cstatus'] && fcs_cstatus === true" ng-cloak>
-							                        	<div class="popover bs-popover-top">
-														    <div class="arrow"></div>
-														    <div class="popover-body">
-														      <%= msg['error']['prsnl']['cstatus'][0] %>
-														    </div>
-														</div>
+																		<strong><%= cs.name  %></strong>
+																		<div class="clearfix"></div>
+																	</div>
+																	<label class="nptlbl">Civil Status <span>*</span></label>
+																	<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['cstatus'] && fcs_cstatus === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+																	    <div class="arrow"></div>
+																	    <div class="popover-body">
+																	      <%= msg['error']['prsnl']['cstatus'][0] %>
+																	    </div>
+																		</div>
 									                </div>
 					              				</div>
 					              			</div>

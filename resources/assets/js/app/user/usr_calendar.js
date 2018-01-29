@@ -1,13 +1,20 @@
 'use strict'; 
-var usrContent = angular.module('usrContent', ['ui.calendar', 'ui.bootstrap']);
+var usrContent = angular.module('usrContent', ['ui.calendar', 'ui.bootstrap', 'AxelSoft']);
 
 usrContent.factory('Schd', function ($resource) {
     return $resource('/user/views_scheds', {}, {
         query : { method: 'GET', isArray: true }
     });
 });
-usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter', 'uibDateParser', 'uiCalendarConfig', 'Schd',
-    function($scope, $rootScope, $timeout, $http, $compile, $filter, uibDateParser, uiCalendarConfig, Schd) {
+usrContent.factory('Actvty', function ($resource) {
+    return $resource('/user/views_activity_type', {}, {
+        query : { method: 'GET', isArray: true }
+    });
+});
+usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$http', '$compile', '$filter',
+    'uibDateParser', 'uiCalendarConfig', 'Schd', 'Actvty',
+    function($scope, $rootScope, $timeout, $http, $compile, $filter,
+        uibDateParser, uiCalendarConfig, Schd, Actvty) {
 
     $scope.open_calendar = function($event, index, datepicker){
         $scope[datepicker] = {}; $scope[datepicker].open = {};
@@ -43,11 +50,6 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 break;
         }
     }
-    
-    $scope.activities = [
-        {id: 1, name: 'Reserved', textColor: '#FFF', color: '#17b13c'},
-        {id: 2, name: 'Out of Service', textColor: '#FFF', color: '#a6a6a6'},
-    ]
 
     // $scope.MaxDate = {
     //     showWeeks: false,
@@ -62,6 +64,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     $scope.admin_scheds = [
 
     ];
+
     Schd.query().$promise.then(function(data) {
         // $scope.admin_scheds = data;
 
@@ -166,7 +169,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
 
     $scope.uiConfig = {
       calendar:{
-        height: 500,
+        height: 550,
         editable: true,
         header:{
           left: 'prev,next today',
@@ -244,8 +247,34 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     // $scope.eventSources = [$scope.jpevents, $scope.events];
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
 
+    Actvty.query().$promise.then(function(data) {
+       $scope.activities = data; 
+    });
+    // $scope.activities = [
+    //     {id: 1, name: 'Reserved', textColor: '#FFF', color: '#17b13c'},
+    //     {id: 2, name: 'Out of Service', textColor: '#FFF', color: '#a6a6a6'},
+    // ]
     $scope.addActivityType = function(typ){
-        console.log(typ);
+        $http({
+            method: 'POST',
+            url: '/user/save_activity_type',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+                var fd = new FormData();
+                fd.append('actvty', angular.toJson(data.actvty));
+                return fd;
+            },
+            data: {actvty: typ}
+        }).then(function(result){
+            $scope.msg = result.data;
+            $scope.activities.push({
+                name: typ.name,
+                textColor: typ.txtcolor,
+                color: typ.bgcolor,
+                description: typ.description
+            });
+            console.log(result.data);
+        });
     }
     $scope.typ = {};
 }]);
@@ -253,11 +282,11 @@ usrContent.directive('colorPicker', ['$parse', '$http', '$timeout',
     function($parse, $http, $timeout){
     return {
         restrict: 'A',
-        link: function(scope, elm, attrs){
+        link: function(scope, elm, attrs, ngModel){
             elm.ColorPicker({
                 onSubmit: function(hsb, hex, rgb, el) {
-                    console.log(hex);
-                    scope.typ.color = '#'+hex;
+                    $parse(attrs.ngModel).assign(scope, '#'+hex);
+                    elm.next('.clrbgnpt').css('background-color', '#'+hex);
                     $(el).val('#'+hex);
                     $(el).ColorPickerHide();
                 }

@@ -36,6 +36,42 @@
 						}
 					}
 				}
+
+				.btn.btn-primary{
+					width: 100%;
+					clear: both;
+					float: left;
+				}
+			}
+
+			.nptgrp{
+				.clrbgnpt{
+					position: absolute;
+			    right: 1px;
+			    width: 33px;
+			    height: 32px;
+			    top: 1px;
+			    z-index: 9;
+			    border-left: 1px solid #0077c0;
+				}
+				&.cstmdrpdwn{
+					.brclr{
+				    width: 15px;
+				    height: 15px;
+				    float: left;
+				    margin: 2px 8px 0 0;
+					}
+					.custom-select > .dropdown-menu > ul > li > a:hover{background-color: transparent; color: #000;}
+					label{
+						top: -13px;
+			            left: 0;
+			            font-size: 10px;
+			            letter-spacing: 1px;
+			            font-weight: bold;
+			            color: #0077c0;
+			            text-transform: uppercase;
+					}
+				}
 			}
 		}
 	}
@@ -70,81 +106,80 @@
 				}
 				.fc-day-grid-container{
 					overflow: initial !important;
+				}
+				.fc-event-container{
+					position: relative;
 
-					.fc-event-container{
-						position: relative;
+					.slctd_data{
+			    	position: absolute;
+			    	z-index: 9;
+			    	top: inherit;
+			    	left: 0;
+			    	right: 0;
+			    	bottom: 30px;
+			    	max-width: 330px;
+			    	display: none;
+			    	
+			    	.popover.bs-popover-top{
+			    		max-width: 100%;
+			    		width: 100%;
+			    		position: relative;
+			    		margin: 0;
 
-						.slctd_data{
-				    	position: absolute;
-				    	z-index: 9;
-				    	top: inherit;
-				    	left: 0;
-				    	right: 0;
-				    	bottom: 30px;
-				    	max-width: 330px;
-				    	display: none;
-				    	
-				    	.popover.bs-popover-top{
-				    		max-width: 100%;
-				    		width: 100%;
-				    		position: relative;
-				    		margin: 0;
+			    		.arrow{
+								left: 0;
+							  right: 0;
+							  position: absolute;
+							  margin: 0 auto;
 
-				    		.arrow{
-									left: 0;
-								  right: 0;
-								  position: absolute;
-								  margin: 0 auto;
-
-								  &::after, &::before {
-									    margin-left: 0;
+							  &::after, &::before {
+								    margin-left: 0;
+								}
+							}
+							.popover-body{
+								position: relative;
+								padding: 8px 10px;
+								.ttl{
+									h3{
+										font: 18px segobb;
+									}
+									hr{
+										margin: 2px 0 8px;
 									}
 								}
-								.popover-body{
-									position: relative;
-									padding: 8px 10px;
-									.ttl{
-										h3{
-											font: 18px segobb;
-										}
-										hr{
-											margin: 2px 0 8px;
-										}
-									}
-									button{
-										border: 0;
-										background-color: transparent;
-										position: absolute;
-										right: 0;
-										top: 0;
-										outline: none;
+								button{
+									border: 0;
+									background-color: transparent;
+									position: absolute;
+									right: 0;
+									top: 0;
+									outline: none;
 
-										.fa{
-											color: #6dc5e6;
-											font-size: 20px;
-										}
+									.fa{
+										color: #6dc5e6;
+										font-size: 20px;
 									}
 								}
-				    	}
-				    }
-						.fc-day-grid-event{
-					    border-radius: 0;
-					    padding: 2px 6px;
-					    border: 0;
-					    margin: 0 2px 2px;
+							}
+			    	}
+			    }
+					.fc-day-grid-event{
+				    border-radius: 0;
+				    padding: 2px 6px;
+				    border: 0;
+				    margin: 0 2px 2px;
 
-							.fc-content, .fc-title{
-								overflow: inherit;
-								width: 100%;
-								padding: 0;
-							}
+						.fc-content, .fc-title{
+							overflow: inherit;
+							width: 100%;
+							padding: 0;
+						}
 
-							.fc-title{
-								float: left;
-							}
-							.fc-content{
-								display: inline-block;
-							}
+						.fc-title{
+							float: left;
+						}
+						.fc-content{
+							display: inline-block;
 						}
 					}
 				}

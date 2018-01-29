@@ -37,14 +37,25 @@
 	          		</div>
 	          		<div class="col-lg-12">
 	          			<div class="bx">
-	          				<div class="nptgrp">
+	          				{{-- <div class="nptgrp">
 					            <select ng-model="schd.activity_type" required>
 					            	<option value=""></option>
 					            	<option ng-repeat="actvty in activities" ng-value="actvty.id"><%=actvty.name%></option>
 					            </select>
 					            <label class="nptlbl">Activity Type <span>*</span></label>
-					        </div>
-	          			</div>
+					        </div> --}}
+						        <div class="nptgrp cstmdrpdwn" ng-if="activities" ng-cloak>
+	            				{{-- <input type="hidden" ng-model="schd.activity_type"> --}}
+	            				<div custom-select="actvty.id as actvty.name for actvty in activities | filter: {name: $searchTerm} track by actvty.id" ng-model="schd.activity_type" custom-select-options="select_status">
+	            					<div>
+		            					<div class="brclr" style="background-color: <%= actvty.color  %>;"></div>
+													<strong><%= actvty.name  %></strong>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<label class="nptlbl">Activity Type <span>*</span></label>
+		          			</div>
+		          		</div>
 	          		</div>
 	          		{{-- <div class="col-lg-3">
 	          			<div class="bx">
@@ -89,7 +100,7 @@
 					        </div>
 	          			</div>
 	          		</div>
-	          		<button class="btn btn-primary" type="submit" style="width: 100%;">ADD SCHEDULE</button>
+	          		<button class="btn btn-primary" type="submit">ADD SCHEDULE</button>
 				</div>
 			</form>
 		</div>
@@ -123,6 +134,52 @@
 				<button class="btn btn-primary" type="submit" style="width: 100%;">ADD SCHEDULE</button>
 			</form>
 		</div> --}}
+		<div class="cntnbx">
+			<div class="ttl">
+			    <h3>Add Activity Type</h3>
+			    <div class="btmbrdr"><hr></div>
+			</div>
+			<form ng-submit="addActivityType(typ)">
+				<div class="row no-gutters">
+					<div class="col-lg-12">
+						<div class="bx">
+	          				<div class="nptgrp">
+					            <input type="text" ng-model="typ.name" />
+					            <label class="nptlbl">Name <span>*</span></label>
+					        </div>
+	          			</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="bx">
+        			<div class="nptgrp">
+		            <input type="text" ng-model="typ.txtcolor" color-picker />
+		            <div class="clrbgnpt"></div>
+		            <label class="nptlbl">Text Color <span>*</span></label>
+			        </div>
+      			</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="bx">
+        			<div class="nptgrp">
+		            <input type="text" ng-model="typ.bgcolor" color-picker />
+		            <div class="clrbgnpt"></div>
+		            <label class="nptlbl">Background Color <span>*</span></label>
+			        </div>
+      			</div>
+					</div>
+					<div class="col-lg-12">
+	          			<div class="bx">
+	          				<div class="nptgrp">
+					            <textarea ng-model="typ.description" required>
+					            </textarea>
+					            <label class="nptlbl">Description <span>*</span></label>
+					        </div>
+	          			</div>
+	          		</div>
+				</div>
+				<button class="btn btn-primary" type="submit">ADD ACTIVITY TYPE</button>
+			</form>
+		</div>
 		{{-- <div class="cntnbx">
 			<div class="ttl">
 			    <h3>Sponsors</h3>
