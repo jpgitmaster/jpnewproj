@@ -100,6 +100,31 @@
 									    margin-left: 0;
 									}
 								}
+								.popover-body{
+									position: relative;
+									padding: 8px 10px;
+									.ttl{
+										h3{
+											font: 18px segobb;
+										}
+										hr{
+											margin: 2px 0 8px;
+										}
+									}
+									button{
+										border: 0;
+										background-color: transparent;
+										position: absolute;
+										right: 0;
+										top: 0;
+										outline: none;
+
+										.fa{
+											color: #6dc5e6;
+											font-size: 20px;
+										}
+									}
+								}
 				    	}
 				    }
 						.fc-day-grid-event{

@@ -149,7 +149,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
             // console.log($scope.admin_scheds);
         });
     };
-    $scope.testClick = function(){
+    $scope.closePopup = function(){
         angular.element('.slctd_data').fadeOut('fast');
         console.log('test');
     }
@@ -157,7 +157,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         $scope.slctd = $filter('filter')($scope.admin_scheds, {genid: date.genid})[0];
         // var iclone = angular.copy(angular.element('.slctd_data').clone());
         angular.element('.slctd_data').fadeOut('fast').remove();
-        var tpl = $compile('<div class="slctd_data"><div class="popover bs-popover-top"><div class="arrow"></div><div class="popover-body"><button class="btn btn-primary" ng-click="testClick()" type="button">test</button><h1>'+$scope.slctd.title+'</h1><p>'+$scope.slctd.reason+'</p></div></div></div>')($scope);
+        var tpl = $compile('<div class="slctd_data"><div class="popover bs-popover-top"><div class="arrow"></div><div class="popover-body"><button ng-click="closePopup()" type="button"><i class="fa fa-close"></i></button><div class="ttl"><h3>'+$scope.slctd.title+'</h3><div class="btmbrdr"><hr></div></div><p>'+$scope.slctd.reason+'</p></div></div></div>')($scope);
         $timeout(function(){
             angular.element(tpl).prependTo($(jsEvent.target).closest('.fc-event-container').css('position', 'relative')).hide().delay(100).fadeIn();
         }, 20);

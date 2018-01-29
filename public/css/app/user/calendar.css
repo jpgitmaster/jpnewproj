@@ -107,6 +107,33 @@
   margin-left: 0;
 }
 
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body {
+  position: relative;
+  padding: 8px 10px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl h3 {
+  font: 18px segobb;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body .ttl hr {
+  margin: 2px 0 8px;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button {
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+  outline: none;
+}
+
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .slctd_data .popover.bs-popover-top .popover-body button .fa {
+  color: #6dc5e6;
+  font-size: 20px;
+}
+
 #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-day-grid-container .fc-event-container .fc-day-grid-event {
   border-radius: 0;
   padding: 2px 6px;
