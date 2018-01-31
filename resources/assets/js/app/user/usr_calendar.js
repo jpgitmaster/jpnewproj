@@ -250,10 +250,6 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     Actvty.query().$promise.then(function(data) {
        $scope.activities = data; 
     });
-    // $scope.activities = [
-    //     {id: 1, name: 'Reserved', textColor: '#FFF', color: '#17b13c'},
-    //     {id: 2, name: 'Out of Service', textColor: '#FFF', color: '#a6a6a6'},
-    // ]
     $scope.addActivityType = function(typ){
         $http({
             method: 'POST',
@@ -267,12 +263,6 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
             data: {actvty: typ}
         }).then(function(result){
             $scope.msg = result.data;
-            // $scope.activities.push({
-            //     name: typ.name,
-            //     textColor: typ.txtcolor,
-            //     color: typ.bgcolor,
-            //     description: typ.description
-            // });
             $scope.activities = Actvty.query();
             $scope.typ = {};
             console.log(result.data);

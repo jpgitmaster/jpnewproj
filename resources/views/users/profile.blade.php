@@ -452,17 +452,17 @@
 					              				<div class="nptgrp cstmdrpdwn" ng-class="{'err': msg['error']['prsnl']['country']}" ng-mouseover="fcs_country = true" ng-mouseleave="fcs_country = false">
 					              					<input type="hidden" ng-model="frm1.country">
 					              					<div custom-select="c.id as c.country for c in countries | filter: {country: $searchTerm} track by c.id" ng-model="country" custom-select-options="select_country">
-														<strong><%= c.country  %></strong>
-														<div class="clearfix"></div>
-													</div>
-													<label class="nptlbl">Country <span>*</span></label>
-													<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['country'] && fcs_country === true" ng-cloak>
-							                        	<div class="popover bs-popover-top">
-														    <div class="arrow"></div>
-														    <div class="popover-body">
-														      <%= msg['error']['prsnl']['country'][0] %>
-														    </div>
-														</div>
+																		<strong><%= c.country  %></strong>
+																		<div class="clearfix"></div>
+																	</div>
+																	<label class="nptlbl">Country <span>*</span></label>
+																	<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['country'] && fcs_country === true" ng-cloak>
+					                        	<div class="popover bs-popover-top">
+																	    <div class="arrow"></div>
+																	    <div class="popover-body">
+																	      <%= msg['error']['prsnl']['country'][0] %>
+																	    </div>
+																		</div>
 									                </div>
 					              				</div>
 					              			</div>
@@ -621,6 +621,11 @@
 					              	</div>
 					              	<div class="am-fade" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
 						              	<div class="am-fade bgwht row no-gutters" ng-repeat="emp in emps | limitTo: 4">
+						              		<div class="col-lg-12">
+						              			<button ng-click="removeEmp(emp)" class="btncls" type="button">
+						                    	<span class="fa fa-close"></span>
+						                  	</button>
+						              		</div>
 						              		<div class="col-lg-8">
 						              			<div class="bx">
 						              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['company'][0]}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
