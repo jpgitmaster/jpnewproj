@@ -145,7 +145,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
                 start: admn_sdate.clone().format('YYYY-MM-DD'),
                 end: admn_edate.clone().add(1, 'day').format('YYYY-MM-DD'),
                 className: 'admin',
-                readon: admn_sdate.reason
+                reason: sked.reason
                 // currentTimezone: 'Asia/Manila' // an option!
             });
             $scope.schd = {};
@@ -267,12 +267,14 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
             data: {actvty: typ}
         }).then(function(result){
             $scope.msg = result.data;
-            $scope.activities.push({
-                name: typ.name,
-                textColor: typ.txtcolor,
-                color: typ.bgcolor,
-                description: typ.description
-            });
+            // $scope.activities.push({
+            //     name: typ.name,
+            //     textColor: typ.txtcolor,
+            //     color: typ.bgcolor,
+            //     description: typ.description
+            // });
+            $scope.activities = Actvty.query();
+            $scope.typ = {};
             console.log(result.data);
         });
     }
