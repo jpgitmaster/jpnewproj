@@ -563,7 +563,7 @@
 				        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
-				      <div class="card-body bggry">
+				      <div class="card-body">
 					    <div class="crdbdy">
 					      	{{-- <div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
 				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -619,10 +619,10 @@
 							        		</div>
 							        	</div>
 					              	</div>
-					              	<div class="am-fade" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
-						              	<div class="am-fade bgwht row no-gutters" ng-repeat="emp in emps | limitTo: 4">
+					              	<div class="am-fade rwemp" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
+						              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 						              		<div class="col-lg-12">
-						              			<button ng-click="removeEmp(emp)" class="btncls" type="button">
+						              			<button ng-click="removeEmp(emp)" class="cls" type="button">
 						                    	<span class="fa fa-close"></span>
 						                  	</button>
 						              		</div>

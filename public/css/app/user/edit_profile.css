@@ -81,17 +81,25 @@
   padding: 50px 15px 0;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry {
-  background-color: #F9F9F9;
-  display: inline-block;
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp {
   width: 100%;
+  float: left;
+  clear: both;
+  padding: 0 15px;
+  margin: 10px 0;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body.bggry .bgwht {
-  background-color: #FFF;
-  padding: 30px 15px 15px;
-  float: left;
-  width: 100%;
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .row {
+  padding: 40px 15px 15px;
+  border: 1px dashed #54c3ec;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .row .cls {
+  top: -40px;
+  right: 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls {
@@ -104,6 +112,7 @@
   font-size: 25px;
   color: #54c3ec;
   cursor: pointer;
+  z-index: 9;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls:hover {

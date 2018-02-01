@@ -80,28 +80,37 @@
 							position: relative;
 							padding: 50px 15px 0;
 							
-							&.bggry{
-								background-color: #F9F9F9;
-								display: inline-block;
-								width: 100%;
+							.rwemp{
+							        width: 100%;
+								    float: left;
+								    clear: both;
+								    padding: 0 15px;
+								    margin: 10px 0;
 
-								.bgwht{
-									background-color: #FFF;
-									padding: 30px 15px 15px;
-									float: left;
-									width: 100%;
-								}
+							    .row{
+						    	    padding: 40px 15px 15px;
+								    border: 1px dashed #54c3ec;
+								    border-radius: 10px;
+								    margin-bottom: 20px;
+								    position: relative;
+
+								    .cls{
+							    	    top: -40px;
+    									right: 0;
+								    }
+							    }
 							}
 							.cls{
 							    position: absolute;
-							    right: 5px;
-							    top: 5px;
-							    outline: none;
-							    border: 0;
-							    background-color: transparent;
-							    font-size: 25px;
-							    color: #54c3ec;
-							    cursor: pointer;
+								right: 5px;
+								top: 5px;
+								outline: none;
+								border: 0;
+								background-color: transparent;
+								font-size: 25px;
+								color: #54c3ec;
+								cursor: pointer;
+								z-index: 9;
 
 							    &:hover{
 							    	color: #2fb3e4;
