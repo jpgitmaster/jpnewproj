@@ -104,6 +104,10 @@
   margin: 0 2px 2px;
 }
 
+#wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-toolbar .fc-state-active {
+  z-index: 1;
+}
+
 #wrapper .cntntwrpr .cntntwrpr_lft .cntnbx.clndr .calendar .fc-toolbar button:focus {
   z-index: inherit;
 }

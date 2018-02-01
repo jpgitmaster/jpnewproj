@@ -370,7 +370,9 @@ usrContent.controller('ctrlEditProfile',
     $scope.removeEmp = function(emp){
         var index = $scope.emps.indexOf(emp);
         $scope.emps.splice(index, 1);
-        $scope.msg['error']['emp'].splice(index, 1);
+        if(typeof $scope.msg['error']['emp'] != 'undefined'){
+            $scope.msg['error']['emp'].splice(index, 1);
+        }
     }
     $scope.checked = 0;
     $scope.clearEndate = function(index, ispresent){
