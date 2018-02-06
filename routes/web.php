@@ -48,15 +48,11 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('dashboard', [
 		    'as' => 'usr_dashboard', 'uses' => 'UsrController@dashboard'
 		]);
-		Route::get('calendar', [
-		    'as' => 'usr_calendar', 'uses' => 'UsrController@calendar'
-		]);
+		
 		Route::get('profile', [
 		    'as' => 'usr_profile', 'uses' => 'UsrController@profile'
 		]);
-		Route::get('account_settings', [
-		    'as' => 'usr_acctsttngs', 'uses' => 'UsrController@acctsttngs'
-		]);
+		
 		Route::get('logout', [
 		    'as' => 'usr_logout', 'uses' => 'UsrController@logout'
 		]);
@@ -76,23 +72,30 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		    'as' => 'save_employment_history', 'uses' => 'UsrController@save_employment_history'
 		]);
 
+		Route::get('account_settings', [
+		    'as' => 'usr_acctsttngs', 'uses' => 'AcctSettingsController@acctsttngs'
+		]);
+
 		// CALENDAR CONTROLLERS
+		Route::get('calendar', [
+		    'as' => 'usr_calendar', 'uses' => 'CalendarController@calendar'
+		]);
 		Route::get('views_scheds', [
-		    'as' => 'views_scheds', 'uses' => 'UsrController@views_scheds'
+		    'as' => 'views_scheds', 'uses' => 'CalendarController@views_scheds'
 		]);
 
 		Route::get('views_activity_type', [
-		    'as' => 'views_activity_type', 'uses' => 'UsrController@views_activity_type'
+		    'as' => 'views_activity_type', 'uses' => 'CalendarController@views_activity_type'
 		]);
 
 		Route::post('save_calendar', [
-		    'as' => 'save_calendar', 'uses' => 'UsrController@save_calendar'
+		    'as' => 'save_calendar', 'uses' => 'CalendarController@save_calendar'
 		]);
 		Route::post('drop_resize_sched', [
-		    'as' => 'drop_resize_sched', 'uses' => 'UsrController@drop_resize_sched'
+		    'as' => 'drop_resize_sched', 'uses' => 'CalendarController@drop_resize_sched'
 		]);
 		Route::post('save_activity_type', [
-		    'as' => 'save_activity_type', 'uses' => 'UsrController@save_activity_type'
+		    'as' => 'save_activity_type', 'uses' => 'CalendarController@save_activity_type'
 		]);
 	});
 });
