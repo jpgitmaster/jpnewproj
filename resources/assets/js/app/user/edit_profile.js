@@ -214,7 +214,6 @@ usrContent.controller('ctrlEditProfile',
         }
     }
 
-
     $scope.summernote_options = {
         toolbar: [
                 ['edit',['undo','redo']],
@@ -261,6 +260,7 @@ usrContent.controller('ctrlEditProfile',
     }
 
     $scope.saveEmploymentHistory = function(emp, wrk){
+        // console.log(emp);
         $scope.frm2_loader = true;
         $http({
             method: 'POST',

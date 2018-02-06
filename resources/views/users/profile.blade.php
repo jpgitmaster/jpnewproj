@@ -506,14 +506,6 @@
 										        </div>
 					              			</div>
 					              		</div>
-					              		<!-- <div class="col-lg-12">
-					              			<div class="bx">
-					              				<div class="nptgrp txtarea">
-										            <summernote ng-model="smmrnte" config="summernote_options"></summernote>
-										            <label class="nptlbl">Career Objectives <span>*</span></label>
-										        </div>
-					              			</div>
-					              		</div> -->
 					              	</div>
 									<div class="crdftr">
 										<div class="btmctns">
@@ -692,13 +684,13 @@
 											            	<strong>Format:</strong> mm/dd/yyyy
 											            </span>
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['sdate'] && fcs_sdate === true" ng-cloak>
-								                        	<div class="popover bs-popover-top">
-															    <div class="arrow"></div>
-															    <div class="popover-body">
-															      <%= msg['error']['emp'][$index]['sdate'][0] %>
-															    </div>
-															</div>
-										                </div>
+					                        	<div class="popover bs-popover-top">
+																	    <div class="arrow"></div>
+																	    <div class="popover-body">
+																	      <%= msg['error']['emp'][$index]['sdate'][0] %>
+																	    </div>
+																		</div>
+									                </div>
 											        </div>
 						              			</div>
 						              		</div>
@@ -712,19 +704,51 @@
 											            </span>
 											            
 											            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak style="bottom: 57px;">
-								                        	<div class="popover bs-popover-top">
-															    <div class="arrow"></div>
-															    <div class="popover-body">
-															      <%= msg['error']['emp'][$index]['edate'][0] %>
-															    </div>
-															</div>
+					                        	<div class="popover bs-popover-top">
+															    		<div class="arrow"></div>
+																		    <div class="popover-body">
+																		      <%= msg['error']['emp'][$index]['edate'][0] %>
+																		    </div>
+																			</div>
 										                </div>
 										                <label class="ctrl">
-													        Present Employer
-													        <input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
-													        <div class="ctrl_indicator"></div>
-													    </label>
-											        </div>
+													        		Present Employer
+													        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
+													        		<div class="ctrl_indicator"></div>
+													    			</label>
+											        		</div>
+						              			</div>
+						              		</div>
+						              		<div class="col-lg-6">
+						              			<div class="bx">
+						              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['jbdescription']}" ng-mouseover="fcs_jbdescription = true" ng-mouseleave="fcs_jbdescription = false">
+												            <summernote ng-model="emp.jbdescription" config="summernote_options"></summernote>
+												            <label class="nptlbl">Job Description <span>*</span></label>
+												            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['jbdescription'] && fcs_jbdescription === true" ng-cloak>
+						                        	<div class="popover bs-popover-top">
+																		    <div class="arrow"></div>
+																		    <div class="popover-body">
+																		      <%= msg['error']['emp'][$index]['jbdescription'][0] %>
+																		    </div>
+																			</div>
+										                </div>
+													        </div>
+						              			</div>
+						              		</div>
+						              		<div class="col-lg-6">
+						              			<div class="bx">
+						              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['reasonforleaving']}" ng-mouseover="fcs_reasonforleaving = true" ng-mouseleave="fcs_reasonforleaving = false">
+												            <summernote ng-model="emp.reasonforleaving" config="summernote_options"></summernote>
+												            <label class="nptlbl">Reason for Leaving <span>*</span></label>
+												            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['reasonforleaving'] && fcs_reasonforleaving === true" ng-cloak>
+						                        	<div class="popover bs-popover-top">
+																		    <div class="arrow"></div>
+																		    <div class="popover-body">
+																		      <%= msg['error']['emp'][$index]['reasonforleaving'][0] %>
+																		    </div>
+																			</div>
+										                </div>
+													        </div>
 						              			</div>
 						              		</div>
 						              	</div>

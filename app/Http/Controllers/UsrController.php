@@ -403,6 +403,8 @@ class UsrController extends Controller
                 'salary'    => 'required|numeric|min:10',
                 'sdate'  => 'required|date|date_format:m/d/Y',
                 'edate'  => $validate_edate[$i] ? $validate_edate[$i] : '',
+                'jbdescription'  => 'required|min:50|max:800',
+                'reasonforleaving'  => 'required|min:50|max:800'
             ], $messages);
             $validate->setAttributeNames($replace_names);
             $this->msg['error']['emp'][] = $validate->messages()->toArray();
