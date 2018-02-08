@@ -13,7 +13,7 @@
   float: left;
   width: 150px;
   position: relative;
-  top: 10px;
+  top: 15px;
 }
 
 .cntntwrpr_lft .cntnbx .lnr .ttlnm .ttl {
@@ -26,6 +26,33 @@
 .cntntwrpr_lft .cntnbx .lnr .cntntdsc {
   margin-left: 150px;
   padding: 0 10px;
+  position: relative;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc:hover .edtlyr {
+  opacity: 1;
+  transition: opacity .6s ease-in-out;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .edtlyr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15px;
+  bottom: 5px;
+  background-color: rgba(109, 197, 230, 0.2);
+  opacity: 0;
+  cursor: pointer;
+  z-index: 9;
+  transition: opacity .6s ease-in-out;
+}
+
+.cntntwrpr_lft .cntnbx .lnr .cntntdsc .edtlyr .fa {
+  position: absolute;
+  left: -30px;
+  top: 25px;
+  font-size: 20px;
+  color: #6dc5e6;
 }
 
 .cntntwrpr_lft .cntnbx .lnr .cntntdsc .nptgrp.lbld {
