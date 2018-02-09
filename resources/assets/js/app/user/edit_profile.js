@@ -288,6 +288,16 @@ usrContent.controller('ctrlEditProfile',
             //         }
             //     }
             // }, 200);
+            $scope.emps.push({
+                'company'        : emp.company,
+                'position'       : emp.position,
+                'salary'         : emp.salary,
+                'sdate'          : emp.sdate,
+                'edate'          : emp.edat,
+                'jbdescription'  : emp.jbdescription,
+                'reasonforleaving' : emp.reasonforleaving,
+                'ispresent'      : emp.ispresent
+            });
             console.log($scope.msg);
         });
     }
@@ -351,6 +361,8 @@ usrContent.controller('ctrlEditProfile',
         'salary'         : "",
         'sdate'          : "",
         'edate'          : "",
+        'jbdescription'          : "",
+        'reasonforleaving'          : "",
         'ispresent'      : ""
     }];
     $scope.msg['error'] = [];
@@ -361,12 +373,30 @@ usrContent.controller('ctrlEditProfile',
             'salary'         : "",
             'sdate'          : "",
             'edate'          : "",
+            'jbdescription'          : "",
+            'reasonforleaving'          : "",
             'ispresent'      : ""
         });
         if(typeof $scope.msg['error']['emp'] != "undefined"){
             $scope.msg['error']['emp'].splice(0, 0, {});
         }
     }
+
+    $scope.updateEmpForm = function(emp){
+        if(typeof emp == 'undefined' || emp == 1){
+           $scope.emps = [{
+                'company'        : "",
+                'position'       : "",
+                'salary'         : "",
+                'sdate'          : "",
+                'edate'          : "",
+                'jbdescription'          : "",
+                'reasonforleaving'          : "",
+                'ispresent'      : ""
+            }];
+        }
+    }
+
     $scope.removeEmp = function(emp){
         var index = $scope.emps.indexOf(emp);
         $scope.emps.splice(index, 1);
