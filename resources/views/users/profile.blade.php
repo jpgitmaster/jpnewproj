@@ -562,271 +562,254 @@
 							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div> --}}
-					      	
-					      	<div ng-if="!forms[1]['actvform']" ng-cloak>
-					      		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia amet nisi, debitis nesciunt eaque. Optio sit quis rem, accusantium quas sint obcaecati ab veritatis alias. Id eaque expedita ab iusto.
-					      		<div class="crdftr">
-											<div class="btmctns">
-												<button class="btn btn-primary" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
-													Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-												</button>
+					        <form ng-submit="saveEmploymentHistory(emps, wrk)" method="POST" novalidate>
+            				<div class="nptgrp" ng-class="{'err': msg['error']['wrk']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false" style="float: left; max-width: 250px;">
+              				<select ng-model="wrk.wrkexperience" ng-change="updateEmpForm(wrk.wrkexperience)" required>
+	                      <option value=""></option>
+	                      <option ng-value="1">No Work Experience</option>
+	                      <option ng-value="2">1-3 Yrs. of Experience</option>
+	                      <option ng-value="3">4-6 Yrs. of Experience</option>
+	                      <option ng-value="4">7 yrs. and Above</option>
+	                    </select>
+					            <label class="nptlbl">
+					            	Work Experience <span>*</span>
+					            </label>
+					            <div class="am-flip-x popcntnr" ng-if="msg['error']['wrk']['wrkexperience'] && fcs_wrkexperience === true" ng-cloak>
+                      	<div class="popover bs-popover-top">
+									    		<div class="arrow"></div>
+											    <div class="popover-body">
+											      <%= msg['error']['wrk']['wrkexperience'][0] %>
+											    </div>
+											  </div>
 											</div>
 										</div>
-					      	</div>
-					      	<div class="clearfix"></div>
-					      	<div ng-if="forms[1]['actvform']" ng-cloak>
-					      		<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
-						          <i class="fa fa-times"></i>
-						        </button>
-						        <form ng-submit="saveEmploymentHistory(emps, wrk)" method="POST" novalidate>
-              				<div class="nptgrp" ng-class="{'err': msg['error']['wrk']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false" style="float: left; max-width: 250px;">
-	              				<select ng-model="wrk.wrkexperience" ng-change="updateEmpForm(wrk.wrkexperience)" required>
-		                      <option value=""></option>
-		                      <option ng-value="1">No Work Experience</option>
-		                      <option ng-value="2">1-3 Yrs. of Experience</option>
-		                      <option ng-value="3">4-6 Yrs. of Experience</option>
-		                      <option ng-value="4">7 yrs. and Above</option>
-		                    </select>
-						            <label class="nptlbl">
-						            	Work Experience <span>*</span>
-						            </label>
-						            <div class="am-flip-x popcntnr" ng-if="msg['error']['wrk']['wrkexperience'] && fcs_wrkexperience === true" ng-cloak>
-                        	<div class="popover bs-popover-top">
-										    		<div class="arrow"></div>
-												    <div class="popover-body">
-												      <%= msg['error']['wrk']['wrkexperience'][0] %>
-												    </div>
-												  </div>
-												</div>
-											</div>
-				        			<button ng-click="addEmp(emp)" ng-disabled="!wrk.wrkexperience ||wrk.wrkexperience <= 1 || emps.length > 4" class="btn btn-primary btnwrkxprnc" type="button">
-	                    	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
-		                	</button>
-			              	<div class="clearfix"></div>
-			              	<div class="am-fade rwemp" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
-				              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
-				              		<div class="col-lg-12" ng-if="emps.length > 1">
-				              			<button ng-click="removeEmp(emp)" class="cls" type="button">
-				                    	<span class="fa fa-close"></span>
-				                  	</button>
-				              		</div>
-				              		<div class="col-lg-8">
-				              			<div class="bx">
-				              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['company'][0]}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
-										            <input type="text" ng-model="emp.company" required>
-										            <label class="nptlbl">Employer Name <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['company'][0] && fcs_company === true" ng-cloak>
-							                    <div class="popover bs-popover-top">
-														    		<div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['company'][0] %>
-																    </div>
-																	</div>
-								                </div>
-											        </div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-4">
-				              			<div class="bx">
-				              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['position']}" ng-mouseover="fcs_position = true" ng-mouseleave="fcs_position = false">
-										            <input type="text" ng-model="emp.position" required>
-										            <label class="nptlbl">Position <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['position'] && fcs_position === true" ng-cloak>
-				                        	<div class="popover bs-popover-top">
-																    <div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['position'][0] %>
-																    </div>
-																	</div>
-								                </div>
-											        </div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-4">
-				              			<div class="bx">
-				              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['salary']}" ng-mouseover="fcs_salary = true" ng-mouseleave="fcs_salary = false">
-				              					<div class="input-group">
-				              						<span class="input-group-addon">
-															        <select name="currency" ng-model="emp.currency" required ng-init="emp.currency='1'">
-																				<option ng-repeat="crncy in currencies" value="<%=crncy.id%>">
-																					<%=crncy.name%>
-																				</option>
-																			</select>
-															    </span>
-										            	<input type="text" ng-model="emp.salary" currency-input maxlength="12" required>
-										            </div>
-									            	<label class="nptlbl">Salary Rate <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>
-				                        	<div class="popover bs-popover-top">
-																    <div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['salary'][0] %>
-																    </div>
-																	</div>
-								            		</div>
-									        		</div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-4">
-				              			<div class="bx">
-				              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
-										            <input type="text" ng-model="emp.sdate" ui-mask="99/99/9999" model-view-value="true" required>
-										            <label class="nptlbl">Start Date <span>*</span></label>
-										            <span class="btmlbl">
-										            	<strong>Format:</strong> mm/dd/yyyy
-										            </span>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['sdate'] && fcs_sdate === true" ng-cloak>
-				                        	<div class="popover bs-popover-top">
-																    <div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['sdate'][0] %>
-																    </div>
-																	</div>
-								                </div>
-									        		</div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-4">
-				              			<div class="bx">
-				              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
-									            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="emp.ispresent" required>
-									            <label class="nptlbl">End Date <span>*</span></label>
+			        			<button ng-click="addEmp(emp)" ng-disabled="!wrk.wrkexperience ||wrk.wrkexperience <= 1 || emps.length > 4" class="btn btn-primary btnwrkxprnc" type="button">
+                    	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
+	                	</button>
+		              	<div class="clearfix"></div>
+		              	<div class="am-fade rwemp" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
+			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
+			              		<div class="col-lg-12" ng-if="emps.length > 1">
+			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
+			                    	<span class="fa fa-close"></span>
+			                  	</button>
+			              		</div>
+			              		<div class="col-lg-8">
+			              			<div class="bx">
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['company'][0]}" ng-mouseover="fcs_company = true" ng-mouseleave="fcs_company = false">
+									            <input type="text" ng-model="emp.company" required>
+									            <label class="nptlbl">Employer Name <span>*</span></label>
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['company'][0] && fcs_company === true" ng-cloak>
+						                    <div class="popover bs-popover-top">
+													    		<div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['company'][0] %>
+															    </div>
+																</div>
+							                </div>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['position']}" ng-mouseover="fcs_position = true" ng-mouseleave="fcs_position = false">
+									            <input type="text" ng-model="emp.position" required>
+									            <label class="nptlbl">Position <span>*</span></label>
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['position'] && fcs_position === true" ng-cloak>
+			                        	<div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['position'][0] %>
+															    </div>
+																</div>
+							                </div>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['salary']}" ng-mouseover="fcs_salary = true" ng-mouseleave="fcs_salary = false">
+			              					<div class="input-group">
+			              						<span class="input-group-addon">
+														        <select name="currency" ng-model="emp.currency" required ng-init="emp.currency='1'">
+																			<option ng-repeat="crncy in currencies" value="<%=crncy.id%>">
+																				<%=crncy.name%>
+																			</option>
+																		</select>
+														    </span>
+									            	<input type="text" ng-model="emp.salary" currency-input maxlength="12" required>
+									            </div>
+								            	<label class="nptlbl">Salary Rate <span>*</span></label>
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['salary'] && fcs_salary === true" ng-cloak>
+			                        	<div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['salary'][0] %>
+															    </div>
+																</div>
+							            		</div>
+								        		</div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['sdate']}" ng-mouseover="fcs_sdate = true" ng-mouseleave="fcs_sdate = false">
+									            <input type="text" ng-model="emp.sdate" ui-mask="99/99/9999" model-view-value="true" required>
+									            <label class="nptlbl">Start Date <span>*</span></label>
 									            <span class="btmlbl">
 									            	<strong>Format:</strong> mm/dd/yyyy
 									            </span>
-									            
-									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak style="bottom: 57px;">
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['sdate'] && fcs_sdate === true" ng-cloak>
 			                        	<div class="popover bs-popover-top">
-													    		<div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['edate'][0] %>
-																    </div>
-																	</div>
-								                </div>
-								                <label class="ctrl">
-											        		Present Employer
-											        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
-											        		<div class="ctrl_indicator"></div>
-											    			</label>
-									        		</div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-6">
-				              			<div class="bx">
-				              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['jbdescription']}" ng-mouseover="fcs_jbdescription = true" ng-mouseleave="fcs_jbdescription = false">
-										            <summernote ng-model="emp.jbdescription" config="summernote_options"></summernote>
-										            <label class="nptlbl">Job Description <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['jbdescription'] && fcs_jbdescription === true" ng-cloak>
-				                        	<div class="popover bs-popover-top">
-																    <div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['jbdescription'][0] %>
-																    </div>
-																	</div>
-								                </div>
-											        </div>
-				              			</div>
-				              		</div>
-				              		<div class="col-lg-6">
-				              			<div class="bx">
-				              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['reasonforleaving']}" ng-mouseover="fcs_reasonforleaving = true" ng-mouseleave="fcs_reasonforleaving = false">
-										            <summernote ng-model="emp.reasonforleaving" config="summernote_options"></summernote>
-										            <label class="nptlbl">Reason for Leaving <span>*</span></label>
-										            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['reasonforleaving'] && fcs_reasonforleaving === true" ng-cloak>
-				                        	<div class="popover bs-popover-top">
-																    <div class="arrow"></div>
-																    <div class="popover-body">
-																      <%= msg['error']['emp'][$index]['reasonforleaving'][0] %>
-																    </div>
-																	</div>
-								                </div>
-											        </div>
-				              			</div>
-				              		</div>
-				              	</div>
-				              	<div class="crdftr" style="margin-top: 0;">
-					              	<button class="btn btn-success" type="submit">
-					              		Save Changes
-					              	</button>
-				              	</div>
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['sdate'][0] %>
+															    </div>
+																</div>
+							                </div>
+								        		</div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp" ng-class="{'err': msg['error']['emp'][$index]['edate']}" ng-mouseover="fcs_edate = true" ng-mouseleave="fcs_edate = false">
+								            <input type="text" ng-model="emp.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="emp.ispresent" required>
+								            <label class="nptlbl">End Date <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>Format:</strong> mm/dd/yyyy
+								            </span>
+								            
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak style="bottom: 57px;">
+		                        	<div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['edate'][0] %>
+															    </div>
+																</div>
+							                </div>
+							                <label class="ctrl">
+										        		Present Employer
+										        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
+										        		<div class="ctrl_indicator"></div>
+										    			</label>
+								        		</div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-6">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['jbdescription']}" ng-mouseover="fcs_jbdescription = true" ng-mouseleave="fcs_jbdescription = false">
+									            <summernote ng-model="emp.jbdescription" config="summernote_options"></summernote>
+									            <label class="nptlbl">Job Description <span>*</span></label>
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['jbdescription'] && fcs_jbdescription === true" ng-cloak>
+			                        	<div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['jbdescription'][0] %>
+															    </div>
+																</div>
+							                </div>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-6">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp'][$index]['reasonforleaving']}" ng-mouseover="fcs_reasonforleaving = true" ng-mouseleave="fcs_reasonforleaving = false">
+									            <summernote ng-model="emp.reasonforleaving" config="summernote_options"></summernote>
+									            <label class="nptlbl">Reason for Leaving <span>*</span></label>
+									            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['reasonforleaving'] && fcs_reasonforleaving === true" ng-cloak>
+			                        	<div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															      <%= msg['error']['emp'][$index]['reasonforleaving'][0] %>
+															    </div>
+																</div>
+							                </div>
+										        </div>
+			              			</div>
+			              		</div>
 			              	</div>
-				            </form>
-				            <div class="clearfix"></div>
-				            <div class="rwemp">
-			              	<div class="am-fade row no-gutters" style="padding-top: 20px;">
-												<div class="col-lg-8">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															Stratpoint Global Outsourcing
-														</span>
+			              	<div class="crdftr" style="margin-top: 0;">
+				              	<button class="btn btn-success" type="submit">
+				              		Save Changes
+				              	</button>
+			              	</div>
+		              	</div>
+			            </form>
+			            <div class="clearfix"></div>
+			            <div class="rwemp">
+		              	<div class="am-fade row no-gutters" style="padding-top: 20px;">
+											<div class="col-lg-8">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														Stratpoint Global Outsourcing
+													</span>
+										    	<label class="lbl">
+										    		Company
+										    	</label>
+										  	</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														Sr. Software Engineer
+													</span>
 											    	<label class="lbl">
-											    		Company
+											    		Position
 											    	</label>
 											  	</div>
-												</div>
-												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															Sr. Software Engineer
-														</span>
-												    	<label class="lbl">
-												    		Position
-												    	</label>
-												  	</div>
-												</div>
-												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															USD $ 200
-														</span>
+											</div>
+											<div class="col-lg-4">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														USD $ 200
+													</span>
+										    	<label class="lbl">
+										    		Salary
+										    	</label>
+										  	</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														05/14/1987
+													</span>
+										    	<label class="lbl">
+										    		Start Date
+										    	</label>
+										  	</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														05/14/1987
+													</span>
+										    	<label class="lbl">
+										    		End Date
+										    	</label>
+										  	</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem velit quod iusto fugit in sapiente ducimus cum doloremque, vero repellat recusandae aspernatur, est, ratione commodi quibusdam id quidem voluptas odit.
+													</span>
 											    	<label class="lbl">
-											    		Salary
+											    		Job Description
 											    	</label>
 											  	</div>
-												</div>
-												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															05/14/1987
-														</span>
+											</div>
+											<div class="col-lg-6">
+												<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio, nihil veritatis molestiae at minus! Neque quisquam natus, alias illo reprehenderit. Cum repellat ad, officia officiis laudantium voluptatum maiores illum!
+													</span>
 											    	<label class="lbl">
-											    		Start Date
+											    		Reason for Leaving
 											    	</label>
 											  	</div>
-												</div>
-												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															05/14/1987
-														</span>
-											    	<label class="lbl">
-											    		End Date
-											    	</label>
-											  	</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem velit quod iusto fugit in sapiente ducimus cum doloremque, vero repellat recusandae aspernatur, est, ratione commodi quibusdam id quidem voluptas odit.
-														</span>
-												    	<label class="lbl">
-												    		Job Description
-												    	</label>
-												  	</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio, nihil veritatis molestiae at minus! Neque quisquam natus, alias illo reprehenderit. Cum repellat ad, officia officiis laudantium voluptatum maiores illum!
-														</span>
-												    	<label class="lbl">
-												    		Reason for Leaving
-												    	</label>
-												  	</div>
-												</div>
 											</div>
 										</div>
-					      	</div>
+									</div>
 						    </div>
 				      </div>
 				    </div>
