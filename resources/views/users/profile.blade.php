@@ -603,81 +603,6 @@
 	                    	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
 		                	</button>
 			              	<div class="clearfix"></div>
-			              	<div class="rwemp">
-				              	<div class="am-fade row no-gutters" style="padding-top: 20px;">
-													<div class="col-lg-8">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																Stratpoint Global Outsourcing
-															</span>
-												    	<label class="lbl">
-												    		Company
-												    	</label>
-												  	</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																Sr. Software Engineer
-															</span>
-													    	<label class="lbl">
-													    		Position
-													    	</label>
-													  	</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																USD $ 200
-															</span>
-												    	<label class="lbl">
-												    		Salary
-												    	</label>
-												  	</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																05/14/1987
-															</span>
-												    	<label class="lbl">
-												    		Start Date
-												    	</label>
-												  	</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																05/14/1987
-															</span>
-												    	<label class="lbl">
-												    		End Date
-												    	</label>
-												  	</div>
-													</div>
-													<div class="col-lg-6">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem velit quod iusto fugit in sapiente ducimus cum doloremque, vero repellat recusandae aspernatur, est, ratione commodi quibusdam id quidem voluptas odit.
-															</span>
-													    	<label class="lbl">
-													    		Job Description
-													    	</label>
-													  	</div>
-													</div>
-													<div class="col-lg-6">
-														<div class="nptgrp lbld">
-															<span class="lbldcntnt">
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio, nihil veritatis molestiae at minus! Neque quisquam natus, alias illo reprehenderit. Cum repellat ad, officia officiis laudantium voluptatum maiores illum!
-															</span>
-													    	<label class="lbl">
-													    		Reason for Leaving
-													    	</label>
-													  	</div>
-													</div>
-												</div>
-											</div>
-			              	<div class="clearfix"></div>
 			              	<div class="am-fade rwemp" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
 				              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 				              		<div class="col-lg-12" ng-if="emps.length > 1">
@@ -819,13 +744,88 @@
 				              			</div>
 				              		</div>
 				              	</div>
-			              	</div>
-			              	<div class="crdftr" style="margin-top: 0;">
-				              	<button class="btn btn-success" type="submit">
-				              		Save Changes
-				              	</button>
+				              	<div class="crdftr" style="margin-top: 0;">
+					              	<button class="btn btn-success" type="submit">
+					              		Save Changes
+					              	</button>
+				              	</div>
 			              	</div>
 				            </form>
+				            <div class="clearfix"></div>
+				            <div class="rwemp">
+			              	<div class="am-fade row no-gutters" style="padding-top: 20px;">
+												<div class="col-lg-8">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															Stratpoint Global Outsourcing
+														</span>
+											    	<label class="lbl">
+											    		Company
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															Sr. Software Engineer
+														</span>
+												    	<label class="lbl">
+												    		Position
+												    	</label>
+												  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															USD $ 200
+														</span>
+											    	<label class="lbl">
+											    		Salary
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															05/14/1987
+														</span>
+											    	<label class="lbl">
+											    		Start Date
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															05/14/1987
+														</span>
+											    	<label class="lbl">
+											    		End Date
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem velit quod iusto fugit in sapiente ducimus cum doloremque, vero repellat recusandae aspernatur, est, ratione commodi quibusdam id quidem voluptas odit.
+														</span>
+												    	<label class="lbl">
+												    		Job Description
+												    	</label>
+												  	</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio, nihil veritatis molestiae at minus! Neque quisquam natus, alias illo reprehenderit. Cum repellat ad, officia officiis laudantium voluptatum maiores illum!
+														</span>
+												    	<label class="lbl">
+												    		Reason for Leaving
+												    	</label>
+												  	</div>
+												</div>
+											</div>
+										</div>
 					      	</div>
 						    </div>
 				      </div>
