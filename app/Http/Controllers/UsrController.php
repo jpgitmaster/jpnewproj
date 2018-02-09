@@ -367,8 +367,6 @@ class UsrController extends Controller
     }
 
     public function save_employment_history(Request $request){
-        // $current_user = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
-
         $replace_names = [
             
         ];
@@ -405,15 +403,10 @@ class UsrController extends Controller
         if($has_error == true || $loop_error > 0):
             $this->msg['has_error'] = true;
         else:
+            for ($m = 0; $m < count($usr['emp']); $m++):
+                
+            endfor;
         endif;
-        // print_r($usr['emp']);
-        // $validate = Validator::make($usr, []);
-        // $validate->setAttributeNames($replace_names);
-        // $has_error = $this->hasError($validate);
-        // if($has_error == true):
-        //     $this->msg['error']['emphstry'] = $validate->messages()->toArray();
-        // else:
-        // endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }  
 
