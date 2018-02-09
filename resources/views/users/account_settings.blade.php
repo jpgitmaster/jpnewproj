@@ -20,40 +20,50 @@
 					<h4 class="ttl">Username</h4>
 				</div>
 				<div class="cntntdsc">
+					<div class="edtlyr">
+						<i class="fa fa-pencil"></i>
+					</div>
 					<div class="row no-gutters">
 						<div class="col-lg-12">
 							<div class="nptgrp lbld">
 								<a href="">
 									<span class="lbldcntnt">http://247globalnursingsolution.com/<span ng-if="usr.username" ng-cloak><%=usr.username | lowercase%></span></span>
 								</a>
-					        	<label class="lbl">Your Profile Link</label>
-					      	</div>
+			        	<label class="lbl">Your Profile Link</label>
+			      	</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="lnr">
-				<div class="ttlnm" style="top: -5px;">
+				<div class="ttlnm">
 					<h4 class="ttl">Emails</h4>
 				</div>
 				<div class="cntntdsc">
+					<div class="edtlyr">
+						<i class="fa fa-pencil"></i>
+					</div>
 					<div class="row no-gutters">
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Permanent Email</label>
-						      	</div>
-					      	</div>
+									<span class="lbldcntnt">
+										jvasquez@stratpoint.com
+									</span>
+				        	<label class="lbl">Permanent Email</label>
+				      	</div>
+			      	</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Alternate Email</label>
-						      	</div>
-					      	</div>
+									<span class="lbldcntnt">
+										vasquezjp14@gmail.com
+									</span>
+				        	<label class="lbl">Alternate Email</label>
+				      	</div>
+			      	</div>
 						</div>
 					</div>
 				</div>
@@ -61,10 +71,13 @@
 
 
 			<div class="lnr">
-			  <div class="ttlnm" style="top: 15px;">
+			  <div class="ttlnm">
 			    <h4 class="ttl">Password</h4>
 			  </div>
 			  <div class="cntntdsc">
+			  	<div class="edtlyr">
+			  		<i class="fa fa-pencil"></i>
+			  	</div>
 			    <div class="row no-gutters">
 			      <div class="col-lg-12">
 			        <div class="bx">
@@ -83,37 +96,40 @@
 					<h4 class="ttl">External Links</h4>
 				</div>
 				<div class="cntntdsc">
+					<div class="edtlyr">
+						<i class="fa fa-pencil"></i>
+					</div>
 					<div class="row no-gutters">
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Personal Website</label>
-						      	</div>
+									<span class="lbldcntnt">&nbsp;</span>
+				        	<label class="lbl">Personal Website</label>
+				      	</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Facebook</label>
-						      	</div>
+									<span class="lbldcntnt">&nbsp;</span>
+				        	<label class="lbl">Facebook</label>
+				      	</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Twitter</label>
-						      	</div>
+									<span class="lbldcntnt">&nbsp;</span>
+				        	<label class="lbl">Twitter</label>
+				      	</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="bx">
 								<div class="nptgrp lbld">
-									<span class="lbldcntnt"></span>
-						        	<label class="lbl">Instagram</label>
-						      	</div>
+									<span class="lbldcntnt">&nbsp;</span>
+				        	<label class="lbl">Instagram</label>
+				      	</div>
 							</div>
 						</div>
 					</div>
