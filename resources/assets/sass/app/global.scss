@@ -63,13 +63,16 @@ body, html{
     }
 
     textarea, select, input[type=text],
-    input[type=password]{
+    input[type=password], input[type=checkbox]{
         border: 1px solid #0077c0;
         padding: 8px 10px;
         font: 13px/16px 'Open Sans',Helvetica,Arial,sans-serif;
         width: 100%;
         &:focus{outline:none;}
-        &:disabled{ cursor: not-allowed; }
+        &:disabled{
+            cursor: not-allowed;
+            background-color: rgb(235, 235, 228);
+        }
         // &:focus ~ .nptlbl, &:valid ~ .nptlbl{
         //     top: -13px;
         //     left: 0;
@@ -185,7 +188,7 @@ body, html{
 
             &:disabled ~ .ctrl_indicator {
                 background: #E9E9E9;
-                border-color: #CCC;
+                /*border-color: #CCC;*/
                 cursor: not-allowed;
             }
         }

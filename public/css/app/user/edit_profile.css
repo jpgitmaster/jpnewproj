@@ -252,7 +252,7 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.txtarea .note-frame.panel .note-editable.panel-body {
   background-color: #FFF;
-  padding: 10px 15px;
+  padding: 10px;
   min-height: 100px;
   font-size: small;
 }
@@ -633,7 +633,20 @@
 
 #edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc {
   float: right;
-  padding: 6px 10px;
+  padding: 6px 40px 6px 15px;
+  position: relative;
+}
+
+#edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc .fa {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  text-align: center;
+  width: 35px;
+  height: 32px;
+  background-color: #0077c0;
+  border-left: 1px solid #02639e;
+  padding-top: 10px;
 }
 
 #edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc:disabled {

@@ -367,10 +367,14 @@ class UsrController extends Controller
     }
 
     public function save_employment_history(Request $request){
-        // $current_user = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
-
         $replace_names = [
-            
+          'company'       => 'Company',
+          'position'      => 'Position',
+          'salary'        => 'Salary',
+          'sdate'         => 'Start Date',
+          'edate'         => 'End Date',
+          'jbdescription' => 'Job Description',
+          'reasonforleaving' => 'Reason for Leaving'
         ];
         $usr = [];
         $rqst = $request->all();
@@ -405,15 +409,27 @@ class UsrController extends Controller
         if($has_error == true || $loop_error > 0):
             $this->msg['has_error'] = true;
         else:
+            for ($m = 0; $m < count($usr['emp']); $m++):
+               print_r($usr['emp'][$m]);
+                // if(isset($emps[$m]['sdate'])):
+                //     $emps[$m]['sdate'] = date('Y-m-d', strtotime($emps[$m]['sdate']));
+                // endif;
+                // if(isset($emps[$m]['edate'])):
+                //     $emps[$m]['edate'] = date('Y-m-d', strtotime($emps[$m]['edate']));
+                // endif;
+                // DB::table('employment_history')->insert([
+                //  'genid'     => Auth::user()->genid,
+                //  'company'   => isset($emps[$m]['company']) ? $emps[$m]['company'] : '',
+                //  'position'  => isset($emps[$m]['position']) ? $emps[$m]['position'] : '',
+                //  'salary'    => isset($emps[$m]['salary']) ? $emps[$m]['salary'] : '',
+                //  'sdate'     => isset($emps[$m]['sdate']) ? $emps[$m]['sdate'] : '0000-01-01',
+                //  'edate'     => isset($emps[$m]['edate']) ? $emps[$m]['edate'] : '0000-01-01',
+                //  'jbdescription' => isset($emps[$m]['jbdscrptn']) ? $emps[$m]['jbdscrptn'] : '',
+                //  'reasonforleaving' => isset($emps[$m]['rsnfrlvng']) ? $emps[$m]['rsnfrlvng'] : '',
+                //  'ispresent' => !empty($emps[$m]['ispresent']) ? $emps[$m]['ispresent'] : '0'
+                // ]);
+            endfor;
         endif;
-        // print_r($usr['emp']);
-        // $validate = Validator::make($usr, []);
-        // $validate->setAttributeNames($replace_names);
-        // $has_error = $this->hasError($validate);
-        // if($has_error == true):
-        //     $this->msg['error']['emphstry'] = $validate->messages()->toArray();
-        // else:
-        // endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }  
 
@@ -454,7 +470,7 @@ class UsrController extends Controller
         //     )->get();
         // $emps = DB::table('employment_history')
         //     ->select(
-        //         'genid', 'company', 'position', 'currency', 'salary', 'empsdate', 'empedate',
+        //         'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate',
         //         'supname', 'canwecontact', 'contctby',
         //         'empemail', 'empphone', 'empmobile', 'empskype', 'empviber', 'empym',
         //         'jbdscrptn', 'rsnfrlvng', 'ispresent'
