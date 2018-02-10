@@ -355,6 +355,12 @@ usrContent.controller('ctrlEditProfile',
             return fltr;
         }
     }
+    $scope.yrsxprncs = [
+        {id: 1, name: 'No Work Experience'},
+        {id: 2, name: '1-3 Yrs. of Experience'},
+        {id: 3, name: '4-6 Yrs. of Experience'},
+        {id: 4, name: '7 yrs. and Above'}
+    ];
 
     $scope.emps = [{
         'company'        : "",

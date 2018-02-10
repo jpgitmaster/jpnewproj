@@ -562,10 +562,9 @@
             				<div class="nptgrp" ng-class="{'err': msg['error']['wrk']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false" style="float: left; max-width: 250px;">
               				<select ng-model="wrk.wrkexperience" ng-change="updateEmpForm(wrk.wrkexperience)" required>
 	                      <option value=""></option>
-	                      <option ng-value="1">No Work Experience</option>
-	                      <option ng-value="2">1-3 Yrs. of Experience</option>
-	                      <option ng-value="3">4-6 Yrs. of Experience</option>
-	                      <option ng-value="4">7 yrs. and Above</option>
+	                      <option ng-repeat="xprnc in yrsxprncs" ng-value="xprnc.id">
+	                      	<%=xprnc.name%>
+	                      </option>
 	                    </select>
 					            <label class="nptlbl">
 					            	Work Experience <span>*</span>
@@ -579,7 +578,7 @@
 											  </div>
 											</div>
 										</div>
-			        			<button ng-click="addEmp(emp)" ng-disabled="!wrk.wrkexperience ||wrk.wrkexperience <= 1 || emps.length > 4" class="btn btn-primary btnwrkxprnc" type="button">
+			        			<button ng-click="addEmp(emp)" ng-disabled="(!wrk.wrkexperience ||wrk.wrkexperience <= 1 || emps.length > 4) && !jpemps.length" class="btn btn-primary btnwrkxprnc" type="button">
                     	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
 	                	</button>
 		              	<div class="clearfix"></div>
@@ -628,7 +627,7 @@
 			              					<div class="input-group">
 			              						<span class="input-group-addon">
 														        <select name="currency" ng-model="emp.currency" required ng-init="emp.currency='1'">
-																			<option ng-repeat="crncy in currencies" value="<%=crncy.id%>">
+																			<option ng-repeat="crncy in currencies" ng-value="crncy.id">
 																				<%=crncy.name%>
 																			</option>
 																		</select>
@@ -777,7 +776,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														<%= jpemp.edate %>
+														<%= jpemp.ispresent ? 'Present Employer' : jpemp.edate %>
 													</span>
 										    	<label class="lbl">
 										    		End Date

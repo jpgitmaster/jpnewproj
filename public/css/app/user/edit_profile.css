@@ -392,6 +392,10 @@
   color: #3a3a3a;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbldcntnt p {
+  margin: 0;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbl {
   position: relative;
   left: 0;
