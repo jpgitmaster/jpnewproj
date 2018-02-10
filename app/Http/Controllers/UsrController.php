@@ -410,28 +410,43 @@ class UsrController extends Controller
             $this->msg['has_error'] = true;
         else:
             for ($m = 0; $m < count($usr['emp']); $m++):
-               print_r($usr['emp'][$m]);
-                // if(isset($emps[$m]['sdate'])):
-                //     $emps[$m]['sdate'] = date('Y-m-d', strtotime($emps[$m]['sdate']));
-                // endif;
-                // if(isset($emps[$m]['edate'])):
-                //     $emps[$m]['edate'] = date('Y-m-d', strtotime($emps[$m]['edate']));
-                // endif;
-                // DB::table('employment_history')->insert([
-                //  'genid'     => Auth::user()->genid,
-                //  'company'   => isset($emps[$m]['company']) ? $emps[$m]['company'] : '',
-                //  'position'  => isset($emps[$m]['position']) ? $emps[$m]['position'] : '',
-                //  'salary'    => isset($emps[$m]['salary']) ? $emps[$m]['salary'] : '',
-                //  'sdate'     => isset($emps[$m]['sdate']) ? $emps[$m]['sdate'] : '0000-01-01',
-                //  'edate'     => isset($emps[$m]['edate']) ? $emps[$m]['edate'] : '0000-01-01',
-                //  'jbdescription' => isset($emps[$m]['jbdscrptn']) ? $emps[$m]['jbdscrptn'] : '',
-                //  'reasonforleaving' => isset($emps[$m]['rsnfrlvng']) ? $emps[$m]['rsnfrlvng'] : '',
-                //  'ispresent' => !empty($emps[$m]['ispresent']) ? $emps[$m]['ispresent'] : '0'
-                // ]);
+              print_r($usr['emp'][$m]);
+              if(isset($usr['emp'][$m]['sdate'])):
+                $usr['emp'][$m]['sdate'] = date('Y-m-d', strtotime($usr['emp'][$m]['sdate']));
+              endif;
+              if(isset($usr['emp'][$m]['edate'])):
+                $usr['emp'][$m]['edate'] = date('Y-m-d', strtotime($usr['emp'][$m]['edate']));
+              endif;
+              DB::table('employment_history')->insert([
+                'genid'    => Auth::user()->genid,
+                'company'  => $usr['emp'][$m]['company'],
+                'position' => $usr['emp'][$m]['position'],
+                'currency' => $usr['emp'][$m]['currency'],
+                'salary'   => $usr['emp'][$m]['salary'],
+                'sdate'    => $usr['emp'][$m]['sdate'],
+                'edate'    => $usr['emp'][$m]['edate'],
+                'ispresent' => $usr['emp'][$m]['ispresent'],
+                'jbdescription' => $usr['emp'][$m]['jbdescription'],
+                'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
+              ]);
             endfor;
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }  
+
+    public function emp_history(){
+      $users = DB::table('users')
+        ->leftJoin('employment_history', 'users.genid', '=', 'employment_history.genid')
+        ->select(
+            'company', 'position', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+        )->where('users.genid', Auth::user()->genid)
+        ->orderBy('users.id', 'desc')
+        ->get();
+      if(isset($users[0]->bday)):
+        $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
+      endif;
+      return json_encode([$users[0]], JSON_PRETTY_PRINT);
+    }
 
     public function get_countries(){
         $countries = DB::table('countries')->get();
@@ -511,18 +526,18 @@ class UsrController extends Controller
     }
 
     public function get_personal_info(){
-        $users = DB::table('users')
-            ->leftJoin('personal_information', 'users.genid', '=', 'users.genid')
-            ->select(
-                'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
-                'gender', 'cstatus', 'country', 'nationality', 'objectives'
-            )->where('users.genid', Auth::user()->genid)
-            ->orderBy('users.id', 'desc')
-            ->get();
-        if(isset($users[0]->bday)):
-            $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
-        endif;
-        return json_encode($users[0], JSON_PRETTY_PRINT);
+      $users = DB::table('users')
+        ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
+        ->select(
+            'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
+            'gender', 'cstatus', 'country', 'nationality', 'objectives'
+        )->where('users.genid', Auth::user()->genid)
+        ->orderBy('users.id', 'desc')
+        ->get();
+      if(isset($users[0]->bday)):
+        $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
+      endif;
+      return json_encode($users[0], JSON_PRETTY_PRINT);
     }
 
     public function hasError($validate){

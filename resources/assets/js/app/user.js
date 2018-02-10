@@ -12,6 +12,11 @@ usrApp.factory('PersnlInfo', function ($resource) {
         query : { method: 'GET', isArray: false }
     });
 });
+usrApp.factory('EmpHistory', function ($resource) {
+    return $resource('/user/emp_history', {}, {
+        query : { method: 'GET', isArray: true }
+    });
+});
 
 usrApp.factory('ProfForms', function ($resource) {
     return $resource('/user/profile_forms', {}, {

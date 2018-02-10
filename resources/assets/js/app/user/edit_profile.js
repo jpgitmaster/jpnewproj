@@ -2,8 +2,8 @@
 var usrContent = angular.module('usrContent', ['summernote', 'ui.mask', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile',
-    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'ProfForms',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, ProfForms) {
+    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'EmpHistory', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, EmpHistory, ProfForms) {
 
     $scope.proform = ProfForms.query();
     $scope.frm1_loader = false;
@@ -258,7 +258,7 @@ usrContent.controller('ctrlEditProfile',
             console.log($scope.msg);
         });
     }
-
+    $scope.jpemps = EmpHistory.query();
     $scope.saveEmploymentHistory = function(emp, wrk){
         // console.log(emp);
         $scope.frm2_loader = true;
@@ -288,15 +288,16 @@ usrContent.controller('ctrlEditProfile',
             //         }
             //     }
             // }, 200);
-            $scope.emps.push({
+            $scope.jpemps.push({
                 'company'        : emp.company,
                 'position'       : emp.position,
+                'currency'       : emp.currency,
                 'salary'         : emp.salary,
                 'sdate'          : emp.sdate,
-                'edate'          : emp.edat,
+                'edate'          : emp.edate,
+                'ispresent'      : emp.ispresent,
                 'jbdescription'  : emp.jbdescription,
-                'reasonforleaving' : emp.reasonforleaving,
-                'ispresent'      : emp.ispresent
+                'reasonforleaving' : emp.reasonforleaving
             });
             console.log($scope.msg);
         });
@@ -361,9 +362,9 @@ usrContent.controller('ctrlEditProfile',
         'salary'         : "",
         'sdate'          : "",
         'edate'          : "",
-        'jbdescription'          : "",
-        'reasonforleaving'          : "",
-        'ispresent'      : ""
+        'ispresent'      : "",
+        'jbdescription'  : "",
+        'reasonforleaving' : ""
     }];
     $scope.msg['error'] = [];
     $scope.addEmp = function(emp){
@@ -373,9 +374,9 @@ usrContent.controller('ctrlEditProfile',
             'salary'         : "",
             'sdate'          : "",
             'edate'          : "",
-            'jbdescription'          : "",
-            'reasonforleaving'          : "",
-            'ispresent'      : ""
+            'ispresent'      : "",
+            'jbdescription'  : "",
+            'reasonforleaving' : ""
         });
         if(typeof $scope.msg['error']['emp'] != "undefined"){
             $scope.msg['error']['emp'].splice(0, 0, {});
@@ -390,9 +391,9 @@ usrContent.controller('ctrlEditProfile',
                 'salary'         : "",
                 'sdate'          : "",
                 'edate'          : "",
-                'jbdescription'          : "",
-                'reasonforleaving'          : "",
-                'ispresent'      : ""
+                'ispresent'      : "",
+                'jbdescription'  : "",
+                'reasonforleaving' : ""
             }];
         }
     }

@@ -109,8 +109,8 @@
 				      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 				    </svg>
 			    </span>
-				    <div ng-if="!resume_loader" ng-cloak class="cntnt">
-					    <div class="fnticn">
+			    <div ng-if="!resume_loader" ng-cloak class="cntnt">
+				    <div class="fnticn">
 							<span ng-if="!usr[0]['rsmext']" ng-cloak>
 								<i class="fa fa-file-text-o"></i>
 							</span>
@@ -138,15 +138,15 @@
 				</div>
 				<div class="btns">
 					<div class="fileUpload btn btn-primary">
-		            	<div class="nptgrp err am-flip-x" ng-if="msg['resume']" ng-cloak>
+          	<div class="nptgrp err am-flip-x" ng-if="msg['resume']" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top" ng-class="{'success': msg['resume']['success']}">
-								    <div class="arrow"></div>
-								    <div class="popover-body">
-								    	<span class="rmve" ng-click="msg['resume'] = ''">
-				            				<i class="fa fa-close"></i>
-	  			            			</span>
-								      	<ul ng-if="msg['resume']['error']['file']" ng-cloak>
+                <div class="popover bs-popover-top" ng-class="{'success': msg['resume']['success']}">
+							    <div class="arrow"></div>
+							    <div class="popover-body">
+							    	<span class="rmve" ng-click="msg['resume'] = ''">
+	            				<i class="fa fa-close"></i>
+	            			</span>
+						      	<ul ng-if="msg['resume']['error']['file']" ng-cloak>
 											<li ng-repeat="err in msg['resume']['error']['file']">
 												<%=err%>
 											</li>
@@ -154,48 +154,45 @@
 										<p ng-if="msg['resume']['success']" ng-cloak>
 											<%=msg['resume']['success']%>
 										</p>
-								    </div>
+							    </div>
 								</div>
-			                </div>
-		                </div>
-	                	Browse <input type="file" class="upload" file-resume="files">
-		            </div>
-		            <div class="dltbtn">
-		            	<div class="nptgrp am-flip-x" ng-if="dltrsm" ng-cloak>
+              </div>
+            </div>
+          	Browse <input type="file" class="upload" file-resume="files">
+          </div>
+          <div class="dltbtn">
+          	<div class="nptgrp am-flip-x" ng-if="dltrsm" ng-cloak>
 							<div class="popcntnr">
-			                    <div class="popover bs-popover-top" ng-class="{'success': msg['rsm']['dlt']['success']}">
-								    <div class="arrow"></div>
-								    <div class="popover-body">
-								    	<div ng-if="!msg['rsm']['dlt']['success']" ng-cloak>
-									    	<p>
-									    		Are you sure you want to delete your resume?
-									    	</p>
-									    	<div class="btns">
-									    		<button class="btn btn-primary" type="button" ng-click="deleteRecord(1)">
-									    			Yes
-									    		</button>
-									    		<button class="btn btn-danger" type="button" ng-click="clsbbl(1)">
-									    			No
-									    		</button>
-									    	</div>
+                <div class="popover bs-popover-top" ng-class="{'success': msg['rsm']['dlt']['success']}">
+							    <div class="arrow"></div>
+							    <div class="popover-body">
+							    	<div ng-if="!msg['rsm']['dlt']['success']" ng-cloak>
+								    	<p>Are you sure you want to delete your resume?</p>
+								    	<div class="btns">
+								    		<button class="btn btn-primary" type="button" ng-click="deleteRecord(1)">
+								    			Yes
+								    		</button>
+								    		<button class="btn btn-danger" type="button" ng-click="clsbbl(1)">
+								    			No
+								    		</button>
 								    	</div>
-								    	<div ng-if="msg['rsm']['dlt']['success']" ng-cloak>
-									    	<span class="rmve" ng-click="msg['rsm']['dlt']['success'] = ''; clsbbl(1)">
-					            				<i class="fa fa-close"></i>
-		  			            			</span>
-									    	<p>
+							    	</div>
+							    	<div ng-if="msg['rsm']['dlt']['success']" ng-cloak>
+								    	<span class="rmve" ng-click="msg['rsm']['dlt']['success'] = ''; clsbbl(1)">
+					            	<i class="fa fa-close"></i>
+		            			</span>
+								    	<p>
 												<%=msg['rsm']['dlt']['success']%>
 											</p>
 										</div>
-
-								    </div>
+							    </div>
 								</div>
-			                </div>
-		                </div>
-		                <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']" ng-cloak>
-			            	<i class="fa fa-trash"></i>
+              </div>
+            </div>
+            <button type="button" class="btn btn-danger" ng-click="dltrsm = !dltrsm" ng-disabled="!usr[0]['rsmname']" ng-cloak>
+            	<i class="fa fa-trash"></i>
 						</button>
-		            </div>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -547,12 +544,11 @@
 				  </div>
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!proform['personalinfo']">
-				        <div class="glyph">
-		                    <i class="fa fa-graduation-cap"></i>
-		                </div>
-				        Educational Background
-
-				        <i class="fa fa-chevron-down"></i>
+			        <div class="glyph">
+                  <i class="fa fa-graduation-cap"></i>
+              </div>
+			        Educational Background
+			        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
@@ -736,12 +732,12 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <div class="rwemp">
-		              	<div class="am-fade row no-gutters" style="padding-top: 20px;">
+			            <div class="rwemp" ng-if="jpemps" ng-cloak>
+		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
 											<div class="col-lg-8">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														Stratpoint Global Outsourcing
+														<%= jpemp.company %>
 													</span>
 										    	<label class="lbl">
 										    		Company
@@ -751,7 +747,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														Sr. Software Engineer
+														<%= jpemp.position %>
 													</span>
 											    	<label class="lbl">
 											    		Position
@@ -761,7 +757,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														USD $ 200
+														<%= jpemp.currency %> <%= jpemp.salary %>
 													</span>
 										    	<label class="lbl">
 										    		Salary
@@ -771,7 +767,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														05/14/1987
+														<%= jpemp.sdate %>
 													</span>
 										    	<label class="lbl">
 										    		Start Date
@@ -781,7 +777,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														05/14/1987
+														<%= jpemp.edate %>
 													</span>
 										    	<label class="lbl">
 										    		End Date
@@ -791,22 +787,22 @@
 											<div class="col-lg-6">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem velit quod iusto fugit in sapiente ducimus cum doloremque, vero repellat recusandae aspernatur, est, ratione commodi quibusdam id quidem voluptas odit.
+														<div ng-bind-html="jpemp.jbdescription"></div>
 													</span>
-											    	<label class="lbl">
-											    		Job Description
-											    	</label>
-											  	</div>
+										    	<label class="lbl">
+										    		Job Description
+										    	</label>
+										  	</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae distinctio, nihil veritatis molestiae at minus! Neque quisquam natus, alias illo reprehenderit. Cum repellat ad, officia officiis laudantium voluptatum maiores illum!
+														<div ng-bind-html="jpemp.reasonforleaving"></div>
 													</span>
-											    	<label class="lbl">
-											    		Reason for Leaving
-											    	</label>
-											  	</div>
+										    	<label class="lbl">
+										    		Reason for Leaving
+										    	</label>
+										  	</div>
 											</div>
 										</div>
 									</div>
@@ -816,12 +812,11 @@
 				  </div>
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="!proform['emphistory']">
-				        <div class="glyph">
-		                    <i class="fa fa-stethoscope"></i>
-		                </div>
-				        Employment History
-
-				        <i class="fa fa-chevron-down"></i>
+			        <div class="glyph">
+                <i class="fa fa-stethoscope"></i>
+              </div>
+				      Employment History
+				      <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
@@ -847,36 +842,36 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
 
+	<!-- Modal -->
 	<div class="modal fade" id="cropModal">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	      	<button type="button" class="close" data-dismiss="modal" ng-click="cancelUpload()">
-	          <span>&times;</span>
-	        </button>
-	      	<div class="ttl">
-			    <h3>Change Display Picture</h3>
-			    <div class="btmbrdr"><hr></div>
-			</div>
+      	<button type="button" class="close" data-dismiss="modal" ng-click="cancelUpload()">
+          <span>&times;</span>
+        </button>
+      	<div class="ttl">
+				    <h3>Change Display Picture</h3>
+				    <div class="btmbrdr"><hr></div>
+				</div>
 	      <div class="modal-body">
 	      	<span ng-if="loader" ng-cloak class="loader">
-                <svg width="150px" height="150px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-			      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
-			    </svg>
-		    </span>
+            <svg width="150px" height="150px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+			      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+			    	</svg>
+		    	</span>
 	        <div class="prvw">
-	            <div class="preview-pane">
-	                <div class="preview-container">
-	                  <span ng-if="imgtarget" ng-cloak>
-	                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
-	                  </span>
-	                </div>
-	            </div>
+            <div class="preview-pane">
+              <div class="preview-container">
+                <span ng-if="imgtarget" ng-cloak>
+                  <img ng-src="<%=imgtarget%>" alt="Display Picture" />
+                </span>
+              </div>
+            </div>
 	        </div>
-            <div class="imgcropper" jp-custom-crop>
-              <img ng-src="<%=imgtarget%>" alt="Cropping Image" id="target" />
-            </div> 
+          <div class="imgcropper" jp-custom-crop>
+            <img ng-src="<%=imgtarget%>" alt="Cropping Image" id="target" />
+          </div> 
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cancelUpload()">Close</button>
