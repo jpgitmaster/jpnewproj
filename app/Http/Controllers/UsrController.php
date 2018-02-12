@@ -435,17 +435,21 @@ class UsrController extends Controller
     }  
 
     public function emp_history(){
-      $users = DB::table('users')
-        ->leftJoin('employment_history', 'users.genid', '=', 'employment_history.genid')
+      $users = DB::table('employment_history')
         ->select(
             'company', 'position', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
-        )->where('users.genid', Auth::user()->genid)
-        ->orderBy('users.id', 'desc')
+        )->where('employment_history.genid', Auth::user()->genid)
+        ->orderBy('employment_history.id', 'desc')
         ->get();
       if(isset($users[0]->bday)):
         $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
       endif;
-      return json_encode([$users[0]], JSON_PRETTY_PRINT);
+      if(isset($users[0])):
+        $json = json_encode([$users[0]], JSON_PRETTY_PRINT);
+      else:
+        $json = json_encode([], JSON_PRETTY_PRINT);
+      endif;
+      return $json;
     }
 
     public function get_countries(){

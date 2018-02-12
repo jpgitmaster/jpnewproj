@@ -573,7 +573,7 @@
                 	</button>
 	              	<div class="clearfix"></div>
 					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
-		              	<div class="am-fade rwemp" ng-if="wrkexperience && usr[0]['wrkexperience'] >= 1 && emps.length" ng-cloak>
+		              	<div class="am-fade rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
 			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
@@ -722,7 +722,7 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <div class="rwemp" ng-if="jpemps" ng-cloak>
+			            <div class="rwemp" ng-if="jpemps.length" ng-cloak>
 		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
 											<div class="col-lg-8">
 												<div class="nptgrp lbld">

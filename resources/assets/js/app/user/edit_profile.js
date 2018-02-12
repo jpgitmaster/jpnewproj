@@ -259,6 +259,7 @@ usrContent.controller('ctrlEditProfile',
         });
     }
     $scope.wrkexperience = {};
+    $scope.jpemps = [];
     EmpHistory.query().$promise.then(function(data) {
         $scope.jpemps = data;
         var noworkexprnce = $scope.jpemps.length ? true : false;
@@ -400,23 +401,25 @@ usrContent.controller('ctrlEditProfile',
     }
 
     $scope.updateEmpForm = function(emp){
-        if(emp >= 1 && $scope.emps.length < 1){
-            $scope.emps.unshift({
-                'company'        : "",
-                'position'       : "",
-                'salary'         : "",
-                'sdate'          : "",
-                'edate'          : "",
-                'ispresent'      : "",
-                'jbdescription'  : "",
-                'reasonforleaving' : ""
-            });
+        if(!$scope.jpemps.length){
+            if(emp >= 1 && $scope.emps.length < 1){
+                $scope.emps.unshift({
+                    'company'        : "",
+                    'position'       : "",
+                    'salary'         : "",
+                    'sdate'          : "",
+                    'edate'          : "",
+                    'ispresent'      : "",
+                    'jbdescription'  : "",
+                    'reasonforleaving' : ""
+                });
+            }
         }
         if(emp == 1){
             $scope.emps = [];
         }
         // if(typeof emp == 'undefined' || emp == 1){
-        //    $scope.emps = [{
+        //    $scope.emps.push({
         //         'company'        : "",
         //         'position'       : "",
         //         'salary'         : "",
@@ -425,7 +428,7 @@ usrContent.controller('ctrlEditProfile',
         //         'ispresent'      : "",
         //         'jbdescription'  : "",
         //         'reasonforleaving' : ""
-        //     }];
+        //     });
         // }
     }
 
