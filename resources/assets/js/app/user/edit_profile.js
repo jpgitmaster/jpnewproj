@@ -258,12 +258,13 @@ usrContent.controller('ctrlEditProfile',
             console.log($scope.msg);
         });
     }
-    $scope.wrkexperience = {};
     $scope.jpemps = [];
     EmpHistory.query().$promise.then(function(data) {
         $scope.jpemps = data;
         var noworkexprnce = $scope.jpemps.length ? true : false;
-        $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
+        if($scope.usr){
+            $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
+        }
         $scope.yrsxprncs = [
             {id: 1, name: 'No Work Experience', disabled: noworkexprnce},
             {id: 2, name: '1-3 Yrs. of Experience', disabled: false},
