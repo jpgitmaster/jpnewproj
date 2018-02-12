@@ -303,7 +303,7 @@ class UsrController extends Controller
             'cstatus'     => 'required',
             'country'     => 'required',
             'nationality' => 'required',
-            'objectives'   => 'required|max:200',
+            'objectives'   => 'required|max:200'
         ]);
         $validate->setAttributeNames($replace_names);
         $has_error = $this->hasError($validate);
@@ -473,7 +473,7 @@ class UsrController extends Controller
             ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
             ->select(
                 'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
-                'gender', 'cstatus', 'country', 'nationality', 'objectives',
+                'gender', 'cstatus', 'country', 'nationality', 'objectives', 'wrkexperience',
                 'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
             )->where('users.genid', Auth::user()->genid)
             ->orderBy('users.id', 'desc')

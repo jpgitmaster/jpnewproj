@@ -558,33 +558,24 @@
 							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div> --}}
-					        <form ng-submit="saveEmploymentHistory(emps, wrk)" method="POST" novalidate>
-            				<div class="nptgrp" ng-class="{'err': msg['error']['wrk']['wrkexperience']}" ng-mouseover="fcs_wrkexperience = true" ng-mouseleave="fcs_wrkexperience = false" style="float: left; max-width: 250px;">
-              				<select ng-model="wrk.wrkexperience" ng-change="updateEmpForm(wrk.wrkexperience)" required>
-	                      <option value=""></option>
-	                      <option ng-repeat="xprnc in yrsxprncs" ng-value="xprnc.id">
-	                      	<%=xprnc.name%>
-	                      </option>
-	                    </select>
-					            <label class="nptlbl">
-					            	Work Experience <span>*</span>
-					            </label>
-					            <div class="am-flip-x popcntnr" ng-if="msg['error']['wrk']['wrkexperience'] && fcs_wrkexperience === true" ng-cloak>
-                      	<div class="popover bs-popover-top">
-									    		<div class="arrow"></div>
-											    <div class="popover-body">
-											      <%= msg['error']['wrk']['wrkexperience'][0] %>
-											    </div>
-											  </div>
-											</div>
-										</div>
-			        			<button ng-click="addEmp(emp)" ng-disabled="(!wrk.wrkexperience ||wrk.wrkexperience <= 1 || emps.length > 4) && !jpemps.length" class="btn btn-primary btnwrkxprnc" type="button">
-                    	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
-	                	</button>
-		              	<div class="clearfix"></div>
-		              	<div class="am-fade rwemp" ng-if="wrk.wrkexperience && wrk.wrkexperience != 1" ng-cloak>
+						    	<div class="nptgrp" style="float: left; max-width: 250px;">
+          					<select ng-model="wrkexperience" ng-change="updateEmpForm(wrkexperience)" required>
+                      <option ng-repeat="xprnc in yrsxprncs" ng-value="xprnc.id" ng-selected="xprnc.id == usr[0]['wrkexperience']" ng-disabled="xprnc.disabled">
+                      	<%=xprnc.name%>
+                      </option>
+                    </select>
+				            <label class="nptlbl">
+				            	Work Experience <span>*</span>
+				            </label>
+									</div>
+		        			<button ng-click="addEmp(emp)" ng-disabled="(!wrkexperience || wrkexperience <= 1 || emps.length > 4) && !jpemps.length" class="btn btn-primary btnwrkxprnc" type="button">
+                  	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
+                	</button>
+	              	<div class="clearfix"></div>
+					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
+		              	<div class="am-fade rwemp" ng-if="wrkexperience && usr[0]['wrkexperience'] >= 1 && emps.length" ng-cloak>
 			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
-			              		<div class="col-lg-12" ng-if="emps.length > 1">
+			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
 			                    	<span class="fa fa-close"></span>
 			                  	</button>

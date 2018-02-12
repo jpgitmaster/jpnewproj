@@ -258,7 +258,31 @@ usrContent.controller('ctrlEditProfile',
             console.log($scope.msg);
         });
     }
-    $scope.jpemps = EmpHistory.query();
+    $scope.wrkexperience = {};
+    EmpHistory.query().$promise.then(function(data) {
+        $scope.jpemps = data;
+        var noworkexprnce = $scope.jpemps.length ? true : false;
+        $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
+        $scope.yrsxprncs = [
+            {id: 1, name: 'No Work Experience', disabled: noworkexprnce},
+            {id: 2, name: '1-3 Yrs. of Experience', disabled: false},
+            {id: 3, name: '4-6 Yrs. of Experience', disabled: false},
+            {id: 4, name: '7 yrs. and Above', disabled: false}
+        ];
+        if(!$scope.jpemps.length){
+            $scope.emps = [{
+                'company'        : "",
+                'position'       : "",
+                'salary'         : "",
+                'sdate'          : "",
+                'edate'          : "",
+                'ispresent'      : "",
+                'jbdescription'  : "",
+                'reasonforleaving' : ""
+            }];
+        }
+    });
+    // $scope.jpemps = [];
     $scope.saveEmploymentHistory = function(emp, wrk){
         // console.log(emp);
         $scope.frm2_loader = true;
@@ -355,25 +379,11 @@ usrContent.controller('ctrlEditProfile',
             return fltr;
         }
     }
-    $scope.yrsxprncs = [
-        {id: 1, name: 'No Work Experience'},
-        {id: 2, name: '1-3 Yrs. of Experience'},
-        {id: 3, name: '4-6 Yrs. of Experience'},
-        {id: 4, name: '7 yrs. and Above'}
-    ];
 
-    $scope.emps = [{
-        'company'        : "",
-        'position'       : "",
-        'salary'         : "",
-        'sdate'          : "",
-        'edate'          : "",
-        'ispresent'      : "",
-        'jbdescription'  : "",
-        'reasonforleaving' : ""
-    }];
+    $scope.emps = [];
     $scope.msg['error'] = [];
     $scope.addEmp = function(emp){
+        // $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
         $scope.emps.unshift({
             'company'        : "",
             'position'       : "",
@@ -390,8 +400,8 @@ usrContent.controller('ctrlEditProfile',
     }
 
     $scope.updateEmpForm = function(emp){
-        if(typeof emp == 'undefined' || emp == 1){
-           $scope.emps = [{
+        if(emp >= 1 && $scope.emps.length < 1){
+            $scope.emps.unshift({
                 'company'        : "",
                 'position'       : "",
                 'salary'         : "",
@@ -400,8 +410,23 @@ usrContent.controller('ctrlEditProfile',
                 'ispresent'      : "",
                 'jbdescription'  : "",
                 'reasonforleaving' : ""
-            }];
+            });
         }
+        if(emp == 1){
+            $scope.emps = [];
+        }
+        // if(typeof emp == 'undefined' || emp == 1){
+        //    $scope.emps = [{
+        //         'company'        : "",
+        //         'position'       : "",
+        //         'salary'         : "",
+        //         'sdate'          : "",
+        //         'edate'          : "",
+        //         'ispresent'      : "",
+        //         'jbdescription'  : "",
+        //         'reasonforleaving' : ""
+        //     }];
+        // }
     }
 
     $scope.removeEmp = function(emp){
