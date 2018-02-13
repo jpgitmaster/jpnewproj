@@ -71,6 +71,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_employment_history', [
 		    'as' => 'save_employment_history', 'uses' => 'UsrController@save_employment_history'
 		]);
+		Route::post('work_experience', [
+		    'as' => 'work_experience', 'uses' => 'UsrController@save_work_experience'
+		]);
 		Route::get('emp_history', [
 		    'as' => 'emp_history', 'uses' => 'UsrController@emp_history'
 		]);

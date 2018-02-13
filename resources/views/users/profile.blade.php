@@ -551,13 +551,13 @@
 			        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
-				      <div class="card-body">
-						    <div class="crdbdy">
-					      	{{-- <div class="frmldr" ng-if="!forms[1] || frm2_loader" ng-cloak>
-				                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-							      <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+				      <div class="card-body" style="float: left; min-height: auto; padding: 50px 15px;">
+				      	<div class="frmldr" ng-if="frm2_loader" ng-cloak>
+	                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
-						    </div> --}}
+						    </div>
+						    <div class="crdbdy">
 						    	<div class="nptgrp" style="float: left; max-width: 250px;">
           					<select ng-model="wrkexperience" ng-change="updateEmpForm(wrkexperience)" required>
                       <option ng-repeat="xprnc in yrsxprncs" ng-value="xprnc.id" ng-selected="xprnc.id == usr[0]['wrkexperience']" ng-disabled="xprnc.disabled">
@@ -573,7 +573,7 @@
                 	</button>
 	              	<div class="clearfix"></div>
 					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
-		              	<div class="am-fade rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
+		              	<div class="rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
 			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
 			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
@@ -722,7 +722,7 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <div class="rwemp" ng-if="jpemps.length" ng-cloak>
+			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
 		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
 											<div class="col-lg-8">
 												<div class="nptgrp lbld">
@@ -747,7 +747,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														<%= jpemp.currency %> <%= jpemp.salary %>
+														<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary %>
 													</span>
 										    	<label class="lbl">
 										    		Salary

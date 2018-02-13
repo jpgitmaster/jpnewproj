@@ -378,7 +378,6 @@ class UsrController extends Controller
         ];
         $usr = [];
         $rqst = $request->all();
-        $usr['wrk'] = json_decode($rqst['wrk'], true);
         $usr['emp'] = json_decode($rqst['emp'], true);
         $usr = $usr ? $usr : [];
         $messages = [];
@@ -410,7 +409,7 @@ class UsrController extends Controller
             $this->msg['has_error'] = true;
         else:
             for ($m = 0; $m < count($usr['emp']); $m++):
-              print_r($usr['emp'][$m]);
+              // print_r($usr['emp'][$m]);
               if(isset($usr['emp'][$m]['sdate'])):
                 $usr['emp'][$m]['sdate'] = date('Y-m-d', strtotime($usr['emp'][$m]['sdate']));
               endif;
@@ -430,14 +429,24 @@ class UsrController extends Controller
                 'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
               ]);
             endfor;
+            $this->msg['empsuccess'] = 'You have successfully added your employment history!';
         endif;
         print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }  
-
+    public function save_work_experience(Request $request){
+      $usr = $request->all();
+      $wrkexperience = json_decode($usr['wrkexperience'], true);
+      $wrkexperience = $wrkexperience ? $wrkexperience : [];
+      DB::table('personal_information')
+      ->where('genid', Auth::user()->genid)
+      ->update([
+          'wrkexperience' => $wrkexperience
+      ]);
+    }
     public function emp_history(){
       $users = DB::table('employment_history')
         ->select(
-            'company', 'position', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+            'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
         )->where('employment_history.genid', Auth::user()->genid)
         ->orderBy('employment_history.id', 'desc')
         ->get();

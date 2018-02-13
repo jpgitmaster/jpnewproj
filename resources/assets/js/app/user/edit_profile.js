@@ -262,71 +262,77 @@ usrContent.controller('ctrlEditProfile',
     EmpHistory.query().$promise.then(function(data) {
         $scope.jpemps = data;
         var noworkexprnce = $scope.jpemps.length ? true : false;
-        if($scope.usr){
+        $timeout(function(){
+          if($scope.usr){
             $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
-        }
+            if(!$scope.jpemps.length && $scope.usr[0]['wrkexperience'] > 1){
+              $scope.emps = [{
+                  'company'        : "",
+                  'position'       : "",
+                  'salary'         : "",
+                  'sdate'          : "",
+                  'edate'          : "",
+                  'ispresent'      : "",
+                  'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+                  'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+              }];
+            }
+          }
+        }, 100);
         $scope.yrsxprncs = [
             {id: 1, name: 'No Work Experience', disabled: noworkexprnce},
             {id: 2, name: '1-3 Yrs. of Experience', disabled: false},
             {id: 3, name: '4-6 Yrs. of Experience', disabled: false},
             {id: 4, name: '7 yrs. and Above', disabled: false}
         ];
-        if(!$scope.jpemps.length){
-            $scope.emps = [{
-                'company'        : "",
-                'position'       : "",
-                'salary'         : "",
-                'sdate'          : "",
-                'edate'          : "",
-                'ispresent'      : "",
-                'jbdescription'  : "",
-                'reasonforleaving' : ""
-            }];
-        }
     });
     // $scope.jpemps = [];
-    $scope.saveEmploymentHistory = function(emp, wrk){
-        // console.log(emp);
-        $scope.frm2_loader = true;
-        $http({
-            method: 'POST',
-            url: '/user/save_employment_history',
-            headers: { 'Content-Type': undefined },
-            transformRequest: function (data) {
-                var fd = new FormData();
-                fd.append('emp', angular.toJson(data.emp));
-                fd.append('wrk', angular.toJson(data.wrk));
-                return fd;
-            },
-            data: {emp: emp, wrk: wrk}
-        }).then(function(result){
-            $scope.msg = result.data;
-            // if(!$scope.msg['error']){
-            //     $scope.forms[1]['actvform'] = 0;
-            // }
-            // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
-            // $timeout(function(){
-            //     $scope.frm2_loader = false;
-            //     if($scope.msg['success']){
-            //         if($scope.msg['success']['emphstry']['added']){
-            //             $scope.collapseTab(3);
-            //             $scope.proform['educationalbg'] = 1;
-            //         }
-            //     }
-            // }, 200);
-            $scope.jpemps.push({
-                'company'        : emp.company,
-                'position'       : emp.position,
-                'currency'       : emp.currency,
-                'salary'         : emp.salary,
-                'sdate'          : emp.sdate,
-                'edate'          : emp.edate,
-                'ispresent'      : emp.ispresent,
-                'jbdescription'  : emp.jbdescription,
-                'reasonforleaving' : emp.reasonforleaving
+    $scope.saveEmploymentHistory = function(emp){
+      $scope.frm2_loader = true;
+      $http({
+          method: 'POST',
+          url: '/user/save_employment_history',
+          headers: { 'Content-Type': undefined },
+          transformRequest: function (data) {
+              var fd = new FormData();
+              fd.append('emp', angular.toJson(data.emp));
+              return fd;
+          },
+          data: {emp: emp}
+      }).then(function(result){
+          $scope.msg = result.data;
+          // if(!$scope.msg['error']){
+          //     $scope.forms[1]['actvform'] = 0;
+          // }
+          // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
+          // $timeout(function(){
+          //     $scope.frm2_loader = false;
+          //     if($scope.msg['success']){
+          //         if($scope.msg['success']['emphstry']['added']){
+          //             $scope.collapseTab(3);
+          //             $scope.proform['educationalbg'] = 1;
+          //         }
+          //     }
+          // }, 200);
+          if($scope.msg['empsuccess']){
+            $scope.emps = [];
+            angular.forEach(emp, function(val, key){
+              $scope.jpemps.push({
+                  'company'        : val.company,
+                  'position'       : val.position,
+                  'currency'       : val.currency,
+                  'salary'         : val.salary,
+                  'sdate'          : val.sdate,
+                  'edate'          : val.edate,
+                  'ispresent'      : val.ispresent,
+                  'jbdescription'  : val.jbdescription,
+                  'reasonforleaving' : val.reasonforleaving
+              });
             });
-            console.log($scope.msg);
-        });
+            $scope.frm2_loader = false;
+          }
+          console.log($scope.msg);
+      });
     }
 
     $scope.currencies = [
@@ -393,32 +399,52 @@ usrContent.controller('ctrlEditProfile',
             'sdate'          : "",
             'edate'          : "",
             'ispresent'      : "",
-            'jbdescription'  : "",
-            'reasonforleaving' : ""
+            'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+            'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
         });
-        if(typeof $scope.msg['error']['emp'] != "undefined"){
-            $scope.msg['error']['emp'].splice(0, 0, {});
+        if($scope.msg['error']){
+          if(typeof $scope.msg['error']['emp'] != "undefined"){
+              $scope.msg['error']['emp'].splice(0, 0, {});
+          }
         }
     }
 
     $scope.updateEmpForm = function(emp){
-        if(!$scope.jpemps.length){
+      $scope.frm2_loader = true;
+      $http({
+        method: 'POST',
+        url: '/user/work_experience',
+        headers: { 'Content-Type': undefined },
+        transformRequest: function (data) {
+          var fd = new FormData();
+          fd.append('wrkexperience', angular.toJson(data.emp));
+          return fd;
+        },
+        data: {emp: emp}
+      }).then(function(result){
+          $scope.msg = result.data;
+          if(!$scope.jpemps.length){
             if(emp >= 1 && $scope.emps.length < 1){
-                $scope.emps.unshift({
-                    'company'        : "",
-                    'position'       : "",
-                    'salary'         : "",
-                    'sdate'          : "",
-                    'edate'          : "",
-                    'ispresent'      : "",
-                    'jbdescription'  : "",
-                    'reasonforleaving' : ""
-                });
+              $scope.emps.unshift({
+                  'company'        : "",
+                  'position'       : "",
+                  'salary'         : "",
+                  'sdate'          : "",
+                  'edate'          : "",
+                  'ispresent'      : "",
+                  'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+                  'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+              });
             }
-        }
-        if(emp == 1){
+          }
+          if(emp == 1){
             $scope.emps = [];
-        }
+          }
+          $timeout(function(){
+            $scope.frm2_loader = false;
+          }, 500);
+      });
+        
         // if(typeof emp == 'undefined' || emp == 1){
         //    $scope.emps.push({
         //         'company'        : "",
@@ -427,8 +453,8 @@ usrContent.controller('ctrlEditProfile',
         //         'sdate'          : "",
         //         'edate'          : "",
         //         'ispresent'      : "",
-        //         'jbdescription'  : "",
-        //         'reasonforleaving' : ""
+        //         'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+        //         'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
         //     });
         // }
     }
@@ -436,8 +462,10 @@ usrContent.controller('ctrlEditProfile',
     $scope.removeEmp = function(emp){
         var index = $scope.emps.indexOf(emp);
         $scope.emps.splice(index, 1);
-        if(typeof $scope.msg['error']['emp'] != 'undefined'){
-            $scope.msg['error']['emp'].splice(index, 1);
+        if($scope.msg['error']){
+          if(typeof $scope.msg['error']['emp'] != 'undefined'){
+              $scope.msg['error']['emp'].splice(index, 1);
+          }
         }
     }
     $scope.checked = 0;

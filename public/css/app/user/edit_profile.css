@@ -388,7 +388,6 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbldcntnt {
   width: 100%;
-  font-weight: bold;
   color: #3a3a3a;
 }
 
@@ -404,7 +403,9 @@
   font-size: 12px;
   width: 100%;
   clear: both;
-  margin-bottom: 15px;
+  margin-bottom: 0;
+  color: #0077c0;
+  font-weight: bold;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_rght .avatar {
