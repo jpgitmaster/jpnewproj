@@ -81,24 +81,82 @@
 							padding: 50px 15px 0;
 							
 							.rwemp{
-							        width: 100%;
-								    float: left;
-								    clear: both;
-								    padding: 0 5px;
-								    margin: 10px 0;
+				        width: 100%;
+						    float: left;
+						    clear: both;
+						    padding: 0 5px;
+						    margin: 10px 0;
 
-							    .row{
-						    	    padding: 40px 15px 15px;
-								    border: 1px dashed #54c3ec;
-								    border-radius: 10px;
-								    margin-bottom: 20px;
-								    position: relative;
+						    .row{
+					    	  padding: 40px 15px 15px;
+							    border: 1px dashed #54c3ec;
+							    border-radius: 10px;
+							    margin-bottom: 20px;
+							    position: relative;
 
-								    .cls{
-							    	    top: -40px;
-    									right: 0;
+							    .cls{
+						    	  top: -40px;
+  									right: 0;
+							    }
+							    .btnactns{
+							    	float: right;
+							    	margin-top: -10px;
+
+							    	.btn{
+							    		padding: 2px 8px;
+							    		float: left;
+							    	}
+
+							    	.dltbtn{
+								    	position: relative;
+								    	float: left;
+								    	margin-left: 5px;
+
+								    	.nptgrp {
+										    margin: 0;
+										    position: absolute;
+										    right: 0;
+										    left: 0;
+										    width: 100%;
+										    bottom: 0;
+										    z-index: 999;
+										    
+										    .popcntnr{
+						    	        right: -30px;
+						    	        left: -200px;
+						    	        bottom: 22px;
+
+						    	        .popover {
+						    	        	border-color: #8ad3ef;
+
+						    	        	.arrow {
+														  right: 38px;
+														  left: initial;
+														  &::before{
+														  	border-top-color: #8ad3ef;
+														  }
+														}
+														.popover-body{
+															p{
+																font-size: 15px;
+															}
+															.btns{
+																width: 100%;
+																margin: 0 0 6px;
+																
+																.btn {
+															    display: inline-block;
+															    padding: 5px 20px;
+															    float: none;
+																}
+															}
+														}
+						    	        }
+										    }
+											}
 								    }
 							    }
+						    }
 							}
 							.cls{
 							    position: absolute;
@@ -378,6 +436,10 @@
 									    p{
 									    	margin: 0;
 									    }
+									    ul{
+									    	padding-left: 20px;
+									    	margin: 0 0 10px;
+									    }
 									}
 									.lbl {
 									    position: relative;
@@ -557,6 +619,7 @@
 					.nptgrp{
 						.popcntnr{
 							left: -218px;
+							bottom: 33px;
 
 							.popover{
 								border-color: #8ad3ef;

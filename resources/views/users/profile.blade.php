@@ -551,7 +551,7 @@
 			        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
-				      <div class="card-body" style="float: left; min-height: auto; padding: 50px 15px;">
+				      <div class="card-body" style="float: left; width: 100%; min-height: auto; padding: 50px 15px;">
 				      	<div class="frmldr" ng-if="frm2_loader" ng-cloak>
 	                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
@@ -724,6 +724,75 @@
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
 		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
+		              		<div class="col-lg-12">
+		              			<div class="btnactns" style="">
+		              				<button class="btn btn-primary">
+			              				<i class="fa fa-pencil"></i>
+			              			</button>
+			              			<div class="dltbtn">
+			              				<div class="nptgrp am-flip-x" ng-if="dltemp[$index]" ng-cloak>
+															<div class="popcntnr">
+								                <div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															    	<div>
+																    	<p>
+																    		Are you sure you want to delete this record?
+																    	</p>
+																    	<div class="btns">
+																    		<button type="button" class="btn btn-primary">
+																    			Yes
+																    		</button>
+																    		<button type="button" class="btn btn-danger" ng-click="clsbbl('dltemp', $index)">
+																    			No
+																    		</button>
+																    	</div>
+																    </div>
+															    </div>
+																</div>
+								              </div>
+								            </div>
+			              				<button class="btn btn-danger" ng-click="dltemp[$index] = !dltemp[$index]">
+				              				<i class="fa fa-trash"></i>
+				              			</button>
+			              			</div>
+		              			</div>
+		              		</div>
+		              		{{-- <div class="dltbtn">
+						          	<div class="nptgrp am-flip-x" ng-if="dltdp" ng-cloak>
+													<div class="popcntnr">
+						                <div class="popover bs-popover-top" ng-class="{'success': msg['dpimg']['dlt']['success']}">
+													    <div class="arrow"></div>
+													    <div class="popover-body">
+													    	<div ng-if="!msg['dpimg']['dlt']['success']" ng-cloak>
+														    	<p>
+														    		Are you sure you want to delete your display picture?
+														    	</p>
+														    	<div class="btns">
+														    		<button class="btn btn-primary" ng-click="deleteRecord(0)">
+														    			Yes
+														    		</button>
+														    		<button type="button" class="btn btn-danger" ng-click="clsbbl(0)">
+														    			No
+														    		</button>
+														    	</div>
+														    </div>
+													    	<div ng-if="msg['dpimg']['dlt']['success']" ng-cloak>
+														    	<span class="rmve" ng-click="msg['dpimg']['dlt']['success'] = ''; clsbbl(0)">
+								            				<i class="fa fa-close"></i>
+								            			</span>
+														    	<p>
+																		<%=msg['dpimg']['dlt']['success']%>
+																	</p>
+																</div>
+													    </div>
+														</div>
+						              </div>
+						            </div>
+						            <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr[0]['imgname']" ng-cloak>
+						            	<i class="fa fa-trash"></i>
+												</button>
+						          </div> --}}
 											<div class="col-lg-8">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
@@ -747,7 +816,7 @@
 											<div class="col-lg-4">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">
-														<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary %>
+														<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary | number %>
 													</span>
 										    	<label class="lbl">
 										    		Salary

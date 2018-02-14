@@ -178,19 +178,22 @@ usrContent.controller('ctrlEditProfile',
             }
         });
     }
-
-    $scope.clsbbl = function(num){
-        switch(num){
-            case 0:
-                $scope.dltdp = false;
-                break;
-            case 1:
-                $scope.dltrsm = false;
-                break;
-            case 2:
-                $scope.frm1cnfrm = false;
-                break;
-        }
+    $scope.dltemp = [];
+    $scope.clsbbl = function(num, index){
+      switch(num){
+        case 0:
+          $scope.dltdp = false;
+          break;
+        case 1:
+          $scope.dltrsm = false;
+          break;
+        case 2:
+          $scope.frm1cnfrm = false;
+          break;
+        case 'dltemp':
+          $scope.dltemp[index] = false;
+          break;
+      }
     }
 
     angular.element('#edtprof_accrdn .card:nth-child(1) .collapse').collapse('show');
