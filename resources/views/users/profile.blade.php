@@ -667,17 +667,17 @@
 								            
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp'][$index]['edate'] && fcs_edate === true" ng-cloak style="bottom: 57px;">
 		                        	<div class="popover bs-popover-top">
-												    		<div class="arrow"></div>
-															    <div class="popover-body">
-															      <%= msg['error']['emp'][$index]['edate'][0] %>
-															    </div>
-																</div>
-							                </div>
-							                <label class="ctrl">
-										        		Present Employer
-										        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
-										        		<div class="ctrl_indicator"></div>
-										    			</label>
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp'][$index]['edate'][0] %>
+														    </div>
+															</div>
+						                </div>
+						                <label class="ctrl">
+									        		Present Employer
+									        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
+									        		<div class="ctrl_indicator"></div>
+									    			</label>
 								        		</div>
 			              			</div>
 			              		</div>
@@ -722,11 +722,104 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
+			            <form ng-submit="updateEmploymentHistory(empedt)" method="POST" novalidate>
+		              	<div class="rwemp">
+			              	<div class="am-fade row no-gutters">
+			              		<div class="col-lg-12">
+			              			<button ng-click="removeEmp(empedt)" class="cls" type="button">
+			                    	<span class="fa fa-close"></span>
+			                  	</button>
+			              		</div>
+			              		<div class="col-lg-8">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+									            <input type="text" ng-model="empedt.company" required>
+									            <label class="nptlbl">Employer Name <span>*</span></label>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+									            <input type="text" ng-model="empedt.position" required>
+									            <label class="nptlbl">Position <span>*</span></label>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+			              					<div class="input-group">
+			              						<span class="input-group-addon">
+														        <select name="currency" ng-model="empedt.currency" required>
+																			<option ng-repeat="crncy in currencies" ng-value="crncy.id">
+																				<%=crncy.name%>
+																			</option>
+																		</select>
+														    </span>
+									            	<input type="text" ng-model="empedt.salary" currency-input maxlength="12" required>
+									            </div>
+								            	<label class="nptlbl">Salary Rate <span>*</span></label>
+								        		</div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+									            <input type="text" ng-model="empedt.sdate" ui-mask="99/99/9999" model-view-value="true" required>
+									            <label class="nptlbl">Start Date <span>*</span></label>
+									            <span class="btmlbl">
+									            	<strong>Format:</strong> mm/dd/yyyy
+									            </span>
+								        		</div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-4">
+			              			<div class="bx">
+			              				<div class="nptgrp">
+									            <input type="text" ng-model="empedt.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="empedt.ispresent" required>
+									            <label class="nptlbl">End Date <span>*</span></label>
+									            <span class="btmlbl">
+									            	<strong>Format:</strong> mm/dd/yyyy
+									            </span>
+									            <label class="ctrl">
+										        		Present Employer
+										        		<input type="checkbox" ng-model="empedt.ispresent" />
+										        		<div class="ctrl_indicator"></div>
+										    			</label>
+				              			</div>
+				              		</div>
+			              		</div>
+			              		<div class="col-lg-6">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea wysiwyg">
+									            <summernote ng-model="empedt.jbdescription" config="summernote_options"></summernote>
+									            <label class="nptlbl">Job Description <span>*</span></label>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-6">
+			              			<div class="bx">
+			              				<div class="nptgrp txtarea wysiwyg">
+									            <summernote ng-model="empedt.reasonforleaving" config="summernote_options"></summernote>
+									            <label class="nptlbl">Reason for Leaving <span>*</span></label>
+										        </div>
+			              			</div>
+			              		</div>
+			              		<div class="col-lg-12">
+			              			<button class="btn btn-success" type="submit">
+					              		Save Changes
+					              	</button>
+			              		</div>
+			              	</div>
+		              	</div>
+			            </form>
+			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
 		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
 		              		<div class="col-lg-12">
 		              			<div class="btnactns" style="">
-		              				<button class="btn btn-primary">
+		              				<button class="btn btn-primary" type="button" ng-click="editEmpForm(jpemp, $index)">
 			              				<i class="fa fa-pencil"></i>
 			              			</button>
 			              			<div class="dltbtn">
@@ -758,41 +851,6 @@
 			              			</div>
 		              			</div>
 		              		</div>
-		              		{{-- <div class="dltbtn">
-						          	<div class="nptgrp am-flip-x" ng-if="dltdp" ng-cloak>
-													<div class="popcntnr">
-						                <div class="popover bs-popover-top" ng-class="{'success': msg['dpimg']['dlt']['success']}">
-													    <div class="arrow"></div>
-													    <div class="popover-body">
-													    	<div ng-if="!msg['dpimg']['dlt']['success']" ng-cloak>
-														    	<p>
-														    		Are you sure you want to delete your display picture?
-														    	</p>
-														    	<div class="btns">
-														    		<button class="btn btn-primary" ng-click="deleteRecord(0)">
-														    			Yes
-														    		</button>
-														    		<button type="button" class="btn btn-danger" ng-click="clsbbl(0)">
-														    			No
-														    		</button>
-														    	</div>
-														    </div>
-													    	<div ng-if="msg['dpimg']['dlt']['success']" ng-cloak>
-														    	<span class="rmve" ng-click="msg['dpimg']['dlt']['success'] = ''; clsbbl(0)">
-								            				<i class="fa fa-close"></i>
-								            			</span>
-														    	<p>
-																		<%=msg['dpimg']['dlt']['success']%>
-																	</p>
-																</div>
-													    </div>
-														</div>
-						              </div>
-						            </div>
-						            <button type="button" class="btn btn-danger" ng-click="dltdp = !dltdp" ng-disabled="!usr[0]['imgname']" ng-cloak>
-						            	<i class="fa fa-trash"></i>
-												</button>
-						          </div> --}}
 											<div class="col-lg-8">
 												<div class="nptgrp lbld">
 													<span class="lbldcntnt">

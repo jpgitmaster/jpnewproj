@@ -702,6 +702,10 @@
   border-color: #02639e;
 }
 
+#edit_profile .cntntwrpr .cntnbx .btn.btn-danger {
+  border-color: #b72230;
+}
+
 #edit_profile .cntntwrpr .cntnbx .btn.btnwrkxprnc {
   float: right;
   padding: 6px 40px 6px 15px;
