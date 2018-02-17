@@ -263,31 +263,31 @@ usrContent.controller('ctrlEditProfile',
   }
   $scope.jpemps = [];
   EmpHistory.query().$promise.then(function(data) {
-      $scope.jpemps = data;
-      var noworkexprnce = $scope.jpemps.length ? true : false;
-      $timeout(function(){
-        if($scope.usr){
-          $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
-          if(!$scope.jpemps.length && $scope.usr[0]['wrkexperience'] > 1){
-            $scope.emps = [{
-                'company'        : "",
-                'position'       : "",
-                'salary'         : "",
-                'sdate'          : "",
-                'edate'          : "",
-                'ispresent'      : "",
-                'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
-                'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
-            }];
-          }
+    $scope.jpemps = data;
+    var noworkexprnce = $scope.jpemps.length ? true : false;
+    $timeout(function(){
+      if($scope.usr){
+        $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
+        if(!$scope.jpemps.length && $scope.usr[0]['wrkexperience'] > 1){
+          $scope.emps = [{
+              'company'        : "",
+              'position'       : "",
+              'salary'         : "",
+              'sdate'          : "",
+              'edate'          : "",
+              'ispresent'      : "",
+              'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+              'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+          }];
         }
-      }, 100);
-      $scope.yrsxprncs = [
-          {id: 1, name: 'No Work Experience', disabled: noworkexprnce},
-          {id: 2, name: '1-3 Yrs. of Experience', disabled: false},
-          {id: 3, name: '4-6 Yrs. of Experience', disabled: false},
-          {id: 4, name: '7 yrs. and Above', disabled: false}
-      ];
+      }
+    }, 100);
+    $scope.yrsxprncs = [
+        {id: 1, name: 'No Work Experience', disabled: noworkexprnce},
+        {id: 2, name: '1-3 Yrs. of Experience', disabled: false},
+        {id: 3, name: '4-6 Yrs. of Experience', disabled: false},
+        {id: 4, name: '7 yrs. and Above', disabled: false}
+    ];
   });
   // $scope.jpemps = [];
   $scope.saveEmploymentHistory = function(emp){

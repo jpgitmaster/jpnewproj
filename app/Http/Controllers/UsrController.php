@@ -452,21 +452,23 @@ class UsrController extends Controller
     public function emp_history(){
       $users = DB::table('employment_history')
         ->select(
-            'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+          'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
         )->where('employment_history.genid', Auth::user()->genid)
         ->orderBy('employment_history.id', 'desc')
         ->get();
-      if(isset($users[0])):
-        if(isset($users[0]->sdate)):
-          $users[0]->sdate = date('m/d/Y', strtotime($users[0]->sdate));
-        endif;
-        if(isset($users[0]->edate)):
-          $users[0]->edate = date('m/d/Y', strtotime($users[0]->edate));
-        endif;
-        if(isset($users[0]->ispresent)):
-          $users[0]->ispresent = $users[0]->ispresent ? true : false;
-        endif;
-        $json = json_encode([$users[0]], JSON_PRETTY_PRINT);
+      if(isset($users)):
+        for ($i = 0; $i < count($users); $i++):
+          if(isset($users[$i]->sdate)):
+            $users[$i]->sdate = date('m/d/Y', strtotime($users[$i]->sdate));
+          endif;
+          if(isset($users[$i]->edate)):
+            $users[$i]->edate = date('m/d/Y', strtotime($users[$i]->edate));
+          endif;
+          if(isset($users[$i]->ispresent)):
+            $users[$i]->ispresent = $users[$i]->ispresent ? true : false;
+          endif;
+        endfor;
+        $json = json_encode($users, JSON_PRETTY_PRINT);
       else:
         $json = json_encode([], JSON_PRETTY_PRINT);
       endif;
@@ -474,8 +476,8 @@ class UsrController extends Controller
     }
 
     public function get_countries(){
-        $countries = DB::table('countries')->get();
-        return json_encode($countries, JSON_PRETTY_PRINT);
+      $countries = DB::table('countries')->get();
+      return json_encode($countries, JSON_PRETTY_PRINT);
     }
 
     public function get_profile_forms(){
@@ -488,21 +490,21 @@ class UsrController extends Controller
     }
 
     public function get_current_user(){
-        $users = DB::table('users')
-            ->leftJoin('avatars', function ($join) {
-                $join->on('users.genid', '=', 'avatars.genid');
-            })
-            ->leftJoin('resumes', function ($join) {
-                $join->on('users.genid', '=', 'resumes.genid');
-            })
-            ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
-            ->select(
-                'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
-                'gender', 'cstatus', 'country', 'nationality', 'objectives', 'wrkexperience',
-                'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
-            )->where('users.genid', Auth::user()->genid)
-            ->orderBy('users.id', 'desc')
-            ->get();
+      $users = DB::table('users')
+        ->leftJoin('avatars', function ($join) {
+          $join->on('users.genid', '=', 'avatars.genid');
+        })
+        ->leftJoin('resumes', function ($join) {
+          $join->on('users.genid', '=', 'resumes.genid');
+        })
+        ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
+        ->select(
+          'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
+          'gender', 'cstatus', 'country', 'nationality', 'objectives', 'wrkexperience',
+          'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
+        )->where('users.genid', Auth::user()->genid)
+        ->orderBy('users.id', 'desc')
+        ->get();
         // $edcs = DB::table('educational_bg')
         //     ->select(
         //         'genid', 'educ_type', 'school', 'sdate', 'edate',
