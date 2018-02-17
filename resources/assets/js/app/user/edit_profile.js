@@ -265,6 +265,7 @@ usrContent.controller('ctrlEditProfile',
   EmpHistory.query().$promise.then(function(data) {
     $scope.jpemps = data;
     var noworkexprnce = $scope.jpemps.length ? true : false;
+    
     $timeout(function(){
       if($scope.usr){
         $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
@@ -468,10 +469,22 @@ usrContent.controller('ctrlEditProfile',
       }
     }
   }
-
+  $scope.jphide = [];
+  $scope.frmempupdt = false;
   $scope.editEmpForm = function(emp, indx){
     $scope.empedt = emp;
-    console.log($scope.empedt);
+    var i;
+    for (i = 0; i < $scope.jpemps.length; i++) { 
+      $scope.jphide[i] = false;
+    }
+    $scope.jphide[indx] = true;
+    $scope.frmempupdt = true;
+    angular.element('#frmempupdt').appendTo('.tstko'+indx);
+  }
+
+  $scope.showEmplbl = function(idx){
+    $scope.jphide[idx] = false;
+    $scope.frmempupdt = false;
   }
 
   $scope.checked = 0;

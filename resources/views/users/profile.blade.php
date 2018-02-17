@@ -722,204 +722,202 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <form ng-submit="updateEmploymentHistory(empedt)" method="POST" novalidate>
-		              	<div class="rwemp">
-			              	<div class="am-fade row no-gutters">
-			              		<div class="col-lg-12">
-			              			<button ng-click="removeEmp(empedt)" class="cls" type="button">
-			                    	<span class="fa fa-close"></span>
-			                  	</button>
-			              		</div>
-			              		<div class="col-lg-8">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-									            <input type="text" ng-model="empedt.company" required>
-									            <label class="nptlbl">Employer Name <span>*</span></label>
-										        </div>
+			            <form ng-submit="updateEmploymentHistory(empedt)" method="POST" novalidate ng-show="frmempupdt" ng-cloak id="frmempupdt">
+		              	<div class="am-fade row no-gutters">
+		              		<div class="col-lg-8">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+								            <input type="text" ng-model="empedt.company" required>
+								            <label class="nptlbl">Employer Name <span>*</span></label>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+								            <input type="text" ng-model="empedt.position" required>
+								            <label class="nptlbl">Position <span>*</span></label>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+		              					<div class="input-group">
+		              						<span class="input-group-addon">
+													        <select name="currency" ng-model="empedt.currency" required>
+																		<option ng-repeat="crncy in currencies" ng-value="crncy.id">
+																			<%=crncy.name%>
+																		</option>
+																	</select>
+													    </span>
+								            	<input type="text" ng-model="empedt.salary" currency-input maxlength="12" required>
+								            </div>
+							            	<label class="nptlbl">Salary Rate <span>*</span></label>
+							        		</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+								            <input type="text" ng-model="empedt.sdate" ui-mask="99/99/9999" model-view-value="true" required>
+								            <label class="nptlbl">Start Date <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>Format:</strong> mm/dd/yyyy
+								            </span>
+							        		</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp">
+								            <input type="text" ng-model="empedt.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="empedt.ispresent" required>
+								            <label class="nptlbl">End Date <span>*</span></label>
+								            <span class="btmlbl">
+								            	<strong>Format:</strong> mm/dd/yyyy
+								            </span>
+								            <label class="ctrl">
+									        		Present Employer
+									        		<input type="checkbox" ng-model="empedt.ispresent" />
+									        		<div class="ctrl_indicator"></div>
+									    			</label>
 			              			</div>
 			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-									            <input type="text" ng-model="empedt.position" required>
-									            <label class="nptlbl">Position <span>*</span></label>
-										        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-			              					<div class="input-group">
-			              						<span class="input-group-addon">
-														        <select name="currency" ng-model="empedt.currency" required>
-																			<option ng-repeat="crncy in currencies" ng-value="crncy.id">
-																				<%=crncy.name%>
-																			</option>
-																		</select>
-														    </span>
-									            	<input type="text" ng-model="empedt.salary" currency-input maxlength="12" required>
-									            </div>
-								            	<label class="nptlbl">Salary Rate <span>*</span></label>
-								        		</div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-									            <input type="text" ng-model="empedt.sdate" ui-mask="99/99/9999" model-view-value="true" required>
-									            <label class="nptlbl">Start Date <span>*</span></label>
-									            <span class="btmlbl">
-									            	<strong>Format:</strong> mm/dd/yyyy
-									            </span>
-								        		</div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-4">
-			              			<div class="bx">
-			              				<div class="nptgrp">
-									            <input type="text" ng-model="empedt.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="empedt.ispresent" required>
-									            <label class="nptlbl">End Date <span>*</span></label>
-									            <span class="btmlbl">
-									            	<strong>Format:</strong> mm/dd/yyyy
-									            </span>
-									            <label class="ctrl">
-										        		Present Employer
-										        		<input type="checkbox" ng-model="empedt.ispresent" />
-										        		<div class="ctrl_indicator"></div>
-										    			</label>
-				              			</div>
-				              		</div>
-			              		</div>
-			              		<div class="col-lg-6">
-			              			<div class="bx">
-			              				<div class="nptgrp txtarea wysiwyg">
-									            <summernote ng-model="empedt.jbdescription" config="summernote_options"></summernote>
-									            <label class="nptlbl">Job Description <span>*</span></label>
-										        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-6">
-			              			<div class="bx">
-			              				<div class="nptgrp txtarea wysiwyg">
-									            <summernote ng-model="empedt.reasonforleaving" config="summernote_options"></summernote>
-									            <label class="nptlbl">Reason for Leaving <span>*</span></label>
-										        </div>
-			              			</div>
-			              		</div>
-			              		<div class="col-lg-12">
-			              			<button class="btn btn-success" type="submit">
-					              		Save Changes
-					              	</button>
-			              		</div>
-			              	</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp txtarea wysiwyg">
+								            <summernote ng-model="empedt.jbdescription" config="summernote_options"></summernote>
+								            <label class="nptlbl">Job Description <span>*</span></label>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp txtarea wysiwyg">
+								            <summernote ng-model="empedt.reasonforleaving" config="summernote_options"></summernote>
+								            <label class="nptlbl">Reason for Leaving <span>*</span></label>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<button class="btn btn-success" type="submit">
+				              		Save Changes
+				              	</button>
+		              		</div>
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
-		              	<div class="am-fade row no-gutters" style="padding-top: 20px;" ng-repeat="jpemp in jpemps | limitTo: 4">
-		              		<div class="col-lg-12">
-		              			<div class="btnactns" style="">
-		              				<button class="btn btn-primary" type="button" ng-click="editEmpForm(jpemp, $index)">
-			              				<i class="fa fa-pencil"></i>
-			              			</button>
-			              			<div class="dltbtn">
-			              				<div class="nptgrp am-flip-x" ng-if="dltemp[$index]" ng-cloak>
-															<div class="popcntnr">
-								                <div class="popover bs-popover-top">
-															    <div class="arrow"></div>
-															    <div class="popover-body">
-															    	<div>
-																    	<p>
-																    		Are you sure you want to delete this record?
-																    	</p>
-																    	<div class="btns">
-																    		<button type="button" class="btn btn-primary">
-																    			Yes
-																    		</button>
-																    		<button type="button" class="btn btn-danger" ng-click="clsbbl('dltemp', $index)">
-																    			No
-																    		</button>
-																    	</div>
-																    </div>
-															    </div>
-																</div>
-								              </div>
-								            </div>
-			              				<button class="btn btn-danger" ng-click="dltemp[$index] = !dltemp[$index]">
-				              				<i class="fa fa-trash"></i>
+			            <div class="rwemp" ng-if="jpemps.length" ng-cloak>
+			            	<div ng-repeat="jpemp in jpemps | limitTo: 4" ng-class="'tstko'+$index" style="position: relative;">
+			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
+	                    	<span class="fa fa-close"></span>
+	                  	</button>
+			              	<div class="row no-gutters" style="padding-top: 20px;" ng-show="!jphide[$index]" ng-cloak>
+			              		<div class="col-lg-12">
+			              			<div class="btnactns" style="">
+			              				<button class="btn btn-primary" type="button" ng-click="editEmpForm(jpemp, $index)">
+				              				<i class="fa fa-pencil"></i>
 				              			</button>
+				              			<div class="dltbtn">
+				              				<div class="nptgrp am-flip-x" ng-if="dltemp[$index]" ng-cloak>
+																<div class="popcntnr">
+									                <div class="popover bs-popover-top">
+																    <div class="arrow"></div>
+																    <div class="popover-body">
+																    	<div>
+																	    	<p>
+																	    		Are you sure you want to delete this record?
+																	    	</p>
+																	    	<div class="btns">
+																	    		<button type="button" class="btn btn-primary">
+																	    			Yes
+																	    		</button>
+																	    		<button type="button" class="btn btn-danger" ng-click="clsbbl('dltemp', $index)">
+																	    			No
+																	    		</button>
+																	    	</div>
+																	    </div>
+																    </div>
+																	</div>
+									              </div>
+									            </div>
+				              				<button class="btn btn-danger" ng-click="dltemp[$index] = !dltemp[$index]">
+					              				<i class="fa fa-trash"></i>
+					              			</button>
+				              			</div>
 			              			</div>
-		              			</div>
-		              		</div>
-											<div class="col-lg-8">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpemp.company %>
-													</span>
-										    	<label class="lbl">
-										    		Company
-										    	</label>
-										  	</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpemp.position %>
-													</span>
+			              		</div>
+												<div class="col-lg-8">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<%= jpemp.company %>
+														</span>
 											    	<label class="lbl">
-											    		Position
+											    		Company
 											    	</label>
 											  	</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary | number %>
-													</span>
-										    	<label class="lbl">
-										    		Salary
-										    	</label>
-										  	</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpemp.sdate %>
-													</span>
-										    	<label class="lbl">
-										    		Start Date
-										    	</label>
-										  	</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpemp.ispresent ? 'Present Employer' : jpemp.edate %>
-													</span>
-										    	<label class="lbl">
-										    		End Date
-										    	</label>
-										  	</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<div ng-bind-html="jpemp.jbdescription"></div>
-													</span>
-										    	<label class="lbl">
-										    		Job Description
-										    	</label>
-										  	</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<div ng-bind-html="jpemp.reasonforleaving"></div>
-													</span>
-										    	<label class="lbl">
-										    		Reason for Leaving
-										    	</label>
-										  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<%= jpemp.position %>
+														</span>
+												    	<label class="lbl">
+												    		Position
+												    	</label>
+												  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary | number %>
+														</span>
+											    	<label class="lbl">
+											    		Salary
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<%= jpemp.sdate %>
+														</span>
+											    	<label class="lbl">
+											    		Start Date
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<%= jpemp.ispresent ? 'Present Employer' : jpemp.edate %>
+														</span>
+											    	<label class="lbl">
+											    		End Date
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<div ng-bind-html="jpemp.jbdescription"></div>
+														</span>
+											    	<label class="lbl">
+											    		Job Description
+											    	</label>
+											  	</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="nptgrp lbld">
+														<span class="lbldcntnt">
+															<div ng-bind-html="jpemp.reasonforleaving"></div>
+														</span>
+											    	<label class="lbl">
+											    		Reason for Leaving
+											    	</label>
+											  	</div>
+												</div>
 											</div>
 										</div>
 									</div>
