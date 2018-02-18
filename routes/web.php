@@ -67,7 +67,17 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('lbl_personal_info', [
 		    'as' => 'lbl_personal_info', 'uses' => 'UsrController@lbl_personal_info'
 		]);
-
+		
+		Route::post('save_educational_bg', [
+		    'as' => 'save_educational_bg', 'uses' => 'UsrController@save_educational_bg'
+		]);
+		Route::get('educational_bg', [
+		    'as' => 'educational_bg', 'uses' => 'UsrController@get_educational_bg'
+		]);
+		Route::get('lbl_educational_bg', [
+		    'as' => 'lbl_educational_bg', 'uses' => 'UsrController@lbl_educational_bg'
+		]);
+		
 		Route::post('save_employment_history', [
 		    'as' => 'save_employment_history', 'uses' => 'UsrController@save_employment_history'
 		]);

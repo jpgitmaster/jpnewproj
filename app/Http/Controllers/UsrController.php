@@ -322,50 +322,113 @@ class UsrController extends Controller
           $usr['bday'] = date('Y-m-d', strtotime($usr['bday']));
         endif;
         if($current_user):
-            DB::table('personal_information')
-                ->where('genid', Auth::user()->genid)
-                ->update([
-                    'mobile'      => $usr['mobile'],
-                    'phone'       => $usr['phone'],
-                    'present_address' => $usr['present_address'],
-                    'permanent_address'  => $usr['permanent_address'],
-                    'age'         => $usr['age'],
-                    'bday'        => $usr['bday'],
-                    'bplace'      => $usr['bplace'],
-                    'gender'      => $usr['gender'],
-                    'cstatus'     => $usr['cstatus'],
-                    'country'     => $usr['country'],
-                    'nationality' => $usr['nationality'],
-                    'objectives'   => $usr['objectives']
-                ]);
-            $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
-        else:
-            DB::table('personal_information')->insert([
-                'genid' => Auth::user()->genid,
+          DB::table('personal_information')
+            ->where('genid', Auth::user()->genid)
+            ->update([
                 'mobile'      => $usr['mobile'],
                 'phone'       => $usr['phone'],
                 'present_address' => $usr['present_address'],
                 'permanent_address'  => $usr['permanent_address'],
-                'age'           => $usr['age'],
-                'bday'         => $usr['bday'],
-                'bplace'        => $usr['bplace'],
-                'gender'        => $usr['gender'],
-                'cstatus'       => $usr['cstatus'],
-                'country'       => $usr['country'],
-                'nationality'   => $usr['nationality'],
-                'objectives'     => $usr['objectives']
+                'age'         => $usr['age'],
+                'bday'        => $usr['bday'],
+                'bplace'      => $usr['bplace'],
+                'gender'      => $usr['gender'],
+                'cstatus'     => $usr['cstatus'],
+                'country'     => $usr['country'],
+                'nationality' => $usr['nationality'],
+                'objectives'   => $usr['objectives']
             ]);
-            DB::table('profile_forms')
-                ->where('genid', Auth::user()->genid)
-                ->update([
-                    'personalinfo'     => 1
-                ]);
-            $this->msg['success']['prsnl']['added'] = 'Successfully Added';
+          $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
+        else:
+          DB::table('personal_information')->insert([
+              'genid' => Auth::user()->genid,
+              'mobile'      => $usr['mobile'],
+              'phone'       => $usr['phone'],
+              'present_address' => $usr['present_address'],
+              'permanent_address'  => $usr['permanent_address'],
+              'age'           => $usr['age'],
+              'bday'         => $usr['bday'],
+              'bplace'        => $usr['bplace'],
+              'gender'        => $usr['gender'],
+              'cstatus'       => $usr['cstatus'],
+              'country'       => $usr['country'],
+              'nationality'   => $usr['nationality'],
+              'objectives'     => $usr['objectives']
+          ]);
+          DB::table('profile_forms')
+              ->where('genid', Auth::user()->genid)
+              ->update([
+                  'personalinfo'     => 1
+              ]);
+          $this->msg['success']['prsnl']['added'] = 'Successfully Added';
         endif;
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
+    public function save_educational_bg(Request $request){
+      $exist = DB::table('educational_background')->where('genid', Auth::user()->genid)->count();
+      $replace_names = [
+        'school'       => 'School',
+        'course'     => 'Course',
+        'sdate'         => 'Start Date',
+        'edate'         => 'End Date',
+        'awardsrecognition' => 'Awards and Recoginition'
+      ];
+      $usr = $request->all();
+      $usr = json_decode($usr['schl'], true);
+      $usr = $usr ? $usr : [];
+      $validate = Validator::make($usr, [
+        'school'   => 'required|max:150',
+        'course' => 'required|max:150',
+        'sdate'  => 'required|date|date_format:m/d/Y',
+        'edate'  => 'required|date|date_format:m/d/Y',
+        'awardsrecognition' => 'max:800'
+      ]);
+      $validate->setAttributeNames($replace_names);
+      $has_error = $this->hasError($validate);
+      if($has_error == true):
+        $this->msg['error']['educbg'] = $validate->messages()->toArray();
+      else:
+        if(isset($usr['sdate'])):
+          $usr['sdate'] = date('Y-m-d', strtotime($usr['sdate']));
+        endif;
+        if(isset($usr['edate'])):
+          $usr['edate'] = date('Y-m-d', strtotime($usr['edate']));
+        endif;
+        if($exist):
+          DB::table('educational_background')
+            ->where('genid', Auth::user()->genid)
+            ->update([
+              'school'    => $usr['school'],
+              'course'  => $usr['course'],
+              'sdate'   => $usr['sdate'],
+              'edate'   => $usr['edate'],
+              'awardsrecognition' => $usr['awardsrecognition']
+            ]);
+          $this->msg['success']['educbg']['updated'] = 'Successfully Updated';
+        else:
+          DB::table('educational_background')
+            ->where('genid', Auth::user()->genid)
+            ->insert([
+              'genid' => Auth::user()->genid,
+              'school'    => $usr['school'],
+              'course'  => $usr['course'],
+              'sdate'   => $usr['sdate'],
+              'edate'   => $usr['edate'],
+              'awardsrecognition' => $usr['awardsrecognition']
+            ]);
+            DB::table('profile_forms')
+              ->where('genid', Auth::user()->genid)
+              ->update([
+                  'educationalbg'     => 1
+              ]);
+          $this->msg['success']['educbg']['added'] = 'Successfully Added';
+        endif;
+      endif;
+      print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+    }
+    
     public function save_employment_history(Request $request){
       $replace_names = [
         'company'       => 'Company',
@@ -453,8 +516,8 @@ class UsrController extends Controller
       $users = DB::table('employment_history')
         ->select(
           'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
-        )->where('employment_history.genid', Auth::user()->genid)
-        ->orderBy('employment_history.id', 'desc')
+        )->where('genid', Auth::user()->genid)
+        ->orderBy('id', 'desc')
         ->get();
       if(isset($users)):
         for ($i = 0; $i < count($users); $i++):
@@ -567,6 +630,22 @@ class UsrController extends Controller
       return json_encode($users[0], JSON_PRETTY_PRINT);
     }
 
+    public function get_educational_bg(){
+      $users = DB::table('educational_background')
+        ->select(
+            'school', 'course', 'sdate', 'edate', 'awardsrecognition'
+        )->where('genid', Auth::user()->genid)
+        ->orderBy('id', 'desc')
+        ->get();
+      if(isset($users[0]->sdate)):
+        $users[0]->sdate = date('m/d/Y', strtotime($users[0]->sdate));
+      endif;
+      if(isset($users[0]->edate)):
+        $users[0]->edate = date('m/d/Y', strtotime($users[0]->edate));
+      endif;
+      return json_encode($users[0], JSON_PRETTY_PRINT);
+    }
+
     public function hasError($validate){
         if(isset($validate)):
             if($validate->fails()):
@@ -585,6 +664,9 @@ class UsrController extends Controller
     }
 
     public function lbl_personal_info(){
-        return view('users.form_labels.personal_info', []);
+      return view('users.form_labels.personal_info', []);
+    }
+    public function lbl_educational_bg(){
+      return view('users.form_labels.educational_bg', []);
     }
 }

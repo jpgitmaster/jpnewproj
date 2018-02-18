@@ -78,7 +78,7 @@
 						&:nth-child(2) .card-body{ min-height: 350px; }
 						.card-body{
 							position: relative;
-							padding: 50px 15px 0;
+							padding: 30px 15px 0;
 							
 							.rwemp{
 				        width: 100%;
@@ -159,9 +159,9 @@
 						    }
 							}
 							.cls{
-							    position: absolute;
+						    position: absolute;
 								right: 5px;
-								top: 5px;
+								top: -2px;
 								outline: none;
 								border: 0;
 								background-color: transparent;

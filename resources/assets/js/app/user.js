@@ -3,31 +3,36 @@
 var usrApp = angular.module('usrApp', ['ngSanitize', 'ngResource', 'ngAnimate', 'usrHeader', 'usrContent', 'angular.vertilize']);
 
 usrApp.factory('Usr', function ($resource) {
-    return $resource('/user', {}, {
-        query : { method: 'GET', isArray: true }
-    });
+  return $resource('/user', {}, {
+    query : { method: 'GET', isArray: true }
+  });
 });
 usrApp.factory('PersnlInfo', function ($resource) {
-    return $resource('/user/personal_info', {}, {
-        query : { method: 'GET', isArray: false }
-    });
+  return $resource('/user/personal_info', {}, {
+    query : { method: 'GET', isArray: false }
+  });
+});
+usrApp.factory('EducBg', function ($resource) {
+  return $resource('/user/educational_bg', {}, {
+    query : { method: 'GET', isArray: false }
+  });
 });
 usrApp.factory('EmpHistory', function ($resource) {
-    return $resource('/user/emp_history', {}, {
-        query : { method: 'GET', isArray: true }
-    });
+  return $resource('/user/emp_history', {}, {
+    query : { method: 'GET', isArray: true }
+  });
 });
 
 usrApp.factory('ProfForms', function ($resource) {
-    return $resource('/user/profile_forms', {}, {
-        query : { method: 'GET', isArray: false }
-    });
+  return $resource('/user/profile_forms', {}, {
+    query : { method: 'GET', isArray: false }
+  });
 });
 
 usrApp.factory('Countries', function ($resource) {
-    return $resource('/countries', {}, {
-        query : { method: 'GET', isArray: true }
-    });
+  return $resource('/countries', {}, {
+    query : { method: 'GET', isArray: true }
+  });
 });
 
 usrApp.controller('ctrlApp', ['$scope', '$rootScope', '$timeout', '$http', '$q', 'Usr',

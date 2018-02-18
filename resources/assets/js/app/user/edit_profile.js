@@ -2,16 +2,18 @@
 var usrContent = angular.module('usrContent', ['summernote', 'ui.mask', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile',
-    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'EmpHistory', 'ProfForms',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, EmpHistory, ProfForms) {
+    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'EducBg', 'EmpHistory', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, EducBg, EmpHistory, ProfForms) {
 
   $scope.proform = ProfForms.query();
   $scope.frm1_loader = false;
   $scope.frm2_loader = false;
+  $scope.frm3_loader = false;
   ProfForms.query().$promise.then(function(data) {
       $scope.proform = data;
       var actvfrm = 0,
-          actvfrm2 = 0;
+          actvfrm2 = 0,
+          actvfrm3 = 0;
       switch(data['personalinfo']){
           case 0:
               actvfrm = 1;
@@ -29,33 +31,44 @@ usrContent.controller('ctrlEditProfile',
               actvfrm2 = 0;
               break;
       }
+      switch(data['emphistory']){
+          case 0:
+              actvfrm3 = 1;
+              break;
+          case 1:
+              actvfrm3 = 0;
+              break;
+      }
       $timeout(function(){
           if(data['personalinfo'] && !data['educationalbg']){
               $scope.collapseTab(2);
+          }
+          if(data['personalinfo'] && data['educationalbg'] && !data['emphistory']){
+              $scope.collapseTab(3);
           }
       }, 200);
       $scope.forms = [
           {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
           {'form':  'EducationalBg', 'cardnum': 1, 'actvform': actvfrm2},
+          {'form':  'EmploymentHistory', 'cardnum': 1, 'actvform': actvfrm3},
       ];
   });
   
   $scope.openForm = function(cardnum, card){
-      switch(card){
-          case 0:
-              $scope.forms[cardnum]['actvform'] = 0;
-              break;
-          case 1:
-              $scope.forms[cardnum]['actvform'] = 1;
-              break;
-      }
-      
-      // console.log(card);
-      if($scope.msg['success']){
-          $scope.msg['success'] = '';
-      }
-      var fadefrm = cardnum+1;
-      angular.element('.card:nth-child('+fadefrm+') .crdbdy').hide().delay(200).fadeIn();
+    switch(card){
+      case 0:
+        $scope.forms[cardnum]['actvform'] = 0;
+        break;
+      case 1:
+        $scope.forms[cardnum]['actvform'] = 1;
+        break;
+    }
+    // console.log(card);
+    if($scope.msg['success']){
+        $scope.msg['success'] = '';
+    }
+    var fadefrm = cardnum+1;
+    angular.element('.card:nth-child('+fadefrm+') .crdbdy').hide().delay(200).fadeIn();
   }
   $scope.updateUsr = function(){
       Usr.query().$promise.then(function(data) {
@@ -67,10 +80,13 @@ usrContent.controller('ctrlEditProfile',
   $scope.frm1 = [];
   $scope.frm2 = [];
   PersnlInfo.query().$promise.then(function(data) {
-      $scope.frm1 = data;
-      $scope.cvlstatus = $scope.frm1.cstatus;
-      $scope.country = $scope.frm1.country;
-      $scope.nationality = $scope.frm1.nationality;
+    $scope.frm1 = data;
+    $scope.cvlstatus = $scope.frm1.cstatus;
+    $scope.country = $scope.frm1.country;
+    $scope.nationality = $scope.frm1.nationality;
+  });
+  EducBg.query().$promise.then(function(data) {
+    $scope.schl = data;
   });
   // CntctDtls.query().$promise.then(function(data) {
   //     $scope.frm2 = data;
@@ -291,51 +307,42 @@ usrContent.controller('ctrlEditProfile',
     ];
   });
   // $scope.jpemps = [];
-  $scope.saveEmploymentHistory = function(emp){
+  $scope.msg['error'] = [];
+  $scope.schl = {
+    'name'        : "",
+    'course'      : "",
+    'sdate'       : "",
+    'edate'       : "",
+    'awardsrecognition'  : "<ul><li></li><li></li><li></li><li></li></ul>"
+  };
+  $scope.saveEducBg = function(schl){
     $scope.frm2_loader = true;
     $http({
-        method: 'POST',
-        url: '/user/save_employment_history',
-        headers: { 'Content-Type': undefined },
-        transformRequest: function (data) {
-            var fd = new FormData();
-            fd.append('emp', angular.toJson(data.emp));
-            return fd;
-        },
-        data: {emp: emp}
+      method: 'POST',
+      url: '/user/save_educational_bg',
+      headers: { 'Content-Type': undefined },
+      transformRequest: function (data) {
+        var fd = new FormData();
+        fd.append('schl', angular.toJson(data.schl));
+        return fd;
+      },
+      data: {schl: schl}
     }).then(function(result){
-        $scope.msg = result.data;
-        // if(!$scope.msg['error']){
-        //     $scope.forms[1]['actvform'] = 0;
-        // }
-        // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
-        // $timeout(function(){
-        //     $scope.frm2_loader = false;
-        //     if($scope.msg['success']){
-        //         if($scope.msg['success']['emphstry']['added']){
-        //             $scope.collapseTab(3);
-        //             $scope.proform['educationalbg'] = 1;
-        //         }
-        //     }
-        // }, 200);
-        if($scope.msg['empsuccess']){
-          $scope.emps = [];
-          angular.forEach(emp, function(val, key){
-            $scope.jpemps.push({
-                'company'        : val.company,
-                'position'       : val.position,
-                'currency'       : val.currency,
-                'salary'         : val.salary,
-                'sdate'          : val.sdate,
-                'edate'          : val.edate,
-                'ispresent'      : val.ispresent,
-                'jbdescription'  : val.jbdescription,
-                'reasonforleaving' : val.reasonforleaving
-            });
-          });
+      $scope.msg = result.data;
+      if(!$scope.msg['error']){
+        $scope.forms[1]['actvform'] = 0;
+      }
+      angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
+      $timeout(function(){
           $scope.frm2_loader = false;
-        }
-        console.log($scope.msg);
+          if($scope.msg['success']){
+              if($scope.msg['success']['educbg']['added']){
+                  $scope.collapseTab(3);
+                  $scope.proform['educationalbg'] = 1;
+              }
+          }
+      }, 200);
+      console.log($scope.msg);
     });
   }
 
@@ -390,7 +397,54 @@ usrContent.controller('ctrlEditProfile',
   }
 
   $scope.emps = [];
-  $scope.msg['error'] = [];
+  
+  $scope.saveEmploymentHistory = function(emp){
+    $scope.frm3_loader = true;
+    $http({
+        method: 'POST',
+        url: '/user/save_employment_history',
+        headers: { 'Content-Type': undefined },
+        transformRequest: function (data) {
+            var fd = new FormData();
+            fd.append('emp', angular.toJson(data.emp));
+            return fd;
+        },
+        data: {emp: emp}
+    }).then(function(result){
+        $scope.msg = result.data;
+        // if(!$scope.msg['error']){
+        //     $scope.forms[1]['actvform'] = 0;
+        // }
+        // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
+        // $timeout(function(){
+        //     $scope.frm2_loader = false;
+        //     if($scope.msg['success']){
+        //         if($scope.msg['success']['emphstry']['added']){
+        //             $scope.collapseTab(3);
+        //             $scope.proform['educationalbg'] = 1;
+        //         }
+        //     }
+        // }, 200);
+        if($scope.msg['empsuccess']){
+          $scope.emps = [];
+          angular.forEach(emp, function(val, key){
+            $scope.jpemps.push({
+                'company'        : val.company,
+                'position'       : val.position,
+                'currency'       : val.currency,
+                'salary'         : val.salary,
+                'sdate'          : val.sdate,
+                'edate'          : val.edate,
+                'ispresent'      : val.ispresent,
+                'jbdescription'  : val.jbdescription,
+                'reasonforleaving' : val.reasonforleaving
+            });
+          });
+          $scope.frm3_loader = false;
+        }
+        console.log($scope.msg);
+    });
+  }
   $scope.addEmp = function(emp){
     // $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
     $scope.emps.unshift({
@@ -411,7 +465,7 @@ usrContent.controller('ctrlEditProfile',
   }
 
   $scope.updateEmpForm = function(emp){
-    $scope.frm2_loader = true;
+    $scope.frm3_loader = true;
     $http({
       method: 'POST',
       url: '/user/work_experience',
@@ -442,7 +496,7 @@ usrContent.controller('ctrlEditProfile',
           $scope.emps = [];
         }
         $timeout(function(){
-          $scope.frm2_loader = false;
+          $scope.frm3_loader = false;
         }, 500);
     });
       

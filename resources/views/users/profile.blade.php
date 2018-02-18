@@ -17,14 +17,14 @@
 
 					<span ng-if="imgtarget" ng-cloak>
 						<div class="prvw">
-				            <div class="preview-pane">
-				                <div class="preview-container">
-				                  <span ng-if="imgtarget" ng-cloak>
-				                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
-				                  </span>
-				                </div>
-				            </div>
-				        </div>
+	            <div class="preview-pane">
+                <div class="preview-container">
+                  <span ng-if="imgtarget" ng-cloak>
+                    <img ng-src="<%=imgtarget%>" alt="Display Picture" />
+                  </span>
+                </div>
+	            </div>
+		        </div>
 				    </span>
 				    <span ng-if="!imgtarget && usr[0]['imgname']" ng-cloak>
 				    	<div class="prvw ltstdp">
@@ -545,10 +545,125 @@
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(2)" type="button" ng-disabled="!proform['personalinfo']">
 			        <div class="glyph">
-                  <i class="fa fa-graduation-cap"></i>
+                <i class="fa fa-graduation-cap"></i>
               </div>
 			        Educational Background
 			        <i class="fa fa-chevron-down"></i>
+				    </button>
+				    <div class="collapse">
+				      <div class="card-body">
+				      	<div class="frmldr" ng-if="frm2_loader" ng-cloak>
+	                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+							    </svg>
+						    </div>
+						    <div ng-if="!forms[1]['actvform']" ng-cloak>
+							    <div ng-include src="'/user/lbl_educational_bg'"></div>
+	              </div>
+	              <div ng-if="forms[1]['actvform']" ng-cloak>
+						    	<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
+					          <i class="fa fa-times"></i>
+					        </button>
+					      	<form ng-submit="saveEducBg(schl)" method="POST" novalidate>
+						      	<div class="row no-gutters">
+						      		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['educbg']['school']}" ng-mouseover="fcs_school = true" ng-mouseleave="fcs_school = false">
+								            <input type="text" ng-model="schl.school" required>
+								            <label class="nptlbl">School Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['school'] && fcs_school === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['educbg']['school'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['educbg']['course']}" ng-mouseover="fcs_course = true" ng-mouseleave="fcs_course = false">
+								            <input type="text" ng-model="schl.course" required>
+								            <label class="nptlbl">Course <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['course'] && fcs_course === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['educbg']['course'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-3">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['educbg']['sdate']}" ng-mouseover="fcs_edcsdate = true" ng-mouseleave="fcs_edcsdate = false">
+								            <input type="text" ng-model="schl.sdate" ui-mask="99/99/9999" model-view-value="true" required>
+								            <label class="nptlbl">Start Date <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['sdate'] && fcs_edcsdate === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['educbg']['sdate'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-3">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['educbg']['edate']}" ng-mouseover="fcs_edcedate = true" ng-mouseleave="fcs_edcedate = false">
+								            <input type="text" ng-model="schl.edate" ui-mask="99/99/9999" model-view-value="true" required>
+								            <label class="nptlbl">End Date <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['edate'] && fcs_edcedate === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['educbg']['edate'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-12">
+		              			<div class="bx">
+		              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['educbg']['awardsrecognition']}" ng-mouseover="fcs_awrds = true" ng-mouseleave="fcs_awrds = false">
+								            <summernote ng-model="schl.awardsrecognition" config="summernote_options"></summernote>
+								            <label class="nptlbl">Awards and Recognition <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['awardsrecognition'] && fcs_awrds === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+														    <div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['educbg']['awardsrecognition'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+						      	</div>
+						      	<div class="crdftr">
+			              	<button class="btn btn-success" type="submit">
+			              		Save Changes
+			              	</button>
+		              	</div>
+		              </form>
+		            </div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="!proform['educationalbg']">
+			        <div class="glyph">
+                <i class="fa fa-stethoscope"></i>
+              </div>
+				      Employment History
+				      <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
 				      <div class="card-body" style="float: left; width: 100%; min-height: auto; padding: 50px 15px;">
@@ -922,20 +1037,6 @@
 										</div>
 									</div>
 						    </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="card">
-				    <button class="card-header" ng-click="collapseTab(3)" type="button" ng-disabled="!proform['emphistory']">
-			        <div class="glyph">
-                <i class="fa fa-stethoscope"></i>
-              </div>
-				      Employment History
-				      <i class="fa fa-chevron-down"></i>
-				    </button>
-				    <div class="collapse">
-				      <div class="card-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 				      </div>
 				    </div>
 				  </div>
