@@ -501,7 +501,20 @@ class UsrController extends Controller
         $this->msg['empsuccess'] = 'You have successfully added your employment history!';
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
-    }  
+    }
+
+    public function delete_employment_history(Request $request){
+      $usr = [];
+      $rqst = $request->all();
+      $usr['emp'] = json_decode($rqst['emp'], true);
+      $usr = $usr ? $usr : [];
+      print_r($usr['emp']['genid']);
+      DB::table('employment_history')
+        ->where('id', $usr['emp']['id'])
+        ->where('genid', $usr['emp']['genid'])
+        ->delete();
+    }
+
     public function save_work_experience(Request $request){
       $usr = $request->all();
       $wrkexperience = json_decode($usr['wrkexperience'], true);
@@ -515,7 +528,7 @@ class UsrController extends Controller
     public function emp_history(){
       $users = DB::table('employment_history')
         ->select(
-          'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+          'id', 'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
         )->where('genid', Auth::user()->genid)
         ->orderBy('id', 'desc')
         ->get();

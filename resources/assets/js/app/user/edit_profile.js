@@ -514,6 +514,26 @@ usrContent.controller('ctrlEditProfile',
       // }
   }
 
+  $scope.deleteEmp = function(emp, idx){
+    // console.log(idx);
+    $http({
+      method: 'POST',
+      url: '/user/delete_employment_history',
+      headers: { 'Content-Type': undefined },
+      transformRequest: function (data) {
+        var fd = new FormData();
+        fd.append('emp', angular.toJson(data.emp));
+        return fd;
+      },
+      data: {emp: emp}
+    }).then(function(result){
+      $scope.msg = result.data;
+      var index = $scope.jpemps.indexOf(emp);
+      $scope.jpemps.splice(index, 1);
+      console.log($scope.msg);
+    });
+  }
+
   $scope.removeEmp = function(emp){
     var index = $scope.emps.indexOf(emp);
     $scope.emps.splice(index, 1);

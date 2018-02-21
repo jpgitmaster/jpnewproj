@@ -923,7 +923,7 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <div class="rwemp" ng-if="jpemps.length" ng-cloak>
+			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
 			            	<div ng-repeat="jpemp in jpemps | limitTo: 4" ng-class="'tstko'+$index" style="position: relative;">
 			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
@@ -945,7 +945,7 @@
 																	    		Are you sure you want to delete this record?
 																	    	</p>
 																	    	<div class="btns">
-																	    		<button type="button" class="btn btn-primary">
+																	    		<button type="button" class="btn btn-primary" ng-click="deleteEmp(jpemp, $index)">
 																	    			Yes
 																	    		</button>
 																	    		<button type="button" class="btn btn-danger" ng-click="clsbbl('dltemp', $index)">
