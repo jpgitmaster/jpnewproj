@@ -78,19 +78,18 @@ usrContent.controller('ctrlEditProfile',
   $scope.msg = [];
   $scope.countries = Countries.query();
   $scope.frm1 = [];
-  $scope.frm2 = [];
+  $scope.frmx1 = false;
+  $scope.frmx2 = false;
   PersnlInfo.query().$promise.then(function(data) {
-    $scope.frm1 = data;
-    $scope.cvlstatus = $scope.frm1.cstatus;
-    $scope.country = $scope.frm1.country;
-    $scope.nationality = $scope.frm1.nationality;
+    $scope.frm1 = data[0];
+    $scope.frmx1 = data.length ? true : false;
+    if($scope.frm1){
+      $scope.cvlstatus = $scope.frm1.cstatus;
+      $scope.country = $scope.frm1.country;
+      $scope.nationality = $scope.frm1.nationality;
+    }
   });
-  EducBg.query().$promise.then(function(data) {
-    $scope.schl = data;
-  });
-  // CntctDtls.query().$promise.then(function(data) {
-  //     $scope.frm2 = data;
-  // });
+
   $scope.select_status = {
       onSelect: function (item) {
           $scope.frm1.cstatus = item.id;
@@ -241,13 +240,14 @@ usrContent.controller('ctrlEditProfile',
             
     ]
   };
-  $scope.makeSameAddress = function(check){
+  $scope.makeSameAddress = function(check, frm1){
     if(check == true){
+      $scope.frm1 = frm1;
       $scope.frm1.permanent_address = angular.copy($scope.frm1.present_address);
     }
   }
 
-  $scope.savePersonalInfo = function(frm1){
+  $scope.savePersonalInfo = function(frmusr){
     $scope.frm1_loader = true;
     $http({
       method: 'POST',
@@ -255,10 +255,10 @@ usrContent.controller('ctrlEditProfile',
       headers: { 'Content-Type': undefined },
       transformRequest: function (data) {
         var fd = new FormData();
-        fd.append('user', angular.toJson(data.user));
+        fd.append('frmusr', angular.toJson(data.frmusr));
         return fd;
       },
-      data: {user: frm1}
+      data: {frmusr: frmusr}
     }).then(function(result){
       $scope.msg = result.data;
       if(!$scope.msg['error']){
@@ -266,13 +266,14 @@ usrContent.controller('ctrlEditProfile',
       }
       angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
       $timeout(function(){
-          $scope.frm1_loader = false;
-          if($scope.msg['success']){
-              if($scope.msg['success']['prsnl']['added']){
-                  $scope.collapseTab(2);
-                  $scope.proform['personalinfo'] = 1;
-              }
+        $scope.frm1_loader = false;
+        if($scope.msg['success']){
+          if($scope.msg['success']['prsnl']['added']){
+            $scope.frmx1 = true;
+            $scope.collapseTab(2);
+            $scope.proform['personalinfo'] = 1;
           }
+        }
       }, 200);
       console.log($scope.msg);
     });
@@ -315,6 +316,11 @@ usrContent.controller('ctrlEditProfile',
     'edate'       : "",
     'awardsrecognition'  : "<ul><li></li><li></li><li></li><li></li></ul>"
   };
+  EducBg.query().$promise.then(function(data) {
+    $scope.schl = data;
+    console.log(data);
+    $scope.frmx2 = data.length ? true : false;
+  });
   $scope.saveEducBg = function(schl){
     $scope.frm2_loader = true;
     $http({

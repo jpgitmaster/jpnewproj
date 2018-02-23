@@ -287,7 +287,7 @@ class UsrController extends Controller
         'objectives'   => 'Career Objectives'
       ];
       $usr = $request->all();
-      $usr = json_decode($usr['user'], true);
+      $usr = json_decode($usr['frmusr'], true);
       $usr = $usr ? $usr : [];
       $validate = Validator::make($usr, [
         'fname'       => 'required|max:20',
@@ -629,6 +629,7 @@ class UsrController extends Controller
     }
 
     public function get_personal_info(){
+      $exist = DB::table('personal_information')->where('genid', Auth::user()->genid)->count();
       $users = DB::table('users')
         ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
         ->select(
@@ -637,26 +638,29 @@ class UsrController extends Controller
         )->where('users.genid', Auth::user()->genid)
         ->orderBy('users.id', 'desc')
         ->get();
-      if(isset($users[0]->bday)):
-        $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
+      $users = $exist ? $users : [];
+      if(isset($users->bday)):
+        $users->bday = date('m/d/Y', strtotime($users->bday));
       endif;
-      return json_encode($users[0], JSON_PRETTY_PRINT);
+      return json_encode($users, JSON_PRETTY_PRINT);
     }
 
     public function get_educational_bg(){
+      $exist = DB::table('educational_background')->where('genid', Auth::user()->genid)->count();
       $users = DB::table('educational_background')
         ->select(
             'school', 'course', 'sdate', 'edate', 'awardsrecognition'
         )->where('genid', Auth::user()->genid)
         ->orderBy('id', 'desc')
         ->get();
-      if(isset($users[0]->sdate)):
-        $users[0]->sdate = date('m/d/Y', strtotime($users[0]->sdate));
+      $users = $exist ? $users : (object)[];
+      if(isset($users->sdate)):
+        $users->sdate = date('m/d/Y', strtotime($users->sdate));
       endif;
-      if(isset($users[0]->edate)):
-        $users[0]->edate = date('m/d/Y', strtotime($users[0]->edate));
+      if(isset($users->edate)):
+        $users->edate = date('m/d/Y', strtotime($users->edate));
       endif;
-      return json_encode($users[0], JSON_PRETTY_PRINT);
+      return json_encode($users, JSON_PRETTY_PRINT);
     }
 
     public function hasError($validate){

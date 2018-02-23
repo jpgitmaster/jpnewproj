@@ -228,8 +228,8 @@
 							    	<div ng-include src="'/user/lbl_personal_info'"></div>
 	              	</div>
               		<div class="clearfix"></div>
-							    <div ng-if="forms[0]['actvform']" ng-cloak>
-							    	<button type="button" class="cls" ng-click="openForm(forms[0]['cardnum'], 0)">
+              		<div ng-if="forms[0]['actvform']" ng-cloak>
+							    	<button type="button" class="cls" ng-click="openForm(forms[0]['cardnum'], 0)" ng-if="frmx1" ng-cloak>
 						          <i class="fa fa-times"></i>
 						        </button>
 						      	<form name="formProf1" ng-submit="savePersonalInfo(frm1)" novalidate>
@@ -323,7 +323,7 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['present_address']}" ng-mouseover="fcs_present_address = true" ng-mouseleave="fcs_present_address = false">
-								            	<input type="text" ng-model="frm1.present_address" ng-change="makeSameAddress(check)" required>
+								            	<input type="text" ng-model="frm1.present_address" ng-change="makeSameAddress(check, frm1)" required>
 								            	<label class="nptlbl">Present Address <span>*</span></label>
 								            	<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['present_address'] && fcs_present_address === true" ng-cloak>
 			                        	<div class="popover bs-popover-top">
@@ -342,7 +342,7 @@
 			              		<div class="col-lg-12">
 			              			<div class="bx">
 			              				<div class="nptgrp" ng-class="{'err': msg['error']['prsnl']['permanent_address']}" ng-mouseover="fcs_permanent_address = true" ng-mouseleave="fcs_permanent_address = false">
-								            	<input type="text" ng-model="frm1.permanent_address" ng-change="makeSameAddress(check)" required>
+								            	<input type="text" ng-model="frm1.permanent_address" ng-change="makeSameAddress(check, frm1)" required>
 								            	<label class="nptlbl">Permanent Address </label>
 								            	<div class="am-flip-x popcntnr" ng-if="msg['error']['prsnl']['permanent_address'] && fcs_permanent_address === true" ng-cloak>
 			                        	<div class="popover bs-popover-top">
@@ -357,7 +357,7 @@
 									            </span>
 									            <label class="ctrl">
 												        Same as Present Address
-												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check)" ng-checked="frm1.present_address == frm1.permanent_address" />
+												        <input type="checkbox" ng-model="check" ng-change="makeSameAddress(check, frm1)" ng-checked="frm1.present_address == frm1.permanent_address" />
 												        <div class="ctrl_indicator"></div>
 												   		</label>
 								        		</div>
@@ -561,7 +561,7 @@
 							    <div ng-include src="'/user/lbl_educational_bg'"></div>
 	              </div>
 	              <div ng-if="forms[1]['actvform']" ng-cloak>
-						    	<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)">
+						    	<button type="button" class="cls" ng-click="openForm(forms[1]['cardnum'], 0)" ng-if="frmx2" ng-cloak>
 					          <i class="fa fa-times"></i>
 					        </button>
 					      	<form ng-submit="saveEducBg(schl)" method="POST" novalidate>

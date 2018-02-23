@@ -9,7 +9,7 @@ usrApp.factory('Usr', function ($resource) {
 });
 usrApp.factory('PersnlInfo', function ($resource) {
   return $resource('/user/personal_info', {}, {
-    query : { method: 'GET', isArray: false }
+    query : { method: 'GET', isArray: true }
   });
 });
 usrApp.factory('EducBg', function ($resource) {
