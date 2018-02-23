@@ -317,8 +317,7 @@ usrContent.controller('ctrlEditProfile',
     'awardsrecognition'  : "<ul><li></li><li></li><li></li><li></li></ul>"
   };
   EducBg.query().$promise.then(function(data) {
-    $scope.schl = data;
-    console.log(data);
+    $scope.schl = data[0];
     $scope.frmx2 = data.length ? true : false;
   });
   $scope.saveEducBg = function(schl){
@@ -342,10 +341,11 @@ usrContent.controller('ctrlEditProfile',
       $timeout(function(){
           $scope.frm2_loader = false;
           if($scope.msg['success']){
-              if($scope.msg['success']['educbg']['added']){
-                  $scope.collapseTab(3);
-                  $scope.proform['educationalbg'] = 1;
-              }
+            if($scope.msg['success']['educbg']['added']){
+              $scope.collapseTab(3);
+              $scope.proform['educationalbg'] = 1;
+              $scope.frmx2 = true;
+            }
           }
       }, 200);
       console.log($scope.msg);

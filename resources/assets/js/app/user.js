@@ -14,7 +14,7 @@ usrApp.factory('PersnlInfo', function ($resource) {
 });
 usrApp.factory('EducBg', function ($resource) {
   return $resource('/user/educational_bg', {}, {
-    query : { method: 'GET', isArray: false }
+    query : { method: 'GET', isArray: true }
   });
 });
 usrApp.factory('EmpHistory', function ($resource) {

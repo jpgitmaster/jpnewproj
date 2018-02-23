@@ -653,7 +653,7 @@ class UsrController extends Controller
         )->where('genid', Auth::user()->genid)
         ->orderBy('id', 'desc')
         ->get();
-      $users = $exist ? $users : (object)[];
+      $users = $exist ? $users : [];
       if(isset($users->sdate)):
         $users->sdate = date('m/d/Y', strtotime($users->sdate));
       endif;
