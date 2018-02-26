@@ -1,18 +1,10 @@
-<div ng-if="msg['success']['prsnl']['updated']" ng-cloak>
-	<div style="width: 100%;
-	    text-align: center;
-	    display: inline-block;
-	    color: #54c3ec;
-	    margin-top: -30px;
-	    position: relative;
-	    top: -20px;">
-		<p style="font: 28px segobl; margin: 0;">
-			<%= msg['success']['prsnl']['updated'] %> &nbsp;
-			<i class="fa fa-check-circle" style="font-size: 35px;"></i>
-		</p>
-	</div>
+<div class="btmctns">
+	<button class="btn btn-primary btn-edt" type="button" ng-click="openForm(forms[0]['cardnum'], 1)">
+		Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+	</button>
 </div>
-<div class="row no-gutters">
+<div class="clearfix"></div>
+<div class="row no-gutters" style="margin-top: 10px; margin-bottom: 20px;">
 	<div class="col-lg-4">
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
@@ -66,20 +58,21 @@
 	<div class="col-lg-12">
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
-				<%= frm1.permanent_address ? frm1.permanent_address : '&nbsp;' %>
-			</span>
-	    	<label class="lbl">
-	    		Permanent Address
-	    	</label>
-	  	</div>
-	</div>
-	<div class="col-lg-12">
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
 				<%= frm1.present_address ? frm1.present_address : '&nbsp;' %>
 			</span>
 	    	<label class="lbl">
 	    		Present Address
+	    	</label>
+	  	</div>
+	</div>
+
+	<div class="col-lg-12">
+		<div class="nptgrp lbld">
+			<span class="lbldcntnt">
+				<%= frm1.permanent_address ? frm1.permanent_address : '&nbsp;' %>
+			</span>
+	    	<label class="lbl">
+	    		Permanent Address
 	    	</label>
 	  	</div>
 	</div>
@@ -153,12 +146,5 @@
 	    		Career Objectives
 	    	</label>
 	  	</div>
-	</div>
-</div>
-<div class="crdftr">
-	<div class="btmctns">
-		<button class="btn btn-primary" type="button" ng-click="openForm(forms[0]['cardnum'], 1)">
-			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-		</button>
 	</div>
 </div>

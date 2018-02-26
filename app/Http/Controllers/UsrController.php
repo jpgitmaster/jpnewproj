@@ -325,20 +325,20 @@ class UsrController extends Controller
           DB::table('personal_information')
             ->where('genid', Auth::user()->genid)
             ->update([
-                'mobile'      => $usr['mobile'],
-                'phone'       => $usr['phone'],
-                'present_address' => $usr['present_address'],
-                'permanent_address'  => $usr['permanent_address'],
-                'age'         => $usr['age'],
-                'bday'        => $usr['bday'],
-                'bplace'      => $usr['bplace'],
-                'gender'      => $usr['gender'],
-                'cstatus'     => $usr['cstatus'],
-                'country'     => $usr['country'],
-                'nationality' => $usr['nationality'],
-                'objectives'   => $usr['objectives']
+              'mobile'      => $usr['mobile'],
+              'phone'       => $usr['phone'],
+              'present_address' => $usr['present_address'],
+              'permanent_address'  => isset($usr['permanent_address']) ? $usr['permanent_address'] : '',
+              'age'         => $usr['age'],
+              'bday'        => $usr['bday'],
+              'bplace'      => $usr['bplace'],
+              'gender'      => $usr['gender'],
+              'cstatus'     => $usr['cstatus'],
+              'country'     => $usr['country'],
+              'nationality' => $usr['nationality'],
+              'objectives'   => $usr['objectives']
             ]);
-          $this->msg['success']['prsnl']['updated'] = 'Successfully Updated';
+          $this->msg['success']['prsnl']['updated'] = 'Personal Information is successfully updated!';
         else:
           DB::table('personal_information')->insert([
               'genid' => Auth::user()->genid,
@@ -360,7 +360,7 @@ class UsrController extends Controller
               ->update([
                   'personalinfo'     => 1
               ]);
-          $this->msg['success']['prsnl']['added'] = 'Successfully Added';
+          $this->msg['success']['prsnl']['added'] = 'Personal Information is successfully added!';
         endif;
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
@@ -639,9 +639,10 @@ class UsrController extends Controller
         ->orderBy('users.id', 'desc')
         ->get();
       $users = $exist ? $users : [];
-      if(isset($users->bday)):
-        $users->bday = date('m/d/Y', strtotime($users->bday));
+      if(isset($users[0]->bday)):
+        $users[0]->bday = date('m/d/Y', strtotime($users[0]->bday));
       endif;
+
       return json_encode($users, JSON_PRETTY_PRINT);
     }
 

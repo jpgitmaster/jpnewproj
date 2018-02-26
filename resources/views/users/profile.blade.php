@@ -215,7 +215,13 @@
 			        Personal Information
 			        <i class="fa fa-chevron-down"></i>
 				    </button>
-
+				    <div class="alert am-fade" ng-if="success_prsnl" ng-cloak>
+							<i class="fa fa-check-circle"></i>
+							<span>
+								<%=msg['success']['prsnl']['added']%>
+								<%=msg['success']['prsnl']['updated']%>
+							</span>
+						</div>
 				    <div class="collapse">
 				      <div class="card-body">
 				      	<div class="crdbdy">

@@ -21,6 +21,28 @@
 						margin: 0 0 10px;
 						box-shadow: 0 0 10px #e8e8e8;
 
+						.alert{
+							color: #FFF;
+							background-color: rgba(80, 80, 80, .8);
+							border-color: transparent;
+							position: absolute;
+							right: 0;
+							top: 15px;
+							z-index: 9999;
+							max-width: 350px;
+							padding: 5px 10px;
+
+							.fa{
+								float: left;
+								margin-right: 10px;
+								font-size: 30px;
+								color: #07d021;
+							}
+							span{
+								margin-top: 3px;
+								display: inline-block;
+							}
+						}
 						.card-header{
 							outline: none;
 							background-color: #54c3ec;
@@ -160,7 +182,7 @@
 							}
 							.cls{
 						    position: absolute;
-								right: 5px;
+								right: 10px;
 								top: -2px;
 								outline: none;
 								border: 0;
@@ -676,6 +698,14 @@
 					padding: 5px 60px;
 					background-color: #0077c0;
 					border-color: #02639e;
+					&.btn-edt{
+						padding: 5px 10px;
+				    background-color: #0077c0;
+				    border-color: #02639e;
+				    position: absolute;
+				    right: 20px;
+				    top: 10px;
+					}
 				}
 				&.btn-danger{
 					border-color: #b72230;

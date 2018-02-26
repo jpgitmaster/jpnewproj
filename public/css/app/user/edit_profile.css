@@ -17,6 +17,30 @@
   box-shadow: 0 0 10px #e8e8e8;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .alert {
+  color: #FFF;
+  background-color: rgba(80, 80, 80, 0.8);
+  border-color: transparent;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  z-index: 9999;
+  max-width: 350px;
+  padding: 5px 10px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .alert .fa {
+  float: left;
+  margin-right: 10px;
+  font-size: 30px;
+  color: #07d021;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .alert span {
+  margin-top: 3px;
+  display: inline-block;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-header {
   outline: none;
   background-color: #54c3ec;
@@ -164,7 +188,7 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls {
   position: absolute;
-  right: 5px;
+  right: 10px;
   top: -2px;
   outline: none;
   border: 0;
@@ -700,6 +724,15 @@
   padding: 5px 60px;
   background-color: #0077c0;
   border-color: #02639e;
+}
+
+#edit_profile .cntntwrpr .cntnbx .btn.btn-primary.btn-edt {
+  padding: 5px 10px;
+  background-color: #0077c0;
+  border-color: #02639e;
+  position: absolute;
+  right: 20px;
+  top: 10px;
 }
 
 #edit_profile .cntntwrpr .cntnbx .btn.btn-danger {

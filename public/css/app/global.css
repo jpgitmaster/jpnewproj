@@ -20,6 +20,7 @@
 
 body, html {
   font-family: 14px/16px 'Open Sans',Helvetica,Arial,sans-serif;
+  position: relative;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {

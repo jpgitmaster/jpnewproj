@@ -246,7 +246,7 @@ usrContent.controller('ctrlEditProfile',
       $scope.frm1.permanent_address = angular.copy($scope.frm1.present_address);
     }
   }
-
+  $scope.success_prsnl = false;
   $scope.savePersonalInfo = function(frmusr){
     $scope.frm1_loader = true;
     $http({
@@ -265,6 +265,8 @@ usrContent.controller('ctrlEditProfile',
         $scope.forms[0]['actvform'] = 0;
       }
       angular.element('.card:nth-child(1) .crdbdy').hide().delay(200).fadeIn();
+      angular.element('body').scrollspy({ target: '#edtprof_accrdn' });
+
       $timeout(function(){
         $scope.frm1_loader = false;
         if($scope.msg['success']){
@@ -272,9 +274,24 @@ usrContent.controller('ctrlEditProfile',
             $scope.frmx1 = true;
             $scope.collapseTab(2);
             $scope.proform['personalinfo'] = 1;
+            $scope.success_prsnl = true;
+            
+            $timeout(function(){
+              $scope.success_prsnl = false;
+            }, 3500);
+          }
+          if($scope.msg['success']['prsnl']['updated']){
+            $scope.success_prsnl = true;
+            
+            $timeout(function(){
+              $scope.success_prsnl = false;
+            }, 3500); 
           }
         }
       }, 200);
+      if($scope.msg['success']){
+        window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+      }
       console.log($scope.msg);
     });
   }
@@ -345,6 +362,8 @@ usrContent.controller('ctrlEditProfile',
               $scope.collapseTab(3);
               $scope.proform['educationalbg'] = 1;
               $scope.frmx2 = true;
+              $scope.schl = EducBg.query();
+              console.log($scope.schl[0]);
             }
           }
       }, 200);
