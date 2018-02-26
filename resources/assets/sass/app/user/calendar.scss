@@ -82,6 +82,32 @@
 			overflow-y: hidden;
 			min-height: 600px;
 
+			.sccssmsg{
+				position: relative;
+				.alert{
+					color: #FFF;
+					background-color: rgba(80, 80, 80, .8);
+					border-color: transparent;
+					position: absolute;
+					right: 0;
+					top: 0;
+					z-index: 9999;
+					max-width: 350px;
+					padding: 10px;
+
+					.fa{
+						float: left;
+						margin-right: 10px;
+						font-size: 30px;
+						color: #07d021;
+					}
+					span{
+						margin-top: 3px;
+						display: inline-block;
+					}
+				}
+			}
+
 			.guest{
 				background-color: #6dc5e6;
 				.fc-content{

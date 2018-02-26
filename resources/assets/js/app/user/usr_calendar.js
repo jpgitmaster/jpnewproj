@@ -27,28 +27,28 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         minDate: new Date()
     };
     $scope.MaxDateTo = {
-        showWeeks: false,
-        minDate: new Date()
+      showWeeks: false,
+      minDate: new Date()
     };
     $scope.MaxDateCheckout = {
-        showWeeks: false,
-        minDate: new Date()
+      showWeeks: false,
+      minDate: new Date()
     };
     $scope.getMax = function(nwdate, num){
-        switch(num){
-            case 0:
-                $scope.MaxDateCheckout = {
-                    showWeeks: false,
-                    minDate: nwdate
-                }
-                break;
-            case 1:
-                $scope.MaxDateTo = {
-                    showWeeks: false,
-                    minDate: nwdate
-                }
-                break;
-        }
+      switch(num){
+        case 0:
+          $scope.MaxDateCheckout = {
+            showWeeks: false,
+            minDate: nwdate
+          }
+          break;
+        case 1:
+          $scope.MaxDateTo = {
+            showWeeks: false,
+            minDate: nwdate
+          }
+          break;
+      }
     }
 
     // $scope.MaxDate = {
@@ -166,7 +166,7 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         }, 20);
         // console.log($scope.islct);
     };
-
+    $scope.sccss = false;
     $scope.uiConfig = {
       calendar:{
         height: 550,
@@ -201,44 +201,56 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
         // }
         eventClick: $scope.alertOnEventClick,
         eventDrop: function(event, delta, revertFunc, jsEvent, ui, view){
-            // console.log(event.genid);
-            // console.log(event.start.format());
-            var edate = moment(event.end.format()).startOf('day');
-           $http({
-                method: 'POST',
-                url: '/user/drop_resize_sched',
-                headers: { 'Content-Type': undefined },
-                transformRequest: function (data) {
-                    var fd = new FormData();
-                    fd.append('evnt', angular.toJson(data));
-                    return fd;
-                },
-                data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
-            }).then(function(result){
-                $scope.msg = result.data;
-                console.log(result.data);
-            });
+          // console.log(event.genid);
+          // console.log(event.start.format());
+          var edate = moment(event.end.format()).startOf('day');
+          $http({
+            method: 'POST',
+            url: '/user/drop_resize_sched',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+              var fd = new FormData();
+              fd.append('evnt', angular.toJson(data));
+              return fd;
+            },
+            data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
+          }).then(function(result){
+            $scope.msg = result.data;
+            if($scope.msg['success']){
+              $scope.sccss = true;
+              $timeout(function(){
+                $scope.sccss = false;
+              }, 3000);
+            }
+            console.log($scope.msg);
+          });
         },
         eventResizeStart: function( event, jsEvent, ui, view ) {
-            angular.element('.slctd_data').hide();
-            angular.element('.fc-event-container').css('position', 'inherit')
+          angular.element('.slctd_data').hide();
+          angular.element('.fc-event-container').css('position', 'inherit')
         },
         eventResize: function(event, delta, revertFunc, jsEvent, ui, view ){
-            var edate = moment(event.end.format()).startOf('day');
-           $http({
-                method: 'POST',
-                url: '/user/drop_resize_sched',
-                headers: { 'Content-Type': undefined },
-                transformRequest: function (data) {
-                    var fd = new FormData();
-                    fd.append('evnt', angular.toJson(data));
-                    return fd;
-                },
-                data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
-            }).then(function(result){
-                $scope.msg = result.data;
-                console.log(result.data);
-            });
+          var edate = moment(event.end.format()).startOf('day');
+          $http({
+            method: 'POST',
+            url: '/user/drop_resize_sched',
+            headers: { 'Content-Type': undefined },
+            transformRequest: function (data) {
+              var fd = new FormData();
+              fd.append('evnt', angular.toJson(data));
+              return fd;
+            },
+            data: {genid: event.genid, start: event.start.format(), end: edate.subtract(1, 'day')}
+          }).then(function(result){
+            $scope.msg = result.data;
+            if($scope.msg['success']){
+              $scope.sccss = true;
+              $timeout(function(){
+                $scope.sccss = false;
+              }, 3000);
+            }
+            console.log($scope.msg);
+          });
         }
         // ignoreTimezone: true
       }
@@ -248,25 +260,25 @@ usrContent.controller('ctrlCalendar', ['$scope', '$rootScope', '$timeout', '$htt
     $scope.eventSources = [$scope.guest_scheds, $scope.admin_scheds];
 
     Actvty.query().$promise.then(function(data) {
-       $scope.activities = data; 
+      $scope.activities = data; 
     });
     $scope.addActivityType = function(typ){
-        $http({
-            method: 'POST',
-            url: '/user/save_activity_type',
-            headers: { 'Content-Type': undefined },
-            transformRequest: function (data) {
-                var fd = new FormData();
-                fd.append('actvty', angular.toJson(data.actvty));
-                return fd;
-            },
-            data: {actvty: typ}
-        }).then(function(result){
-            $scope.msg = result.data;
-            $scope.activities = Actvty.query();
-            $scope.typ = {};
-            console.log(result.data);
-        });
+      $http({
+        method: 'POST',
+        url: '/user/save_activity_type',
+        headers: { 'Content-Type': undefined },
+        transformRequest: function (data) {
+          var fd = new FormData();
+          fd.append('actvty', angular.toJson(data.actvty));
+          return fd;
+        },
+        data: {actvty: typ}
+      }).then(function(result){
+        $scope.msg = result.data;
+        $scope.activities = Actvty.query();
+        $scope.typ = {};
+        console.log(result.data);
+      });
     }
     $scope.typ = {};
 }]);
