@@ -3,7 +3,8 @@
 		Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
 	</button>
 </div>
-<div class="row no-gutters">
+<div class="clearfix"></div>
+<div class="row no-gutters" style="margin-top: 10px; margin-bottom: 20px;">
 	<div class="col-lg-12">
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
@@ -44,7 +45,7 @@
 	    	</label>
 	  	</div>
 	</div>
-	<div class="col-lg-12">
+	<div class="col-lg-12" ng-if="schl.awardsrecognition" ng-cloak>
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
 				<div ng-bind-html="schl.awardsrecognition" ng-if="schl.awardsrecognition" ng-cloak></div>

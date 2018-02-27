@@ -38,7 +38,7 @@
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .alert span {
   margin-top: 3px;
-  display: inline-block;
+  display: inline;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-header {

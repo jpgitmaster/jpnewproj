@@ -345,7 +345,7 @@ class UsrController extends Controller
               'mobile'      => $usr['mobile'],
               'phone'       => $usr['phone'],
               'present_address' => $usr['present_address'],
-              'permanent_address'  => $usr['permanent_address'],
+              'permanent_address'  => isset($usr['permanent_address']) ? $usr['permanent_address'] : '',
               'age'           => $usr['age'],
               'bday'         => $usr['bday'],
               'bplace'        => $usr['bplace'],
@@ -406,7 +406,7 @@ class UsrController extends Controller
               'edate'   => $usr['edate'],
               'awardsrecognition' => isset($usr['awardsrecognition']) ? $usr['awardsrecognition'] : ''
             ]);
-          $this->msg['success']['educbg']['updated'] = 'Successfully Updated';
+          $this->msg['success']['educbg']['updated'] = 'Educational Background is successfully updated!';
         else:
           DB::table('educational_background')
             ->where('genid', Auth::user()->genid)
@@ -423,7 +423,7 @@ class UsrController extends Controller
               ->update([
                   'educationalbg'     => 1
               ]);
-          $this->msg['success']['educbg']['added'] = 'Successfully Added';
+          $this->msg['success']['educbg']['added'] = 'Educational Background is successfully added!';
         endif;
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
@@ -655,11 +655,11 @@ class UsrController extends Controller
         ->orderBy('id', 'desc')
         ->get();
       $users = $exist ? $users : [];
-      if(isset($users->sdate)):
-        $users->sdate = date('m/d/Y', strtotime($users->sdate));
+      if(isset($users[0]->sdate)):
+        $users[0]->sdate = date('m/d/Y', strtotime($users[0]->sdate));
       endif;
-      if(isset($users->edate)):
-        $users->edate = date('m/d/Y', strtotime($users->edate));
+      if(isset($users[0]->edate)):
+        $users[0]->edate = date('m/d/Y', strtotime($users[0]->edate));
       endif;
       return json_encode($users, JSON_PRETTY_PRINT);
     }
