@@ -91,19 +91,19 @@ usrContent.controller('ctrlEditProfile',
   });
 
   $scope.select_status = {
-      onSelect: function (item) {
-          $scope.frm1.cstatus = item.id;
-      }
+    onSelect: function (item) {
+      $scope.frm1.cstatus = item.id;
+    }
   };
   $scope.select_country = {
-      onSelect: function (item) {
-          $scope.frm1.country = item.id;
-      }
+    onSelect: function (item) {
+      $scope.frm1.country = item.id;
+    }
   };
   $scope.select_nationality = {
-      onSelect: function (item) {
-          $scope.frm1.nationality = item.id;
-      }
+    onSelect: function (item) {
+      $scope.frm1.nationality = item.id;
+    }
   };
   $scope.cstatus = [
       {id: 1, name: 'Single'},
@@ -280,8 +280,10 @@ usrContent.controller('ctrlEditProfile',
           }, 3500);
         }
       }, 200);
-      if($scope.msg['success']['prsnl']){
-        window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+      if($scope.msg['success']){
+        if($scope.msg['success']['prsnl']){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+        }
       }
       console.log($scope.msg);
     });
@@ -318,14 +320,14 @@ usrContent.controller('ctrlEditProfile',
   // $scope.jpemps = [];
   $scope.msg['error'] = [];
   $scope.schl = {
-    'name'        : "",
-    'course'      : "",
-    'sdate'       : "",
-    'edate'       : "",
-    'awardsrecognition'  : "<ul><li></li><li></li><li></li><li></li></ul>"
-  };
+      'name'        : "",
+      'course'      : "",
+      'sdate'       : "",
+      'edate'       : "",
+      'awardsrecognition'  : "<ul><li></li><li></li><li></li><li></li></ul>"
+    };
   EducBg.query().$promise.then(function(data) {
-    $scope.schl = data[0];
+    $scope.schl = data.length ? data[0] : $scope.schl;
     $scope.frmx2 = data.length ? true : false;
   });
   $scope.saveEducBg = function(schl){
@@ -361,8 +363,10 @@ usrContent.controller('ctrlEditProfile',
             }, 3500); 
           }
       }, 200);
-      if($scope.msg['success']['educbg']){
-        window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+      if($scope.msg['success']){
+        if($scope.msg['success']['educbg']){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+        }
       }
       console.log($scope.msg);
     });

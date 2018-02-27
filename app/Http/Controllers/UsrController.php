@@ -418,11 +418,11 @@ class UsrController extends Controller
               'edate'   => $usr['edate'],
               'awardsrecognition' => isset($usr['awardsrecognition']) ? $usr['awardsrecognition'] : ''
             ]);
-            DB::table('profile_forms')
-              ->where('genid', Auth::user()->genid)
-              ->update([
-                  'educationalbg'     => 1
-              ]);
+          DB::table('profile_forms')
+            ->where('genid', Auth::user()->genid)
+            ->update([
+                'educationalbg'     => 1
+            ]);
           $this->msg['success']['educbg']['added'] = 'Educational Background is successfully added!';
         endif;
       endif;
