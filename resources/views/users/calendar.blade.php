@@ -127,7 +127,7 @@
       				<div class="nptgrp">
 		            <input type="text" ng-model="typ.name" />
 		            <label class="nptlbl">Name <span>*</span></label>
-		        	W</div>
+		        	</div>
       			</div>
 					</div>
 					<div class="col-lg-6">

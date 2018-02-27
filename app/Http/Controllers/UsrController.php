@@ -404,7 +404,7 @@ class UsrController extends Controller
               'course'  => $usr['course'],
               'sdate'   => $usr['sdate'],
               'edate'   => $usr['edate'],
-              'awardsrecognition' => $usr['awardsrecognition']
+              'awardsrecognition' => isset($usr['awardsrecognition']) ? $usr['awardsrecognition'] : ''
             ]);
           $this->msg['success']['educbg']['updated'] = 'Successfully Updated';
         else:
@@ -416,7 +416,7 @@ class UsrController extends Controller
               'course'  => $usr['course'],
               'sdate'   => $usr['sdate'],
               'edate'   => $usr['edate'],
-              'awardsrecognition' => $usr['awardsrecognition']
+              'awardsrecognition' => isset($usr['awardsrecognition']) ? $usr['awardsrecognition'] : ''
             ]);
             DB::table('profile_forms')
               ->where('genid', Auth::user()->genid)

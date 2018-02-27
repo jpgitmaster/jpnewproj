@@ -1,3 +1,8 @@
+<div class="btmctns">
+	<button class="btn btn-primary btn-edt" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
+		Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+	</button>
+</div>
 <div class="row no-gutters">
 	<div class="col-lg-12">
 		<div class="nptgrp lbld">
@@ -51,12 +56,5 @@
 	    		Awards and Recognition
 	    	</label>
 	  	</div>
-	</div>
-</div>
-<div class="crdftr">
-	<div class="btmctns">
-		<button class="btn btn-primary" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
-			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-		</button>
 	</div>
 </div>
