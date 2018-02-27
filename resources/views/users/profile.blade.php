@@ -556,6 +556,13 @@
 			        Educational Background
 			        <i class="fa fa-chevron-down"></i>
 				    </button>
+				    <div class="alert am-fade" ng-if="success_educ" ng-cloak>
+							<i class="fa fa-check-circle"></i>
+							<span>
+								<%=msg['success']['educbg']['added']%>
+								<%=msg['success']['educbg']['updated']%>
+							</span>
+						</div>
 				    <div class="collapse">
 				      <div class="card-body">
 				      	<div class="frmldr" ng-if="frm2_loader" ng-cloak>

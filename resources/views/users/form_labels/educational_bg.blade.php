@@ -1,4 +1,10 @@
-<div class="row no-gutters">
+<div class="btmctns">
+	<button class="btn btn-primary btn-edt" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
+		Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
+	</button>
+</div>
+<div class="clearfix"></div>
+<div class="row no-gutters" style="margin-top: 10px; margin-bottom: 20px;">
 	<div class="col-lg-12">
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
@@ -39,7 +45,7 @@
 	    	</label>
 	  	</div>
 	</div>
-	<div class="col-lg-12">
+	<div class="col-lg-12" ng-if="schl.awardsrecognition" ng-cloak>
 		<div class="nptgrp lbld">
 			<span class="lbldcntnt">
 				<div ng-bind-html="schl.awardsrecognition" ng-if="schl.awardsrecognition" ng-cloak></div>
@@ -51,12 +57,5 @@
 	    		Awards and Recognition
 	    	</label>
 	  	</div>
-	</div>
-</div>
-<div class="crdftr">
-	<div class="btmctns">
-		<button class="btn btn-primary" type="button" ng-click="openForm(forms[1]['cardnum'], 1)">
-			Edit &nbsp; <i class="fa fa-pencil-square-o"></i>
-		</button>
 	</div>
 </div>
