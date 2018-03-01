@@ -518,6 +518,8 @@ class UsrController extends Controller
     public function save_work_experience(Request $request){
       $existing = DB::table('personal_information')->where('genid', Auth::user()->genid)->where('wrkexperience', NULL)->count();
       $existing_emp = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
+
+      $existing_form = DB::table('profile_forms')->where('genid', Auth::user()->genid)->where('emphistory', 1)->count();
       $usr = $request->all();
       $wrkexperience = json_decode($usr['wrkexperience'], true);
       $wrkexperience = $wrkexperience ? $wrkexperience : [];
@@ -528,7 +530,7 @@ class UsrController extends Controller
           'wrkexperience' => $wrkexperience
       ]);
 
-      if($wrkexperience == 1 && empty($existing_emp)):
+      if($wrkexperience == 1 && empty($existing_emp) && empty($existing_form)):
         DB::table('profile_forms')
         ->where('genid', Auth::user()->genid)
         ->update([
