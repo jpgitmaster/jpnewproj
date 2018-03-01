@@ -516,14 +516,27 @@ class UsrController extends Controller
     }
 
     public function save_work_experience(Request $request){
+      $existing = DB::table('personal_information')->where('genid', Auth::user()->genid)->where('wrkexperience', NULL)->count();
+      $existing_emp = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
       $usr = $request->all();
       $wrkexperience = json_decode($usr['wrkexperience'], true);
       $wrkexperience = $wrkexperience ? $wrkexperience : [];
+      
       DB::table('personal_information')
       ->where('genid', Auth::user()->genid)
       ->update([
           'wrkexperience' => $wrkexperience
       ]);
+
+      if($wrkexperience == 1 && empty($existing_emp)):
+        DB::table('profile_forms')
+        ->where('genid', Auth::user()->genid)
+        ->update([
+            'emphistory' => 1
+        ]);
+        $this->msg['success']['emphistory'] = 'You have successfully update your employment history!';
+        print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+      endif;
     }
     public function emp_history(){
       $users = DB::table('employment_history')

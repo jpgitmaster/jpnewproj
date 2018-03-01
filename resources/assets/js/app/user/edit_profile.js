@@ -13,7 +13,8 @@ usrContent.controller('ctrlEditProfile',
       $scope.proform = data;
       var actvfrm = 0,
           actvfrm2 = 0,
-          actvfrm3 = 0;
+          actvfrm3 = 0,
+          actvfrm4 = 0;
       switch(data['personalinfo']){
           case 0:
               actvfrm = 1;
@@ -22,7 +23,6 @@ usrContent.controller('ctrlEditProfile',
               actvfrm = 0;
               break;
       }
-
       switch(data['educationalbg']){
           case 0:
               actvfrm2 = 1;
@@ -39,6 +39,14 @@ usrContent.controller('ctrlEditProfile',
               actvfrm3 = 0;
               break;
       }
+      switch(data['charreference']){
+          case 0:
+              actvfrm4 = 1;
+              break;
+          case 1:
+              actvfrm4 = 0;
+              break;
+      }
       $timeout(function(){
           if(data['personalinfo'] && !data['educationalbg']){
               $scope.collapseTab(2);
@@ -46,11 +54,15 @@ usrContent.controller('ctrlEditProfile',
           if(data['personalinfo'] && data['educationalbg'] && !data['emphistory']){
               $scope.collapseTab(3);
           }
+          if(data['personalinfo'] && data['educationalbg'] && data['emphistory'] && !data['charreference']){
+              $scope.collapseTab(4);
+          }
       }, 200);
       $scope.forms = [
           {'form':  'PersonalInfo', 'cardnum': 0, 'actvform': actvfrm},
           {'form':  'EducationalBg', 'cardnum': 1, 'actvform': actvfrm2},
           {'form':  'EmploymentHistory', 'cardnum': 1, 'actvform': actvfrm3},
+          {'form':  'CharacterReference', 'cardnum': 1, 'actvform': actvfrm4}
       ];
   });
   
@@ -248,6 +260,7 @@ usrContent.controller('ctrlEditProfile',
   }
   $scope.success_prsnl = false;
   $scope.success_educ = false;
+  $scope.success_emp = false;
   $scope.savePersonalInfo = function(frmusr){
     $scope.frm1_loader = true;
     $http({
@@ -503,27 +516,45 @@ usrContent.controller('ctrlEditProfile',
       },
       data: {emp: emp}
     }).then(function(result){
-        $scope.msg = result.data;
-        if(!$scope.jpemps.length){
-          if(emp >= 1 && $scope.emps.length < 1){
-            $scope.emps.unshift({
-                'company'        : "",
-                'position'       : "",
-                'salary'         : "",
-                'sdate'          : "",
-                'edate'          : "",
-                'ispresent'      : "",
-                'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
-                'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
-            });
+      $scope.msg = result.data;
+
+      if(!$scope.jpemps.length){
+        if(emp >= 1 && $scope.emps.length < 1){
+          $scope.emps.unshift({
+              'company'        : "",
+              'position'       : "",
+              'salary'         : "",
+              'sdate'          : "",
+              'edate'          : "",
+              'ispresent'      : "",
+              'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+              'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+          });
+        }
+      }
+      if(emp == 1){
+        $scope.emps = [];
+      }
+
+      $timeout(function(){
+        $scope.frm3_loader = false;
+        if($scope.msg['success']){
+          if($scope.msg['success']['emphistory'] && emp == 1){
+            $scope.collapseTab(4);
+            $scope.proform['emphistory'] = 1;
+            $scope.success_emp = true;
           }
+          $timeout(function(){
+            $scope.success_emp = false;
+          }, 3500); 
         }
-        if(emp == 1){
-          $scope.emps = [];
+      }, 200);
+      if($scope.msg['success']){
+        if($scope.msg['success']['emphistory'] && emp == 1){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
         }
-        $timeout(function(){
-          $scope.frm3_loader = false;
-        }, 500);
+      }
+      console.log($scope.msg);
     });
       
       // if(typeof emp == 'undefined' || emp == 1){

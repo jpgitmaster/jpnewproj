@@ -97,10 +97,6 @@
   min-height: 450px;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card:nth-child(2) .card-body {
-  min-height: 350px;
-}
-
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body {
   position: relative;
   padding: 30px 15px 0;
