@@ -116,6 +116,11 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_activity_type', [
 		    'as' => 'save_activity_type', 'uses' => 'CalendarController@save_activity_type'
 		]);
+
+		// YEAR CALENDAR CONTROLLERS
+		Route::get('year_calendar', [
+		    'as' => 'year_calendar', 'uses' => 'YearCalendarController@year_calendar'
+		]);
 	});
 });
 

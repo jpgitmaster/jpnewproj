@@ -455,15 +455,16 @@ usrContent.controller('ctrlEditProfile',
         //     $scope.forms[1]['actvform'] = 0;
         // }
         // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
-        // $timeout(function(){
-        //     $scope.frm2_loader = false;
-        //     if($scope.msg['success']){
-        //         if($scope.msg['success']['emphstry']['added']){
-        //             $scope.collapseTab(3);
-        //             $scope.proform['educationalbg'] = 1;
-        //         }
-        //     }
-        // }, 200);
+        $timeout(function(){
+          $scope.frm3_loader = false;
+          // if($scope.msg['success']){
+          //   if($scope.msg['success']['emphstry']['added']){
+          //     $scope.collapseTab(3);
+          //     $scope.proform['educationalbg'] = 1;
+          //   }
+          // }
+        }, 200);
+
         if($scope.msg['empsuccess']){
           $scope.emps = [];
           angular.forEach(emp, function(val, key){
@@ -479,7 +480,6 @@ usrContent.controller('ctrlEditProfile',
                 'reasonforleaving' : val.reasonforleaving
             });
           });
-          $scope.frm3_loader = false;
         }
         console.log($scope.msg);
     });
