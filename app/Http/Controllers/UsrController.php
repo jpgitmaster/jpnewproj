@@ -649,7 +649,7 @@ class UsrController extends Controller
         ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
         ->select(
             'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
-            'gender', 'cstatus', 'country', 'nationality', 'objectives'
+            'gender', 'cstatus', 'country', 'nationality', 'objectives', 'wrkexperience'
         )->where('users.genid', Auth::user()->genid)
         ->orderBy('users.id', 'desc')
         ->get();

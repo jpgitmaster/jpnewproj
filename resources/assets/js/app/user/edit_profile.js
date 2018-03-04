@@ -308,8 +308,8 @@ usrContent.controller('ctrlEditProfile',
     
     $timeout(function(){
       if($scope.usr){
-        $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
-        if(!$scope.jpemps.length && $scope.usr[0]['wrkexperience'] > 1){
+        $scope.wrkexperience = $scope.frm1[0]['wrkexperience'];
+        if(!$scope.jpemps.length && $scope.frm1[0]['wrkexperience'] > 1){
           $scope.emps = [{
               'company'        : "",
               'position'       : "",
@@ -485,7 +485,7 @@ usrContent.controller('ctrlEditProfile',
     });
   }
   $scope.addEmp = function(emp){
-    // $scope.wrkexperience = $scope.usr[0]['wrkexperience'];
+    // $scope.wrkexperience = $scope.frm1[0]['wrkexperience'];
     $scope.emps.unshift({
       'company'        : "",
       'position'       : "",
