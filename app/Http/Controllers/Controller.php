@@ -43,6 +43,7 @@ class Controller extends BaseController
         define('c_usr_acct_settings', 'css/app/user/acct_settings.css');
         define('c_usr_edit_profile', 'css/app/user/edit_profile.css');
         define('c_usr_calendar', 'css/app/user/calendar.css');
+        define('c_usr_year_calendar', 'css/app/user/year_calendar.css');
         
 
         define('c_home', 'css/app/web/home.css');

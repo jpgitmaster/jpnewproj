@@ -19,7 +19,7 @@ class YearCalendarController extends Controller
     public function year_calendar(){
         return view('users.year_calendar', [
             'scripts'       => $this->import['scripts'],
-            'stylesheet'    => $this->import['stylesheet']
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_year_calendar])
         ]);
     }
 }
