@@ -133,25 +133,6 @@
 	<br>
 	<div class="clearfix"></div>
 	<div class="row no-gutters">
-		<div class="col-lg-3">
-			<div class="nptgrp">
-				<select required>
-          <option></option>
-          <option>Ten Jin Maru</option>
-          <option>King Barley</option>
-          <option>Ototachibana</option>
-          <option>Tenshu Maru</option>
-          <option>Emerald Horizon</option>
-          <option>Ultra Lion</option>
-        </select>
-        <label class="nptlbl">
-        	Vessels <span>*</span>
-        </label>
-			</div>
-		</div>
-		<div class="col-lg-5">
-			
-		</div>
 		<div class="col-lg-4">
 			<div id="search_data" class="btn-group">
 	      <div class="input-group">
@@ -167,6 +148,25 @@
 	        </div>
 	      </div>
 	    </div>
+		</div>
+		<div class="col-lg-5">
+			
+		</div>
+		<div class="col-lg-3">
+			<div class="nptgrp">
+				<select required>
+          <option></option>
+          <option>Ten Jin Maru</option>
+          <option>King Barley</option>
+          <option>Ototachibana</option>
+          <option>Tenshu Maru</option>
+          <option>Emerald Horizon</option>
+          <option>Ultra Lion</option>
+        </select>
+        <label class="nptlbl">
+        	Vessels <span>*</span>
+        </label>
+			</div>
 		</div>
 	</div>
 	<div class="clearfix"></div>
