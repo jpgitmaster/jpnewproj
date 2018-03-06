@@ -121,13 +121,13 @@
 				color: #FFF;
 				cursor: pointer;
 				&.td2018{
-					background-color: #008000;
+					background-color: #0e99ac;
 				}
 				&.td2019{
-					background-color: #ffa500;
+					background-color: #f1a94e;
 				}
 				&.td2020{
-					background-color: #3a87ad;
+					background-color: #e45641;
 				}
 				&.td2021{
 					background-color: #646c70;
@@ -164,9 +164,9 @@ ul.lgnd{
 		padding: 5px;
 		font-size: 12px;
 		font-weight: bold;
-		&:nth-child(1){ .fa{ color: #008000;} }
-		&:nth-child(2){ .fa{ color: #ffa500;} }
-		&:nth-child(3){ .fa{ color: #3a87ad;} }
+		&:nth-child(1){ .fa{ color: #0e99ac;} }
+		&:nth-child(2){ .fa{ color: #f1a94e;} }
+		&:nth-child(3){ .fa{ color: #e45641;} }
 		&:nth-child(4){ .fa{ color: #646c70;} }
 		&:nth-child(5){ .fa{ color: #e16060;} }
 		&:nth-child(6){ .fa{ color: #60e1d1;} }

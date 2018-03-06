@@ -145,15 +145,15 @@
 }
 
 .fllclndr_rght .tbl th .tbdy.td2018, .fllclndr_rght .tbl td .tbdy.td2018 {
-  background-color: #008000;
+  background-color: #0e99ac;
 }
 
 .fllclndr_rght .tbl th .tbdy.td2019, .fllclndr_rght .tbl td .tbdy.td2019 {
-  background-color: #ffa500;
+  background-color: #f1a94e;
 }
 
 .fllclndr_rght .tbl th .tbdy.td2020, .fllclndr_rght .tbl td .tbdy.td2020 {
-  background-color: #3a87ad;
+  background-color: #e45641;
 }
 
 .fllclndr_rght .tbl th .tbdy.td2021, .fllclndr_rght .tbl td .tbdy.td2021 {
@@ -198,15 +198,15 @@ ul.lgnd li {
 }
 
 ul.lgnd li:nth-child(1) .fa {
-  color: #008000;
+  color: #0e99ac;
 }
 
 ul.lgnd li:nth-child(2) .fa {
-  color: #ffa500;
+  color: #f1a94e;
 }
 
 ul.lgnd li:nth-child(3) .fa {
-  color: #3a87ad;
+  color: #e45641;
 }
 
 ul.lgnd li:nth-child(4) .fa {
