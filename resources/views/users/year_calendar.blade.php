@@ -1,7 +1,42 @@
-@extends('users.index')
+@extends('users.mmi_index')
 @section('title', 'Year Calendar')
 
 @section('content')
+<style>
+#wrapper{
+	display: block;
+}
+#wrapper .hdr{
+	background-color: #29166f;
+	width: 100%;
+	float: left;
+	margin-bottom: 60px;
+	height: 110px;
+}
+#wrapper .content{
+	padding: 0;
+}
+#wrapper .content .cntnbx {
+    background-color: #FFF;
+    padding: 20px;
+    border: 1px solid #0077c0;
+    margin: 0 20px 15px;
+    font-size: 14px;
+    clear: both;
+    position: relative;
+    top: -15px;
+}
+#wrapper .hdr .logo{
+	width: 250px;
+	display: inline-block;
+	position: relative;
+	left: 50px;
+	top: 16px;
+}
+#wrapper .hdr .logo img{
+	width: 100%;
+}
+</style>
 <div class="cntnbx">
 	<h4>Crew Rotation Program</h4>
 	<br>

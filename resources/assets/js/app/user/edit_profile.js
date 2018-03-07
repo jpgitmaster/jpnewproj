@@ -304,12 +304,13 @@ usrContent.controller('ctrlEditProfile',
   $scope.jpemps = [];
   EmpHistory.query().$promise.then(function(data) {
     $scope.jpemps = data;
+    $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
     var noworkexprnce = $scope.jpemps.length ? true : false;
     
     $timeout(function(){
       if($scope.usr){
-        $scope.wrkexperience = $scope.frm1[0]['wrkexperience'];
-        if(!$scope.jpemps.length && $scope.frm1[0]['wrkexperience'] > 1){
+        $scope.wrkexperience = $scope.frm1.wrkexperience;
+        if(!$scope.jpemps.length && $scope.frm1.wrkexperience > 1){
           $scope.emps = [{
               'company'        : "",
               'position'       : "",
@@ -484,8 +485,10 @@ usrContent.controller('ctrlEditProfile',
         console.log($scope.msg);
     });
   }
+  
+  $scope.empbtndisable = false;
   $scope.addEmp = function(emp){
-    // $scope.wrkexperience = $scope.frm1[0]['wrkexperience'];
+    // $scope.wrkexperience = $scope.frm1['wrkexperience'];
     $scope.emps.unshift({
       'company'        : "",
       'position'       : "",
@@ -499,6 +502,11 @@ usrContent.controller('ctrlEditProfile',
     if($scope.msg['error']){
       if(typeof $scope.msg['error']['emp'] != "undefined"){
         $scope.msg['error']['emp'].splice(0, 0, {});
+      }
+    }
+    if($scope.emps && $scope.jpemps){
+      if($scope.emps.length > 3 - $scope.jpemps.length){
+        $scope.empbtndisable = true;
       }
     }
   }
@@ -587,6 +595,9 @@ usrContent.controller('ctrlEditProfile',
       $scope.msg = result.data;
       var index = $scope.jpemps.indexOf(emp);
       $scope.jpemps.splice(index, 1);
+      if(!$scope.jpemps.length){
+        $scope.empchckbx = false;
+      }
       console.log($scope.msg);
     });
   }

@@ -1,5 +1,5 @@
 @extends('users.mmi_index')
-@section('title', 'Year Calendar')
+@section('title', 'CRM Dashboard')
 
 @section('content')
 <style>
@@ -26,7 +26,7 @@
 	display: inline-block;
 	position: relative;
 	left: 50px;
-	top: 20px;
+	top: 16px;
 }
 #wrapper .hdr .logo img{
 	width: 100%;

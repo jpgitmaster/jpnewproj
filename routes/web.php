@@ -124,6 +124,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('crm_dashboard', [
 		    'as' => 'crm_dashboard', 'uses' => 'YearCalendarController@crm_dashboard'
 		]);
+		Route::get('crm_login', [
+		    'as' => 'crm_login', 'uses' => 'YearCalendarController@crm_login'
+		]);
 	});
 });
 

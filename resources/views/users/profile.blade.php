@@ -702,13 +702,13 @@
 				            	Work Experience <span>*</span>
 				            </label>
 									</div>
-		        			<button ng-click="addEmp(emp)" ng-disabled="(!wrkexperience || wrkexperience <= 1 || emps.length > 4) && !jpemps.length" class="btn btn-primary btnwrkxprnc" type="button">
+		        			<button ng-click="addEmp(emp)" ng-disabled="((!wrkexperience || wrkexperience <= 1 || emps.length > 4) && !jpemps.length) || empbtndisable" class="btn btn-primary btnwrkxprnc" type="button">
                   	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
                 	</button>
 	              	<div class="clearfix"></div>
 					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
 		              	<div class="rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
-			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4">
+			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4 - jpemps.length">
 			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
 			                    	<span class="fa fa-close"></span>
@@ -809,7 +809,7 @@
 						                </div>
 						                <label class="ctrl">
 									        		Present Employer
-									        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent" />
+									        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent || empchckbx" />
 									        		<div class="ctrl_indicator"></div>
 									    			</label>
 								        		</div>

@@ -29,4 +29,10 @@ class YearCalendarController extends Controller
             'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_year_calendar])
         ]);
     }
+    public function crm_login(){
+    	return view('users.crm_login', [
+            'scripts'       => $this->import['scripts'],
+            'stylesheet'    => array_merge($this->import['stylesheet'], [c_usr_year_calendar])
+        ]);
+    }
 }
