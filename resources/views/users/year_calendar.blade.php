@@ -1,132 +1,41 @@
-@extends('users.index')
+@extends('users.mmi_index')
 @section('title', 'Year Calendar')
 
 @section('content')
 <style>
-	.tbl{
-		width: 100%;
-	}
-	.tbl th, .tbl td{
-		text-align: center;
-		border: 1px solid #ccc;
-	}
-	.tbl th h5{
-		margin: 0;
-	}
-	.fllclndr_lft{
-		width: 250px;
-		float: left;
-		padding: 0;
-		border: 1px solid #CCC;
-		position: relative;
-    right: -1px;
-	}
-	.fllclndr_lft .hdrlfttl{
-		height: 36px;
-		padding: 5px 10px;
-		background-color: #F9F9F9;
-		border-bottom: 1px solid #CCC;
-	}
-	.fllclndr_lft .hdrbdy{
-		padding: 15px;
-	}
-	.fllclndr_lft ul{
-		margin: 0;
-		padding: 0;
-	}
-	.fllclndr_lft ul li{
-		list-style: none;
-	}
-	.fllclndr_lft .hdrlfttl h5{
-		margin: 0;
-	}
-	.fllclndr_rght{
-		margin-left: 250px;
-		overflow-x: auto;
-		padding-bottom: 5px;
-	}
-	.fllclndr_rght table{
-		width: 1200px;
-	}
-	.fllclndr_rght::-webkit-scrollbar-track
-	{
-		-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
-		border-radius: 10px;
-		background-color: #F5F5F5;
-	}
-
-	.fllclndr_rght::-webkit-scrollbar
-	{
-		height: 8px;
-		background-color: #F5F5F5;
-	}
-
-	.fllclndr_rght::-webkit-scrollbar-thumb
-	{
-		border-radius: 10px;
-		-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,.3);
-		background-color: #333;
-	}
-	.tbl{
-		border: 1px solid #CCC;
-		border-collapse: collapse;
-	}
-	.tbl .thd{
-		background-color: #F9F9F9;
-		color: #000;
-		width: 33.33%;
-		height: 36px;
-		padding: 5px 10px;
-	}
-	.tbdy{
-		color: #FFF;
-		cursor: pointer;
-	}
-	.td2018{
-		background-color: #049c07;
-	}
-	.td2019{
-		background-color: #0077c0;
-	}
-	.td2020{
-		background-color: #b7b013;
-	}
-	#search_data{
-		width: 100%;
-	}
-	#search_data button{
-		border: 1px solid #0077c0;
-    border-radius: 0;
-    background-color: #0077c0;
-    color: #FFF;
-    height: 34px;
-    padding: 5px 15px;
-    outline: none;
-    box-shadow: none;
-    cursor: pointer;
-	}
-	#search_data input[type=text]{
+#wrapper{
+	display: block;
+}
+#wrapper .hdr{
+	background-color: #29166f;
+	width: 100%;
+	float: left;
+	margin-bottom: 60px;
+	height: 110px;
+}
+#wrapper .content{
+	padding: 0;
+}
+#wrapper .content .cntnbx {
+    background-color: #FFF;
+    padding: 20px;
     border: 1px solid #0077c0;
-    border-right: 0;
-    height: 34px;
+    margin: 0 20px 15px;
     font-size: 14px;
-	}
-	#search_data .dropdown-toggle{
-		background-color: #FFF;
-		border-right: 1px solid #0077c0;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-		border-left: 0;
-		color: #0077c0;
-		font-size: 14px;
-	}
-	#search_data .dropdown-menu{
-		border: 1px solid #0077c0;
-		color: #0077c0;
-	}
-	#search_data .dropdown-menu a{
-		color: #0077c0;
-	}
+    clear: both;
+    position: relative;
+    top: -15px;
+}
+#wrapper .hdr .logo{
+	width: 250px;
+	display: inline-block;
+	position: relative;
+	left: 50px;
+	top: 16px;
+}
+#wrapper .hdr .logo img{
+	width: 100%;
+}
 </style>
 <div class="cntnbx">
 	<h4>Crew Rotation Program</h4>
@@ -142,6 +51,7 @@
 	          All &nbsp;
 	        </button>
 	        <div class="dropdown-menu">
+	        	<div class="arrow"></div>
 	          <a class="dropdown-item" href="#">Vessel</a>
 	          <a class="dropdown-item" href="#">Master</a>
 	          <a class="dropdown-item" href="#">On-vacation</a>
@@ -176,10 +86,7 @@
 		</div>
 		<div class="clearfix"></div>
 		<div class="row no-gutters">
-			<div class="col-lg-6">
-				Vessels
-			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-12 vslhdr">
 				Masters
 			</div>
 		</div>
@@ -187,22 +94,22 @@
 		<div class="hdrbdy">
 			<ul>
 				<li>
-					Ten Jin Maru
+					Suyko, Rafael T. (43)
 				</li>
 				<li>
-					King Barley
+					Manuza, Mario A. (46)
 				</li>
 				<li>
-					Ototachibana
+					Rosal, Wendel H. (39)
 				</li>
 				<li>
-					Tenshu Maru
+					Causing, Loren P. (41)
 				</li>
 				<li>
-					Emerald Horizon
+					Ramos, Rowell L. (42)
 				</li>
 				<li>
-					Ultra Lion
+					Dela Cruz, Leo D. (46)
 				</li>
 			</ul>
 		</div>
@@ -263,7 +170,121 @@
 						<td style="width: 1%;"><strong>12</strong></td>
 					</tr>
 					<tr>
-						<td style="width: 1%;" class="tbdy td2018" colspan="14"><strong>Vessel 1</strong></td>
+						<td style="width: 1%;" colspan="8">
+							<div class="am-flip-x popcntnr">
+              	<div class="popover bs-popover-top" style="display: block;">
+							    <div class="arrow"></div>
+							    <div class="popover-body">
+							    	<i class="fa fa-times-circle"></i>
+							      <i class="fa fa-user-circle"></i>
+							      <h4>Suyko, Rafael T.</h4>
+							      <span><strong>Started:</strong> January 15, 2018</span>
+							      <span><strong>Ended:</strong> August 20, 2018</span>
+							      <div class="clearfix"></div>
+							    </div>
+								</div>
+              </div>
+							<strong class="tbdy td2018">Ten Jin Maru</strong>
+						</td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+					</tr>
+					<tr>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="10">
+							<strong class="tbdy td2019">King Barley</strong>
+						</td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+					</tr>
+					<tr>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="8"><strong class="tbdy td2020">Ototachibana</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+					</tr>
+					<tr>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="8"><strong class="tbdy td2021">Tenshu Maru</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -303,8 +324,9 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="9"><strong class="tbdy td2022">Emerald Horizon</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" class="tbdy td2019" colspan="10"><strong>Vessel 2</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -327,7 +349,6 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" class="tbdy td2020" colspan="8"><strong>Vessel 3</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -342,16 +363,68 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="12"><strong class="tbdy td2023">Ultra Lion</strong></td>
 					</tr>
 				</tbody>
 			</tbody>
 		</table>
 	</div>
 	<div class="clearfix"></div>
-
+	<div class="row no-gutters">
+		<div class="col-lg-6">
+			<strong>Vessels Legend:</strong>
+			<ul class="row no-gutters lgnd">
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					Ten Jin Maru
+				</li>
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					King Barley
+				</li>
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					Ototachibana
+				</li>
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					Tenshu Maru
+				</li>
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					Emerald Horizon
+				</li>
+				<li class="col-lg-4">
+					<i class="fa fa-ship"></i>
+					Ultra Lion
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-6">
+			<nav>
+			  <ul class="pgnt pagination">
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			        <span class="sr-only">Previous</span>
+			      </a>
+			    </li>
+			    <li class="page-item"><a class="page-link" href="#">1</a></li>
+			    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    <li class="page-item"><a class="page-link" href="#">4</a></li>
+			    <li class="page-item"><a class="page-link" href="#">5</a></li>
+			    <li class="page-item"><a class="page-link" href="#">6</a></li>
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			        <span class="sr-only">Next</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+	<div class="clearfix"></div><br><br>
 </div>
 @endsection
