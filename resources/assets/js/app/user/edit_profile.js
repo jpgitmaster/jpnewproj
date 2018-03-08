@@ -374,7 +374,7 @@ usrContent.controller('ctrlEditProfile',
               
             $timeout(function(){
               $scope.success_educ = false;
-            }, 3500); 
+            }, 3500);
           }
       }, 200);
       if($scope.msg['success']){
@@ -485,7 +485,35 @@ usrContent.controller('ctrlEditProfile',
         console.log($scope.msg);
     });
   }
-  
+  $scope.updateEmpHistory = function(idx, emp){
+    $scope.frm3_loader = true;
+    $http({
+        method: 'POST',
+        url: '/user/update_employment_history',
+        headers: { 'Content-Type': undefined },
+        transformRequest: function (data) {
+            var fd = new FormData();
+            fd.append('emp', angular.toJson(data.emp));
+            fd.append('idx', angular.toJson('indx'+data.idx));
+            return fd;
+        },
+        data: {emp: emp, idx: idx}
+    }).then(function(result){
+        $scope.msg = result.data;
+        $timeout(function(){
+          $scope.frm3_loader = false;
+        }, 200);
+        if($scope.msg['success_emp']){
+          window.scrollTo('', angular.element(".tstko"+idx).offset().top - 80);
+          $scope.jphide[idx] = false;
+          $scope.frmempupdt = false;
+          $timeout(function(){
+            $scope.msg['success_emp'] = null;
+          }, 3500);
+        }
+        console.log($scope.msg['success_emp']);
+    });
+  }
   $scope.empbtndisable = false;
   $scope.addEmp = function(emp){
     // $scope.wrkexperience = $scope.frm1['wrkexperience'];
@@ -615,6 +643,7 @@ usrContent.controller('ctrlEditProfile',
   $scope.frmempupdt = false;
   $scope.editEmpForm = function(emp, indx){
     $scope.empedt = emp;
+    $scope.empedt_indx = indx;
     var i;
     for (i = 0; i < $scope.jpemps.length; i++) { 
       $scope.jphide[i] = false;
@@ -645,50 +674,50 @@ usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
     return {
         restrict: 'A',
         link: function(scope, elm, attrs){
-            elm.bind('change', function(){
-                
-                var files = elm[0].files;
-                $parse(attrs.fileInput).assign(scope, files);
-                scope.$apply();
-                
-                scope.shw_avatarmdl = true;
-                scope.loader = true;
+          elm.bind('change', function(){
+              
+            var files = elm[0].files;
+            $parse(attrs.fileInput).assign(scope, files);
+            scope.$apply();
+            
+            scope.shw_avatarmdl = true;
+            scope.loader = true;
 
-                $http({
-                    method: 'POST',
-                    url: "/validate_dp",
-                    headers: { 'Content-Type': undefined },
-                    transformRequest: function (data) {
-                        var fd = new FormData();
-                        angular.forEach(data.img_files, function(file){
-                           fd.append('file', file);
-                        });
-                        return fd;
-                    },
-                    data: {img_files: files}
-                }).then(function(result){
-                    var msg = result.data;
-                    scope.shw_avatarmdl = false;
-                    
-                    if(!msg['dp']['error']['file']){
-                        angular.element('#cropModal').appendTo('body').modal({
-                            backdrop: 'static'
-                        });
-                        var file = files[0];
-                        (function(file) {
-                            var reader = new FileReader();
-                            reader.readAsDataURL(file);
-                            reader.onload = function(e) {
-                                var imgTarget = e.target.result;
-                                scope.imgForm(imgTarget);
-                            }
-                        }(file));
-                        scope.msg = '';
-                    }else{
-                        scope.msg = msg;
-                    }
-                });
+            $http({
+                method: 'POST',
+                url: "/validate_dp",
+                headers: { 'Content-Type': undefined },
+                transformRequest: function (data) {
+                    var fd = new FormData();
+                    angular.forEach(data.img_files, function(file){
+                       fd.append('file', file);
+                    });
+                    return fd;
+                },
+                data: {img_files: files}
+            }).then(function(result){
+                var msg = result.data;
+                scope.shw_avatarmdl = false;
+                
+                if(!msg['dp']['error']['file']){
+                    angular.element('#cropModal').appendTo('body').modal({
+                        backdrop: 'static'
+                    });
+                    var file = files[0];
+                    (function(file) {
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function(e) {
+                            var imgTarget = e.target.result;
+                            scope.imgForm(imgTarget);
+                        }
+                    }(file));
+                    scope.msg = '';
+                }else{
+                    scope.msg = msg;
+                }
             });
+          });
         }
     }
 }]);

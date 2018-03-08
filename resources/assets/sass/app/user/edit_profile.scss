@@ -179,6 +179,21 @@
 								    }
 							    }
 						    }
+						    #frmempupdt{
+						    	.btnupdt{
+						    		text-align: center;
+						    		.btn-success{
+								    	display: inline-block;
+								    }
+						    	}
+						    }
+						    .pcemp{
+					    		position: relative;
+					    		.alert{
+			    			    right: -30px;
+    								top: -15px;
+					    		}
+					    	}
 							}
 							.cls{
 						    position: absolute;

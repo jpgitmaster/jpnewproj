@@ -183,6 +183,23 @@
   float: none;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp #frmempupdt .btnupdt {
+  text-align: center;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp #frmempupdt .btnupdt .btn-success {
+  display: inline-block;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .pcemp {
+  position: relative;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .pcemp .alert {
+  right: -30px;
+  top: -15px;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .cls {
   position: absolute;
   right: 10px;

@@ -856,7 +856,7 @@
 		              	</div>
 			            </form>
 			            <div class="clearfix"></div>
-			            <form ng-submit="updateEmploymentHistory(empedt)" method="POST" novalidate ng-show="frmempupdt" ng-cloak id="frmempupdt">
+			            <form ng-submit="updateEmpHistory(empedt_indx, empedt)" method="POST" novalidate ng-show="frmempupdt" ng-cloak id="frmempupdt">
 		              	<div class="am-fade row no-gutters">
 		              		<div class="col-lg-8">
 		              			<div class="bx">
@@ -934,7 +934,7 @@
 									        </div>
 		              			</div>
 		              		</div>
-		              		<div class="col-lg-12">
+		              		<div class="col-lg-12 btnupdt">
 		              			<button class="btn btn-success" type="submit">
 				              		Save Changes
 				              	</button>
@@ -943,10 +943,16 @@
 			            </form>
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
-			            	<div ng-repeat="jpemp in jpemps | limitTo: 4" ng-class="'tstko'+$index" style="position: relative;">
+			            	<div ng-repeat="jpemp in jpemps | limitTo: 4" ng-class="'tstko'+$index" class="pcemp">
 			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
 	                  	</button>
+	                  	<div class="alert am-fade" ng-if="msg['success_emp']['indx'+$index]" ng-cloak>
+												<i class="fa fa-check-circle"></i>
+												<span>
+													<%=msg['success_emp']['indx'+$index]%>
+												</span>
+											</div>
 			              	<div class="row no-gutters" style="padding-top: 20px;" ng-show="!jphide[$index]" ng-cloak>
 			              		<div class="col-lg-12">
 			              			<div class="btnactns" style="">

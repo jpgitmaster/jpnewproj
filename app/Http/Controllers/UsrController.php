@@ -503,6 +503,42 @@ class UsrController extends Controller
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
+    public function update_employment_history(Request $request){
+      $usr = [];
+      $rqst = $request->all();
+      $usr['emp'] = json_decode($rqst['emp'], true);
+      $usr['idx'] = json_decode($rqst['idx'], true);
+      $usr = $usr ? $usr : [];
+
+      if(!empty($usr['emp']['sdate'])):
+        $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
+      endif;
+      if(!empty($usr['emp']['edate'])):
+        $usr['emp']['edate'] = date('Y-m-d', strtotime($usr['emp']['edate']));
+      else:
+        $usr['emp']['edate'] = NULL;
+      endif;
+      if(empty($usr['emp']['ispresent'])):
+        $usr['emp']['ispresent'] = 0;
+      endif;
+      DB::table('employment_history')
+      ->where('genid', Auth::user()->genid)
+      ->where('id', $usr['emp']['id'])
+      ->update([
+        'company' => $usr['emp']['company'],
+        'position' => $usr['emp']['position'],
+        'currency' => $usr['emp']['currency'],
+        'salary' => $usr['emp']['salary'],
+        'sdate' => $usr['emp']['sdate'],
+        'edate' => $usr['emp']['edate'],
+        'ispresent' => $usr['emp']['ispresent'],
+        'jbdescription' => $usr['emp']['jbdescription'],
+        'reasonforleaving' => $usr['emp']['reasonforleaving']
+      ]);
+      $this->msg['success_emp'][$usr['idx']] = 'You have successfully updated your employment history in '.$usr['emp']['company'].'!';
+      print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+    }
+
     public function delete_employment_history(Request $request){
       $usr = [];
       $rqst = $request->all();
