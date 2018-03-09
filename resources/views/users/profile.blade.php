@@ -809,7 +809,7 @@
 						                </div>
 						                <label class="ctrl">
 									        		Present Employer
-									        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent)" ng-disabled="checked == 1 && !emp.ispresent || empchckbx" />
+									        		<input type="checkbox" ng-model="emp.ispresent" ng-change="clearEndate($index, emp.ispresent, 'add')" ng-disabled="checked == 1 && !emp.ispresent || empchckbx" />
 									        		<div class="ctrl_indicator"></div>
 									    			</label>
 								        		</div>
@@ -860,23 +860,39 @@
 		              	<div class="am-fade row no-gutters">
 		              		<div class="col-lg-8">
 		              			<div class="bx">
-		              				<div class="nptgrp">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['company'][0]}" ng-mouseover="edt_company = true" ng-mouseleave="edt_company = false">
 								            <input type="text" ng-model="empedt.company" required>
 								            <label class="nptlbl">Employer Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['company'][0] && edt_company === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['company'][0] %>
+														    </div>
+															</div>
+						                </div>
 									        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-		              				<div class="nptgrp">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['position'][0]}" ng-mouseover="edt_position = true" ng-mouseleave="edt_position = false">
 								            <input type="text" ng-model="empedt.position" required>
 								            <label class="nptlbl">Position <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['position'][0] && edt_position === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['position'][0] %>
+														    </div>
+															</div>
+						                </div>
 									        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-		              				<div class="nptgrp">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['salary'][0]}" ng-mouseover="edt_salary = true" ng-mouseleave="edt_salary = false">
 		              					<div class="input-group">
 		              						<span class="input-group-addon">
 													        <select name="currency" ng-model="empedt.currency" required>
@@ -888,31 +904,55 @@
 								            	<input type="text" ng-model="empedt.salary" currency-input maxlength="12" required>
 								            </div>
 							            	<label class="nptlbl">Salary Rate <span>*</span></label>
+							            	<div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['salary'][0] && edt_salary === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['salary'][0] %>
+														    </div>
+															</div>
+						                </div>
 							        		</div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-		              				<div class="nptgrp">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['sdate'][0]}" ng-mouseover="edt_sdate = true" ng-mouseleave="edt_sdate = false">
 								            <input type="text" ng-model="empedt.sdate" ui-mask="99/99/9999" model-view-value="true" required>
 								            <label class="nptlbl">Start Date <span>*</span></label>
 								            <span class="btmlbl">
 								            	<strong>Format:</strong> mm/dd/yyyy
 								            </span>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['sdate'][0] && edt_sdate === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['sdate'][0] %>
+														    </div>
+															</div>
+						                </div>
 							        		</div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-4">
 		              			<div class="bx">
-		              				<div class="nptgrp">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['edate'][0]}" ng-mouseover="edt_edate = true" ng-mouseleave="edt_edate = false">
 								            <input type="text" ng-model="empedt.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="empedt.ispresent" required>
 								            <label class="nptlbl">End Date <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['edate'][0] && edt_edate === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['edate'][0] %>
+														    </div>
+															</div>
+						                </div>
 								            <span class="btmlbl">
 								            	<strong>Format:</strong> mm/dd/yyyy
 								            </span>
 								            <label class="ctrl">
 									        		Present Employer
-									        		<input type="checkbox" ng-model="empedt.ispresent" />
+									        		<input type="checkbox" ng-model="empedt.ispresent" ng-change="clearEndate($index, empedt.ispresent, 'edt')" ng-disabled="checked == 1 && !empedt.ispresent || empchckbx" />
 									        		<div class="ctrl_indicator"></div>
 									    			</label>
 			              			</div>
@@ -920,17 +960,33 @@
 		              		</div>
 		              		<div class="col-lg-6">
 		              			<div class="bx">
-		              				<div class="nptgrp txtarea wysiwyg">
+		              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp']['jbdescription']}" ng-mouseover="edt_jbdescription = true" ng-mouseleave="edt_jbdescription = false">
 								            <summernote ng-model="empedt.jbdescription" config="summernote_options"></summernote>
 								            <label class="nptlbl">Job Description <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['jbdescription'][0] && edt_jbdescription === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['jbdescription'][0] %>
+														    </div>
+															</div>
+						                </div>
 									        </div>
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-6">
 		              			<div class="bx">
-		              				<div class="nptgrp txtarea wysiwyg">
+		              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['emp']['reasonforleaving']}" ng-mouseover="edt_reasonforleaving = true" ng-mouseleave="edt_reasonforleaving = false">
 								            <summernote ng-model="empedt.reasonforleaving" config="summernote_options"></summernote>
 								            <label class="nptlbl">Reason for Leaving <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['reasonforleaving'][0] && edt_reasonforleaving === true" ng-cloak>
+					                    <div class="popover bs-popover-top">
+												    		<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['emp']['reasonforleaving'][0] %>
+														    </div>
+															</div>
+						                </div>
 									        </div>
 		              			</div>
 		              		</div>

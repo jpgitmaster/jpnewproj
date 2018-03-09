@@ -504,38 +504,72 @@ class UsrController extends Controller
     }
 
     public function update_employment_history(Request $request){
+      $replace_names = [
+        'company'       => 'Company',
+        'position'      => 'Position',
+        'salary'        => 'Salary',
+        'sdate'         => 'Start Date',
+        'edate'         => 'End Date',
+        'jbdescription' => 'Job Description',
+        'reasonforleaving' => 'Reason for Leaving'
+      ];
       $usr = [];
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
       $usr['idx'] = json_decode($rqst['idx'], true);
       $usr = $usr ? $usr : [];
+      $messages = [];
 
-      if(!empty($usr['emp']['sdate'])):
-        $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
+      if(isset($usr['emp']['ispresent'])):
+        if($usr['emp']['ispresent'] == 1):
+          $validate_edate = '';
+        else:
+          $validate_edate = 'required|date|date_format:m/d/Y';
+        endif;
       endif;
-      if(!empty($usr['emp']['edate'])):
-        $usr['emp']['edate'] = date('Y-m-d', strtotime($usr['emp']['edate']));
+
+      $validate = Validator::make($usr['emp'], [
+          'company'   => 'required|max:200',
+          'position'  => 'required|max:100',
+          'salary'    => 'required|numeric|min:10',
+          'sdate'  => 'required|date|date_format:m/d/Y',
+          'edate'  => $validate_edate ? $validate_edate : '',
+          'jbdescription'  => 'required|min:50|max:800',
+          'reasonforleaving'  => 'required|min:50|max:800'
+      ], $messages);
+      
+      $validate->setAttributeNames($replace_names);
+      $has_error = $this->hasError($validate);
+      if($has_error == true):
+        $this->msg['error']['emp'] = $validate->messages()->toArray();
       else:
-        $usr['emp']['edate'] = NULL;
+        if(!empty($usr['emp']['sdate'])):
+          $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
+        endif;
+        if(!empty($usr['emp']['edate'])):
+          $usr['emp']['edate'] = date('Y-m-d', strtotime($usr['emp']['edate']));
+        else:
+          $usr['emp']['edate'] = NULL;
+        endif;
+        if(empty($usr['emp']['ispresent'])):
+          $usr['emp']['ispresent'] = 0;
+        endif;
+        DB::table('employment_history')
+        ->where('genid', Auth::user()->genid)
+        ->where('id', $usr['emp']['id'])
+        ->update([
+          'company' => $usr['emp']['company'],
+          'position' => $usr['emp']['position'],
+          'currency' => $usr['emp']['currency'],
+          'salary' => $usr['emp']['salary'],
+          'sdate' => $usr['emp']['sdate'],
+          'edate' => $usr['emp']['edate'],
+          'ispresent' => $usr['emp']['ispresent'],
+          'jbdescription' => $usr['emp']['jbdescription'],
+          'reasonforleaving' => $usr['emp']['reasonforleaving']
+        ]);
+        $this->msg['success_emp'][$usr['idx']] = 'You have successfully updated your employment history in '.$usr['emp']['company'].'!';
       endif;
-      if(empty($usr['emp']['ispresent'])):
-        $usr['emp']['ispresent'] = 0;
-      endif;
-      DB::table('employment_history')
-      ->where('genid', Auth::user()->genid)
-      ->where('id', $usr['emp']['id'])
-      ->update([
-        'company' => $usr['emp']['company'],
-        'position' => $usr['emp']['position'],
-        'currency' => $usr['emp']['currency'],
-        'salary' => $usr['emp']['salary'],
-        'sdate' => $usr['emp']['sdate'],
-        'edate' => $usr['emp']['edate'],
-        'ispresent' => $usr['emp']['ispresent'],
-        'jbdescription' => $usr['emp']['jbdescription'],
-        'reasonforleaving' => $usr['emp']['reasonforleaving']
-      ]);
-      $this->msg['success_emp'][$usr['idx']] = 'You have successfully updated your employment history in '.$usr['emp']['company'].'!';
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 

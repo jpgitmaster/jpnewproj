@@ -511,7 +511,8 @@ usrContent.controller('ctrlEditProfile',
             $scope.msg['success_emp'] = null;
           }, 3500);
         }
-        console.log($scope.msg['success_emp']);
+        $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
+        console.log($scope.msg);
     });
   }
   $scope.empbtndisable = false;
@@ -623,9 +624,7 @@ usrContent.controller('ctrlEditProfile',
       $scope.msg = result.data;
       var index = $scope.jpemps.indexOf(emp);
       $scope.jpemps.splice(index, 1);
-      if(!$scope.jpemps.length){
-        $scope.empchckbx = false;
-      }
+      $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
       console.log($scope.msg);
     });
   }
@@ -642,6 +641,10 @@ usrContent.controller('ctrlEditProfile',
   $scope.jphide = [];
   $scope.frmempupdt = false;
   $scope.editEmpForm = function(emp, indx){
+    // console.log(emp.ispresent);
+    if(emp.ispresent == true){
+      $scope.empchckbx = false;
+    }
     $scope.empedt = emp;
     $scope.empedt_indx = indx;
     var i;
@@ -659,9 +662,16 @@ usrContent.controller('ctrlEditProfile',
   }
 
   $scope.checked = 0;
-  $scope.clearEndate = function(index, ispresent){
+  $scope.clearEndate = function(index, ispresent, mthd){
     if(ispresent == 1){
-      $scope.emps[index].edate = '';
+      switch(mthd){
+        case 'add':
+          $scope.emps[index].edate = '';
+          break;
+        case 'edt':
+          $scope.empedt.edate = '';
+          break;
+      }
       $scope.checked++;
     }else{
       $scope.checked--;
