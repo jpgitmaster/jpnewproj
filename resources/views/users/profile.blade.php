@@ -952,7 +952,7 @@
 								            </span>
 								            <label class="ctrl">
 									        		Present Employer
-									        		<input type="checkbox" ng-model="empedt.ispresent" ng-change="clearEndate($index, empedt.ispresent, 'edt')" ng-disabled="checked == 1 && !empedt.ispresent || empchckbx" />
+									        		<input type="checkbox" ng-model="empedt.ispresent" ng-change="clearEndate($index, empedt.ispresent, 'edt')" ng-disabled="checked == 1 && !empedt.ispresent || empedtchckbx" />
 									        		<div class="ctrl_indicator"></div>
 									    			</label>
 			              			</div>

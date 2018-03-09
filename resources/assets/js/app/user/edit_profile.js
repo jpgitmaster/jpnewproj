@@ -640,10 +640,14 @@ usrContent.controller('ctrlEditProfile',
   }
   $scope.jphide = [];
   $scope.frmempupdt = false;
+  $scope.empedtchckbx = false;
   $scope.editEmpForm = function(emp, indx){
-    // console.log(emp.ispresent);
+    var fltr = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
+    if(fltr == true && emp.ispresent == false){
+      $scope.empedtchckbx = true;
+    }
     if(emp.ispresent == true){
-      $scope.empchckbx = false;
+      $scope.empedtchckbx = false;
     }
     $scope.empedt = emp;
     $scope.empedt_indx = indx;
