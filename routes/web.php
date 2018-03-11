@@ -84,6 +84,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('delete_employment_history', [
 	    'as' => 'delete_employment_history', 'uses' => 'UsrController@delete_employment_history'
 		]);
+		Route::post('update_employment_history', [
+	    'as' => 'update_employment_history', 'uses' => 'UsrController@update_employment_history'
+		]);
 		Route::post('work_experience', [
 		    'as' => 'work_experience', 'uses' => 'UsrController@save_work_experience'
 		]);
