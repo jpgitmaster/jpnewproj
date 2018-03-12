@@ -44,6 +44,12 @@
   border-top: 1px solid #CCC;
 }
 
+.fllclndr_lft ul li .fa {
+  font-size: 18px;
+  position: relative;
+  top: 3px;
+}
+
 .fllclndr_rght {
   margin-left: 220px;
   overflow-x: auto;

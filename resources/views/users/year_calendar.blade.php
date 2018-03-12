@@ -59,8 +59,18 @@
 	      </div>
 	    </div>
 		</div>
-		<div class="col-lg-5">
-			
+		<div class="col-lg-2"></div>
+		<div class="col-lg-3">
+			<div style="padding: 0 10px;">
+				<div class="nptgrp">
+					<select required>
+	          <option>Master</option>
+	        </select>
+	        <label class="nptlbl">
+	        	Rank <span>*</span>
+	        </label>
+				</div>
+			</div>
 		</div>
 		<div class="col-lg-3">
 			<div class="nptgrp">
@@ -82,34 +92,39 @@
 	<div class="clearfix"></div>
 	<div class="fllclndr_lft">
 		<div class="hdrlfttl">
-			<h5>CRP</h5>
 		</div>
 		<div class="clearfix"></div>
 		<div class="row no-gutters">
 			<div class="col-lg-12 vslhdr">
-				Masters
+				Vessels
 			</div>
 		</div>
 		<div class="clearfix"></div>
 		<div class="hdrbdy">
 			<ul>
 				<li>
-					Suyko, Rafael T. (43)
+					<i class="fa fa-ship" style="color: #0e99ac;"></i>
+					Ten Jin Maru
 				</li>
 				<li>
-					Manuza, Mario A. (46)
+					<i class="fa fa-ship" style="color: #f1a94e;"></i>
+					King Barley
 				</li>
 				<li>
-					Rosal, Wendel H. (39)
+					<i class="fa fa-ship" style="color: #e45641;"></i>
+					Ototachibana
 				</li>
 				<li>
-					Causing, Loren P. (41)
+					<i class="fa fa-ship" style="color: #646c70;"></i>
+					Tenshu Maru
 				</li>
 				<li>
-					Ramos, Rowell L. (42)
+					<i class="fa fa-ship" style="color: #e16060;"></i>
+					Emerald Horizon
 				</li>
 				<li>
-					Dela Cruz, Leo D. (46)
+					<i class="fa fa-ship" style="color: #60e1d1;"></i>
+					Ultra Lion
 				</li>
 			</ul>
 		</div>
@@ -181,10 +196,30 @@
 							      <span><strong>Started:</strong> January 15, 2018</span>
 							      <span><strong>Ended:</strong> August 20, 2018</span>
 							      <div class="clearfix"></div>
+							      <div class="row no-gutters" style="margin-top: 5px;">
+							      	<div class="col-lg-6">
+							      		<div style="padding: 0 3px;">
+							      			<button class="btn btn-primary" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%;">
+										      	Add Crew
+										      	<i class="fa fa-user-plus" style="font-size: 16px;"></i>
+										      </button>
+							      		</div>
+							      	</div>
+							      	<div class="col-lg-6">
+							      		<div style="padding: 0 3px;">
+								      		<button class="btn btn-success" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%;">
+										      	View All Crews
+										      	<i class="fa fa-users" style="font-size: 16px;"></i>
+										      </button>
+									      </div>
+							      	</div>
+							      </div>
+							      <div class="clearfix"></div>
+							      
 							    </div>
 								</div>
               </div>
-							<strong class="tbdy td2018">Ten Jin Maru</strong>
+							<strong class="tbdy td2018">Suyko, Rafael T. (43)</strong>
 						</td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -233,7 +268,7 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;" colspan="10">
-							<strong class="tbdy td2019">King Barley</strong>
+							<strong class="tbdy td2019">Manuza, Mario A. (46)</strong>
 						</td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -257,7 +292,7 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" colspan="8"><strong class="tbdy td2020">Ototachibana</strong></td>
+						<td style="width: 1%;" colspan="8"><strong class="tbdy td2020">Rosal, Wendel H. (39)</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -282,7 +317,7 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" colspan="8"><strong class="tbdy td2021">Tenshu Maru</strong></td>
+						<td style="width: 1%;" colspan="8"><strong class="tbdy td2021">Causing, Loren P. (41)</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -295,36 +330,6 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-					</tr>
-					<tr>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" colspan="9"><strong class="tbdy td2022">Emerald Horizon</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -354,6 +359,7 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="9"><strong class="tbdy td2022">Ramos, Rowell L. (42)</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
@@ -363,7 +369,36 @@
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
 						<td style="width: 1%;"><strong>&nbsp;</strong></td>
-						<td style="width: 1%;" colspan="12"><strong class="tbdy td2023">Ultra Lion</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+					</tr>
+					<tr>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;"><strong>&nbsp;</strong></td>
+						<td style="width: 1%;" colspan="12"><strong class="tbdy td2023">Dela Cruz, Leo D. (46)</strong></td>
 					</tr>
 				</tbody>
 			</tbody>
