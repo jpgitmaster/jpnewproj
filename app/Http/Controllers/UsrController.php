@@ -541,16 +541,10 @@ class UsrController extends Controller
       
       $validate->setAttributeNames($replace_names);
       $has_error = $this->hasError($validate);
-      
-      // if(!empty($ispresent_exist) && empty($usr['emp']['ispresent'])):
-      //   print_r('empty');
-      // else:
-      //   print_r('not empty');
-      // endif;
+
       if($has_error == true):
         $this->msg['error']['emp'] = $validate->messages()->toArray();
       else:
-
         if(!empty($ispresent_exist) && empty($usr['emp']['ispresent'])):
           if(!empty($usr['emp']['sdate'])):
             $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
@@ -590,11 +584,12 @@ class UsrController extends Controller
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
       $usr = $usr ? $usr : [];
-      print_r($usr['emp']['genid']);
       DB::table('employment_history')
         ->where('id', $usr['emp']['id'])
         ->where('genid', $usr['emp']['genid'])
         ->delete();
+      $this->msg['success']['emphistory'] = 'You have successfully deleted your employment history!';
+      print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
 
     public function save_work_experience(Request $request){
