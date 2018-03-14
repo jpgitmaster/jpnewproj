@@ -504,6 +504,7 @@ class UsrController extends Controller
     }
 
     public function update_employment_history(Request $request){
+      $ispresent_exist = DB::table('employment_history')->where('genid', Auth::user()->genid)->where('ispresent', 1)->count();
       $replace_names = [
         'company'       => 'Company',
         'position'      => 'Position',
@@ -540,35 +541,46 @@ class UsrController extends Controller
       
       $validate->setAttributeNames($replace_names);
       $has_error = $this->hasError($validate);
+      
+      // if(!empty($ispresent_exist) && empty($usr['emp']['ispresent'])):
+      //   print_r('empty');
+      // else:
+      //   print_r('not empty');
+      // endif;
       if($has_error == true):
         $this->msg['error']['emp'] = $validate->messages()->toArray();
       else:
-        if(!empty($usr['emp']['sdate'])):
-          $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
-        endif;
-        if(!empty($usr['emp']['edate'])):
-          $usr['emp']['edate'] = date('Y-m-d', strtotime($usr['emp']['edate']));
+
+        if(!empty($ispresent_exist) && empty($usr['emp']['ispresent'])):
+          if(!empty($usr['emp']['sdate'])):
+            $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
+          endif;
+          if(!empty($usr['emp']['edate'])):
+            $usr['emp']['edate'] = date('Y-m-d', strtotime($usr['emp']['edate']));
+          else:
+            $usr['emp']['edate'] = NULL;
+          endif;
+          if(empty($usr['emp']['ispresent'])):
+            $usr['emp']['ispresent'] = 0;
+          endif;
+          DB::table('employment_history')
+          ->where('genid', Auth::user()->genid)
+          ->where('id', $usr['emp']['id'])
+          ->update([
+            'company' => $usr['emp']['company'],
+            'position' => $usr['emp']['position'],
+            'currency' => $usr['emp']['currency'],
+            'salary' => $usr['emp']['salary'],
+            'sdate' => $usr['emp']['sdate'],
+            'edate' => $usr['emp']['edate'],
+            'ispresent' => $usr['emp']['ispresent'],
+            'jbdescription' => $usr['emp']['jbdescription'],
+            'reasonforleaving' => $usr['emp']['reasonforleaving']
+          ]);
+          $this->msg['success_emp'][$usr['idx']] = 'You have successfully updated your employment history in '.$usr['emp']['company'].'!';
         else:
-          $usr['emp']['edate'] = NULL;
+          $this->msg['error']['emp']['edate'][0] = 'You already have present employer';
         endif;
-        if(empty($usr['emp']['ispresent'])):
-          $usr['emp']['ispresent'] = 0;
-        endif;
-        DB::table('employment_history')
-        ->where('genid', Auth::user()->genid)
-        ->where('id', $usr['emp']['id'])
-        ->update([
-          'company' => $usr['emp']['company'],
-          'position' => $usr['emp']['position'],
-          'currency' => $usr['emp']['currency'],
-          'salary' => $usr['emp']['salary'],
-          'sdate' => $usr['emp']['sdate'],
-          'edate' => $usr['emp']['edate'],
-          'ispresent' => $usr['emp']['ispresent'],
-          'jbdescription' => $usr['emp']['jbdescription'],
-          'reasonforleaving' => $usr['emp']['reasonforleaving']
-        ]);
-        $this->msg['success_emp'][$usr['idx']] = 'You have successfully updated your employment history in '.$usr['emp']['company'].'!';
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }

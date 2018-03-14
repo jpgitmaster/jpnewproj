@@ -658,6 +658,12 @@ usrContent.controller('ctrlEditProfile',
     $scope.jphide[indx] = true;
     $scope.frmempupdt = true;
     angular.element('#frmempupdt').appendTo('.tstko'+indx);
+
+    if($scope.msg['error']){
+      if(typeof $scope.msg['error']['emp'] != 'undefined'){
+        $scope.msg['error']['emp'] = {};
+      }
+    }
   }
 
   $scope.showEmplbl = function(idx){
