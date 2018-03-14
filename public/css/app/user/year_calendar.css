@@ -57,123 +57,6 @@
   margin-top: -80px;
 }
 
-.fllclndr_rght .tbl {
-  width: 1200px;
-  border: 1px solid #CCC;
-  border-collapse: collapse;
-}
-
-.fllclndr_rght .tbl th, .fllclndr_rght .tbl td {
-  text-align: center;
-  border: 1px solid #ccc;
-  position: relative;
-}
-
-.fllclndr_rght .tbl th .popcntnr, .fllclndr_rght .tbl td .popcntnr {
-  position: absolute;
-  right: -115px;
-  bottom: 20px;
-  z-index: 9;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover, .fllclndr_rght .tbl td .popcntnr .popover {
-  position: relative;
-  display: block;
-  border: 1px solid #0077c0;
-  width: 320px;
-  max-width: 320px;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .arrow, .fllclndr_rght .tbl td .popcntnr .popover .arrow {
-  left: 50%;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .arrow::before, .fllclndr_rght .tbl td .popcntnr .popover .arrow::before {
-  border-top-color: #002c47;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body, .fllclndr_rght .tbl td .popcntnr .popover .popover-body {
-  padding: 10px;
-  line-height: 16px;
-  position: relative;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body .fa-times-circle, .fllclndr_rght .tbl td .popcntnr .popover .popover-body .fa-times-circle {
-  position: absolute;
-  right: 4px;
-  top: 3px;
-  font-size: 18px;
-  color: #c44242;
-  cursor: pointer;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body .fa-user-circle, .fllclndr_rght .tbl td .popcntnr .popover .popover-body .fa-user-circle {
-  font-size: 50px;
-  color: #bebebe;
-  float: left;
-  margin-right: 10px;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body h4, .fllclndr_rght .tbl td .popcntnr .popover .popover-body h4 {
-  font-size: 16px;
-  border-bottom: 1px dotted #0077c0;
-  margin-left: 60px;
-  padding-bottom: 5px;
-  margin-bottom: 2px;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body span, .fllclndr_rght .tbl td .popcntnr .popover .popover-body span {
-  float: left;
-  font-size: 12px;
-}
-
-.fllclndr_rght .tbl th .popcntnr .popover .popover-body span strong, .fllclndr_rght .tbl td .popcntnr .popover .popover-body span strong {
-  color: #0077c0;
-}
-
-.fllclndr_rght .tbl th h5, .fllclndr_rght .tbl td h5 {
-  margin: 0;
-}
-
-.fllclndr_rght .tbl th.thd, .fllclndr_rght .tbl td.thd {
-  background-color: #F9F9F9;
-  color: #000;
-  width: 33.33%;
-  height: 36px;
-  padding: 5px 10px;
-}
-
-.fllclndr_rght .tbl th .tbdy, .fllclndr_rght .tbl td .tbdy {
-  float: left;
-  width: 100%;
-  color: #FFF;
-  cursor: pointer;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2018, .fllclndr_rght .tbl td .tbdy.td2018 {
-  background-color: #0e99ac;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2019, .fllclndr_rght .tbl td .tbdy.td2019 {
-  background-color: #f1a94e;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2020, .fllclndr_rght .tbl td .tbdy.td2020 {
-  background-color: #e45641;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2021, .fllclndr_rght .tbl td .tbdy.td2021 {
-  background-color: #646c70;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2022, .fllclndr_rght .tbl td .tbdy.td2022 {
-  background-color: #e16060;
-}
-
-.fllclndr_rght .tbl th .tbdy.td2023, .fllclndr_rght .tbl td .tbdy.td2023 {
-  background-color: #60e1d1;
-}
-
 .fllclndr_rght::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -189,6 +72,102 @@
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
   background-color: #333;
+}
+
+.tbl {
+  width: 1200px;
+  border: 1px solid #CCC;
+  border-collapse: collapse;
+}
+
+.tbl.ccp {
+  width: 100%;
+}
+
+.tbl.ccp .thd {
+  width: auto;
+}
+
+.tbl.ccp .thd:nth-child(1), .tbl.ccp .thd:nth-child(7) {
+  width: 20px;
+}
+
+.tbl.ccp .thd:nth-child(3), .tbl.ccp .thd:nth-child(4), .tbl.ccp .thd:nth-child(6) {
+  width: 70px;
+}
+
+.tbl.ccp .thd:nth-child(2), .tbl.ccp .thd:nth-child(5) {
+  text-align: left;
+}
+
+.tbl.ccp td {
+  padding: 2px 10px;
+}
+
+.tbl.ccp td:nth-child(1), .tbl.ccp td:nth-child(7) {
+  width: 20px;
+}
+
+.tbl.ccp td:nth-child(3), .tbl.ccp td:nth-child(4), .tbl.ccp td:nth-child(6) {
+  width: 70px;
+}
+
+.tbl.ccp td:nth-child(2), .tbl.ccp td:nth-child(5) {
+  text-align: left;
+}
+
+.tbl.ccp td:nth-child(2) {
+  color: #0077c0;
+  font-weight: bold;
+}
+
+.tbl th, .tbl td {
+  text-align: center;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.tbl th h5, .tbl td h5 {
+  margin: 0;
+}
+
+.tbl th.thd, .tbl td.thd {
+  background-color: #F9F9F9;
+  color: #000;
+  width: 33.33%;
+  height: 36px;
+  padding: 5px 10px;
+}
+
+.tbl th .tbdy, .tbl td .tbdy {
+  float: left;
+  width: 100%;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.tbl th .tbdy.td2018, .tbl td .tbdy.td2018 {
+  background-color: #0e99ac;
+}
+
+.tbl th .tbdy.td2019, .tbl td .tbdy.td2019 {
+  background-color: #f1a94e;
+}
+
+.tbl th .tbdy.td2020, .tbl td .tbdy.td2020 {
+  background-color: #e45641;
+}
+
+.tbl th .tbdy.td2021, .tbl td .tbdy.td2021 {
+  background-color: #646c70;
+}
+
+.tbl th .tbdy.td2022, .tbl td .tbdy.td2022 {
+  background-color: #e16060;
+}
+
+.tbl th .tbdy.td2023, .tbl td .tbdy.td2023 {
+  background-color: #60e1d1;
 }
 
 ul.lgnd {
@@ -313,6 +292,280 @@ ul.lgnd li .fa {
 }
 
 .pgnt.pagination .page-link.active {
+  background-color: #0077c0;
+  color: #FFF;
+}
+
+.popcntnr {
+  position: absolute;
+  right: -115px;
+  bottom: 20px;
+  z-index: 9;
+}
+
+.popcntnr .popover {
+  position: relative;
+  display: block;
+  border: 1px solid #0077c0;
+  width: 320px;
+  max-width: 320px;
+}
+
+.popcntnr .popover .arrow {
+  left: 50%;
+}
+
+.popcntnr .popover .arrow::before {
+  border-top-color: #002c47;
+}
+
+.popcntnr .popover .popover-body {
+  padding: 10px;
+  line-height: 16px;
+  position: relative;
+}
+
+.popcntnr .popover .popover-body .fa-times-circle {
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  font-size: 18px;
+  color: #c44242;
+  cursor: pointer;
+}
+
+.popcntnr .popover .popover-body .fa-user-circle {
+  font-size: 50px;
+  color: #bebebe;
+  float: left;
+  margin-right: 10px;
+}
+
+.popcntnr .popover .popover-body h4 {
+  font-size: 16px;
+  border-bottom: 1px dotted #0077c0;
+  margin-left: 60px;
+  padding-bottom: 5px;
+  margin-bottom: 2px;
+}
+
+.popcntnr .popover .popover-body span {
+  float: left;
+  font-size: 12px;
+}
+
+.popcntnr .popover .popover-body span strong {
+  color: #0077c0;
+}
+
+.popcntnr .popover .popover-body .btns {
+  margin-top: 5px;
+}
+
+.popcntnr .popover .popover-body .btns .btn {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0;
+  width: 100%;
+}
+
+.popcntnr .popover .popover-body .btns .btn.btn-primary {
+  background-color: #0077c0;
+}
+
+.popcntnr .popover .popover-body .btns .btn .fa {
+  font-size: 16px;
+}
+
+.modal .modal-content {
+  border-radius: 0;
+}
+
+.modal .modal-content .modal-header {
+  padding: 6px 15px;
+  background-color: #29166f;
+  color: #FFF;
+}
+
+.modal .modal-content .modal-header h5 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modal .modal-content .modal-header .close {
+  cursor: pointer;
+  outline: none;
+  text-shadow: none;
+  color: #FFF;
+  opacity: 1;
+  position: relative;
+  top: -4px;
+  right: -2px;
+}
+
+.modal .modal-content .modal-body .nav-tabs .nav-link {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modal .modal-content .modal-body .nav-tabs .nav-link:hover:not(.active) {
+  border-color: transparent;
+}
+
+.modal .modal-content .modal-body .tab-content {
+  padding-top: 10px;
+}
+
+.modal .modal-content .modal-body .lstcrews {
+  margin: 0;
+  padding: 0;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws {
+  padding: 12px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv {
+  position: absolute;
+  right: 6px;
+  top: 4px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .popcntnr {
+  right: -100px;
+  left: -110px;
+  bottom: 18px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .popcntnr .popover {
+  display: block;
+  width: auto;
+  max-width: inherit;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .popcntnr .popover .popover-body {
+  font-size: 13px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .fa-times-circle {
+  font-size: 18px;
+  color: #c44242;
+  cursor: pointer;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .btn {
+  border-radius: 0;
+  padding: 2px 10px 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .btn.btn-primary {
+  background-color: #0077c0;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .rmv .btn .fa {
+  font-size: 20px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .icn {
+  float: left;
+  width: 50px;
+  text-align: center;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  height: 50px;
+  padding-top: 4px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .icn .fa-user {
+  font-size: 40px;
+  color: #CCC;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls {
+  margin-left: 50px;
+  padding: 0 10px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls h4 {
+  margin: 0;
+  font-size: 16px;
+  border-bottom: 1px solid #0077c0;
+  padding-bottom: 2px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls p {
+  margin: 0 0 5px;
+  font-size: 12px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns {
+  position: relative;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns .popcntnr {
+  right: -60px;
+  left: -40px;
+  bottom: 25px;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns .popcntnr .popover {
+  display: block;
+  width: auto;
+  max-width: inherit;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns .btn {
+  border-radius: 0;
+  padding: 2px 10px 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns .btn.btn-primary {
+  background-color: #0077c0;
+}
+
+.modal .modal-content .modal-body .lstcrews .crws .dtls .btns .btn .fa {
+  font-size: 20px;
+}
+
+.modal .modal-content .modal-body .ccpdtls {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 100%;
+}
+
+.modal .modal-content .modal-body .ccpdtls li {
+  width: 50%;
+  float: left;
+  list-style: none;
+}
+
+.modal .modal-content .modal-body .ccpdtls li strong, .modal .modal-content .modal-body .ccpdtls li span {
+  border: 1px solid #ccc;
+  padding: 2px 10px;
+  float: left;
+  width: 100%;
+  border-bottom: 0;
+  border-right: 0;
+  text-align: center;
+}
+
+.modal .modal-content .modal-body .ccpdtls li strong {
   background-color: #0077c0;
   color: #FFF;
 }

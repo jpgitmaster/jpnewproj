@@ -43,25 +43,27 @@
 	<div class="clearfix"></div>
 	<div class="row no-gutters">
 		<div class="col-lg-4">
-			<div id="search_data" class="btn-group">
-	      <div class="input-group">
-	        <button type="button" class="input-group-addon">Search</button>
-	        <input type="text" class="form-control" placeholder="Keyword...">
-	        <button type="button" class="input-group-addon dropdown-toggle" data-toggle="dropdown">
-	          All &nbsp;
-	        </button>
-	        <div class="dropdown-menu">
-	        	<div class="arrow"></div>
-	          <a class="dropdown-item" href="#">Vessel</a>
-	          <a class="dropdown-item" href="#">Master</a>
-	          <a class="dropdown-item" href="#">On-vacation</a>
-	        </div>
-	      </div>
-	    </div>
+			<div class="bx">
+				<div id="search_data" class="btn-group">
+		      <div class="input-group">
+		        <button type="button" class="input-group-addon">Search</button>
+		        <input type="text" class="form-control" placeholder="Keyword...">
+		        <button type="button" class="input-group-addon dropdown-toggle" data-toggle="dropdown">
+		          All &nbsp;
+		        </button>
+		        <div class="dropdown-menu">
+		        	<div class="arrow"></div>
+		          <a class="dropdown-item" href="#">Vessel</a>
+		          <a class="dropdown-item" href="#">Master</a>
+		          <a class="dropdown-item" href="#">On-vacation</a>
+		        </div>
+		      </div>
+		    </div>
+			</div>
 		</div>
 		<div class="col-lg-2"></div>
 		<div class="col-lg-3">
-			<div style="padding: 0 10px;">
+			<div class="bx">
 				<div class="nptgrp">
 					<select required>
 	          <option>Master</option>
@@ -73,19 +75,21 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div class="nptgrp">
-				<select required>
-          <option></option>
-          <option>Ten Jin Maru</option>
-          <option>King Barley</option>
-          <option>Ototachibana</option>
-          <option>Tenshu Maru</option>
-          <option>Emerald Horizon</option>
-          <option>Ultra Lion</option>
-        </select>
-        <label class="nptlbl">
-        	Vessels <span>*</span>
-        </label>
+			<div class="bx">
+				<div class="nptgrp">
+					<select required>
+	          <option></option>
+	          <option>Ten Jin Maru</option>
+	          <option>King Barley</option>
+	          <option>Ototachibana</option>
+	          <option>Tenshu Maru</option>
+	          <option>Emerald Horizon</option>
+	          <option>Ultra Lion</option>
+	        </select>
+	        <label class="nptlbl">
+	        	Vessels <span>*</span>
+	        </label>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -196,20 +200,20 @@
 							      <span><strong>Started:</strong> January 15, 2018</span>
 							      <span><strong>Ended:</strong> August 20, 2018</span>
 							      <div class="clearfix"></div>
-							      <div class="row no-gutters" style="margin-top: 5px;">
+							      <div class="row no-gutters btns">
 							      	<div class="col-lg-6">
-							      		<div style="padding: 0 3px;">
-							      			<button class="btn btn-primary" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%; background-color: #0077c0; border-color: #0077c0;">
+							      		<div class="bx">
+							      			<button class="btn btn-primary" style="" data-toggle="modal" data-target="#addCrewModal">
 										      	Add Crew
-										      	<i class="fa fa-user-plus" style="font-size: 16px;"></i>
+										      	<i class="fa fa-user-plus"></i>
 										      </button>
 							      		</div>
 							      	</div>
 							      	<div class="col-lg-6">
-							      		<div style="padding: 0 3px;">
-								      		<button class="btn btn-success" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%;">
+							      		<div class="bx">
+								      		<button class="btn btn-success" data-toggle="modal" data-target="#viewCrewModal">
 										      	View All Crews
-										      	<i class="fa fa-users" style="font-size: 16px;"></i>
+										      	<i class="fa fa-users"></i>
 										      </button>
 									      </div>
 							      	</div>
@@ -462,4 +466,694 @@
 	</div>
 	<div class="clearfix"></div><br><br>
 </div>
+<div class="modal fade" id="addCrewModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    	<div class="modal-header">
+        <h5 class="modal-title">Add Crew</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    	<div class="modal-body">
+      	<ul class="nav nav-tabs" id="myTab" role="tablist">
+				  <li class="nav-item">
+				    <a class="nav-link active" data-toggle="tab" href="#vacation">On-vacation</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#board">On-Board</a>
+				  </li>
+				</ul>
+				<div class="tab-content">
+				  <div class="tab-pane fade show active" id="vacation">
+				  	<p style="font-size: 13px; margin: 0 0 5px; float: right;">You have total of <strong style="color: #0077c0;">9 crews</strong> on-vacation</p>
+				  	<div class="clearfix"></div>
+				  	<div class="lstcrews row no-gutters">
+				  		<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+			        				<div class="am-flip-x popcntnr">
+				              	<div class="popover bs-popover-top">
+											    <div class="arrow"></div>
+											    <div class="popover-body" style="padding: 10px 10px 5px;">
+											    	Are you sure you want to add this in your crew?
+											      <div class="clearfix"></div>
+											      <div class="row no-gutters" style="width: 160px; margin: 5px auto 0; text-align: center;">
+											      	<div class="col-lg-6">
+											      		<div class="bx">
+											      			<button class="btn btn-success" style="width: 100%;">Yes</button>
+											      		</div>
+											      	</div>
+											      	<div class="col-lg-6">
+											      		<div class="bx">
+											      			<button class="btn btn-danger" style="width: 100%;">No</button>
+											      		</div>
+											      	</div>
+											      </div>
+											    </div>
+												</div>
+				              </div>
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        </div>
+				  </div>
+				  <div class="tab-pane fade" id="board">
+				  	<div class="lstcrews row no-gutters">
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="crws">
+			        		<div class="icn">
+			        			<i class="fa fa-user"></i>
+			        		</div>
+			        		<div class="dtls">
+			        			<h4>Name</h4>
+			        			<p><strong>Position:</strong> Crew Position</p>
+			        			<div class="btns">
+				        			<button class="btn btn-primary">
+				        				Add Crew <i class="fa fa-user-plus"></i>
+				        			</button>
+				        		</div>
+			        		</div>
+			        	</div>
+		        	</div>
+		        </div>
+				  </div>
+				</div>
+        
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="viewCrewModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">View All Crews</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<p style="font-size: 13px; margin: 0 0 5px; float: right;">You have total of <strong style="color: #0077c0;">9 crews</strong></p>
+		  	<div class="clearfix"></div>
+		  	<div class="lstcrews row no-gutters">
+		  		<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+        				<div class="am-flip-x popcntnr">
+	              	<div class="popover bs-popover-top">
+								    <div class="arrow"></div>
+								    <div class="popover-body" style="padding: 5px 10px;">
+								    	Are you sure you want to remove this in your crew?
+								      <div class="clearfix"></div>
+								      <div class="row no-gutters" style="width: 160px; margin: 5px auto 0; text-align: center;">
+								      	<div class="col-lg-6">
+								      		<div class="bx">
+								      			<button class="btn btn-success" style="width: 100%;">Yes</button>
+								      		</div>
+								      	</div>
+								      	<div class="col-lg-6">
+								      		<div class="bx">
+								      			<button class="btn btn-danger" style="width: 100%;">No</button>
+								      		</div>
+								      	</div>
+								      </div>
+								    </div>
+									</div>
+	              </div>
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        	<div class="col-lg-4">
+        		<div class="crws">
+        			<div class="btns rmv">
+	              <i class="fa fa-times-circle"></i>
+	        		</div>
+	        		<div class="icn">
+	        			<i class="fa fa-user"></i>
+	        		</div>
+	        		<div class="dtls">
+	        			<h4>Name</h4>
+	        			<p><strong>Position:</strong> Crew Position</p>
+	        		</div>
+	        	</div>
+        	</div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <div class="cntnbx">
+	<h4>Crew Change Plan</h4>
+	<div class="clearfix"></div>
+	<div class="row no-gutters" style="margin-top: 10px;">
+		<div class="col-lg-4">
+			<div class="bx">
+				<div id="search_data" class="btn-group">
+		      <div class="input-group">
+		        <button type="button" class="input-group-addon">Search</button>
+		        <input type="text" class="form-control" placeholder="Keyword...">
+		        <button type="button" class="input-group-addon dropdown-toggle" data-toggle="dropdown">
+		          All &nbsp;
+		        </button>
+		        <div class="dropdown-menu">
+		        	<div class="arrow"></div>
+		          <a class="dropdown-item" href="#">Vessel</a>
+		          <a class="dropdown-item" href="#">Master</a>
+		          <a class="dropdown-item" href="#">On-vacation</a>
+		        </div>
+		      </div>
+		    </div>
+			</div>
+		</div>
+		<div class="col-lg-2"></div>
+		<div class="col-lg-3">
+			<div class="bx">
+
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="bx">
+				<div class="nptgrp">
+					<select required>
+	          <option></option>
+	          <option>Ten Jin Maru</option>
+	          <option>King Barley</option>
+	          <option>Ototachibana</option>
+	          <option>Tenshu Maru</option>
+	          <option>Emerald Horizon</option>
+	          <option>Ultra Lion</option>
+	        </select>
+	        <label class="nptlbl">
+	        	Vessels <span>*</span>
+	        </label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<table class="tbl ccp">
+		<thead>
+			<tr>
+				<th class="thd">Fleet</th>
+				<th class="thd">Vessel</th>
+				<th class="thd">Owner</th>
+				<th class="thd">Rank</th>
+				<th class="thd">Name</th>
+				<th class="thd">PIC</th>
+				<th class="thd">Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>D</td>
+				<td>
+					<a href="#" data-toggle="modal" data-target="#viewCCPmodal">
+						Lowlands Kamsar
+					</a>
+				</td>
+				<td>MKCA</td>
+				<td>CM</td>
+				<td>Jun Petrasanta</td>
+				<td>Loka/Roy</td>
+				<td>HM</td>
+			</tr>
+			<tr>
+				<td>D</td>
+				<td>
+					<a href="">
+						Lowlands Kamsar
+					</a>
+				</td>
+				<td>MKCA</td>
+				<td>1AE</td>
+				<td>Liberato Fuego stays in the Eng Cntrl Rm all the time</td>
+				<td>Loka/Roy</td>
+				<td>HM</td>
+			</tr>
+			<tr>
+				<td>D</td>
+				<td>
+					<a href="">
+						Lowlands Kamsar
+					</a>
+				</td>
+				<td>MKCA</td>
+				<td>3AE</td>
+				<td>Antonio Juanir Jr</td>
+				<td>Loka/Roy</td>
+				<td>HM</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>
+					<a href="">
+						Lowlands Kamsar
+					</a>
+				</td>
+				<td>MKCA</td>
+				<td>AB</td>
+				<td>Greg Jayectin</td>
+				<td>Loka/Roy</td>
+				<td>PM</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>
+					<a href="">
+						Safmarine Sanaga
+					</a>
+				</td>
+				<td>MKCS</td>
+				<td>2M</td>
+				<td>Beda Pineda</td>
+				<td>Loka/Roy</td>
+				<td>CT</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>
+					<a href="">
+						Safmarine Sanaga
+					</a>
+				</td>
+				<td>MKCS</td>
+				<td>1AE</td>
+				<td>Rodolfo Castromayor</td>
+				<td>Loka/Roy</td>
+				<td>CT</td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td>
+					<a href="">
+						Safmarine Sanaga
+					</a>
+				</td>
+				<td>MKCS</td>
+				<td>2AE</td>
+				<td>Danilo Espanola</td>
+				<td>Loka/Roy</td>
+				<td>CT</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="clearfix"></div>
+	<div class="row no-gutters">
+		<div class="col-lg-6">
+
+		</div>
+		<div class="col-lg-6">
+			<nav>
+			  <ul class="pgnt pagination">
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			        <span class="sr-only">Previous</span>
+			      </a>
+			    </li>
+			    <li class="page-item"><a class="page-link" href="#">1</a></li>
+			    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    <li class="page-item"><a class="page-link" href="#">4</a></li>
+			    <li class="page-item"><a class="page-link" href="#">5</a></li>
+			    <li class="page-item"><a class="page-link" href="#">6</a></li>
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			        <span class="sr-only">Next</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="viewCCPmodal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Lowlands Kamsar</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 10px;">
+      	<ul class="ccpdtls">
+      		<li style="width: 16.66%;">
+      			<strong>Fleet</strong>
+      			<span>D</span>
+      		</li>
+      		<li style="width: 16.66%;">
+      			<strong>Owner</strong>
+      			<span>MKCA</span>
+      		</li>
+      		<li style="width: 16.66%;">
+      			<strong>PIC</strong>
+      			<span>Lokal / Roy</span>
+      		</li>
+      		<li style="width: 16.66%;">
+      			<strong>Type</strong>
+      			<span>HM</span>
+      		</li>
+      		<li style="width: 16.66%;">
+      			<strong>No.</strong>
+      			<span>9</span>
+      		</li>
+      		<li style="width: 16.66%;">
+      			<strong>Month</strong>
+      			<span>8</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Name</strong>
+      			<span>Jun Petrasanta</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Replacement Date</strong>
+      			<span>3-Aug</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Port Replacement</strong>
+      			<span>Vado Ligure</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>No. of Contract</strong>
+      			<span>9</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Embark Date</strong>
+      			<span>20-Aug-10</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Disembark Date</strong>
+      			<span>20-May-11</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>Rank</strong>
+      			<span>CM</span>
+      		</li>
+      		<li style="width: 25%;">
+      			<strong>HIGH ER LIC.</strong>
+      			<span>&nbsp;</span>
+      		</li>
+      		<li style="width: 100%;">
+      			<strong>Reliever / On-Signer</strong>
+      			<span>No candidate yet</span>
+      		</li>
+      		<li style="width: 50%;">
+      			<strong>Remarks</strong>
+      			<span>
+      				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt sed, sapiente provident ea incidunt id error, eos! Reiciendis itaque repudiandae, sit, molestiae officiis aliquam eveniet fugit recusandae a fugiat sequi.
+      			</span>
+      		</li>
+      		<li style="width: 50%;">
+      			<strong>Comment</strong>
+      			<span>
+      				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eaque neque mollitia temporibus ipsam! Minus veniam, dignissimos consequatur magnam unde labore, asperiores soluta aut dolore ipsa corporis beatae quisquam mollitia.
+      			</span>
+      		</li>
+      	</ul>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div> --}}
 @endsection

@@ -939,7 +939,7 @@
 		              				<div class="nptgrp" ng-class="{'err': msg['error']['emp']['edate'][0]}" ng-mouseover="edt_edate = true" ng-mouseleave="edt_edate = false">
 								            <input type="text" ng-model="empedt.edate" ui-mask="99/99/9999" model-view-value="true" ng-disabled="empedt.ispresent" required>
 								            <label class="nptlbl">End Date <span>*</span></label>
-								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['edate'][0] && edt_edate === true" ng-cloak>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['emp']['edate'][0] && edt_edate === true" ng-cloak style="bottom: 57px;">
 					                    <div class="popover bs-popover-top">
 												    		<div class="arrow"></div>
 														    <div class="popover-body">
@@ -1047,7 +1047,7 @@
 												<div class="col-lg-8">
 													<div class="nptgrp lbld">
 														<span class="lbldcntnt">
-															<%= jpemp.company %>
+															<%= jpemp.company ? jpemp.company : '&nbsp;' %>
 														</span>
 											    	<label class="lbl">
 											    		Company
@@ -1057,7 +1057,7 @@
 												<div class="col-lg-4">
 													<div class="nptgrp lbld">
 														<span class="lbldcntnt">
-															<%= jpemp.position %>
+															<%= jpemp.position ? jpemp.position : '&nbsp;' %>
 														</span>
 												    	<label class="lbl">
 												    		Position
@@ -1077,7 +1077,7 @@
 												<div class="col-lg-4">
 													<div class="nptgrp lbld">
 														<span class="lbldcntnt">
-															<%= jpemp.sdate %>
+															<%= jpemp.sdate ? jpemp.sdate : '&nbsp;' %>
 														</span>
 											    	<label class="lbl">
 											    		Start Date
@@ -1087,7 +1087,7 @@
 												<div class="col-lg-4">
 													<div class="nptgrp lbld">
 														<span class="lbldcntnt">
-															<%= jpemp.ispresent ? 'Present Employer' : jpemp.edate %>
+															<%= jpemp.ispresent ? 'Present Employer' : (jpemp.edate ? jpemp.edate : '&nbsp;') %>
 														</span>
 											    	<label class="lbl">
 											    		End Date
