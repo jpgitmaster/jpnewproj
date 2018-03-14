@@ -187,7 +187,7 @@
 					<tr>
 						<td style="width: 1%;" colspan="8">
 							<div class="am-flip-x popcntnr">
-              	<div class="popover bs-popover-top" style="display: block;">
+              	<div class="popover bs-popover-top" style="display: none;">
 							    <div class="arrow"></div>
 							    <div class="popover-body">
 							    	<i class="fa fa-times-circle"></i>
@@ -199,7 +199,7 @@
 							      <div class="row no-gutters" style="margin-top: 5px;">
 							      	<div class="col-lg-6">
 							      		<div style="padding: 0 3px;">
-							      			<button class="btn btn-primary" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%;">
+							      			<button class="btn btn-primary" style="padding: 4px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 0; width: 100%; background-color: #0077c0; border-color: #0077c0;">
 										      	Add Crew
 										      	<i class="fa fa-user-plus" style="font-size: 16px;"></i>
 										      </button>
