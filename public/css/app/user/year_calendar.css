@@ -88,15 +88,7 @@
   width: auto;
 }
 
-.tbl.ccp .thd:nth-child(1), .tbl.ccp .thd:nth-child(7) {
-  width: 20px;
-}
-
-.tbl.ccp .thd:nth-child(3), .tbl.ccp .thd:nth-child(4), .tbl.ccp .thd:nth-child(6) {
-  width: 70px;
-}
-
-.tbl.ccp .thd:nth-child(2), .tbl.ccp .thd:nth-child(5) {
+.tbl.ccp .thd:nth-child(1), .tbl.ccp .thd:nth-child(4) {
   text-align: left;
 }
 
@@ -104,21 +96,13 @@
   padding: 2px 10px;
 }
 
-.tbl.ccp td:nth-child(1), .tbl.ccp td:nth-child(7) {
-  width: 20px;
-}
-
-.tbl.ccp td:nth-child(3), .tbl.ccp td:nth-child(4), .tbl.ccp td:nth-child(6) {
-  width: 70px;
-}
-
-.tbl.ccp td:nth-child(2), .tbl.ccp td:nth-child(5) {
+.tbl.ccp td:nth-child(1), .tbl.ccp td:nth-child(4) {
   text-align: left;
 }
 
-.tbl.ccp td:nth-child(2) {
-  color: #0077c0;
+.tbl.ccp td a {
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .tbl th, .tbl td {
@@ -568,6 +552,45 @@ ul.lgnd li .fa {
 .modal .modal-content .modal-body .ccpdtls li strong {
   background-color: #0077c0;
   color: #FFF;
+}
+
+.tbl.ccp td {
+  padding: 8px 10px;
+  height: 40px;
+}
+
+.tbl.ccp td .btn.btn-success {
+  border-radius: 0;
+  padding: 0 8px;
+  border: 0;
+  background-color: transparent;
+}
+
+.tbl.ccp td .btn.btn-success .fa {
+  color: #0077c0;
+  font-size: 30px;
+}
+
+.tbl.ccp td:last-child {
+  width: 60px;
+  padding: 0;
+}
+
+.hdrbdy.ccp ul li {
+  padding: 6px 10px;
+  height: 40px;
+}
+
+.hdrbdy.ccp ul li .fa {
+  font-size: 24px;
+}
+
+.hdrbdy.ccp ul li span {
+  margin-left: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  top: -3px;
 }
 
 /*# sourceMappingURL=year_calendar.css.map */
