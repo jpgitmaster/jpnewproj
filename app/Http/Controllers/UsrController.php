@@ -430,6 +430,7 @@ class UsrController extends Controller
     }
     
     public function save_employment_history(Request $request){
+      $to_char_ref = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
       $replace_names = [
         'company'       => 'Company',
         'position'      => 'Position',
@@ -485,6 +486,16 @@ class UsrController extends Controller
             $usr['emp'][$m]['ispresent'] = 0;
           endif;
           // print_r($usr['emp'][$m]);
+          if(empty($to_char_ref)):
+            $this->msg['to_char_ref'] = true;
+            DB::table('profile_forms')
+            ->where('genid', Auth::user()->genid)
+            ->update([
+                'emphistory' => 1
+            ]);
+          else:
+            $this->msg['to_char_ref'] = false;
+          endif;
           DB::table('employment_history')->insert([
             'genid'    => Auth::user()->genid,
             'company'  => $usr['emp'][$m]['company'],
@@ -498,7 +509,7 @@ class UsrController extends Controller
             'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
           ]);
         endfor;
-        $this->msg['empsuccess'] = 'You have successfully added your employment history!';
+        $this->msg['success']['emphistory'] = 'You have successfully added your employment history!';
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }
@@ -584,10 +595,10 @@ class UsrController extends Controller
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
       $usr = $usr ? $usr : [];
-      DB::table('employment_history')
-        ->where('id', $usr['emp']['id'])
-        ->where('genid', $usr['emp']['genid'])
-        ->delete();
+      // DB::table('employment_history')
+      //   ->where('id', $usr['emp']['id'])
+      //   ->where('genid', $usr['emp']['genid'])
+      //   ->delete();
       $this->msg['success']['emphistory'] = 'You have successfully deleted your employment history!';
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }

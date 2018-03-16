@@ -37,7 +37,7 @@
 	width: 100%;
 }
 </style>
-<div class="cntnbx">
+{{-- <div class="cntnbx">
 	<h4>Crew Rotation Program</h4>
 	<br>
 	<div class="clearfix"></div>
@@ -880,8 +880,8 @@
       </div>
     </div>
   </div>
-</div>
-{{-- <div class="cntnbx">
+</div> --}}
+<div class="cntnbx">
 	<h4>Crew Change Plan</h4>
 	<div class="clearfix"></div>
 	<div class="row no-gutters" style="margin-top: 10px;">
@@ -915,127 +915,227 @@
 				<div class="nptgrp">
 					<select required>
 	          <option></option>
-	          <option>Ten Jin Maru</option>
-	          <option>King Barley</option>
-	          <option>Ototachibana</option>
-	          <option>Tenshu Maru</option>
-	          <option>Emerald Horizon</option>
-	          <option>Ultra Lion</option>
+	          <option>Masters</option>
+	          <option>Officers</option>
+	          <option>Engineers</option>
 	        </select>
 	        <label class="nptlbl">
-	        	Vessels <span>*</span>
+	        	Position <span>*</span>
 	        </label>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="clearfix"></div>
-	<table class="tbl ccp">
-		<thead>
-			<tr>
-				<th class="thd">Fleet</th>
-				<th class="thd">Vessel</th>
-				<th class="thd">Owner</th>
-				<th class="thd">Rank</th>
-				<th class="thd">Name</th>
-				<th class="thd">PIC</th>
-				<th class="thd">Type</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>D</td>
-				<td>
-					<a href="#" data-toggle="modal" data-target="#viewCCPmodal">
-						Lowlands Kamsar
-					</a>
-				</td>
-				<td>MKCA</td>
-				<td>CM</td>
-				<td>Jun Petrasanta</td>
-				<td>Loka/Roy</td>
-				<td>HM</td>
-			</tr>
-			<tr>
-				<td>D</td>
-				<td>
-					<a href="">
-						Lowlands Kamsar
-					</a>
-				</td>
-				<td>MKCA</td>
-				<td>1AE</td>
-				<td>Liberato Fuego stays in the Eng Cntrl Rm all the time</td>
-				<td>Loka/Roy</td>
-				<td>HM</td>
-			</tr>
-			<tr>
-				<td>D</td>
-				<td>
-					<a href="">
-						Lowlands Kamsar
-					</a>
-				</td>
-				<td>MKCA</td>
-				<td>3AE</td>
-				<td>Antonio Juanir Jr</td>
-				<td>Loka/Roy</td>
-				<td>HM</td>
-			</tr>
-			<tr>
-				<td>B</td>
-				<td>
-					<a href="">
-						Lowlands Kamsar
-					</a>
-				</td>
-				<td>MKCA</td>
-				<td>AB</td>
-				<td>Greg Jayectin</td>
-				<td>Loka/Roy</td>
-				<td>PM</td>
-			</tr>
-			<tr>
-				<td>C</td>
-				<td>
-					<a href="">
-						Safmarine Sanaga
-					</a>
-				</td>
-				<td>MKCS</td>
-				<td>2M</td>
-				<td>Beda Pineda</td>
-				<td>Loka/Roy</td>
-				<td>CT</td>
-			</tr>
-			<tr>
-				<td>B</td>
-				<td>
-					<a href="">
-						Safmarine Sanaga
-					</a>
-				</td>
-				<td>MKCS</td>
-				<td>1AE</td>
-				<td>Rodolfo Castromayor</td>
-				<td>Loka/Roy</td>
-				<td>CT</td>
-			</tr>
-			<tr>
-				<td>B</td>
-				<td>
-					<a href="">
-						Safmarine Sanaga
-					</a>
-				</td>
-				<td>MKCS</td>
-				<td>2AE</td>
-				<td>Danilo Espanola</td>
-				<td>Loka/Roy</td>
-				<td>CT</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="fllclndr_lft">
+		<div class="row no-gutters">
+			<div class="col-lg-12 vslhdr" style="height: 36px; padding-top: 5px;">
+				Vessels
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<style>
+			.hdrbdy ul li{
+
+			}
+		</style>
+		<div class="hdrbdy ccp">
+			<ul>
+				<li>
+					<i class="fa fa-ship" style="color: #0e99ac;"></i>
+					<span>
+						Ten Jin Maru
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #f1a94e;"></i>
+					<span>
+						King Barley
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #e45641;"></i>
+					<span>
+						Ototachibana
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #646c70;"></i>
+					<span>
+						Tenshu Maru
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #e16060;"></i>
+					<span>
+						Emerald Horizon
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #60e1d1;"></i>
+					<span>
+						Ultra Lion
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #e16060;"></i>
+					<span>
+						Emerald Horizon
+					</span>
+				</li>
+				<li>
+					<i class="fa fa-ship" style="color: #60e1d1;"></i>
+					<span>
+						Ultra Lion
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="fllclndr_rght">
+		<table class="tbl ccp">
+			<thead>
+				<tr>
+					<th class="thd">Off-signer Crew</th>
+					<th class="thd">Position</th>
+					<th class="thd">Contract Expiry</th>
+					<th class="thd">On-signer Crew</th>
+					<th class="thd">Joining Port</th>
+					<th class="thd">Preview</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<a href="#" data-toggle="modal" data-target="#viewCCPmodal">
+							Bongcaron, Glenn V.
+						</a>
+					</td>
+					<td>Master</td>
+					<td>19 April 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Arroyo Jack Allan C.
+						</a>
+					</td>
+					<td>Chief Officer</td>
+					<td>25 February 2018</td>
+					<td><a href="">Costelo, Abner L.</a></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Baconaje, Denmark A.
+						</a>
+					</td>
+					<td>Second Officer</td>
+					<td>08 October 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Lacambra, Uzziel M.
+						</a>
+					</td>
+					<td>Third Officer</td>
+					<td>25 May 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Inamarga, Isagani O.
+						</a>
+					</td>
+					<td>Chief Engineer</td>
+					<td>05 September 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Morales, Levi L.
+						</a>
+					</td>
+					<td>Chief Engineer</td>
+					<td>25 February 2018</td>
+					<td><a href="">Inamarga Isagani O.</a></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Gutlay, Reynaldo L.
+						</a>
+					</td>
+					<td>2nd Engineer</td>
+					<td>08 July 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="">
+							Castro, Iriondo E.
+						</a>
+					</td>
+					<td>3rd Engineer</td>
+					<td>25 May 2018</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-success">
+							<i class="fa fa-address-card"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<div class="clearfix"></div>
 	<div class="row no-gutters">
 		<div class="col-lg-6">
@@ -1071,72 +1171,40 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Lowlands Kamsar</h5>
+        <h5 class="modal-title">Selected Crew</h5>
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="padding: 10px;">
       	<ul class="ccpdtls">
-      		<li style="width: 16.66%;">
-      			<strong>Fleet</strong>
-      			<span>D</span>
+      		<li style="width: 60%;">
+      			<strong>Disembarking Crew</strong>
+      			<span>BONGCARON, GLENN V.</span>
       		</li>
-      		<li style="width: 16.66%;">
-      			<strong>Owner</strong>
-      			<span>MKCA</span>
+      		<li style="width: 20%;">
+      			<strong>Position</strong>
+      			<span>Master</span>
       		</li>
-      		<li style="width: 16.66%;">
-      			<strong>PIC</strong>
-      			<span>Lokal / Roy</span>
+      		<li style="width: 20%;">
+      			<strong>Contract Expiry</strong>
+      			<span>19 April 2018</span>
       		</li>
-      		<li style="width: 16.66%;">
-      			<strong>Type</strong>
-      			<span>HM</span>
-      		</li>
-      		<li style="width: 16.66%;">
-      			<strong>No.</strong>
-      			<span>9</span>
-      		</li>
-      		<li style="width: 16.66%;">
-      			<strong>Month</strong>
-      			<span>8</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Name</strong>
-      			<span>Jun Petrasanta</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Replacement Date</strong>
-      			<span>3-Aug</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Port Replacement</strong>
-      			<span>Vado Ligure</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>No. of Contract</strong>
-      			<span>9</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Embark Date</strong>
-      			<span>20-Aug-10</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Disembark Date</strong>
-      			<span>20-May-11</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>Rank</strong>
-      			<span>CM</span>
-      		</li>
-      		<li style="width: 25%;">
-      			<strong>HIGH ER LIC.</strong>
+      		<li style="width: 50%;">
+      			<strong>Embarking Crew</strong>
       			<span>&nbsp;</span>
       		</li>
-      		<li style="width: 100%;">
-      			<strong>Reliever / On-Signer</strong>
-      			<span>No candidate yet</span>
+      		<li style="width: 50%;">
+      			<strong>Ex-Vessel</strong>
+      			<span>&nbsp;</span>
+      		</li>
+      		<li style="width: 50%;">
+      			<strong>Estimated Time of Departure</strong>
+      			<span>&nbsp;</span>
+      		</li>
+      		<li style="width: 50%;">
+      			<strong>Port of Embarkation</strong>
+      			<span>&nbsp;</span>
       		</li>
       		<li style="width: 50%;">
       			<strong>Remarks</strong>
@@ -1155,5 +1223,5 @@
       </div>
     </div>
   </div>
-</div> --}}
+</div>
 @endsection

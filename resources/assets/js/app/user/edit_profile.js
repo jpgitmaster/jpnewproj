@@ -452,35 +452,40 @@ usrContent.controller('ctrlEditProfile',
         data: {emp: emp}
     }).then(function(result){
         $scope.msg = result.data;
-        // if(!$scope.msg['error']){
-        //     $scope.forms[1]['actvform'] = 0;
-        // }
-        // angular.element('.card:nth-child(2) .crdbdy').hide().delay(200).fadeIn();
         $timeout(function(){
           $scope.frm3_loader = false;
-          // if($scope.msg['success']){
-          //   if($scope.msg['success']['emphstry']['added']){
-          //     $scope.collapseTab(3);
-          //     $scope.proform['educationalbg'] = 1;
-          //   }
-          // }
+          if($scope.msg['success']){
+            if($scope.msg['success']['emphistory']){
+              $scope.emps = [];
+              angular.forEach(emp, function(val, key){
+                $scope.jpemps.push({
+                    'company'        : val.company,
+                    'position'       : val.position,
+                    'currency'       : val.currency,
+                    'salary'         : val.salary,
+                    'sdate'          : val.sdate,
+                    'edate'          : val.edate,
+                    'ispresent'      : val.ispresent,
+                    'jbdescription'  : val.jbdescription,
+                    'reasonforleaving' : val.reasonforleaving
+                });
+                console.log($scope.msg['to_char_ref']);
+                if($scope.msg['to_char_ref'] == true){
+                  $scope.collapseTab(4);
+                  $scope.proform['emphistory'] = 1;
+                  $scope.success_emp = true;
+                }
+              });
+              $timeout(function(){
+                $scope.success_emp = false;
+              }, 3500); 
+            }
+          }
         }, 200);
-
-        if($scope.msg['empsuccess']){
-          $scope.emps = [];
-          angular.forEach(emp, function(val, key){
-            $scope.jpemps.push({
-                'company'        : val.company,
-                'position'       : val.position,
-                'currency'       : val.currency,
-                'salary'         : val.salary,
-                'sdate'          : val.sdate,
-                'edate'          : val.edate,
-                'ispresent'      : val.ispresent,
-                'jbdescription'  : val.jbdescription,
-                'reasonforleaving' : val.reasonforleaving
-            });
-          });
+        if($scope.msg['success']){
+          if($scope.msg['success']['emphistory']){
+            window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+          }
         }
         console.log($scope.msg);
     });
@@ -624,7 +629,6 @@ usrContent.controller('ctrlEditProfile',
       $scope.msg = result.data;
       var index = $scope.jpemps.indexOf(emp);
       $scope.jpemps.splice(index, 1);
-      $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
       
       $timeout(function(){
         $scope.frm3_loader = false;
@@ -642,10 +646,11 @@ usrContent.controller('ctrlEditProfile',
           window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
         }
       }
+      $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
+      $scope.empedtchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
       console.log($scope.msg);
     });
   }
-
   $scope.removeEmp = function(emp){
     var index = $scope.emps.indexOf(emp);
     $scope.emps.splice(index, 1);
