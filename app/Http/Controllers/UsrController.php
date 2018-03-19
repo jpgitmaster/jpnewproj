@@ -476,6 +476,8 @@ class UsrController extends Controller
           
           if(!empty($usr['emp'][$m]['sdate'])):
             $usr['emp'][$m]['sdate'] = date('Y-m-d', strtotime($usr['emp'][$m]['sdate']));
+          else:
+            $usr['emp'][$m]['sdate'] = NULL;
           endif;
           if(!empty($usr['emp'][$m]['edate'])):
             $usr['emp'][$m]['edate'] = date('Y-m-d', strtotime($usr['emp'][$m]['edate']));
@@ -594,10 +596,10 @@ class UsrController extends Controller
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
       $usr = $usr ? $usr : [];
-      // DB::table('employment_history')
-      //   ->where('id', $usr['emp']['id'])
-      //   ->where('genid', $usr['emp']['genid'])
-      //   ->delete();
+      DB::table('employment_history')
+        ->where('id', $usr['emp']['id'])
+        ->where('genid', $usr['emp']['genid'])
+        ->delete();
       $this->msg['success']['emphistory'] = 'You have successfully deleted your employment history!';
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
     }

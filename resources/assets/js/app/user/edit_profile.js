@@ -714,8 +714,24 @@ usrContent.controller('ctrlEditProfile',
       $scope.checked--;
     }
   }
+  
 }]);
+usrContent.filter('customOrderBy', function () {
+   return function (arr) {
 
+     var numbers = [];
+     var strings = [];
+       angular.forEach(arr, function(item){
+            if(item.ispresent == true ){
+              numbers.push(item);     
+            }
+            else
+              strings.push(item);     
+          });
+
+        return numbers.sort().concat(strings);
+    };
+});
 usrContent.directive('fileInput', ['$parse', '$http', '$timeout',
     function($parse, $http, $timeout){
     return {

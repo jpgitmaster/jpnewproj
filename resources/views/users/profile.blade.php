@@ -999,7 +999,8 @@
 			            </form>
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
-			            	<div ng-repeat="jpemp in jpemps | limitTo: 4" ng-class="'tstko'+$index" class="pcemp">
+			            	{{-- <div ng-repeat="jpemp in jpemps | orderBy: 'edate' | customOrderBy | limitTo: 4" ng-class="'tstko'+$index" class="pcemp"> --}}
+			            	<div ng-repeat="jpemp in jpemps | orderBy: '-id' | limitTo: 4" ng-class="'tstko'+$index" class="pcemp">
 			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
 	                  	</button>
