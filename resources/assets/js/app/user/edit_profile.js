@@ -612,9 +612,12 @@ usrContent.controller('ctrlEditProfile',
       //     });
       // }
   }
+  $scope.jphide = [];
+  $scope.frmempupdt = false;
+  $scope.empedtchckbx = false;
 
   $scope.deleteEmp = function(emp, idx){
-    $scope.success_emp = true;
+    angular.element('#frmempupdt').appendTo('#empcard');
     $http({
       method: 'POST',
       url: '/user/delete_employment_history',
@@ -636,6 +639,7 @@ usrContent.controller('ctrlEditProfile',
           if($scope.msg['success']['emphistory']){
             $scope.success_emp = true;
           }
+
           $timeout(function(){
             $scope.success_emp = false;
           }, 3500); 
@@ -648,6 +652,9 @@ usrContent.controller('ctrlEditProfile',
       }
       $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
       $scope.empedtchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
+      
+      // close pop delete
+      $scope.dltemp[idx] = false;
       console.log($scope.msg);
     });
   }
@@ -660,9 +667,7 @@ usrContent.controller('ctrlEditProfile',
       }
     }
   }
-  $scope.jphide = [];
-  $scope.frmempupdt = false;
-  $scope.empedtchckbx = false;
+  
   $scope.editEmpForm = function(emp, indx){
     var fltr = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
     if(fltr == true && emp.ispresent == false){

@@ -446,7 +446,7 @@ class UsrController extends Controller
       $usr = $usr ? $usr : [];
       $messages = [];
       $loop_error = 0;
-
+      
       for ($i = 0; $i < count($usr['emp']); $i++):
           if(isset($usr['emp'][$i]['ispresent'])):
               if($usr['emp'][$i]['ispresent'] == 1):
@@ -485,17 +485,6 @@ class UsrController extends Controller
           if(empty($usr['emp'][$m]['ispresent'])):
             $usr['emp'][$m]['ispresent'] = 0;
           endif;
-          // print_r($usr['emp'][$m]);
-          if(empty($to_char_ref)):
-            $this->msg['to_char_ref'] = true;
-            DB::table('profile_forms')
-            ->where('genid', Auth::user()->genid)
-            ->update([
-                'emphistory' => 1
-            ]);
-          else:
-            $this->msg['to_char_ref'] = false;
-          endif;
           DB::table('employment_history')->insert([
             'genid'    => Auth::user()->genid,
             'company'  => $usr['emp'][$m]['company'],
@@ -509,6 +498,16 @@ class UsrController extends Controller
             'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
           ]);
         endfor;
+        if(empty($to_char_ref)):
+          $this->msg['to_char_ref'] = true;
+          DB::table('profile_forms')
+          ->where('genid', Auth::user()->genid)
+          ->update([
+              'emphistory' => 1
+          ]);
+        else:
+          $this->msg['to_char_ref'] = false;
+        endif;
         $this->msg['success']['emphistory'] = 'You have successfully added your employment history!';
       endif;
       print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
