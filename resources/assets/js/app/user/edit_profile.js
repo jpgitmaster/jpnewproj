@@ -302,11 +302,19 @@ usrContent.controller('ctrlEditProfile',
     });
   }
   $scope.jpemps = [];
+  $scope.empbtndisable = false;
+  $scope.check_emps = function(){
+    if($scope.emps && $scope.jpemps){
+      if($scope.emps.length > 3 - $scope.jpemps.length){
+        $scope.empbtndisable = true;
+      }
+    }
+  }
   EmpHistory.query().$promise.then(function(data) {
     $scope.jpemps = data;
     $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
     var noworkexprnce = $scope.jpemps.length ? true : false;
-    
+    $scope.check_emps();
     $timeout(function(){
       if($scope.usr){
         $scope.wrkexperience = $scope.frm1.wrkexperience;
@@ -520,7 +528,7 @@ usrContent.controller('ctrlEditProfile',
         console.log($scope.msg);
     });
   }
-  $scope.empbtndisable = false;
+
   $scope.addEmp = function(emp){
     // $scope.wrkexperience = $scope.frm1['wrkexperience'];
     $scope.emps.unshift({
@@ -538,11 +546,7 @@ usrContent.controller('ctrlEditProfile',
         $scope.msg['error']['emp'].splice(0, 0, {});
       }
     }
-    if($scope.emps && $scope.jpemps){
-      if($scope.emps.length > 3 - $scope.jpemps.length){
-        $scope.empbtndisable = true;
-      }
-    }
+    $scope.check_emps();
   }
 
   $scope.updateEmpForm = function(emp){
@@ -639,7 +643,7 @@ usrContent.controller('ctrlEditProfile',
           if($scope.msg['success']['emphistory']){
             $scope.success_emp = true;
           }
-
+          $scope.empbtndisable = false;
           $timeout(function(){
             $scope.success_emp = false;
           }, 3500); 

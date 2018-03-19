@@ -443,6 +443,7 @@ class UsrController extends Controller
       $usr = [];
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
+      $usr['emp'] = array_reverse($usr['emp']);
       $usr = $usr ? $usr : [];
       $messages = [];
       $loop_error = 0;
