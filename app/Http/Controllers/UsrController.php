@@ -443,36 +443,36 @@ class UsrController extends Controller
       $usr = [];
       $rqst = $request->all();
       $usr['emp'] = json_decode($rqst['emp'], true);
-      $usr['emp'] = array_reverse($usr['emp']);
       $usr = $usr ? $usr : [];
       $messages = [];
       $loop_error = 0;
       
       for ($i = 0; $i < count($usr['emp']); $i++):
-          if(isset($usr['emp'][$i]['ispresent'])):
-              if($usr['emp'][$i]['ispresent'] == 1):
-                  $validate_edate[$i] = '';
-              else:
-                  $validate_edate[$i] = 'required|date|date_format:m/d/Y';
-              endif;
-          endif;
-          $validate = Validator::make($usr['emp'][$i], [
-              'company'   => 'required|max:200',
-              'position'  => 'required|max:100',
-              'salary'    => 'required|numeric|min:10',
-              'sdate'  => 'required|date|date_format:m/d/Y',
-              'edate'  => $validate_edate[$i] ? $validate_edate[$i] : '',
-              'jbdescription'  => 'required|min:50|max:800',
-              'reasonforleaving'  => 'required|min:50|max:800'
-          ], $messages);
-          $validate->setAttributeNames($replace_names);
-          $this->msg['error']['emp'][] = $validate->messages()->toArray();
-          $has_error = $this->hasError($validate);
-          $loop_error += count($validate->messages()->toArray());
+        if(isset($usr['emp'][$i]['ispresent'])):
+            if($usr['emp'][$i]['ispresent'] == 1):
+                $validate_edate[$i] = '';
+            else:
+                $validate_edate[$i] = 'required|date|date_format:m/d/Y';
+            endif;
+        endif;
+        $validate = Validator::make($usr['emp'][$i], [
+            'company'   => 'required|max:200',
+            'position'  => 'required|max:100',
+            'salary'    => 'required|numeric|min:10',
+            'sdate'  => 'required|date|date_format:m/d/Y',
+            'edate'  => $validate_edate[$i] ? $validate_edate[$i] : '',
+            'jbdescription'  => 'required|min:50|max:800',
+            'reasonforleaving'  => 'required|min:50|max:800'
+        ], $messages);
+        $validate->setAttributeNames($replace_names);
+        $this->msg['error']['emp'][] = $validate->messages()->toArray();
+        $has_error = $this->hasError($validate);
+        $loop_error += count($validate->messages()->toArray());
       endfor;
       if($has_error == true || $loop_error > 0):
         $this->msg['has_error'] = true;
       else:
+        $usr['emp'] = array_reverse($usr['emp']);
         for ($m = 0; $m < count($usr['emp']); $m++):
           
           if(!empty($usr['emp'][$m]['sdate'])):
