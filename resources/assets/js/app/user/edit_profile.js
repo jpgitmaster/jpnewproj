@@ -720,6 +720,10 @@ usrContent.controller('ctrlEditProfile',
     }
   }
   
+  $scope.viewResume = function(usr){
+    console.log(usr);
+  }
+
 }]);
 usrContent.filter('customOrderBy', function () {
    return function (arr) {

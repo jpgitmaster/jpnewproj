@@ -198,7 +198,7 @@
 		</div>
 		<div class="cntntwrpr_lft">
 			<div class="cntnbx">
-				<button class="btn btn-success pvw">
+				<button class="btn btn-success pvw" type="button" ng-click="viewResume(jpemps)">
 					PREVIEW
 				</button>
 				<div class="ttl">

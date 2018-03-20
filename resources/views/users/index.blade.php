@@ -184,6 +184,95 @@
     </div>
   </div>
 </div>
+{{-- <div class="modal fade" id="pjnModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button data-dismiss="modal" class="close btn-danger">
+          <i class="fa fa-times"></i>
+        </button>
+        <div class="jnnw">
+          <button type="button" class="btn btn-success" onclick="showSteps()">
+            Join Now!
+          </button>
+        </div>
+        <div class="imgjbfr">
+          <img src="{{ URL::asset('img/jobfair.jpg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #pjnModal .modal-dialog{
+    max-width: 600px;
+  }
+  #pjnModal .modal-body .btn-danger{
+    background-color: #f00;
+    color: #FFF;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    opacity: .8;
+    outline: none;
+    cursor: pointer;
+  }
+  #pjnModal .modal-body .btn-danger:hover{
+    opacity: 1;
+  }
+  #pjnModal .modal-body .btn-danger .fa{
+    top: -2px;
+    position: relative;
+    display: inline-block;
+  }
+  #pjnModal .modal-body{
+    padding: 0;
+    position: relative;
+  }
+  #pjnModal .modal-body .jnnw{
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  #pjnModal .modal-body .jnnw .btn-success{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 10px 30px 12px;
+    font-weight: bold;
+    opacity: 1;
+    animation: blinking 1s linear 3;
+  }
+  @keyframes blinking {
+    from,
+    49.9% {
+      opacity: 0;
+    }
+    50%,
+    to {
+      opacity: 1;
+    }
+  }
+  #pjnModal .modal-body img{
+    width: 100%;
+  }
+</style>
+<script>
+  $(function(){
+    $('#pjnModal').modal('show');
+  });
+  function showSteps(){
+    $('.imgjbfr').html('<a href="{{ URL::asset('img/steps.jpg') }}" target="_blank"><img src="{{ URL::asset('img/steps.jpg') }}" alt=""></a>');
+    $('#pjnModal .modal-dialog').css('max-width', '700px');
+    $('#pjnModal .modal-body .jnnw .btn-success').hide();
+  }
+</script> --}}
   <!-- JS -->
 @if (isset($scripts))
   @foreach($scripts as $js)
