@@ -670,6 +670,7 @@ usrContent.controller('ctrlEditProfile',
         $scope.msg['error']['emp'].splice(index, 1);
       }
     }
+    $scope.empbtndisable = false;
   }
   
   $scope.editEmpForm = function(emp, indx){

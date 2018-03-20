@@ -558,7 +558,7 @@ class UsrController extends Controller
       if($has_error == true):
         $this->msg['error']['emp'] = $validate->messages()->toArray();
       else:
-        if(!empty($ispresent_exist) && empty($usr['emp']['ispresent'])):
+        if(!empty($ispresent_exist) && empty($usr['emp']['ispresent']) || empty($ispresent_exist)):
           if(!empty($usr['emp']['sdate'])):
             $usr['emp']['sdate'] = date('Y-m-d', strtotime($usr['emp']['sdate']));
           endif;
