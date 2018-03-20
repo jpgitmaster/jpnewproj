@@ -720,8 +720,8 @@ usrContent.controller('ctrlEditProfile',
     }
   }
   
-  $scope.viewResume = function(usr){
-    console.log(usr);
+  $scope.viewResume = function(){
+    $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
   }
 
 }]);

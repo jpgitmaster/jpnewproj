@@ -1178,5 +1178,12 @@
 	    </div>
 	  </div>
 	</div>
+	<div class="modal" id="resume_tpl">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad distinctio iure. Obcaecati deleniti optio nulla, facilis illum unde facere necessitatibus dolor quos porro! Repudiandae sapiente, dolores esse laboriosam sunt.
+			</div>
+	  </div>
+	</div>
 </div>
 @endsection
