@@ -62,7 +62,7 @@
     			<div class="bglghtblu lrg" ng-if="!usr[0].present_address"></div>
     			<span ng-if="usr[0].present_address">
     				<i class="fa fa-home"></i>
-    				<div class="txt">
+    				<div class="txt" style="padding-top: 0;">
     					<span ng-if="usr[0].present_address">
     						<label>Present Address</label>
     						<p>
