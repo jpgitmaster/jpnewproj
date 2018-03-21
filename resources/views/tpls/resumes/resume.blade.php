@@ -84,6 +84,12 @@
     	<h3 class="rsmttl bgbl clrwht">Work Details</h3>
     	<ul class="infos">
     		<li class="info">
+    			<div class="bglghtblu sml" ng-if="!usr[0].avlforwrk"></div>
+    		</li>
+    		<li class="info">
+    			<div class="bglghtblu sml" ng-if="!usr[0].typofwork"></div>
+    		</li>
+    		<li class="info">
     			<div class="bglghtblu sml" ng-if="!usr[0].wrkexperience"></div>
     			<span ng-if="usr[0].wrkexperience">
 						<label>Years of Experience:</label>
@@ -92,12 +98,6 @@
 							<%=getfltrvalue(yrsxprncs, usr[0].wrkexperience, 0)%>
 						</p>
 					</span>
-    		</li>
-    		<li class="info">
-    			<div class="bglghtblu sml" ng-if="!usr[0].avlforwrk"></div>
-    		</li>
-    		<li class="info">
-    			<div class="bglghtblu sml" ng-if="!usr[0].workexperience"></div>
     		</li>
     	</ul>
 
