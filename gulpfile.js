@@ -11,6 +11,8 @@ elixir(function(mix) {
     mix.sass('app/user/edit_profile.scss', 'public/css/app/user');
     mix.sass('app/user/calendar.scss', 'public/css/app/user');
     mix.sass('app/user/year_calendar.scss', 'public/css/app/user');
+
+    mix.sass('app/user/resumes/resume1.scss', 'public/css/app/user/resumes/');
 });
 
 elixir(function(mix) {

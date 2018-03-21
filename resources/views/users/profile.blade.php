@@ -1,5 +1,5 @@
 @extends('users.index')
-@section('title', 'Dashboard')
+@section('title', 'Edit Profile')
 
 @section('content')
 <div id="edit_profile" ng-controller="ctrlEditProfile">
@@ -25,7 +25,7 @@
                 </div>
 	            </div>
 		        </div>
-				    </span>
+			    </span>
 				    <span ng-if="!imgtarget && usr[0]['imgname']" ng-cloak>
 				    	<div class="prvw ltstdp">
 				            <div class="preview-pane">
@@ -1181,8 +1181,8 @@
 	<div class="modal" id="resume_tpl">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad distinctio iure. Obcaecati deleniti optio nulla, facilis illum unde facere necessitatibus dolor quos porro! Repudiandae sapiente, dolores esse laboriosam sunt.
-			</div>
+	    	<div ng-include src="'/user/resume'"></div>
+		</div>
 	  </div>
 	</div>
 </div>

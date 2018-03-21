@@ -1,0 +1,254 @@
+#resume_tpl .modal-lg {
+  max-width: 900px;
+}
+
+#resume_tpl .modal-lg .modal-content {
+  border-radius: 0;
+}
+
+#resume_wrpr .bglghtblu {
+  background-color: rgba(204, 210, 216, 0.5);
+  border-radius: 5px;
+  width: 100%;
+  float: left;
+}
+
+#resume_wrpr .bglghtblu.sml {
+  min-height: 30px;
+  margin-bottom: 15px;
+}
+
+#resume_wrpr .bglghtblu.lrg {
+  min-height: 100px;
+}
+
+#resume_wrpr .bglghtblu.xlrg {
+  min-height: 150px;
+}
+
+#resume_wrpr #rsm_hdr {
+  background-color: #0077c0;
+  padding: 25px;
+  overflow: hidden;
+}
+
+#resume_wrpr #rsm_hdr .rsmrght {
+  float: left;
+  width: 160px;
+  text-align: center;
+}
+
+#resume_wrpr #rsm_hdr .rsmrght .fa {
+  font-size: 130px;
+  color: #66a4cc;
+  margin: 6px 0 0;
+}
+
+#resume_wrpr #rsm_hdr .rsmlft {
+  margin-left: 180px;
+  padding: 0;
+  color: #FFF;
+}
+
+#resume_wrpr #rsm_hdr .rsmlft .whlname {
+  border-bottom: 2px solid #FFF;
+  padding-bottom: 5px;
+  margin: 0 0 10px;
+  font-family: segobb;
+}
+
+#resume_wrpr #rsm_hdr .rsmlft .desc {
+  line-height: 20px;
+}
+
+#resume_wrpr #rsm_cntnt {
+  background-color: #0077c0;
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft {
+  width: 250px;
+  float: left;
+  background-color: #0077c0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .rsmttl {
+  padding: 5px 15px;
+  background-color: #3baaef;
+  text-transform: uppercase;
+  font: 18px segob;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #3c3c3c;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos {
+  margin: 10px 0;
+  display: inline-block;
+  width: 100%;
+  padding: 0 15px;
+  color: #FFF;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info {
+  list-style: none;
+  padding: 0 0 20px;
+  overflow: hidden;
+  color: #FFF;
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info .bglghtblu {
+  margin: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info label {
+  float: left;
+  font-weight: bold;
+  margin: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info label ~ .txt {
+  float: left;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info .txt {
+  padding-left: 12px;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos .info .txt a {
+  color: #FFF;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos.frst .info .fa {
+  color: #0077c0;
+  background-color: #FFF;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 22px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  float: left;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos.frst .info .txt {
+  margin-left: 35px;
+  padding: 6px 0 0 10px;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos.frst .info .txt label {
+  margin: 0;
+  float: left;
+  width: 100%;
+}
+
+#resume_wrpr #rsm_cntnt .rsmlft .infos.frst .info .txt p {
+  font-size: 12px;
+  float: left;
+  width: 100%;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght {
+  margin-left: 250px;
+  padding: 15px;
+  background-color: #FFF;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr {
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmttl {
+  padding: 0 0 5px;
+  text-transform: uppercase;
+  font: 18px segobb;
+  letter-spacing: 1px;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list {
+  padding: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd {
+  color: #3baaef;
+  padding: 0;
+  margin-left: 30px;
+  border: 0;
+  list-style: square;
+  font-size: 30px;
+  margin-bottom: 20px;
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd.nocntntli {
+  list-style: none;
+  margin-left: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .rghttl, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .pstn, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .date, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt {
+  margin: 0;
+  color: #333;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd {
+  display: inline-block;
+  width: 100%;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd .rghttl {
+  font: 16px segob;
+  float: left;
+  color: #3baaef;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd .date {
+  float: right;
+  font: 11px segoi;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt {
+  font-size: 13px;
+  line-height: 20px;
+  margin: 8px 0 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt ul {
+  padding: 0;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt ul li {
+  list-style-type: disc;
+  margin: 0 25px 15px;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .hline {
+  font: 11px segob;
+  margin-top: -10px;
+  border-bottom: 1px solid #3baaef;
+  padding-bottom: 6px;
+  color: #000;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .hline strong {
+  color: #3baaef;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .btmcntnt {
+  font: 11px segob;
+  margin-top: -6px;
+  padding-bottom: 6px;
+  color: #000;
+}
+
+/*# sourceMappingURL=resume1.css.map */
