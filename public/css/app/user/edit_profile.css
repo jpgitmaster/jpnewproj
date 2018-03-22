@@ -6,8 +6,16 @@
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx .pvw {
   float: right;
   position: relative;
-  top: 2px;
+  top: 8px;
   padding: 5px 20px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #topfrms {
+  margin: 25px 0 10px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #topfrms .nptgrp {
+  margin: 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card {

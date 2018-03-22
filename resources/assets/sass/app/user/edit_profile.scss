@@ -9,8 +9,15 @@
 				.pvw{
 					float: right;
 					position: relative;
-					top: 2px;
+					top: 8px;
 					padding: 5px 20px;
+				}
+				
+				#topfrms{
+					margin: 25px 0 10px;
+					.nptgrp{
+						margin: 0;
+					}
 				}
 
 				#edtprof_accrdn{

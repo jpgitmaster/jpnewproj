@@ -198,14 +198,41 @@
 		</div>
 		<div class="cntntwrpr_lft">
 			<div class="cntnbx">
-				<button class="btn btn-success pvw" type="button" ng-click="viewResume(jpemps)">
-					PREVIEW
-				</button>
 				<div class="ttl">
 				    <h3>User Profile</h3>
 				    <div class="btmbrdr"><hr></div>
 				</div>
-
+				<div id="topfrms" class="row no-gutters">
+					<div class="col-lg-3">
+						<div class="bx">
+							<div class="nptgrp">
+	    					<select required>
+	                <option value=""></option>
+	              </select>
+		            <label class="nptlbl">
+		            	Work Availability <span>*</span>
+		            </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="bx">
+							<div class="nptgrp">
+	    					<select required>
+	                <option value=""></option>
+	              </select>
+		            <label class="nptlbl">
+		            	Type of Work <span>*</span>
+		            </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<button class="btn btn-success pvw" type="button" ng-click="viewResume(jpemps)">
+							PREVIEW
+						</button>
+					</div>
+				</div>
 				<div id="edtprof_accrdn">
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(1)" type="button">
@@ -999,7 +1026,6 @@
 			            </form>
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
-			            	{{-- <div ng-repeat="jpemp in jpemps | orderBy: 'edate' | customOrderBy | limitTo: 4" ng-class="'tstko'+$index" class="pcemp"> --}}
 			            	<div ng-repeat="jpemp in jpemps | orderBy: '-id' | limitTo: 4" ng-class="'tstko'+$index" class="pcemp">
 			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
