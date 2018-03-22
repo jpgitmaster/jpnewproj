@@ -186,18 +186,18 @@
 		        	</h4>
 		        </div>
 		        <div class="clearfix"></div>
-		        <div ng-if="emp.jbdescription" class="cntnt" style="margin-bottom: 15px;">
+		        <div ng-if="emp.jbdescription" class="cntnt mb15">
 		        	<label>Job Description</label>
 		        	<div ng-bind-html="emp.jbdescription"></div>
 		        </div>
-		        <div class="bglghtblu lrg" ng-if="!emp.jbdescription" style="margin-bottom: 15px;"></div>
+		        <div class="bglghtblu lrg mb15" ng-if="!emp.jbdescription"></div>
 		        
 		        <div class="clearfix"></div>
-		        <div ng-if="emp.reasonforleaving" class="cntnt" style="margin-bottom: 15px;">
+		        <div ng-if="emp.reasonforleaving" class="cntnt mb15">
 		        	<label>Reason for Leaving</label>
 		        	<div ng-bind-html="emp.reasonforleaving"></div>
 		        </div>
-		        <div class="bglghtblu lrg" ng-if="!emp.reasonforleaving" style="margin-bottom: 15px;"></div>
+		        <div class="bglghtblu lrg mb15" ng-if="!emp.reasonforleaving"></div>
 		      </li>
 		    </ul>
 			</div>

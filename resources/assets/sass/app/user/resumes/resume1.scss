@@ -68,10 +68,13 @@
 			background-color: #0077c0;
 
 			.rsmttl {
-		    padding: 5px 15px; background-color: #3baaef;
+		    padding: 5px 15px;
+		    background-color: #3baaef;
 		    text-transform: uppercase;
-		    font: 18px segob; letter-spacing: 1px;
-		    margin-bottom: 10px; color: #FFF;
+		    font: 18px segob;
+		    letter-spacing: 1px;
+		    margin-bottom: 10px;
+		    color: #FFF;
 		    text-shadow: 1px 1px 1px #3c3c3c;
 			}
 			.infos{
@@ -153,7 +156,7 @@
 					text-transform: uppercase;
 					font: 18px segobb;
 					letter-spacing: 1px;
-					color: #6b6b6b;
+					color: #515151;
 					margin: 0;
 				}
 
@@ -164,7 +167,7 @@
 						border: 0;
 						// color: #3baaef;
 						// font-size: 30px;
-						margin-bottom: 20px;
+						margin: 10px 0 0;
 						float: left;
 						width: 100%;
 						clear: both;
@@ -224,22 +227,25 @@
 						}
 
 						.hline {
-    						font: 11px segob;
-    						margin-top: -4px;
-    						border-bottom: 1px solid #3baaef;
-    						padding-bottom: 6px;
-    						color: #000;
+  						font: 11px segob;
+  						margin-top: -4px;
+  						border-bottom: 1px solid #3baaef;
+  						padding-bottom: 6px;
+  						color: #000;
 
-    						strong{
-    							color: #3baaef;
-    						}
-    					}
-    					.btmcntnt{
-    						font: 11px segob;
-    						margin-top: -6px;
-    						padding-bottom: 6px;
-    						color: #000;
-    					}
+  						strong{
+  							color: #3baaef;
+  						}
+  					}
+  					.btmcntnt{
+  						font: 11px segob;
+  						margin-top: -6px;
+  						padding-bottom: 6px;
+  						color: #000;
+  					}
+  					.mb15{
+  						margin-bottom: 15px;
+  					}
 					}
 				}
 			}

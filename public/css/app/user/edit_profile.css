@@ -105,6 +105,18 @@
   min-height: 450px;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card #empcard {
+  float: left;
+  width: 100%;
+  min-height: auto;
+  padding: 30px 15px;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card #empcard .crdbdy .wrkxprnc {
+  float: left;
+  max-width: 250px;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body {
   position: relative;
   padding: 30px 15px 0;

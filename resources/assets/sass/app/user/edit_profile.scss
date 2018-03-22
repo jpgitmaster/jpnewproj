@@ -105,10 +105,22 @@
 							}
 						}
 						&:nth-child(1) .card-body{ min-height: 450px; }
+						#empcard{
+							float: left;
+							width: 100%;
+							min-height: auto;
+							padding: 30px 15px;
+							.crdbdy{
+								.wrkxprnc{
+									float: left;
+									max-width: 250px;	
+								}
+							}
+						}
 						.card-body{
 							position: relative;
 							padding: 30px 15px 0;
-							
+
 							.rwemp{
 				        width: 100%;
 						    float: left;

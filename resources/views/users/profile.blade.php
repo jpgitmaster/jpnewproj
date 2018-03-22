@@ -539,31 +539,6 @@
 			              	</div>
 											<div class="crdftr">
 												<div class="btmctns">
-													<!-- <div class="nptgrp am-flip-x" ng-if="frm1cnfrm" ng-cloak>
-														<div class="popcntnr">
-					                    <div class="popover bs-popover-top">
-														    <div class="arrow"></div>
-														    <div class="popover-body">
-														    	<div ng-if="!msg['rsm']['dlt']['success']">
-															    	<p>
-															    		Are you sure you want save your changes?
-															    	</p>
-															    	<div class="btns">
-															    		<button class="btn btn-primary" type="submit">
-															    			Yes
-															    		</button>
-															    		<button class="btn btn-danger" type="button" ng-click="clsbbl(2)">
-															    			No
-															    		</button>
-															    	</div>
-														    	</div>
-														    </div>
-															</div>
-									          </div>
-					                </div>
-					              	<button class="btn btn-success" ng-click="frm1cnfrm = !frm1cnfrm" type="button">
-					              		Save Changes
-					              	</button> -->
 					              	<button class="btn btn-success pvw" type="submit">
 					              		Save Changes
 					              	</button>
@@ -712,14 +687,14 @@
 							</span>
 						</div>
 				    <div class="collapse">
-				      <div id="empcard" class="card-body" style="float: left; width: 100%; min-height: auto; padding: 30px 15px;">
+				      <div id="empcard" class="card-body">
 				      	<div class="frmldr" ng-if="frm3_loader" ng-cloak>
 	                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div>
 						    <div class="crdbdy">
-						    	<div class="nptgrp" style="float: left; max-width: 250px;">
+						    	<div class="nptgrp wrkxprnc">
           					<select ng-model="wrkexperience" ng-change="updateEmpForm(wrkexperience)" required>
                       <option ng-repeat="xprnc in yrsxprncs" ng-value="xprnc.id" ng-selected="xprnc.id == usr[0]['wrkexperience']" ng-disabled="xprnc.disabled">
                       	<%=xprnc.name%>
@@ -1150,15 +1125,30 @@
 				  </div>
 				  <div class="card">
 				    <button class="card-header" ng-click="collapseTab(4)" type="button" ng-disabled="!proform['emphistory']">
-				        <div class="glyph">
-	                  <i class="fa fa-users"></i>
-	              </div>
-				        Character Reference
-				        <i class="fa fa-chevron-down"></i>
+			        <div class="glyph">
+                <i class="fa fa-users"></i>
+              </div>
+			        Character Reference
+			        <i class="fa fa-chevron-down"></i>
 				    </button>
 				    <div class="collapse">
 				      <div class="card-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				        <div class="frmldr" ng-if="frm4_loader" ng-cloak>
+	                <svg width="145px" height="145px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
+							    </svg>
+						    </div>
+						    <button ng-click="addChar(emp)" class="btn btn-primary btnwrkxprnc" type="button">
+                	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
+              	</button>
+              	<div class="rwemp">
+              		<div class="row no-gutters">
+              			<div class="col-lg-12">
+              				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores explicabo facilis veniam nihil nemo tempora ipsum, voluptatum ipsam molestias totam modi, nulla laborum, tempore odit laudantium aliquid, similique assumenda quos.
+              			</div>
+              		</div>
+              	</div>
+              	<div class="clearfix"></div><br>
 				      </div>
 				    </div>
 				  </div>

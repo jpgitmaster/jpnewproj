@@ -170,7 +170,7 @@
   text-transform: uppercase;
   font: 18px segobb;
   letter-spacing: 1px;
-  color: #6b6b6b;
+  color: #515151;
   margin: 0;
 }
 
@@ -181,7 +181,7 @@
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd {
   padding: 0;
   border: 0;
-  margin-bottom: 20px;
+  margin: 10px 0 0;
   float: left;
   width: 100%;
   clear: both;
@@ -212,7 +212,7 @@
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd .rghttl {
-  font: 16px segob;
+  font: 18px segob;
   float: left;
   color: #3baaef;
 }
@@ -263,6 +263,10 @@
   margin-top: -6px;
   padding-bottom: 6px;
   color: #000;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .mb15 {
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=resume1.css.map */
