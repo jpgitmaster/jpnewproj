@@ -681,7 +681,7 @@ class UsrController extends Controller
       })
       ->leftJoin('personal_information', 'users.genid', '=', 'personal_information.genid')
       ->select(
-        'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
+        'users.genid', 'email', 'fname', 'mname', 'lname', 'present_address', 'permanent_address', 'mobile', 'phone', 'bday', 'bplace', 'age',
         'gender', 'cstatus', 'country', 'nationality', 'objectives', 'wrkexperience',
         'act_created', 'imgname', 'rsmname', 'rsmext', 'rsmsize'
       )->where('users.genid', Auth::user()->genid)
@@ -692,13 +692,10 @@ class UsrController extends Controller
       //         'genid', 'educ_type', 'school', 'sdate', 'edate',
       //         'course', 'awrdsnrcgntn'
       //     )->get();
-      // $emps = DB::table('employment_history')
-      //     ->select(
-      //         'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate',
-      //         'supname', 'canwecontact', 'contctby',
-      //         'empemail', 'empphone', 'empmobile', 'empskype', 'empviber', 'empym',
-      //         'jbdscrptn', 'rsnfrlvng', 'ispresent'
-      //     )->get();
+      $emps = DB::table('employment_history')
+          ->select(
+              'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+          )->get();
       // $chrs = DB::table('character_reference')
       //     ->select(
       //         'genid', 'chrname', 'chrrelation', 'chremployer', 'chrposition', 'contctby',
@@ -715,12 +712,12 @@ class UsrController extends Controller
           //     endif;
           // endforeach;
 
-          // foreach ($emps as $emp):
-          //     $emp = json_decode(json_encode($emp), true);
-          //     if($user['genid'] === $emp['genid']):
-          //         $users[$key]['emps'][] = $emp;
-          //     endif;
-          // endforeach;
+          foreach ($emps as $emp):
+            $emp = json_decode(json_encode($emp), true);
+            if($user['genid'] === $emp['genid']):
+              $users[$key]['emps'][] = $emp;
+            endif;
+          endforeach;
 
           // foreach ($chrs as $chr):
           //     $chr = json_decode(json_encode($chr), true);

@@ -154,7 +154,7 @@
 			<div class="dvdr">
 				<h3 class="rsmttl">Educational Background</h3>
 				<ul class="rsmrght_list">
-		      <li class="rcrd ng-scope nocntntli">
+		      <li class="rcrd nocntntli">
 		        <div class="bglghtblu sml" ng-if="!edc.school"></div>
 		      </li>
         </ul>
@@ -162,11 +162,41 @@
 			<div class="dvdr">
 				<h3 class="rsmttl">Work Experience</h3>
 				<ul class="rsmrght_list">
-		      <li class="rcrd ng-scope nocntntli">
+		      <li class="rcrd" ng-repeat="emp in usr[0]['emps'] | orderBy: 'edate' | customOrderBy" ng-class="{'nocntntli': !emp.company}">
 		        <div class="bglghtblu sml" ng-if="!emp.company"></div>
-		        <div class="bglghtblu sml" ng-if="!emp.supname"></div>
-		        <div class="bglghtblu lrg" style="margin-bottom: 15px;"></div>
-		        <div class="bglghtblu lrg"></div>
+		        <div ng-if="emp.company">
+		        	<div class="tprcrd">
+		        		<span class="date">
+		        			<%=emp.sdate | date: 'MMMM d, yyyy'%> -
+		        			<span ng-if="emp.ispresent != 1">
+			        			<%=emp.edate | date: 'MMMM d, yyyy'%>
+			        		</span>
+			        		<span ng-if="emp.ispresent == 1">
+			        			<strong>PRESENT</strong>
+			        		</span>
+		        		</span> 
+		        		<h3 class="rghttl">
+		        			<i class="sqr"></i> <%=emp.company%>
+		        		</h3>
+		        	</div>
+		        	<h4 class="hline">
+		        		<strong>Position:</strong>&nbsp; <%=emp.position%>&nbsp; / &nbsp;
+		        		<strong>Salary:</strong>&nbsp; <%= emp.currency ? getfltrvalue(currencies, emp.currency, 0) : '&nbsp;' %> <%= emp.salary | number %>
+		        	</h4>
+		        </div>
+		        <div class="clearfix"></div>
+		        <div ng-if="emp.jbdescription" class="cntnt mb15">
+		        	<label>Job Description</label>
+		        	<div ng-bind-html="emp.jbdescription"></div>
+		        </div>
+		        <div class="bglghtblu lrg mb15" ng-if="!emp.jbdescription"></div>
+		        
+		        <div class="clearfix"></div>
+		        <div ng-if="emp.reasonforleaving" class="cntnt mb15">
+		        	<label>Reason for Leaving</label>
+		        	<div ng-bind-html="emp.reasonforleaving"></div>
+		        </div>
+		        <div class="bglghtblu lrg mb15" ng-if="!emp.reasonforleaving"></div>
 		      </li>
 		    </ul>
 			</div>
@@ -174,9 +204,9 @@
 			<div class="dvdr">
 				<h3 class="rsmttl">Character Reference</h3>
 				<ul class="rsmrght_list">
-		      <li class="rcrd ng-scope nocntntli">
-		        <div class="bglghtblu sml ng-scope" ng-if="!chr.chrname"></div>
-		        <div class="bglghtblu xlrg ng-scope" ng-if="!chr.chrrelation"></div>
+		      <li class="rcrd nocntntli">
+		        <div class="bglghtblu sml" ng-if="!chr.chrname"></div>
+		        <div class="bglghtblu xlrg" ng-if="!chr.chrrelation"></div>
 		      </li>
 		    </ul>
 			</div>

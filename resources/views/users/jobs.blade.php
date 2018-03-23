@@ -25,6 +25,37 @@
 			    <h3>Job List</h3>
 			    <div class="btmbrdr"><hr></div>
 			</div>
+			<div id="topfrms" class="row no-gutters">
+					<div class="col-lg-3">
+						<div class="bx">
+							<div class="nptgrp">
+	    					<select required>
+	                <option value=""></option>
+	              </select>
+		            <label class="nptlbl">
+		            	Work Availability <span>*</span>
+		            </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="bx">
+							<div class="nptgrp">
+	    					<select required>
+	                <option value=""></option>
+	              </select>
+		            <label class="nptlbl">
+		            	Type of Work <span>*</span>
+		            </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<button class="btn btn-success pvw" type="button" ng-click="viewResume(jpemps)">
+							PREVIEW
+						</button>
+					</div>
+				</div>
 			<div id="jbs">
 				<div class="row no-gutters">
 					<div class="col-lg-6">

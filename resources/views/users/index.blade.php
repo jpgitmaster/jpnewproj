@@ -192,9 +192,12 @@
           <i class="fa fa-times"></i>
         </button>
         <div class="jnnw">
-          <button type="button" class="btn btn-success" onclick="showSteps()">
+          <button type="button" class="btn btn-success joinow" onclick="showSteps()">
             Join Now!
           </button>
+          <a href="http://talentsource.asia/jobfair-schedule" class="btn btn-success jbschedules">
+            View Schedules
+          </a>
         </div>
         <div class="imgjbfr">
           <img src="{{ URL::asset('img/jobfair.jpg') }}" alt="">
@@ -249,6 +252,9 @@
     opacity: 1;
     animation: blinking 1s linear 3;
   }
+  #pjnModal .modal-body .jnnw .jbschedules{
+    display: none;
+  }
   @keyframes blinking {
     from,
     49.9% {
@@ -270,7 +276,8 @@
   function showSteps(){
     $('.imgjbfr').html('<a href="{{ URL::asset('img/steps.jpg') }}" target="_blank"><img src="{{ URL::asset('img/steps.jpg') }}" alt=""></a>');
     $('#pjnModal .modal-dialog').css('max-width', '700px');
-    $('#pjnModal .modal-body .jnnw .btn-success').hide();
+    $('#pjnModal .modal-body .jnnw .joinow').hide();
+    $('#pjnModal .modal-body .jnnw .jbschedules').show();
   }
 </script> --}}
   <!-- JS -->

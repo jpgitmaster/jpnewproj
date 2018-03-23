@@ -170,7 +170,7 @@
   text-transform: uppercase;
   font: 18px segobb;
   letter-spacing: 1px;
-  color: #6b6b6b;
+  color: #515151;
   margin: 0;
 }
 
@@ -179,13 +179,9 @@
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd {
-  color: #3baaef;
   padding: 0;
-  margin-left: 30px;
   border: 0;
-  list-style: square;
-  font-size: 30px;
-  margin-bottom: 20px;
+  margin: 10px 0 0;
   float: left;
   width: 100%;
   clear: both;
@@ -201,13 +197,22 @@
   color: #333;
 }
 
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .rghttl .sqr, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .pstn .sqr, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .date .sqr, #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt .sqr {
+  width: 12px;
+  height: 12px;
+  background-color: #3baaef;
+  float: left;
+  margin-right: 8px;
+  margin-top: 6px;
+}
+
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd {
   display: inline-block;
   width: 100%;
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd .rghttl {
-  font: 16px segob;
+  font: 18px segob;
   float: left;
   color: #3baaef;
 }
@@ -215,6 +220,8 @@
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .tprcrd .date {
   float: right;
   font: 11px segoi;
+  position: relative;
+  top: 6px;
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt {
@@ -223,18 +230,25 @@
   margin: 8px 0 0;
 }
 
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt label {
+  font-weight: bold;
+  margin: 5px 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt ul {
   padding: 0;
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .cntnt ul li {
   list-style-type: disc;
-  margin: 0 25px 15px;
+  margin: 0 0 0 25px;
 }
 
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .hline {
   font: 11px segob;
-  margin-top: -10px;
+  margin-top: -4px;
   border-bottom: 1px solid #3baaef;
   padding-bottom: 6px;
   color: #000;
@@ -249,6 +263,10 @@
   margin-top: -6px;
   padding-bottom: 6px;
   color: #000;
+}
+
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .mb15 {
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=resume1.css.map */
