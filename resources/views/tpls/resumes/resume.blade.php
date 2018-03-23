@@ -156,7 +156,6 @@
 				<ul class="rsmrght_list">
 		      <li class="rcrd ng-scope nocntntli">
 		        <div class="bglghtblu sml" ng-if="!edc.school"></div>
-		        <div class="bglghtblu sml" ng-if="!edc.course && edc.educ_type != 1"></div>
 		      </li>
         </ul>
 			</div>
