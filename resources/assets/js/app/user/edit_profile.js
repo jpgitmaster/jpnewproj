@@ -320,14 +320,15 @@ usrContent.controller('ctrlEditProfile',
         $scope.wrkexperience = $scope.frm1.wrkexperience;
         if(!$scope.jpemps.length && $scope.frm1.wrkexperience > 1){
           $scope.emps = [{
-              'company'        : "",
-              'position'       : "",
-              'salary'         : "",
-              'sdate'          : "",
-              'edate'          : "",
-              'ispresent'      : "",
-              'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
-              'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+            'empid'          : $scope.genid(),
+            'company'        : "",
+            'position'       : "",
+            'salary'         : "",
+            'sdate'          : "",
+            'edate'          : "",
+            'ispresent'      : "",
+            'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+            'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
           }];
         }
       }
@@ -467,17 +468,17 @@ usrContent.controller('ctrlEditProfile',
               $scope.emps = [];
               angular.forEach(emp, function(val, key){
                 $scope.jpemps.push({
-                    'company'        : val.company,
-                    'position'       : val.position,
-                    'currency'       : val.currency,
-                    'salary'         : val.salary,
-                    'sdate'          : val.sdate,
-                    'edate'          : val.edate,
-                    'ispresent'      : val.ispresent,
-                    'jbdescription'  : val.jbdescription,
-                    'reasonforleaving' : val.reasonforleaving
+                  'empid'          : val.empid,
+                  'company'        : val.company,
+                  'position'       : val.position,
+                  'currency'       : val.currency,
+                  'salary'         : val.salary,
+                  'sdate'          : val.sdate,
+                  'edate'          : val.edate,
+                  'ispresent'      : val.ispresent,
+                  'jbdescription'  : val.jbdescription,
+                  'reasonforleaving' : val.reasonforleaving
                 });
-                console.log($scope.msg['to_char_ref']);
                 if($scope.msg['to_char_ref'] == true){
                   $scope.collapseTab(4);
                   $scope.proform['emphistory'] = 1;
@@ -538,6 +539,7 @@ usrContent.controller('ctrlEditProfile',
   $scope.addEmp = function(emp){
     // $scope.wrkexperience = $scope.frm1['wrkexperience'];
     $scope.emps.unshift({
+      'empid'          : $scope.genid(),
       'company'        : "",
       'position'       : "",
       'salary'         : "",
@@ -573,14 +575,15 @@ usrContent.controller('ctrlEditProfile',
       if(!$scope.jpemps.length){
         if(emp >= 1 && $scope.emps.length < 1){
           $scope.emps.unshift({
-              'company'        : "",
-              'position'       : "",
-              'salary'         : "",
-              'sdate'          : "",
-              'edate'          : "",
-              'ispresent'      : "",
-              'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
-              'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
+            'empid'          : $scope.genid(),
+            'company'        : "",
+            'position'       : "",
+            'salary'         : "",
+            'sdate'          : "",
+            'edate'          : "",
+            'ispresent'      : "",
+            'jbdescription'  : "<ul><li></li><li></li><li></li><li></li></ul>",
+            'reasonforleaving' : "<ul><li></li><li></li><li></li><li></li></ul>"
           });
         }
       }
@@ -731,6 +734,15 @@ usrContent.controller('ctrlEditProfile',
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
   }
+  $scope.genid = function() {
+    var vrtxt = "";
+    var vrpossible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 20; i++){
+      vrtxt += vrpossible.charAt(Math.floor(Math.random() * vrpossible.length));
+    }
+    return vrtxt;
+  }
+
 }]);
 usrContent.filter('customOrderBy', function () {
    return function (arr) {

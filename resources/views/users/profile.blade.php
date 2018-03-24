@@ -710,11 +710,13 @@
 	              	<div class="clearfix"></div>
 					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
 		              	<div class="rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
+
 			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4 - jpemps.length">
 			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
 			                    	<span class="fa fa-close"></span>
 			                  	</button>
+			                  	<input type="hidden" ng-model="emp.empid">
 			              		</div>
 			              		<div class="col-lg-8">
 			              			<div class="bx">
@@ -1138,7 +1140,7 @@
 						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div>
-						    <button ng-click="addChar(emp)" class="btn btn-primary btnwrkxprnc" type="button">
+						    <button ng-click="addChar(emp)" class="btn btn-primary btnwrkxprnc" type="button" style="margin: -10px 0 10px;">
                 	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
               	</button>
               	<div class="rwemp">

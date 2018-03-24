@@ -214,57 +214,57 @@ class UsrController extends Controller
   }
 
   public function delete_record(Request $request){
-      switch ($request->num):
-          case 0:
-            $current_img = DB::table('avatars')->select('imgext', 'imgadded', 'imgchanged', 'imgfolder')->where('genid', Auth::user()->genid);
+    switch ($request->num):
+      case 0:
+        $current_img = DB::table('avatars')->select('imgext', 'imgadded', 'imgchanged', 'imgfolder')->where('genid', Auth::user()->genid);
+        $changed_date = '';
+        
+        if($current_img->first()->imgchanged):
+          $changed_date = Carbon::parse($current_img->first()->imgchanged)->format('mdy');
+        endif;
+
+        $img['imgname'] = Auth::user()->genid.Carbon::parse($current_img->first()->imgadded)->format('mdy').$changed_date.'.'.$current_img->first()->imgext;
+        $img['location'] = public_path($current_img->first()->imgfolder).'/'.$img['imgname'];
+
+        if(file_exists($img['location'])):
+          unlink($img['location']);
+        endif;
+          
+        DB::table('avatars')
+          ->where('genid', Auth::user()->genid)
+          ->update([
+              'imgname'           => '',
+              'imgext'            => '',
+              'imgfolder'         => ''
+          ]);
+        $this->msg['dpimg']['dlt']['success'] = 'You have successfully deleted your display picture.';
+        break;
+      case 1:
+            $current_resume = DB::table('resumes')->select('rsmext', 'rsmadded', 'rsmchanged', 'rsmfolder')->where('genid', Auth::user()->genid);
             $changed_date = '';
             
-            if($current_img->first()->imgchanged):
-              $changed_date = Carbon::parse($current_img->first()->imgchanged)->format('mdy');
+            if($current_resume->first()->rsmchanged):
+                $changed_date = Carbon::parse($current_resume->first()->rsmchanged)->format('mdy');
             endif;
 
-            $img['imgname'] = Auth::user()->genid.Carbon::parse($current_img->first()->imgadded)->format('mdy').$changed_date.'.'.$current_img->first()->imgext;
-            $img['location'] = public_path($current_img->first()->imgfolder).'/'.$img['imgname'];
+            $rsm['rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').$changed_date.'.'.$current_resume->first()->rsmext;
+            $rsm['location'] = public_path($current_resume->first()->rsmfolder).'/'.$rsm['rsmname'];
 
-            if(file_exists($img['location'])):
-              unlink($img['location']);
+            if(file_exists($rsm['location'])):
+                unlink($rsm['location']);
             endif;
-              
-            DB::table('avatars')
-              ->where('genid', Auth::user()->genid)
-              ->update([
-                  'imgname'           => '',
-                  'imgext'            => '',
-                  'imgfolder'         => ''
-              ]);
-            $this->msg['dpimg']['dlt']['success'] = 'You have successfully deleted your display picture.';
+            DB::table('resumes')
+            ->where('genid', Auth::user()->genid)
+            ->update([
+                'rsmname'           => '',
+                'rsmext'            => '',
+                'rsmsize'           => '',
+                'rsmfolder'         => ''
+            ]);
+            $this->msg['rsm']['dlt']['success'] = 'You have successfully deleted your resume.';
             break;
-          case 1:
-              $current_resume = DB::table('resumes')->select('rsmext', 'rsmadded', 'rsmchanged', 'rsmfolder')->where('genid', Auth::user()->genid);
-              $changed_date = '';
-              
-              if($current_resume->first()->rsmchanged):
-                  $changed_date = Carbon::parse($current_resume->first()->rsmchanged)->format('mdy');
-              endif;
-
-              $rsm['rsmname'] = Auth::user()->genid.Carbon::parse($current_resume->first()->rsmadded)->format('mdy').$changed_date.'.'.$current_resume->first()->rsmext;
-              $rsm['location'] = public_path($current_resume->first()->rsmfolder).'/'.$rsm['rsmname'];
-
-              if(file_exists($rsm['location'])):
-                  unlink($rsm['location']);
-              endif;
-              DB::table('resumes')
-              ->where('genid', Auth::user()->genid)
-              ->update([
-                  'rsmname'           => '',
-                  'rsmext'            => '',
-                  'rsmsize'           => '',
-                  'rsmfolder'         => ''
-              ]);
-              $this->msg['rsm']['dlt']['success'] = 'You have successfully deleted your resume.';
-              break;
-      endswitch;
-      print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+    endswitch;
+    print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
   }
 
   public function save_personal_info(Request $request){
@@ -491,6 +491,7 @@ class UsrController extends Controller
         endif;
         DB::table('employment_history')->insert([
           'genid'    => Auth::user()->genid,
+          'empid'    => $usr['emp'][$m]['empid'],
           'company'  => $usr['emp'][$m]['company'],
           'position' => $usr['emp'][$m]['position'],
           'currency' => $usr['emp'][$m]['currency'],
@@ -573,7 +574,7 @@ class UsrController extends Controller
         endif;
         DB::table('employment_history')
         ->where('genid', Auth::user()->genid)
-        ->where('id', $usr['emp']['id'])
+        ->where('empid', $usr['emp']['empid'])
         ->update([
           'company' => $usr['emp']['company'],
           'position' => $usr['emp']['position'],
@@ -599,8 +600,8 @@ class UsrController extends Controller
     $usr['emp'] = json_decode($rqst['emp'], true);
     $usr = $usr ? $usr : [];
     DB::table('employment_history')
-      ->where('id', $usr['emp']['id'])
-      ->where('genid', $usr['emp']['genid'])
+      ->where('empid', $usr['emp']['empid'])
+      ->where('genid', Auth::user()->genid)
       ->delete();
     $this->msg['success']['emphistory'] = 'You have successfully deleted your employment history!';
     print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
@@ -635,7 +636,7 @@ class UsrController extends Controller
   public function emp_history(){
     $users = DB::table('employment_history')
       ->select(
-        'id', 'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+        'id', 'empid', 'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
       )->where('genid', Auth::user()->genid)
       ->orderBy('id', 'desc')
       ->get();
