@@ -162,8 +162,7 @@
 			<div class="dvdr">
 				<h3 class="rsmttl">Work Experience</h3>
 				<ul class="rsmrght_list">
-		      <li class="rcrd" ng-repeat="emp in usr[0]['emps'] | orderBy: 'edate' | customOrderBy" ng-class="{'nocntntli': !emp.company}">
-		        <div class="bglghtblu sml" ng-if="!emp.company"></div>
+		      <li class="rcrd" ng-repeat="emp in usr[0]['emps'] | orderBy: 'edate' | customOrderBy">
 		        <div ng-if="emp.company">
 		        	<div class="tprcrd">
 		        		<span class="date">
@@ -189,15 +188,17 @@
 		        	<label>Job Description</label>
 		        	<div ng-bind-html="emp.jbdescription"></div>
 		        </div>
-		        <div class="bglghtblu lrg mb15" ng-if="!emp.jbdescription"></div>
-		        
 		        <div class="clearfix"></div>
 		        <div ng-if="emp.reasonforleaving" class="cntnt mb15">
 		        	<label>Reason for Leaving</label>
 		        	<div ng-bind-html="emp.reasonforleaving"></div>
 		        </div>
-		        <div class="bglghtblu lrg mb15" ng-if="!emp.reasonforleaving"></div>
 		      </li>
+          <li class="rcrd" ng-if="!usr[0]['emps']">
+            <div class="bglghtblu sml"></div>
+            <div class="bglghtblu lrg mb15"></div>
+            <div class="bglghtblu lrg mb15"></div>
+          </li>
 		    </ul>
 			</div>
 					

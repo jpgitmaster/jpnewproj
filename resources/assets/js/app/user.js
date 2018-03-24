@@ -47,7 +47,7 @@ usrApp.controller('ctrlApp', ['$scope', '$rootScope', '$timeout', '$http', '$q',
  //  });
   $scope.currentime = '';
   $scope.timestamp = function(){
-      $scope.currentime = '?time='+Date.now();
+    $scope.currentime = '?time='+Date.now();
   }
 }]);
 

@@ -431,6 +431,7 @@ class UsrController extends Controller
   
   public function save_employment_history(Request $request){
     $to_char_ref = DB::table('employment_history')->where('genid', Auth::user()->genid)->count();
+    $existing_form = DB::table('profile_forms')->where('genid', Auth::user()->genid)->where('emphistory', 1)->count();
     $replace_names = [
       'company'       => 'Company',
       'position'      => 'Position',
@@ -501,7 +502,7 @@ class UsrController extends Controller
           'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
         ]);
       endfor;
-      if(empty($to_char_ref)):
+      if(empty($to_char_ref) && empty($existing_form)):
         $this->msg['to_char_ref'] = true;
         DB::table('profile_forms')
         ->where('genid', Auth::user()->genid)
@@ -702,29 +703,27 @@ class UsrController extends Controller
       //         'chremail', 'chrphone', 'chrmobile', 'chrskype', 'chrviber', 'chrym'
       //     )->get();
       foreach ($users as $key => $user):
-          $users = json_decode(json_encode($users), true);
-          $user = json_decode(json_encode($user), true);
+        $users = json_decode(json_encode($users), true);
+        $user = json_decode(json_encode($user), true);
 
-          // foreach ($edcs as $edc):
-          //     $edc = json_decode(json_encode($edc), true);
-          //     if($user['genid'] === $edc['genid']):
-          //         $users[$key]['edcs'][] = $edc;
-          //     endif;
-          // endforeach;
-
-          foreach ($emps as $emp):
-            $emp = json_decode(json_encode($emp), true);
-            if($user['genid'] === $emp['genid']):
-              $users[$key]['emps'][] = $emp;
-            endif;
-          endforeach;
-
-          // foreach ($chrs as $chr):
-          //     $chr = json_decode(json_encode($chr), true);
-          //     if($user['genid'] === $chr['genid']):
-          //         $users[$key]['chrs'][] = $chr;
-          //     endif;
-          // endforeach;
+        // foreach ($edcs as $edc):
+        //     $edc = json_decode(json_encode($edc), true);
+        //     if($user['genid'] === $edc['genid']):
+        //         $users[$key]['edcs'][] = $edc;
+        //     endif;
+        // endforeach;
+        foreach ($emps as $emp):
+          $emp = json_decode(json_encode($emp), true);
+          if($user['genid'] === $emp['genid']):
+            $users[$key]['emps'][] = $emp;
+          endif;
+        endforeach;
+        // foreach ($chrs as $chr):
+        //     $chr = json_decode(json_encode($chr), true);
+        //     if($user['genid'] === $chr['genid']):
+        //         $users[$key]['chrs'][] = $chr;
+        //     endif;
+        // endforeach;
       endforeach;
       if(isset($users[0]['bday'])):
         $users[0]['bday'] = date('m/d/Y', strtotime($users[0]['bday']));

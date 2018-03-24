@@ -83,9 +83,9 @@ usrContent.controller('ctrlEditProfile',
     angular.element('.card:nth-child('+fadefrm+') .crdbdy').hide().delay(200).fadeIn();
   }
   $scope.updateUsr = function(){
-      Usr.query().$promise.then(function(data) {
-          $rootScope.usr = data;
-      });
+    Usr.query().$promise.then(function(data) {
+        $rootScope.usr = data;
+    });
   }
   $scope.msg = [];
   $scope.countries = Countries.query();
@@ -483,6 +483,9 @@ usrContent.controller('ctrlEditProfile',
                   $scope.proform['emphistory'] = 1;
                   $scope.success_emp = true;
                 }
+
+                // updating resume
+                $scope.updateUsr();
               });
               $timeout(function(){
                 $scope.success_emp = false;
@@ -520,6 +523,9 @@ usrContent.controller('ctrlEditProfile',
           window.scrollTo('', angular.element(".tstko"+idx).offset().top - 80);
           $scope.jphide[idx] = false;
           $scope.frmempupdt = false;
+
+          // updating resume
+          $scope.updateUsr();
           $timeout(function(){
             $scope.msg['success_emp'] = null;
           }, 3500);
@@ -652,6 +658,8 @@ usrContent.controller('ctrlEditProfile',
       if($scope.msg['success']){
         if($scope.msg['success']['emphistory']){
           window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+          // updating resume
+          $scope.updateUsr();
         }
       }
       $scope.empchckbx = $filter('filter')($scope.jpemps, {ispresent: true}).length ? true : false;
@@ -723,7 +731,6 @@ usrContent.controller('ctrlEditProfile',
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
   }
-
 }]);
 usrContent.filter('customOrderBy', function () {
    return function (arr) {
