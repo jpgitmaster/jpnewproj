@@ -197,5 +197,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal" id="resume_tpl">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	    	<div ng-include src="'/user/resume'"></div>
+		</div>
+	  </div>
+	</div>
 </div>
 @endsection

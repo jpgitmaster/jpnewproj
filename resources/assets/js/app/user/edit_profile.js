@@ -16,12 +16,12 @@ usrContent.controller('ctrlEditProfile',
           actvfrm3 = 0,
           actvfrm4 = 0;
       switch(data['personalinfo']){
-          case 0:
-              actvfrm = 1;
-              break;
-          case 1:
-              actvfrm = 0;
-              break;
+        case 0:
+          actvfrm = 1;
+          break;
+        case 1:
+          actvfrm = 0;
+          break;
       }
       switch(data['educationalbg']){
           case 0:
@@ -593,6 +593,8 @@ usrContent.controller('ctrlEditProfile',
 
       $timeout(function(){
         $scope.frm3_loader = false;
+        // updating resume
+        $scope.updateUsr();
         if($scope.msg['success']){
           if($scope.msg['success']['emphistory'] && emp == 1){
             $scope.collapseTab(4);
@@ -730,7 +732,22 @@ usrContent.controller('ctrlEditProfile',
       $scope.checked--;
     }
   }
-  
+  $scope.chrs = [
+    {
+      'chrid'   : ''
+    }
+  ];
+  $scope.addChar = function(chr){
+    $scope.chrs.unshift({
+      'chrid'          : $scope.genid()
+    });
+    if($scope.msg['error']){
+      if(typeof $scope.msg['error']['chr'] != "undefined"){
+        $scope.msg['error']['chr'].splice(0, 0, {});
+      }
+    }
+  }
+
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
   }
