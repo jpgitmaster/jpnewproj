@@ -1146,6 +1146,12 @@
               	<form ng-submit="saveCharRef(chr)" method="POST" novalidate>
 	              	<div class="rwemp">
 	              		<div class="row no-gutters" ng-repeat="chr in chrs | limitTo: 3 - jpchrs.length">
+	              			<div class="col-lg-12" ng-if="chrs.length > 1 || jpchrs.length">
+		              			<button ng-click="removeChr(chr)" class="cls" type="button">
+		                    	<span class="fa fa-close"></span>
+		                  	</button>
+		                  	<input type="hidden" ng-model="chr.chrid">
+		              		</div>
 	              			<div class="col-lg-12">
 	              				<div class="crdftr" style="margin-top: 0;">
 					              	<button class="btn btn-success" type="submit">

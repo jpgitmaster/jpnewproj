@@ -760,6 +760,15 @@ usrContent.controller('ctrlEditProfile',
       }
     }
   }
+  $scope.removeChr = function(chr){
+    var index = $scope.chrs.indexOf(chr);
+    $scope.chrs.splice(index, 1);
+    if($scope.msg['error']){
+      if(typeof $scope.msg['error']['chr'] != 'undefined'){
+        $scope.msg['error']['chr'].splice(index, 1);
+      }
+    }
+  }
 
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
