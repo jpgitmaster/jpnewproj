@@ -704,7 +704,7 @@
 				            	Work Experience <span>*</span>
 				            </label>
 									</div>
-		        			<button ng-click="addEmp(emp)" ng-disabled="((!wrkexperience || wrkexperience <= 1 || emps.length > 4) && !jpemps.length) || empbtndisable" class="btn btn-primary btnwrkxprnc" type="button">
+		        			<button ng-click="addEmp(emp)" ng-disabled="((!wrkexperience || wrkexperience <= 1 || emps.length >= 4) && !jpemps.length) || empbtndisable" class="btn btn-primary btnwrkxprnc" type="button">
                   	Add Work Experience &nbsp;&nbsp; <i class="fa fa-plus"></i>
                 	</button>
 	              	<div class="clearfix"></div>
@@ -1140,7 +1140,7 @@
 						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div>
-						    <button ng-click="addChar(chr)" class="btn btn-primary btnwrkxprnc" type="button" style="margin: -10px 0 10px;">
+						    <button ng-click="addChar(chr)" class="btn btn-primary btnwrkxprnc" type="button" ng-disabled="(chrs.length >= 3) && !jpchrs.length" style="margin: -10px 0 10px;">
                 	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
               	</button>
               	<form ng-submit="saveCharRef(chr)" method="POST" novalidate>

@@ -733,14 +733,26 @@ usrContent.controller('ctrlEditProfile',
     }
   }
 
+  $scope.jpchrs = [];
   $scope.chrs = [];
   ChrRef.query().$promise.then(function(data) {
-    $scope.chrs = data;
+    $scope.jpchrs = data;
+    $timeout(function(){
+      if($scope.usr){
+        if(!$scope.jpchrs.length){
+          $scope.chrs = [{
+            'chrid'    : $scope.genid(),
+            'name'     : "",
+          }];
+        }
+      }
+    }, 100);
   });
 
   $scope.addChar = function(chr){
     $scope.chrs.unshift({
-      'chrid'          : $scope.genid()
+      'chrid'    : $scope.genid(),
+      'name'     : "",
     });
     if($scope.msg['error']){
       if(typeof $scope.msg['error']['chr'] != "undefined"){
