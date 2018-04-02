@@ -7,8 +7,8 @@
 		<div class="cntntwrpr_rght">
 			<div class="avatar cntnbx">
 				<div class="ttl">
-				    <h3>Display Picture</h3>
-				    <div class="btmbrdr"><hr></div>
+			    <h3>Display Picture</h3>
+			    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="dsplaypc">
 					<span ng-if="!imgtarget && !usr[0]['imgname']" ng-cloak>
@@ -100,8 +100,8 @@
 			</div>
 			<div class="preview_resume cntnbx">
 				<div class="ttl">
-				    <h3>Resume</h3>
-				    <div class="btmbrdr"><hr></div>
+			    <h3>Resume</h3>
+			    <div class="btmbrdr"><hr></div>
 				</div>
 				<div class="icns">
 					<span ng-if="resume_loader" ng-cloak>
@@ -199,8 +199,8 @@
 		<div class="cntntwrpr_lft">
 			<div class="cntnbx">
 				<div class="ttl">
-				    <h3>User Profile</h3>
-				    <div class="btmbrdr"><hr></div>
+			    <h3>User Profile</h3>
+			    <div class="btmbrdr"><hr></div>
 				</div>
 				<div id="topfrms" class="row no-gutters">
 					<div class="col-lg-3">

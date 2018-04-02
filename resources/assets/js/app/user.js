@@ -22,6 +22,11 @@ usrApp.factory('EmpHistory', function ($resource) {
     query : { method: 'GET', isArray: true }
   });
 });
+usrApp.factory('ChrRef', function ($resource) {
+  return $resource('/user/char_ref', {}, {
+    query : { method: 'GET', isArray: true }
+  });
+});
 
 usrApp.factory('ProfForms', function ($resource) {
   return $resource('/user/profile_forms', {}, {

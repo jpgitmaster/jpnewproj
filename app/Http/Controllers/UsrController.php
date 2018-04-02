@@ -633,32 +633,6 @@ class UsrController extends Controller
     endif;
   }
 
-  public function emp_history(){
-    $users = DB::table('employment_history')
-      ->select(
-        'id', 'empid', 'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
-      )->where('genid', Auth::user()->genid)
-      ->orderBy('id', 'desc')
-      ->get();
-    if(isset($users)):
-      for ($i = 0; $i < count($users); $i++):
-        if(isset($users[$i]->sdate)):
-          $users[$i]->sdate = date('m/d/Y', strtotime($users[$i]->sdate));
-        endif;
-        if(isset($users[$i]->edate)):
-          $users[$i]->edate = date('m/d/Y', strtotime($users[$i]->edate));
-        endif;
-        if(isset($users[$i]->ispresent)):
-          $users[$i]->ispresent = $users[$i]->ispresent ? true : false;
-        endif;
-      endfor;
-      $json = json_encode($users, JSON_PRETTY_PRINT);
-    else:
-      $json = json_encode([], JSON_PRETTY_PRINT);
-    endif;
-    return $json;
-  }
-
   public function get_countries(){
     $countries = DB::table('countries')->get();
     return json_encode($countries, JSON_PRETTY_PRINT);
@@ -768,6 +742,47 @@ class UsrController extends Controller
       $users[0]->edate = date('m/d/Y', strtotime($users[0]->edate));
     endif;
     return json_encode($users, JSON_PRETTY_PRINT);
+  }
+
+  public function emp_history(){
+    $users = DB::table('employment_history')
+      ->select(
+        'id', 'genid', 'empid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
+      )->where('genid', Auth::user()->genid)
+      ->orderBy('id', 'desc')
+      ->get();
+    if(isset($users)):
+      for ($i = 0; $i < count($users); $i++):
+        if(isset($users[$i]->sdate)):
+          $users[$i]->sdate = date('m/d/Y', strtotime($users[$i]->sdate));
+        endif;
+        if(isset($users[$i]->edate)):
+          $users[$i]->edate = date('m/d/Y', strtotime($users[$i]->edate));
+        endif;
+        if(isset($users[$i]->ispresent)):
+          $users[$i]->ispresent = $users[$i]->ispresent ? true : false;
+        endif;
+      endfor;
+      $json = json_encode($users, JSON_PRETTY_PRINT);
+    else:
+      $json = json_encode([], JSON_PRETTY_PRINT);
+    endif;
+    return $json;
+  }
+
+  public function char_ref(){
+    $users = DB::table('character_reference')
+      ->select(
+        'id', 'genid', 'chrid', 'name', 'occupation', 'position', 'relation', 'email', 'phone'
+      )->where('genid', Auth::user()->genid)
+      ->orderBy('id', 'desc')
+      ->get();
+    if(isset($users)):
+      $json = json_encode($users, JSON_PRETTY_PRINT);
+    else:
+      $json = json_encode([], JSON_PRETTY_PRINT);
+    endif;
+    return $json;
   }
 
   public function hasError($validate){

@@ -93,6 +93,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::get('emp_history', [
 	    'as' => 'emp_history', 'uses' => 'UsrController@emp_history'
 		]);
+		Route::get('char_ref', [
+	    'as' => 'char_ref', 'uses' => 'UsrController@char_ref'
+		]);
 
 		Route::get('account_settings', [
 	    'as' => 'usr_acctsttngs', 'uses' => 'AcctSettingsController@acctsttngs'
@@ -122,17 +125,6 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		]);
 		Route::post('save_activity_type', [
 	    'as' => 'save_activity_type', 'uses' => 'CalendarController@save_activity_type'
-		]);
-
-		// YEAR CALENDAR CONTROLLERS
-		Route::get('year_calendar', [
-	    'as' => 'year_calendar', 'uses' => 'YearCalendarController@year_calendar'
-		]);
-		Route::get('crm_dashboard', [
-	    'as' => 'crm_dashboard', 'uses' => 'YearCalendarController@crm_dashboard'
-		]);
-		Route::get('crm_login', [
-	    'as' => 'crm_login', 'uses' => 'YearCalendarController@crm_login'
 		]);
 	});
 });

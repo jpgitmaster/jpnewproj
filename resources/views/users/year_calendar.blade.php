@@ -37,7 +37,7 @@
 	width: 100%;
 }
 </style>
-{{-- <div class="cntnbx">
+<div class="cntnbx">
 	<h4>Crew Rotation Program</h4>
 	<br>
 	<div class="clearfix"></div>
@@ -191,7 +191,7 @@
 					<tr>
 						<td style="width: 1%;" colspan="8">
 							<div class="am-flip-x popcntnr">
-              	<div class="popover bs-popover-top" style="display: none;">
+              	<div class="popover bs-popover-top" style="display: block;">
 							    <div class="arrow"></div>
 							    <div class="popover-body">
 							    	<i class="fa fa-times-circle"></i>
@@ -880,8 +880,8 @@
       </div>
     </div>
   </div>
-</div> --}}
-<div class="cntnbx">
+</div>
+{{-- <div class="cntnbx">
 	<h4>Crew Change Plan</h4>
 	<div class="clearfix"></div>
 	<div class="row no-gutters" style="margin-top: 10px;">
@@ -1223,5 +1223,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 @endsection

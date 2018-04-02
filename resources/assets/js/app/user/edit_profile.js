@@ -2,8 +2,8 @@
 var usrContent = angular.module('usrContent', ['summernote', 'ui.mask', 'AxelSoft']);
 
 usrContent.controller('ctrlEditProfile',
-    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'EducBg', 'EmpHistory', 'ProfForms',
-    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, EducBg, EmpHistory, ProfForms) {
+    ['$scope', '$rootScope', '$filter', '$timeout', '$http', '$q', 'Usr', 'Countries', 'PersnlInfo', 'EducBg', 'EmpHistory', 'ChrRef', 'ProfForms',
+    function($scope, $rootScope, $filter, $timeout, $http, $q, Usr, Countries, PersnlInfo, EducBg, EmpHistory, ChrRef, ProfForms) {
 
   $scope.proform = ProfForms.query();
   $scope.frm1_loader = false;
@@ -732,11 +732,12 @@ usrContent.controller('ctrlEditProfile',
       $scope.checked--;
     }
   }
-  $scope.chrs = [
-    {
-      'chrid'   : ''
-    }
-  ];
+
+  $scope.chrs = [];
+  ChrRef.query().$promise.then(function(data) {
+    $scope.chrs = data;
+  });
+
   $scope.addChar = function(chr){
     $scope.chrs.unshift({
       'chrid'          : $scope.genid()
