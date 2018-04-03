@@ -450,56 +450,56 @@ usrContent.controller('ctrlEditProfile',
   $scope.saveEmploymentHistory = function(emp){
     $scope.frm3_loader = true;
     $http({
-        method: 'POST',
-        url: '/user/save_employment_history',
-        headers: { 'Content-Type': undefined },
-        transformRequest: function (data) {
-            var fd = new FormData();
-            fd.append('emp', angular.toJson(data.emp));
-            return fd;
-        },
-        data: {emp: emp}
+      method: 'POST',
+      url: '/user/save_employment_history',
+      headers: { 'Content-Type': undefined },
+      transformRequest: function (data) {
+        var fd = new FormData();
+        fd.append('emp', angular.toJson(data.emp));
+        return fd;
+      },
+      data: {emp: emp}
     }).then(function(result){
-        $scope.msg = result.data;
-        $timeout(function(){
-          $scope.frm3_loader = false;
-          if($scope.msg['success']){
-            if($scope.msg['success']['emphistory']){
-              $scope.emps = [];
-              angular.forEach(emp, function(val, key){
-                $scope.jpemps.push({
-                  'empid'          : val.empid,
-                  'company'        : val.company,
-                  'position'       : val.position,
-                  'currency'       : val.currency,
-                  'salary'         : val.salary,
-                  'sdate'          : val.sdate,
-                  'edate'          : val.edate,
-                  'ispresent'      : val.ispresent,
-                  'jbdescription'  : val.jbdescription,
-                  'reasonforleaving' : val.reasonforleaving
-                });
-                if($scope.msg['to_char_ref'] == true){
-                  $scope.collapseTab(4);
-                  $scope.proform['emphistory'] = 1;
-                  $scope.success_emp = true;
-                }
-
-                // updating resume
-                $scope.updateUsr();
-              });
-              $timeout(function(){
-                $scope.success_emp = false;
-              }, 3500); 
-            }
-          }
-        }, 200);
+      $scope.msg = result.data;
+      $timeout(function(){
+        $scope.frm3_loader = false;
         if($scope.msg['success']){
           if($scope.msg['success']['emphistory']){
-            window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+            $scope.emps = [];
+            angular.forEach(emp, function(val, key){
+              $scope.jpemps.push({
+                'empid'          : val.empid,
+                'company'        : val.company,
+                'position'       : val.position,
+                'currency'       : val.currency,
+                'salary'         : val.salary,
+                'sdate'          : val.sdate,
+                'edate'          : val.edate,
+                'ispresent'      : val.ispresent,
+                'jbdescription'  : val.jbdescription,
+                'reasonforleaving' : val.reasonforleaving
+              });
+              if($scope.msg['to_char_ref'] == true){
+                $scope.collapseTab(4);
+                $scope.proform['emphistory'] = 1;
+                $scope.success_emp = true;
+              }
+
+              // updating resume
+              $scope.updateUsr();
+            });
+            $timeout(function(){
+              $scope.success_emp = false;
+            }, 3500); 
           }
         }
-        console.log($scope.msg);
+      }, 200);
+      if($scope.msg['success']){
+        if($scope.msg['success']['emphistory']){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+        }
+      }
+      console.log($scope.msg);
     });
   }
   $scope.updateEmpHistory = function(idx, emp){
@@ -760,6 +760,28 @@ usrContent.controller('ctrlEditProfile',
       }
     }
   }
+
+  $scope.saveCharRef = function(chr){
+    $scope.frm4_loader = true;
+    $http({
+      method: 'POST',
+      url: '/user/save_char_ref',
+      headers: { 'Content-Type': undefined },
+      transformRequest: function (data) {
+        var fd = new FormData();
+        fd.append('chr', angular.toJson(data.chr));
+        return fd;
+      },
+      data: {chr: chr}
+    }).then(function(result){
+      $scope.msg = result.data;
+      $timeout(function(){
+        $scope.frm4_loader = false;
+      }, 200);
+      console.log($scope.msg);
+    });
+  }
+
   $scope.removeChr = function(chr){
     var index = $scope.chrs.indexOf(chr);
     $scope.chrs.splice(index, 1);

@@ -710,7 +710,6 @@
 	              	<div class="clearfix"></div>
 					        <form ng-submit="saveEmploymentHistory(emps)" method="POST" novalidate>
 		              	<div class="rwemp" ng-if="wrkexperience && wrkexperience >= 1 && emps.length" ng-cloak>
-
 			              	<div class="am-fade row no-gutters" ng-repeat="emp in emps | limitTo: 4 - jpemps.length">
 			              		<div class="col-lg-12" ng-if="emps.length > 1 || jpemps.length">
 			              			<button ng-click="removeEmp(emp)" class="cls" type="button">
@@ -1143,7 +1142,7 @@
 						    <button ng-click="addChar(chr)" class="btn btn-primary btnwrkxprnc" type="button" ng-disabled="(chrs.length >= 3) && !jpchrs.length" style="margin: -10px 0 10px;">
                 	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
               	</button>
-              	<form ng-submit="saveCharRef(chr)" method="POST" novalidate>
+              	<form ng-submit="saveCharRef(chrs)" method="POST" novalidate>
 	              	<div class="rwemp">
 	              		<div class="row no-gutters" ng-repeat="chr in chrs | limitTo: 3 - jpchrs.length">
 	              			<div class="col-lg-12" ng-if="chrs.length > 1 || jpchrs.length">
@@ -1152,14 +1151,108 @@
 		                  	</button>
 		                  	<input type="hidden" ng-model="chr.chrid">
 		              		</div>
-	              			<div class="col-lg-12">
-	              				<div class="crdftr" style="margin-top: 0;">
-					              	<button class="btn btn-success" type="submit">
-					              		Save Changes
-					              	</button>
-				              	</div>
-	              			</div>
+	              			<div class="col-lg-8">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['name'][0]}" ng-mouseover="cname = true" ng-mouseleave="cname = false">
+								            <input type="text" ng-model="chr.name" required>
+								            <label class="nptlbl">Name <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['name'] && cname === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['name'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['relation'][0]}" ng-mouseover="crelation = true" ng-mouseleave="crelation = false">
+								            <input type="text" ng-model="chr.relation" required>
+								            <label class="nptlbl">Relation <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['relation'] && crelation === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['relation'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['company'][0]}" ng-mouseover="ccompany = true" ng-mouseleave="ccompany = false">
+								            <input type="text" ng-model="chr.company" required>
+								            <label class="nptlbl">Company</label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['company'] && ccompany === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['company'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['position'][0]}" ng-mouseover="cposition = true" ng-mouseleave="cposition = false">
+								            <input type="text" ng-model="chr.position" required>
+								            <label class="nptlbl">Position</label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['position'] && cposition === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['position'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['email'][0]}" ng-mouseover="cemail = true" ng-mouseleave="cemail = false">
+								            <input type="text" ng-model="chr.email" required>
+								            <label class="nptlbl">Email <span>*</span></label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['email'] && cemail === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['email'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="bx">
+		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index]['phone'][0]}" ng-mouseover="cphone = true" ng-mouseleave="cphone = false">
+								            <input type="text" ng-model="chr.phone" required>
+								            <label class="nptlbl">Phone No.</label>
+								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index]['phone'] && cphone === true" ng-cloak>
+		                        	<div class="popover bs-popover-top">
+											    			<div class="arrow"></div>
+														    <div class="popover-body">
+														      <%= msg['error']['chr'][$index]['phone'][0] %>
+														    </div>
+															</div>
+						                </div>
+									        </div>
+		              			</div>
+		              		</div>
 	              		</div>
+	              		<div class="crdftr" style="margin-top: 0;">
+			              	<button class="btn btn-success" type="submit">
+			              		Save Changes
+			              	</button>
+		              	</div>
 	              	</div>
               	</form>
               	<div class="clearfix"></div><br>

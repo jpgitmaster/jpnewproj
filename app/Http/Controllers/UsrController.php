@@ -640,11 +640,6 @@ class UsrController extends Controller
     endif;
   }
 
-  public function get_countries(){
-    $countries = DB::table('countries')->get();
-    return json_encode($countries, JSON_PRETTY_PRINT);
-  }
-
   public function get_profile_forms(){
       $users = DB::table('profile_forms')
           ->select(
@@ -780,7 +775,7 @@ class UsrController extends Controller
   public function char_ref(){
     $users = DB::table('character_reference')
       ->select(
-        'id', 'genid', 'chrid', 'name', 'occupation', 'position', 'relation', 'email', 'phone'
+        'id', 'genid', 'chrid', 'name', 'company', 'position', 'relation', 'email', 'phone'
       )->where('genid', Auth::user()->genid)
       ->orderBy('id', 'desc')
       ->get();
@@ -790,6 +785,64 @@ class UsrController extends Controller
       $json = json_encode([], JSON_PRETTY_PRINT);
     endif;
     return $json;
+  }
+
+  public function save_char_ref(Request $request){
+    $replace_names = [
+      'name'       => 'Name',
+      'relation'   => 'Relation',
+      'company'    => 'Company',
+      'position'   => 'Position',
+      'email'      => 'Email',
+      'phone'      => 'Phone'
+    ];
+    $usr = [];
+    $rqst = $request->all();
+    $usr['chr'] = json_decode($rqst['chr'], true);
+    $usr = $usr ? $usr : [];
+    $messages = [];
+    $loop_error = 0;
+    
+    for ($i = 0; $i < count($usr['chr']); $i++):
+      $validate = Validator::make($usr['chr'][$i], [
+        'name'     => 'required|max:100',
+        'relation' => 'required|max:100',
+        'company'  => 'max:100',
+        'position' => 'max:100',
+        'email'    => 'required|email|max:100',
+        'phone'    => 'max:100'
+      ], $messages);
+      $validate->setAttributeNames($replace_names);
+      $this->msg['error']['chr'][] = $validate->messages()->toArray();
+      $has_error = $this->hasError($validate);
+      $loop_error += count($validate->messages()->toArray());
+    endfor;
+    if($has_error == true || $loop_error > 0):
+      $this->msg['has_error'] = true;
+    else:
+      $usr['chr'] = array_reverse($usr['chr']);
+      for ($m = 0; $m < count($usr['chr']); $m++):
+        // DB::table('character_reference')->insert([
+        //   'genid'    => Auth::user()->genid,
+        //   'empid'    => $usr['emp'][$m]['empid'],
+        //   'company'  => $usr['emp'][$m]['company'],
+        //   'position' => $usr['emp'][$m]['position'],
+        //   'currency' => $usr['emp'][$m]['currency'],
+        //   'salary'   => $usr['emp'][$m]['salary'],
+        //   'sdate'    => $usr['emp'][$m]['sdate'],
+        //   'edate'    => $usr['emp'][$m]['edate'],
+        //   'ispresent' => $usr['emp'][$m]['ispresent'],
+        //   'jbdescription' => $usr['emp'][$m]['jbdescription'],
+        //   'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
+        // ]);
+      endfor;
+    endif;
+    print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+  }
+
+  public function get_countries(){
+    $countries = DB::table('countries')->get();
+    return json_encode($countries, JSON_PRETTY_PRINT);
   }
 
   public function hasError($validate){
