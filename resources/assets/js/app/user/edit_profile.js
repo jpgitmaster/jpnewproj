@@ -899,68 +899,68 @@ usrContent.directive('fileResume', ['$parse', '$http', '$timeout',
 
 usrContent.directive('jpCustomCrop', ['$parse', '$rootScope', '$timeout', function($parse, $rootScope, $timeout){
     return {
-        restrict: 'A',
-        link: function (scope, element, attrs)
-        {
-            $(function(){
-                $('#cropModal').on('shown.bs.modal', function () {
-                    
-                    $timeout(function(){
-                        scope.loader = false;
-                        $('.imgcropper, .prvw').hide().delay('200').fadeIn();
-                    }, 1000)
-                  var jcrop_api,
-                  boundx,
-                  boundy,
+      restrict: 'A',
+      link: function (scope, element, attrs)
+      {
+        $(function(){
+            $('#cropModal').on('shown.bs.modal', function () {
+                
+                $timeout(function(){
+                    scope.loader = false;
+                    $('.imgcropper, .prvw').hide().delay('200').fadeIn();
+                }, 1000)
+              var jcrop_api,
+              boundx,
+              boundy,
 
-                  // Grab some information about the preview pane
-                  $preview = $('.preview-pane'),
-                  $pcnt = $('.preview-pane .preview-container'),
-                  $pimg = $('.preview-pane .preview-container img'),
-                  xsize = $pcnt.width(),
-                  ysize = $pcnt.height();
-                  
-                  $('#target').Jcrop({
-                    boxWidth: 670,
-                    // boxHeight: 550,
-                    minSize: [ 100, 100 ],
-                    // maxSize: [ 450, 450 ],
-                    onChange: updatePreview,
-                    onSelect: updatePreview,
-                    aspectRatio: xsize / ysize
-                  },function(){
-                    // Use the API to get the real image size
-                    var bounds = this.getBounds();
-                    boundx = bounds[0];
-                    boundy = bounds[1];
-                    
-                    // Store the API in the jcrop_api variable
-                    jcrop_api = this;
-                    jcrop_api.animateTo([510, 300, 190, 100]);
-                  });
+              // Grab some information about the preview pane
+              $preview = $('.preview-pane'),
+              $pcnt = $('.preview-pane .preview-container'),
+              $pimg = $('.preview-pane .preview-container img'),
+              xsize = $pcnt.width(),
+              ysize = $pcnt.height();
+              
+              $('#target').Jcrop({
+                boxWidth: 670,
+                // boxHeight: 550,
+                minSize: [ 100, 100 ],
+                // maxSize: [ 450, 450 ],
+                onChange: updatePreview,
+                onSelect: updatePreview,
+                aspectRatio: xsize / ysize
+              },function(){
+                // Use the API to get the real image size
+                var bounds = this.getBounds();
+                boundx = bounds[0];
+                boundy = bounds[1];
+                
+                // Store the API in the jcrop_api variable
+                jcrop_api = this;
+                jcrop_api.animateTo([510, 300, 190, 100]);
+              });
 
-                    function updatePreview(c){
-                        var imgx = Math.round(c.x);
-                        var imgy = Math.round(c.y);
-                        var imgw = Math.round(c.w);
-                        var imgh = Math.round(c.h);
-                        var imgw2 = xsize;
-                        var imgh2 = ysize;
-                        scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
-                        if (parseInt(c.w) > 0){
-                          var rx = xsize / c.w;
-                          var ry = ysize / c.h;
-                          $pimg.css({
-                            width: Math.round(rx * boundx) + 'px',
-                            height: Math.round(ry * boundy) + 'px',
-                            marginLeft: '-' + Math.round(rx * c.x) + 'px',
-                            marginTop: '-' + Math.round(ry * c.y) + 'px'
-                          });
-                        }
-                    };
-                })
-            });
-        }
+                function updatePreview(c){
+                    var imgx = Math.round(c.x);
+                    var imgy = Math.round(c.y);
+                    var imgw = Math.round(c.w);
+                    var imgh = Math.round(c.h);
+                    var imgw2 = xsize;
+                    var imgh2 = ysize;
+                    scope.img_coordinates({imgx, imgy, imgw, imgh, imgw2, imgh2});
+                    if (parseInt(c.w) > 0){
+                      var rx = xsize / c.w;
+                      var ry = ysize / c.h;
+                      $pimg.css({
+                        width: Math.round(rx * boundx) + 'px',
+                        height: Math.round(ry * boundy) + 'px',
+                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                        marginTop: '-' + Math.round(ry * c.y) + 'px'
+                      });
+                    }
+                };
+            })
+        });
+      }
     };
 }]);
 usrContent.directive('currencyInput', [function () {

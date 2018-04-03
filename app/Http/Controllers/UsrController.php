@@ -378,11 +378,13 @@ class UsrController extends Controller
     $usr = $request->all();
     $usr = json_decode($usr['schl'], true);
     $usr = $usr ? $usr : [];
+    $interval_date = strtotime($usr['sdate'] .'+ 2 months');;
+    $interval_date = date('m/d/Y', $interval_date);
     $validate = Validator::make($usr, [
       'school'   => 'required|max:150',
       'course' => 'required|max:150',
       'sdate'  => 'required|date|date_format:m/d/Y',
-      'edate'  => 'required|date|date_format:m/d/Y',
+      'edate'  => 'required|date|after:'.$interval_date.'|date_format:m/d/Y',
       'awardsrecognition' => 'max:800'
     ]);
     $validate->setAttributeNames($replace_names);
@@ -451,11 +453,14 @@ class UsrController extends Controller
     for ($i = 0; $i < count($usr['emp']); $i++):
       if(isset($usr['emp'][$i]['ispresent'])):
           if($usr['emp'][$i]['ispresent'] == 1):
-              $validate_edate[$i] = '';
+            $validate_edate[$i] = '';
           else:
-              $validate_edate[$i] = 'required|date|date_format:m/d/Y';
+            $interval_date[$i] = strtotime($usr['emp'][$i]['sdate'] .'+ 2 months');;
+            $interval_date[$i] = date('m/d/Y', $interval_date[$i]);
+            $validate_edate[$i] = 'required|date|after:'.$interval_date[$i].'|date_format:m/d/Y';
           endif;
       endif;
+
       $validate = Validator::make($usr['emp'][$i], [
           'company'   => 'required|max:200',
           'position'  => 'required|max:100',
@@ -540,7 +545,9 @@ class UsrController extends Controller
       if($usr['emp']['ispresent'] == 1):
         $validate_edate = '';
       else:
-        $validate_edate = 'required|date|date_format:m/d/Y';
+        $interval_date = strtotime($usr['emp']['sdate'] .'+ 2 months');;
+        $interval_date = date('m/d/Y', $interval_date);
+        $validate_edate = 'required|date|after:'.$interval_date.'|date_format:m/d/Y';
       endif;
     endif;
 
