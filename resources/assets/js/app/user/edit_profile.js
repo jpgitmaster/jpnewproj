@@ -206,6 +206,7 @@ usrContent.controller('ctrlEditProfile',
     });
   }
   $scope.dltemp = [];
+  $scope.dltchr = [];
   $scope.clsbbl = function(num, index){
     switch(num){
       case 0:
@@ -219,6 +220,9 @@ usrContent.controller('ctrlEditProfile',
         break;
       case 'dltemp':
         $scope.dltemp[index] = false;
+        break;
+      case 'dltchr':
+        $scope.dltchr[index] = false;
         break;
     }
   }

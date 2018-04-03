@@ -1012,9 +1012,9 @@
 													<%=msg['success_emp']['indx'+$index]%>
 												</span>
 											</div>
-			              	<div class="row no-gutters" style="padding-top: 20px;" ng-show="!jphide[$index]" ng-cloak>
+			              	<div class="row no-gutters ptop20" ng-show="!jphide[$index]" ng-cloak>
 			              		<div class="col-lg-12">
-			              			<div class="btnactns" style="">
+			              			<div class="btnactns">
 			              				<button class="btn btn-primary" type="button" ng-click="editEmpForm(jpemp, $index)">
 				              				<i class="fa fa-pencil"></i>
 				              			</button>
@@ -1143,7 +1143,7 @@
                 	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
               	</button>
               	<form ng-submit="saveCharRef(chrs)" method="POST" novalidate>
-	              	<div class="rwemp">
+	              	<div class="rwemp" ng-if="chrs.length" ng-cloak>
 	              		<div class="row no-gutters" ng-repeat="chr in chrs | limitTo: 3 - jpchrs.length">
 	              			<div class="col-lg-12" ng-if="chrs.length > 1 || jpchrs.length">
 		              			<button ng-click="removeChr(chr)" class="cls" type="button">
@@ -1255,6 +1255,46 @@
 		              	</div>
 	              	</div>
               	</form>
+              	<div class="rwemp am-fade" ng-if="jpchrs.length" ng-cloak>
+              		<div ng-repeat="jpchr in jpchrs | orderBy: '-id' | limitTo: 4">
+              			<div class="row no-gutters ptop20" ng-show="!jphide[$index]" ng-cloak>
+		              		<div class="col-lg-12">
+		              			<div class="btnactns">
+		              				<button class="btn btn-primary" type="button" ng-click="editChrForm(jpchr, $index)">
+			              				<i class="fa fa-pencil"></i>
+			              			</button>
+			              			<div class="dltbtn">
+			              				<div class="nptgrp am-flip-x" ng-if="dltchr[$index]" ng-cloak>
+															<div class="popcntnr">
+								                <div class="popover bs-popover-top">
+															    <div class="arrow"></div>
+															    <div class="popover-body">
+															    	<div>
+																    	<p>
+																    		Are you sure you want to delete this record?
+																    	</p>
+																    	<div class="btns">
+																    		<button type="button" class="btn btn-primary" ng-click="deleteChr(jpchr, $index)">
+																    			Yes
+																    		</button>
+																    		<button type="button" class="btn btn-danger" ng-click="clsbbl('dltchr', $index)">
+																    			No
+																    		</button>
+																    	</div>
+																    </div>
+															    </div>
+																</div>
+								              </div>
+								            </div>
+			              				<button class="btn btn-danger" ng-click="dltchr[$index] = !dltchr[$index]">
+				              				<i class="fa fa-trash"></i>
+				              			</button>
+			              			</div>
+		              			</div>
+		              		</div>
+		              	</div>
+              		</div>
+              	</div>
               	<div class="clearfix"></div><br>
 				      </div>
 				    </div>
