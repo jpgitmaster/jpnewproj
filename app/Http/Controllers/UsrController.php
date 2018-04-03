@@ -821,20 +821,17 @@ class UsrController extends Controller
       $this->msg['has_error'] = true;
     else:
       $usr['chr'] = array_reverse($usr['chr']);
-      for ($m = 0; $m < count($usr['chr']); $m++):
-        // DB::table('character_reference')->insert([
-        //   'genid'    => Auth::user()->genid,
-        //   'empid'    => $usr['emp'][$m]['empid'],
-        //   'company'  => $usr['emp'][$m]['company'],
-        //   'position' => $usr['emp'][$m]['position'],
-        //   'currency' => $usr['emp'][$m]['currency'],
-        //   'salary'   => $usr['emp'][$m]['salary'],
-        //   'sdate'    => $usr['emp'][$m]['sdate'],
-        //   'edate'    => $usr['emp'][$m]['edate'],
-        //   'ispresent' => $usr['emp'][$m]['ispresent'],
-        //   'jbdescription' => $usr['emp'][$m]['jbdescription'],
-        //   'reasonforleaving' => $usr['emp'][$m]['reasonforleaving']
-        // ]);
+      for ($c = 0; $c < count($usr['chr']); $c++):
+        DB::table('character_reference')->insert([
+          'genid'    => Auth::user()->genid,
+          'chrid'    => $usr['chr'][$c]['chrid'],
+          'name'  => $usr['chr'][$c]['name'],
+          'company' => $usr['chr'][$c]['company'],
+          'position' => $usr['chr'][$c]['position'],
+          'relation' => $usr['chr'][$c]['relation'],
+          'email'   => $usr['chr'][$c]['email'],
+          'phone'    => $usr['chr'][$c]['phone']
+        ]);
       endfor;
     endif;
     print_r(json_encode($this->msg, JSON_PRETTY_PRINT));

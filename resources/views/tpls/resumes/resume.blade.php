@@ -27,7 +27,7 @@
 	<div id="rsm_cntnt">
     <div class="rsmlft">
 
-    	<h3 class="rsmttl">Contact</h3>
+    	<h3 class="rsmttl">Contacts</h3>
     	<ul class="infos frst">
     		<li class="info">
     			<div class="bglghtblu sml" ng-if="!usr[0].email"></div>
