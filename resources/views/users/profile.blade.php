@@ -1003,7 +1003,7 @@
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
 			            	<div ng-repeat="jpemp in jpemps | orderBy: '-id' | limitTo: 4" ng-class="'empko'+$index" class="pcemp">
-			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
+			            		<button ng-click="showlbl($index, 0)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
 	                  	</button>
 	                  	<div class="alert am-fade" ng-if="msg['success_emp']['indx'+$index]" ng-cloak>
@@ -1363,7 +1363,7 @@
 		            </form>
               	<div class="rwemp am-fade" ng-if="jpchrs.length" ng-cloak>
               		<div ng-repeat="jpchr in jpchrs | orderBy: '-id' | limitTo: 3" ng-class="'chrko'+$index" class="pcemp">
-              			<button ng-click="showChrlbl($index)" class="cls" type="button" ng-if="chrhide[$index]" ng-cloak>
+              			<button ng-click="showlbl($index, 1)" class="cls" type="button" ng-if="chrhide[$index]" ng-cloak>
                     	<span class="fa fa-close"></span>
                   	</button>
                   	<div class="alert am-fade" ng-if="msg['success_chr']['indx'+$index]" ng-cloak>

@@ -837,6 +837,24 @@ class UsrController extends Controller
     print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
   }
 
+  public function update_char_ref(Request $request){
+    $replace_names = [
+      'name'       => 'Name',
+      'relation'   => 'Relation',
+      'company'    => 'Company',
+      'position'   => 'Position',
+      'email'      => 'Email',
+      'phone'      => 'Phone'
+    ];
+    $usr = [];
+    $rqst = $request->all();
+    $usr['chr'] = json_decode($rqst['chr'], true);
+    $usr = $usr ? $usr : [];
+    $messages = [];
+    $loop_error = 0;
+    print_r($usr); 
+  }
+
   public function get_countries(){
     $countries = DB::table('countries')->get();
     return json_encode($countries, JSON_PRETTY_PRINT);

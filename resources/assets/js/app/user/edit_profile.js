@@ -715,11 +715,6 @@ usrContent.controller('ctrlEditProfile',
     }
   }
 
-  $scope.showEmplbl = function(idx){
-    $scope.jphide[idx] = false;
-    $scope.frmempupdt = false;
-  }
-
   $scope.checked = 0;
   $scope.clearEndate = function(index, ispresent, mthd){
     if(ispresent == 1){
@@ -823,9 +818,49 @@ usrContent.controller('ctrlEditProfile',
     $scope.chrbtndisable = false;
   }
 
-  $scope.showChrlbl = function(idx){
-    $scope.chrhide[idx] = false;
-    $scope.frmchrupdt = false;
+  $scope.updateChrRef = function(idx, chr){
+    $scope.frm4_loader = true;
+    $http({
+        method: 'POST',
+        url: '/user/update_char_ref',
+        headers: { 'Content-Type': undefined },
+        transformRequest: function (data) {
+            var fd = new FormData();
+            fd.append('chr', angular.toJson(data.chr));
+            fd.append('idx', angular.toJson('indx'+data.idx));
+            return fd;
+        },
+        data: {chr: chr, idx: idx}
+    }).then(function(result){
+        $scope.msg = result.data;
+        $timeout(function(){
+          $scope.frm4_loader = false;
+        }, 200);
+        if($scope.msg['success_chr']){
+          window.scrollTo('', angular.element(".chrko"+idx).offset().top - 80);
+          $scope.chrhide[idx] = false;
+          $scope.frmchrupdt = false;
+
+          // updating resume
+          $scope.updateUsr();
+          $timeout(function(){
+            $scope.msg['success_chr'] = null;
+          }, 3500);
+        }
+        console.log($scope.msg);
+    });
+  }
+  $scope.showlbl = function(idx, num){
+    switch(num){
+      case 0:
+        $scope.jphide[idx] = false;
+        $scope.frmempupdt = false;
+        break;
+      case 1:
+        $scope.chrhide[idx] = false;
+        $scope.frmchrupdt = false;
+        break;
+    }
   }
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');

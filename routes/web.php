@@ -99,6 +99,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('save_char_ref', [
 	    'as' => 'save_char_ref', 'uses' => 'UsrController@save_char_ref'
 		]);
+		Route::post('update_char_ref', [
+	    'as' => 'update_char_ref', 'uses' => 'UsrController@update_char_ref'
+		]);
 
 		Route::get('account_settings', [
 	    'as' => 'usr_acctsttngs', 'uses' => 'AcctSettingsController@acctsttngs'
