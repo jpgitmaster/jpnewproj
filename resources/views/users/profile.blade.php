@@ -1002,7 +1002,7 @@
 			            </form>
 			            <div class="clearfix"></div>
 			            <div class="rwemp am-fade" ng-if="jpemps.length" ng-cloak>
-			            	<div ng-repeat="jpemp in jpemps | orderBy: '-id' | limitTo: 4" ng-class="'tstko'+$index" class="pcemp">
+			            	<div ng-repeat="jpemp in jpemps | orderBy: '-id' | limitTo: 4" ng-class="'empko'+$index" class="pcemp">
 			            		<button ng-click="showEmplbl($index)" class="cls" type="button" ng-if="jphide[$index]" ng-cloak>
 	                    	<span class="fa fa-close"></span>
 	                  	</button>
@@ -1062,10 +1062,10 @@
 														<span class="lbldcntnt">
 															<%= jpemp.position ? jpemp.position : '&nbsp;' %>
 														</span>
-												    	<label class="lbl">
-												    		Position
-												    	</label>
-												  	</div>
+											    	<label class="lbl">
+											    		Position
+											    	</label>
+											  	</div>
 												</div>
 												<div class="col-lg-4">
 													<div class="nptgrp lbld">
@@ -1139,7 +1139,7 @@
 						      	<rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="30" fill="#d6f1ff" stroke="#2b74ba" stroke-width="8px"></circle><line x1="50" y1="50" x2="50" y2="30" stroke="#000" stroke-width="5" stroke-linecap="round" transform="rotate(99.6 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite"></animateTransform></line><line x1="50" y1="50" x2="50" y2="20" stroke="#f00" stroke-width="2px" stroke-linecap="round" opacity="1" transform="rotate(138 50 50)"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"></animateTransform></line>
 							    </svg>
 						    </div>
-						    <button ng-click="addChar(chr)" class="btn btn-primary btnwrkxprnc" type="button" ng-disabled="(chrs.length >= 3) && !jpchrs.length" style="margin: -10px 0 10px;">
+						    <button ng-click="addChar(chr)" class="btn btn-primary btnwrkxprnc" type="button" ng-disabled="(chrs.length >= 3) && !jpchrs.length || chrbtndisable" style="margin: -10px 0 10px;">
                 	Add Character Reference &nbsp;&nbsp; <i class="fa fa-plus"></i>
               	</button>
               	<form ng-submit="saveCharRef(chrs)" method="POST" novalidate>
@@ -1255,9 +1255,124 @@
 		              	</div>
 	              	</div>
               	</form>
+              	<div class="clearfix"></div>
+		            <form ng-submit="updateChrRef(chredt_indx, chredt)" method="POST" novalidate ng-show="frmchrupdt" ng-cloak id="frmchrupdt">
+              		<div class="row no-gutters">
+              			<div class="col-lg-8">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['name'][0]}" ng-mouseover="cname = true" ng-mouseleave="cname = false">
+							            <input type="text" ng-model="chredt.name" required>
+							            <label class="nptlbl">Name <span>*</span></label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['name'] && cname === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['name'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-4">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['relation'][0]}" ng-mouseover="crelation = true" ng-mouseleave="crelation = false">
+							            <input type="text" ng-model="chredt.relation" required>
+							            <label class="nptlbl">Relation <span>*</span></label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['relation'] && crelation === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['relation'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-6">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['company'][0]}" ng-mouseover="ccompany = true" ng-mouseleave="ccompany = false">
+							            <input type="text" ng-model="chredt.company" required>
+							            <label class="nptlbl">Company</label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['company'] && ccompany === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['company'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-6">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['position'][0]}" ng-mouseover="cposition = true" ng-mouseleave="cposition = false">
+							            <input type="text" ng-model="chredt.position" required>
+							            <label class="nptlbl">Position</label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['position'] && cposition === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['position'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-6">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['email'][0]}" ng-mouseover="cemail = true" ng-mouseleave="cemail = false">
+							            <input type="text" ng-model="chredt.email" required>
+							            <label class="nptlbl">Email <span>*</span></label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['email'] && cemail === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['email'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-6">
+	              			<div class="bx">
+	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['phone'][0]}" ng-mouseover="cphone = true" ng-mouseleave="cphone = false">
+							            <input type="text" ng-model="chredt.phone" required>
+							            <label class="nptlbl">Phone No.</label>
+							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['phone'] && cphone === true" ng-cloak>
+	                        	<div class="popover bs-popover-top">
+										    			<div class="arrow"></div>
+													    <div class="popover-body">
+													      <%= msg['error']['chr']['phone'][0] %>
+													    </div>
+														</div>
+					                </div>
+								        </div>
+	              			</div>
+	              		</div>
+	              		<div class="col-lg-12 btnupdt">
+	              			<button class="btn btn-success" type="submit">
+			              		Save Changes
+			              	</button>
+	              		</div>
+              		</div>
+		            </form>
               	<div class="rwemp am-fade" ng-if="jpchrs.length" ng-cloak>
-              		<div ng-repeat="jpchr in jpchrs | orderBy: '-id' | limitTo: 4">
-              			<div class="row no-gutters ptop20" ng-show="!jphide[$index]" ng-cloak>
+              		<div ng-repeat="jpchr in jpchrs | orderBy: '-id' | limitTo: 3" ng-class="'chrko'+$index" class="pcemp">
+              			<button ng-click="showChrlbl($index)" class="cls" type="button" ng-if="chrhide[$index]" ng-cloak>
+                    	<span class="fa fa-close"></span>
+                  	</button>
+                  	<div class="alert am-fade" ng-if="msg['success_chr']['indx'+$index]" ng-cloak>
+											<i class="fa fa-check-circle"></i>
+											<span>
+												<%=msg['success_chr']['indx'+$index]%>
+											</span>
+										</div>
+              			<div class="row no-gutters ptop20" ng-show="!chrhide[$index]" ng-cloak>
 		              		<div class="col-lg-12">
 		              			<div class="btnactns">
 		              				<button class="btn btn-primary" type="button" ng-click="editChrForm(jpchr, $index)">
@@ -1291,6 +1406,66 @@
 				              			</button>
 			              			</div>
 		              			</div>
+		              		</div>
+		              		<div class="col-lg-8">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.name ? jpchr.name : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Name
+										    	</label>
+										  	</div>
+		              		</div>
+		              		<div class="col-lg-4">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.relation ? jpchr.relation : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Relation
+										    	</label>
+										  	</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.company ? jpchr.company : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Company
+										    	</label>
+										  	</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.position ? jpchr.position : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Position
+										    	</label>
+										  	</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.email ? jpchr.email : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Email
+										    	</label>
+										  	</div>
+		              		</div>
+		              		<div class="col-lg-6">
+		              			<div class="nptgrp lbld">
+													<span class="lbldcntnt">
+														<%= jpchr.phone ? jpchr.phone : '&nbsp;' %>
+													</span>
+										    	<label class="lbl">
+										    		Phone
+										    	</label>
+										  	</div>
 		              		</div>
 		              	</div>
               		</div>

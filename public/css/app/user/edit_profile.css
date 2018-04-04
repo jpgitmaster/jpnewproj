@@ -207,11 +207,11 @@
   padding-top: 20px;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp #frmempupdt .btnupdt {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .btnupdt {
   text-align: center;
 }
 
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp #frmempupdt .btnupdt .btn-success {
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .btnupdt .btn-success {
   display: inline-block;
 }
 

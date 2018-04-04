@@ -525,7 +525,7 @@ usrContent.controller('ctrlEditProfile',
           $scope.frm3_loader = false;
         }, 200);
         if($scope.msg['success_emp']){
-          window.scrollTo('', angular.element(".tstko"+idx).offset().top - 80);
+          window.scrollTo('', angular.element(".empko"+idx).offset().top - 80);
           $scope.jphide[idx] = false;
           $scope.frmempupdt = false;
 
@@ -706,7 +706,7 @@ usrContent.controller('ctrlEditProfile',
     }
     $scope.jphide[indx] = true;
     $scope.frmempupdt = true;
-    angular.element('#frmempupdt').appendTo('.tstko'+indx);
+    angular.element('#frmempupdt').appendTo('.empko'+indx);
 
     if($scope.msg['error']){
       if(typeof $scope.msg['error']['emp'] != 'undefined'){
@@ -738,7 +738,10 @@ usrContent.controller('ctrlEditProfile',
   }
 
   $scope.jpchrs = [];
+  $scope.chrhide = [];
   $scope.chrs = [];
+  $scope.chrbtndisable = false;
+  $scope.frmchrupdt = false;
   ChrRef.query().$promise.then(function(data) {
     $scope.jpchrs = data;
     $timeout(function(){
@@ -761,6 +764,11 @@ usrContent.controller('ctrlEditProfile',
     if($scope.msg['error']){
       if(typeof $scope.msg['error']['chr'] != "undefined"){
         $scope.msg['error']['chr'].splice(0, 0, {});
+      }
+    }
+    if($scope.chrs && $scope.jpchrs){
+      if($scope.chrs.length > 2 - $scope.jpchrs.length){
+        $scope.chrbtndisable = true;
       }
     }
   }
@@ -786,6 +794,24 @@ usrContent.controller('ctrlEditProfile',
     });
   }
 
+  $scope.editChrForm = function(chr, indx){
+    $scope.chredt = chr;
+    $scope.chredt_indx = indx;
+    var i;
+    for (i = 0; i < $scope.jpchrs.length; i++) { 
+      $scope.chrhide[i] = false;
+    }
+    $scope.chrhide[indx] = true;
+    $scope.frmchrupdt = true;
+    angular.element('#frmchrupdt').appendTo('.chrko'+indx);
+
+    if($scope.msg['error']){
+      if(typeof $scope.msg['error']['chr'] != 'undefined'){
+        $scope.msg['error']['chr'] = {};
+      }
+    }
+  }
+
   $scope.removeChr = function(chr){
     var index = $scope.chrs.indexOf(chr);
     $scope.chrs.splice(index, 1);
@@ -794,8 +820,13 @@ usrContent.controller('ctrlEditProfile',
         $scope.msg['error']['chr'].splice(index, 1);
       }
     }
+    $scope.chrbtndisable = false;
   }
 
+  $scope.showChrlbl = function(idx){
+    $scope.chrhide[idx] = false;
+    $scope.frmchrupdt = false;
+  }
   $scope.viewResume = function(){
     $('#resume_tpl').appendTo('body').modal().velocity('transition.flipXIn');
   }
