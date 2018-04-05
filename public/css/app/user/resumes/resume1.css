@@ -255,6 +255,11 @@
   color: #000;
 }
 
+#resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .hline.b0 {
+  border-bottom: 0;
+  margin-bottom: 15px;
+}
+
 #resume_wrpr #rsm_cntnt .rsmrght .dvdr .rsmrght_list .rcrd .hline strong {
   color: #3baaef;
 }

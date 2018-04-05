@@ -175,7 +175,7 @@
 			        		</span>
 		        		</span> 
 		        		<h3 class="rghttl">
-		        			<i class="sqr"></i> <%=emp.company%>
+		        			<i class="sqr"></i> <%=emp.company ? emp.company : '&nbsp;'%>
 		        		</h3>
 		        	</div>
 		        	<h4 class="hline">
@@ -205,9 +205,57 @@
 			<div class="dvdr">
 				<h3 class="rsmttl">Character Reference</h3>
 				<ul class="rsmrght_list">
-		      <li class="rcrd nocntntli">
-		        <div class="bglghtblu sml" ng-if="!chr.chrname"></div>
-		        <div class="bglghtblu xlrg" ng-if="!chr.chrrelation"></div>
+					<li class="rcrd" ng-repeat="chr in usr[0]['chrs']">
+						<div ng-if="chr.name">
+		        	<div class="tprcrd">
+		        		<h3 class="rghttl">
+		        			<i class="sqr"></i> <%=chr.name ? chr.name : '&nbsp;'%>
+		        		</h3>
+		        	</div>
+		        	<h4 class="hline">
+		        		<strong>Company:</strong>&nbsp; <%=chr.company%>&nbsp; / &nbsp;
+		        		<strong>Position:</strong>&nbsp; <%=chr.position%>
+		        	</h4>
+		        	<h4 class="hline b0">
+		        		<strong>Relation:</strong>&nbsp; <%=chr.relation%>&nbsp; / &nbsp;
+		        		<strong>Email:</strong>&nbsp; <%=chr.email ? chr.email : '&nbsp;'%>&nbsp; / &nbsp;
+		        		<strong>Phone:</strong>&nbsp; <%=chr.phone%>
+		        	</h4>
+		        </div>
+					</li>
+		      <li class="rcrd" ng-if="!usr[0]['chrs']">
+		        <div class="row no-gutters">
+		        	<div class="col-lg-8">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        	<div class="col-lg-4">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        	<div class="col-lg-6">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        	<div class="col-lg-6">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        	<div class="col-lg-6">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        	<div class="col-lg-6">
+		        		<div class="bx">
+		        			<div class="bglghtblu sml"></div>
+		        		</div>
+		        	</div>
+		        </div>
 		      </li>
 		    </ul>
 			</div>

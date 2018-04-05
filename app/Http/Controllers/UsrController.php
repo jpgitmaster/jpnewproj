@@ -674,11 +674,10 @@ class UsrController extends Controller
           ->select(
               'genid', 'company', 'position', 'currency', 'salary', 'sdate', 'edate', 'ispresent', 'jbdescription', 'reasonforleaving'
           )->get();
-      // $chrs = DB::table('character_reference')
-      //     ->select(
-      //         'genid', 'chrname', 'chrrelation', 'chremployer', 'chrposition', 'contctby',
-      //         'chremail', 'chrphone', 'chrmobile', 'chrskype', 'chrviber', 'chrym'
-      //     )->get();
+      $chrs = DB::table('character_reference')
+          ->select(
+              'genid', 'name', 'relation', 'company', 'position', 'email', 'phone'
+          )->get();
       foreach ($users as $key => $user):
         $users = json_decode(json_encode($users), true);
         $user = json_decode(json_encode($user), true);
@@ -695,12 +694,12 @@ class UsrController extends Controller
             $users[$key]['emps'][] = $emp;
           endif;
         endforeach;
-        // foreach ($chrs as $chr):
-        //     $chr = json_decode(json_encode($chr), true);
-        //     if($user['genid'] === $chr['genid']):
-        //         $users[$key]['chrs'][] = $chr;
-        //     endif;
-        // endforeach;
+        foreach ($chrs as $chr):
+            $chr = json_decode(json_encode($chr), true);
+            if($user['genid'] === $chr['genid']):
+                $users[$key]['chrs'][] = $chr;
+            endif;
+        endforeach;
       endforeach;
       if(isset($users[0]['bday'])):
         $users[0]['bday'] = date('m/d/Y', strtotime($users[0]['bday']));

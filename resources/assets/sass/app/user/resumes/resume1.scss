@@ -233,7 +233,10 @@
   						border-bottom: 1px solid #3baaef;
   						padding-bottom: 6px;
   						color: #000;
-
+  						&.b0{
+  							border-bottom: 0;
+  							margin-bottom: 15px;
+  						}
   						strong{
   							color: #3baaef;
   						}
