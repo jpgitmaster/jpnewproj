@@ -213,13 +213,19 @@
 		        		</h3>
 		        	</div>
 		        	<h4 class="hline">
-		        		<strong>Company:</strong>&nbsp; <%=chr.company%>&nbsp; / &nbsp;
-		        		<strong>Position:</strong>&nbsp; <%=chr.position%>
+		        		<span ng-if="chr.company">
+		        			<strong>Company:</strong>&nbsp; <%=chr.company%>&nbsp; 
+		        		</span>
+		        		<span ng-if="chr.position">/ &nbsp;
+		        			<strong>Position:</strong>&nbsp; <%=chr.position%>
+		        		</span>
 		        	</h4>
 		        	<h4 class="hline b0">
 		        		<strong>Relation:</strong>&nbsp; <%=chr.relation%>&nbsp; / &nbsp;
-		        		<strong>Email:</strong>&nbsp; <%=chr.email ? chr.email : '&nbsp;'%>&nbsp; / &nbsp;
-		        		<strong>Phone:</strong>&nbsp; <%=chr.phone%>
+		        		<strong>Email:</strong>&nbsp; <%=chr.email ? chr.email : '&nbsp;'%>&nbsp;<span ng-if="chr.phone"> / &nbsp;
+		        		
+		        			<strong>Phone:</strong>&nbsp; <%=chr.phone%>
+		        		</span>
 		        	</h4>
 		        </div>
 					</li>

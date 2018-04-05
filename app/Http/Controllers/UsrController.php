@@ -807,7 +807,7 @@ class UsrController extends Controller
         'name'     => 'required|max:100',
         'relation' => 'required|max:100',
         'company'  => 'max:100',
-        'position' => 'max:100',
+        'position' => 'required|max:100',
         'email'    => 'required|email|max:100',
         'phone'    => 'max:100'
       ], $messages);
@@ -825,13 +825,14 @@ class UsrController extends Controller
           'genid'    => Auth::user()->genid,
           'chrid'    => $usr['chr'][$c]['chrid'],
           'name'  => $usr['chr'][$c]['name'],
-          'company' => $usr['chr'][$c]['company'],
-          'position' => $usr['chr'][$c]['position'],
+          'company' => isset($usr['chr'][$c]['company']) ? $usr['chr'][$c]['company'] : '',
+          'position' => isset($usr['chr'][$c]['position']) ? $usr['chr'][$c]['position'] : '',
           'relation' => $usr['chr'][$c]['relation'],
           'email'   => $usr['chr'][$c]['email'],
-          'phone'    => $usr['chr'][$c]['phone']
+          'phone'    => isset($usr['chr'][$c]['phone']) ? $usr['chr'][$c]['phone'] : ''
         ]);
       endfor;
+      $this->msg['success']['chrreference'] = 'You have successfully added your character reference!';
     endif;
     print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
   }
@@ -848,10 +849,53 @@ class UsrController extends Controller
     $usr = [];
     $rqst = $request->all();
     $usr['chr'] = json_decode($rqst['chr'], true);
+    $usr['idx'] = json_decode($rqst['idx'], true);
     $usr = $usr ? $usr : [];
     $messages = [];
     $loop_error = 0;
-    print_r($usr); 
+    
+    $validate = Validator::make($usr['chr'], [
+      'name'     => 'required|max:100',
+      'relation' => 'required|max:100',
+      'company'  => 'max:100',
+      'position' => 'max:100',
+      'email'    => 'required|email|max:100',
+      'phone'    => 'max:100'
+    ], $messages);
+    
+    $validate->setAttributeNames($replace_names);
+    $has_error = $this->hasError($validate);
+
+    if($has_error == true):
+      $this->msg['error']['chr'] = $validate->messages()->toArray();
+    else:
+      DB::table('character_reference')
+        ->where('genid', Auth::user()->genid)
+        ->where('chrid', $usr['chr']['chrid'])
+        ->update([
+          'name' => $usr['chr']['name'],
+          'relation' => $usr['chr']['relation'],
+          'company' => $usr['chr']['company'],
+          'position' => $usr['chr']['position'],
+          'email' => $usr['chr']['email'],
+          'phone' => $usr['chr']['phone']
+        ]);
+      $this->msg['success_chr'][$usr['idx']] = 'You have successfully updated your character reference!';
+    endif;
+    print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
+  }
+
+  public function delete_character_ref(Request $request){
+    $usr = [];
+    $rqst = $request->all();
+    $usr['chr'] = json_decode($rqst['chr'], true);
+    $usr = $usr ? $usr : [];
+    DB::table('character_reference')
+      ->where('chrid', $usr['chr']['chrid'])
+      ->where('genid', Auth::user()->genid)
+      ->delete();
+    $this->msg['success']['chrreference'] = 'You have successfully deleted your character reference!';
+    print_r(json_encode($this->msg, JSON_PRETTY_PRINT));
   }
 
   public function get_countries(){

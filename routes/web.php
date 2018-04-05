@@ -102,6 +102,9 @@ Route::group(['middleware' => ['auth:jp_user', 'role:usr']], function(){
 		Route::post('update_char_ref', [
 	    'as' => 'update_char_ref', 'uses' => 'UsrController@update_char_ref'
 		]);
+		Route::post('delete_character_ref', [
+    	'as' => 'delete_character_ref', 'uses' => 'UsrController@delete_character_ref'
+		]);
 
 		Route::get('account_settings', [
 	    'as' => 'usr_acctsttngs', 'uses' => 'AcctSettingsController@acctsttngs'

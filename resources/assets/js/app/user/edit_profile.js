@@ -265,6 +265,7 @@ usrContent.controller('ctrlEditProfile',
   $scope.success_prsnl = false;
   $scope.success_educ = false;
   $scope.success_emp = false;
+  $scope.success_chr = false;
   $scope.savePersonalInfo = function(frmusr){
     $scope.frm1_loader = true;
     $http({
@@ -784,7 +785,34 @@ usrContent.controller('ctrlEditProfile',
       $scope.msg = result.data;
       $timeout(function(){
         $scope.frm4_loader = false;
+        if($scope.msg['success']){
+          if($scope.msg['success']['chrreference']){
+            $scope.chrs = [];
+            angular.forEach(chr, function(val, key){
+              $scope.jpchrs.push({
+                'chrid'       : val.chrid,
+                'name'        : val.name,
+                'company'     : val.company,
+                'position'    : val.position,
+                'relation'    : val.relation,
+                'email'       : val.email,
+                'phone'       : val.phone
+              });
+              $scope.success_chr = true;
+              // updating resume
+              $scope.updateUsr();
+            });
+            $timeout(function(){
+              $scope.success_chr = false;
+            }, 3500); 
+          }
+        }
       }, 200);
+      if($scope.msg['success']){
+        if($scope.msg['success']['chrreference']){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+        }
+      }
       console.log($scope.msg);
     });
   }
@@ -837,7 +865,7 @@ usrContent.controller('ctrlEditProfile',
           $scope.frm4_loader = false;
         }, 200);
         if($scope.msg['success_chr']){
-          window.scrollTo('', angular.element(".chrko"+idx).offset().top - 80);
+          window.scrollTo('', angular.element(".chrko"+idx).offset().top - 60);
           $scope.chrhide[idx] = false;
           $scope.frmchrupdt = false;
 
@@ -848,6 +876,47 @@ usrContent.controller('ctrlEditProfile',
           }, 3500);
         }
         console.log($scope.msg);
+    });
+  }
+  $scope.deleteChr = function(chr, idx){
+    angular.element('#frmchrupdt').appendTo('#chrcard');
+    $http({
+      method: 'POST',
+      url: '/user/delete_character_ref',
+      headers: { 'Content-Type': undefined },
+      transformRequest: function (data) {
+        var fd = new FormData();
+        fd.append('chr', angular.toJson(data.chr));
+        return fd;
+      },
+      data: {chr: chr}
+    }).then(function(result){
+      $scope.msg = result.data;
+      var index = $scope.jpchrs.indexOf(chr);
+      $scope.jpchrs.splice(index, 1);
+      
+      $timeout(function(){
+        $scope.frm4_loader = false;
+        if($scope.msg['success']){
+          if($scope.msg['success']['chrreference']){
+            $scope.success_chr = true;
+          }
+          $scope.chrbtndisable = false;
+          $timeout(function(){
+            $scope.success_chr = false;
+          }, 3500); 
+        }
+      }, 200);
+      if($scope.msg['success']){
+        if($scope.msg['success']['chrreference']){
+          window.scrollTo('', angular.element("#edtprof_accrdn").offset().top);
+          // updating resume
+          $scope.updateUsr();
+        }
+      }
+      // close pop delete
+      $scope.dltchr[idx] = false;
+      console.log($scope.msg);
     });
   }
   $scope.showlbl = function(idx, num){
