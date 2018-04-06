@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UsrController extends Controller
 {
@@ -808,7 +809,7 @@ class UsrController extends Controller
         'relation' => 'required|max:100',
         'company'  => 'max:100',
         'position' => 'required|max:100',
-        'email'    => 'required|email|max:100',
+        'email'    => 'required|email|exists:character_reference,email|max:100',
         'phone'    => 'max:100'
       ], $messages);
       $validate->setAttributeNames($replace_names);

@@ -1316,7 +1316,7 @@
 	              			<div class="bx">
 	              				<div class="nptgrp" ng-class="{'err': msg['error']['chr']['position'][0]}" ng-mouseover="cposition = true" ng-mouseleave="cposition = false">
 							            <input type="text" ng-model="chredt.position" required>
-							            <label class="nptlbl">Position</label>
+							            <label class="nptlbl">Position <span>*</span></label>
 							            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr']['position'] && cposition === true" ng-cloak>
 	                        	<div class="popover bs-popover-top">
 										    			<div class="arrow"></div>
