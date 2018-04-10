@@ -1,0 +1,37 @@
+INSTRUCTIONS:
+
+* How to replicate the latest project
+1. git clone https://github.com/jpgitmaster/jpnewproj.git
+2. add the latest .env connection
+3. install composer in the cloned project
+4. create db and upload the latest db in db_latest folder
+5. install git
+6. add config in httpd.conf
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\jpnwproj\public"
+    ServerName newblog.dev.com
+    ServerAlias www.newblog.dev.com
+    <Directory "C:\xampp\htdocs\jpnwproj\public">
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+7. go to C:\Windows\System32\drivers\etc\hosts add host
+127.0.0.1 sample.dev.com
+
+
+* sample config to add in httpd.conf
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\jpnwproj\public"
+    ServerName newblog.dev.com
+    ServerAlias www.newblog.dev.com
+    <Directory "C:\xampp\htdocs\jpnwproj\public">
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+*C:\Windows\System32\drivers\etc\hosts add host
+127.0.0.1 sample.dev.com

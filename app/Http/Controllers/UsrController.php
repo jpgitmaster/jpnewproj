@@ -803,14 +803,24 @@ class UsrController extends Controller
     $messages = [];
     $loop_error = 0;
     
+    // $validate = Validator::make($usr['chr'], [
+    //   '*.email'    => 'distinct',
+    //   '*.phone'    => 'distinct'
+    // ], $messages);
+    // $validate->setAttributeNames($replace_names);
+    // $this->msg['error']['chr'] = $validate->messages()->toArray();
+    // $has_error = $this->hasError($validate);
+    // $loop_error += count($validate->messages()->toArray());
+    // print_r($loop_error);
+    // die();
     for ($i = 0; $i < count($usr['chr']); $i++):
       $validate = Validator::make($usr['chr'][$i], [
         'name'     => 'required|max:100',
         'relation' => 'required|max:100',
         'company'  => 'max:100',
         'position' => 'required|max:100',
-        'email'    => 'required|email|exists:character_reference,email|max:100',
-        'phone'    => 'max:100'
+        'email'    => 'required|max:100|email|unique:character_reference,email',
+        'phone'    => 'max:100|unique:character_reference,phone'
       ], $messages);
       $validate->setAttributeNames($replace_names);
       $this->msg['error']['chr'][] = $validate->messages()->toArray();
@@ -859,9 +869,9 @@ class UsrController extends Controller
       'name'     => 'required|max:100',
       'relation' => 'required|max:100',
       'company'  => 'max:100',
-      'position' => 'max:100',
-      'email'    => 'required|email|max:100',
-      'phone'    => 'max:100'
+      'position' => 'required|max:100',
+      'email'    => 'required|email|max:100|unique:character_reference,email,' . $usr['chr']['id'],
+      'phone'    => 'max:100|unique:character_reference,phone,' . $usr['chr']['id']
     ], $messages);
     
     $validate->setAttributeNames($replace_names);
