@@ -803,30 +803,36 @@ class UsrController extends Controller
     $messages = [];
     $loop_error = 0;
     
-    // $validate = Validator::make($usr['chr'], [
-    //   '*.email'    => 'distinct',
-    //   '*.phone'    => 'distinct'
-    // ], $messages);
-    // $validate->setAttributeNames($replace_names);
-    // $this->msg['error']['chr'] = $validate->messages()->toArray();
-    // $has_error = $this->hasError($validate);
-    // $loop_error += count($validate->messages()->toArray());
-    // print_r($loop_error);
-    // die();
-    for ($i = 0; $i < count($usr['chr']); $i++):
-      $validate = Validator::make($usr['chr'][$i], [
-        'name'     => 'required|max:100',
-        'relation' => 'required|max:100',
-        'company'  => 'max:100',
-        'position' => 'required|max:100',
-        'email'    => 'required|max:100|email|unique:character_reference,email',
-        'phone'    => 'max:100|unique:character_reference,phone'
-      ], $messages);
-      $validate->setAttributeNames($replace_names);
-      $this->msg['error']['chr'][] = $validate->messages()->toArray();
-      $has_error = $this->hasError($validate);
-      $loop_error += count($validate->messages()->toArray());
-    endfor;
+    $validate = Validator::make($usr['chr'], [
+        '*.name'     => 'required|max:50',
+        '*.relation' => 'required|max:50',
+        '*.company'  => 'max:100',
+        '*.position' => 'required|max:60',
+        '*.email'    => 'required|max:60|email|unique:character_reference,email|distinct',
+        '*.phone'    => 'max:30|unique:character_reference,phone|distinct'
+      ],
+      [
+        '*.name.required'     => 'The name field is required.',
+        '*.name.max'          => 'The name field is too long.',
+        '*.relation.required' => 'The relation field is required.',
+        '*.relation.max'      => 'The relation field is too long.',
+        '*.company.max'       => 'The company field is too long.',
+        '*.position.required' => 'The position field is required.',
+        '*.position.max'      => 'The position field is too long.',
+        '*.email.required'    => 'The email field is required.',
+        '*.email.distinct'    => 'The email field has a duplicate value.',
+        '*.email.max'         => 'The email field is too long.',
+        '*.email.email'       => 'The email must be a valid email address.',
+        '*.email.unique'      =>'The email has already been taken.',
+        '*.phone.max'         => 'The phone field is too long.',
+        '*.phone.unique'      =>'The phone has already been taken.',
+        '*.phone.distinct'    => 'The phone field has a duplicate value.'
+      ]
+    );
+    $validate->setAttributeNames($replace_names);
+    $this->msg['error']['chr'] = $validate->messages()->toArray();
+    $has_error = $this->hasError($validate);
+    $loop_error += count($validate->messages()->toArray());
     if($has_error == true || $loop_error > 0):
       $this->msg['has_error'] = true;
     else:
