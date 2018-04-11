@@ -203,31 +203,39 @@
 			    <div class="btmbrdr"><hr></div>
 				</div>
 				<div id="topfrms" class="row no-gutters">
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<div class="bx">
 							<div class="nptgrp">
-	    					<select required>
+	    					{{-- <select required>
 	                <option value=""></option>
-	              </select>
+	              </select> --}}
+	              <span class="vlue">1-3 weeks</span>
 		            <label class="nptlbl">
 		            	Work Availability <span>*</span>
 		            </label>
+		            <span class="lnkchng">
+		            	<strong>Change</strong>
+		            </span>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<div class="bx">
 							<div class="nptgrp">
-	    					<select required>
+	    					{{-- <select required>
 	                <option value=""></option>
-	              </select>
+	              </select> --}}
+	              <span class="vlue">Freelance</span>
 		            <label class="nptlbl">
 		            	Type of Work <span>*</span>
 		            </label>
+		            <span class="lnkchng">
+		            	<strong>Change</strong>
+		            </span>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-4">
 						<button class="btn btn-success pvw" type="button" ng-click="viewResume(jpemps)">
 							PREVIEW
 						</button>
@@ -649,7 +657,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp txtarea wysiwyg" ng-class="{'err': msg['error']['educbg']['awardsrecognition']}" ng-mouseover="fcs_awrds = true" ng-mouseleave="fcs_awrds = false">
 								            <summernote ng-model="schl.awardsrecognition" config="summernote_options"></summernote>
-								            <label class="nptlbl">Awards and Recognition <span>*</span></label>
+								            <label class="nptlbl">Awards and Recognition</label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['educbg']['awardsrecognition'] && fcs_awrds === true" ng-cloak>
 		                        	<div class="popover bs-popover-top">
 														    <div class="arrow"></div>
@@ -1048,74 +1056,88 @@
 			              			</div>
 			              		</div>
 												<div class="col-lg-8">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<%= jpemp.company ? jpemp.company : '&nbsp;' %>
-														</span>
-											    	<label class="lbl">
-											    		Company
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<%= jpemp.company ? jpemp.company : '&nbsp;' %>
+															</span>
+												    	<label class="nptlbl">
+												    		Company <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<%= jpemp.position ? jpemp.position : '&nbsp;' %>
-														</span>
-											    	<label class="lbl">
-											    		Position
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<%= jpemp.position ? jpemp.position : '&nbsp;' %>
+															</span>
+												    	<label class="nptlbl">
+												    		Position <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary | number %>
-														</span>
-											    	<label class="lbl">
-											    		Salary
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<%= jpemp.currency ? getfltrvalue(currencies, jpemp.currency, 0) : '&nbsp;' %> <%= jpemp.salary | number %>
+															</span>
+												    	<label class="nptlbl">
+												    		Salary <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<%= jpemp.sdate ? jpemp.sdate : '&nbsp;' %>
-														</span>
-											    	<label class="lbl">
-											    		Start Date
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<%= jpemp.sdate ? jpemp.sdate : '&nbsp;' %>
+															</span>
+												    	<label class="nptlbl">
+												    		Start Date <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-4">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<%= jpemp.ispresent ? 'Present Employer' : (jpemp.edate ? jpemp.edate : '&nbsp;') %>
-														</span>
-											    	<label class="lbl">
-											    		End Date
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<%= jpemp.ispresent ? 'Present Employer' : (jpemp.edate ? jpemp.edate : '&nbsp;') %>
+															</span>
+												    	<label class="nptlbl">
+												    		End Date <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-6">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<div ng-bind-html="jpemp.jbdescription"></div>
-														</span>
-											    	<label class="lbl">
-											    		Job Description
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<div ng-bind-html="jpemp.jbdescription"></div>
+															</span>
+												    	<label class="nptlbl">
+												    		Job Description <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 												<div class="col-lg-6">
-													<div class="nptgrp lbld">
-														<span class="lbldcntnt">
-															<div ng-bind-html="jpemp.reasonforleaving"></div>
-														</span>
-											    	<label class="lbl">
-											    		Reason for Leaving
-											    	</label>
-											  	</div>
+													<div class="bx lbld">
+														<div class="nptgrp">
+															<span class="vlue">
+																<div ng-bind-html="jpemp.reasonforleaving"></div>
+															</span>
+												    	<label class="nptlbl">
+												    		Reason for Leaving <span>*</span>
+												    	</label>
+												  	</div>
+												  </div>
 												</div>
 											</div>
 										</div>
@@ -1209,7 +1231,7 @@
 		              			<div class="bx">
 		              				<div class="nptgrp" ng-class="{'err': msg['error']['chr'][$index+'.position'][0]}" ng-mouseover="cposition = true" ng-mouseleave="cposition = false">
 								            <input type="text" ng-model="chr.position" required>
-								            <label class="nptlbl">Position</label>
+								            <label class="nptlbl">Position <span>*</span></label>
 								            <div class="am-flip-x popcntnr" ng-if="msg['error']['chr'][$index+'.position'] && cposition === true" ng-cloak>
 		                        	<div class="popover bs-popover-top">
 											    			<div class="arrow"></div>
@@ -1414,64 +1436,76 @@
 		              			</div>
 		              		</div>
 		              		<div class="col-lg-8">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.name ? jpchr.name : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Name
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.name ? jpchr.name : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Name <span>*</span>
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              		<div class="col-lg-4">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.relation ? jpchr.relation : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Relation
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.relation ? jpchr.relation : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Relation <span>*</span>
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              		<div class="col-lg-6">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.company ? jpchr.company : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Company
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.company ? jpchr.company : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Company
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              		<div class="col-lg-6">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.position ? jpchr.position : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Position
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.position ? jpchr.position : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Position <span>*</span>
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              		<div class="col-lg-6">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.email ? jpchr.email : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Email
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.email ? jpchr.email : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Email <span>*</span>
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              		<div class="col-lg-6">
-		              			<div class="nptgrp lbld">
-													<span class="lbldcntnt">
-														<%= jpchr.phone ? jpchr.phone : '&nbsp;' %>
-													</span>
-										    	<label class="lbl">
-										    		Phone
-										    	</label>
-										  	</div>
+		              			<div class="bx lbld">
+			              			<div class="nptgrp">
+														<span class="vlue">
+															<%= jpchr.phone ? jpchr.phone : '&nbsp;' %>
+														</span>
+											    	<label class="nptlbl">
+											    		Phone
+											    	</label>
+											  	</div>
+											  </div>
 		              		</div>
 		              	</div>
               		</div>

@@ -14,9 +14,15 @@
 				}
 				
 				#topfrms{
-					margin: 25px 0 10px;
+					margin: 30px 0 0;
 					.nptgrp{
 						margin: 0;
+						.lnkchng{
+							float: right;
+							font-size: 11px;
+    					color: #0077c0;
+    					cursor: pointer;
+						}
 					}
 				}
 
@@ -249,6 +255,9 @@
 							}
 							.bx{
 								margin: 5px 3px;
+								&.lbld{
+									margin: 5px 5px 12px;
+								}
 							}
 							.crdftr{
 							    text-align: center;
@@ -482,35 +491,35 @@
 									}
 								}
 
-								&.lbld{
-									margin: 0 5px 15px;
-									display: inherit;
-									width: auto;
+								// &.lbld{
+								// 	margin: 0 5px 15px;
+								// 	display: inherit;
+								// 	width: auto;
 
-									.lbldcntnt {
-									    width: 100%;
-									    color: #3a3a3a;
-									    p{
-									    	margin: 0;
-									    }
-									    ul{
-									    	padding-left: 20px;
-									    	margin: 0 0 10px;
-									    }
-									}
-									.lbl {
-									    position: relative;
-									    left: 0;
-									    top: 0;
-									    border-top: 1px dotted #CCC;
-									    font-size: 12px;
-									    width: 100%;
-									    clear: both;
-									    margin-bottom: 0;
-									    color: #0077c0;
-									    font-weight: bold;
-									}
-								}
+								// 	.lbldcntnt {
+								// 	    width: 100%;
+								// 	    color: #3a3a3a;
+								// 	    p{
+								// 	    	margin: 0;
+								// 	    }
+								// 	    ul{
+								// 	    	padding-left: 20px;
+								// 	    	margin: 0 0 10px;
+								// 	    }
+								// 	}
+								// 	.lbl {
+								// 	    position: relative;
+								// 	    left: 0;
+								// 	    top: 0;
+								// 	    border-top: 1px dotted #CCC;
+								// 	    font-size: 12px;
+								// 	    width: 100%;
+								// 	    clear: both;
+								// 	    margin-bottom: 0;
+								// 	    color: #0077c0;
+								// 	    font-weight: bold;
+								// 	}
+								// }
 							}
 						}
 					}

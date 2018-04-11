@@ -259,6 +259,22 @@ body, html {
   color: #28a745;
 }
 
+.nptgrp .vlue {
+  border-bottom: 1px dotted #0077c0;
+  width: 100%;
+  float: left;
+  margin: 0;
+}
+
+.nptgrp .vlue p {
+  margin: 0;
+}
+
+.nptgrp .vlue ul {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
 .msgmdl {
   top: 50px;
 }

@@ -2,5 +2,7 @@
 @section('title', 'Users')
 
 @section('content')
-<h1>Users</h1>
+<div class="cntnbx">
+	<h1>Users</h1>
+</div>
 @endsection

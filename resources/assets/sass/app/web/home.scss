@@ -141,7 +141,10 @@
 				margin-top: -20px;
 			}
 
-			.nptgrp > .popcntnr{right: -15px;}
+			.nptgrp{
+				margin-bottom: 25px;
+				&> .popcntnr{right: -15px;}
+			}
 		}
 	}
 	

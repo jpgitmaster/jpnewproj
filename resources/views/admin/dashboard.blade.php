@@ -2,5 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<h1>Dashboard</h1>
+<div class="cntnbx">
+	<h1>Dashboard</h1>
+</div>
 @endsection

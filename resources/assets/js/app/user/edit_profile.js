@@ -291,6 +291,8 @@ usrContent.controller('ctrlEditProfile',
             $scope.frmx1 = true;
             $scope.collapseTab(2);
             $scope.proform['personalinfo'] = 1;
+            // updating resume
+            $scope.updateUsr();
           }
           $scope.success_prsnl = true;
           $timeout(function(){
@@ -321,7 +323,7 @@ usrContent.controller('ctrlEditProfile',
     var noworkexprnce = $scope.jpemps.length ? true : false;
     $scope.check_emps();
     $timeout(function(){
-      if($scope.usr){
+      if($scope.frm1){
         $scope.wrkexperience = $scope.frm1.wrkexperience;
         if(!$scope.jpemps.length && $scope.frm1.wrkexperience > 1){
           $scope.emps = [{

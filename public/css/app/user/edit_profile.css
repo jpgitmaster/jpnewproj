@@ -11,11 +11,18 @@
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #topfrms {
-  margin: 25px 0 10px;
+  margin: 30px 0 0;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #topfrms .nptgrp {
   margin: 0;
+}
+
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #topfrms .nptgrp .lnkchng {
+  float: right;
+  font-size: 11px;
+  color: #0077c0;
+  cursor: pointer;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card {
@@ -261,6 +268,10 @@
   margin: 5px 3px;
 }
 
+#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .bx.lbld {
+  margin: 5px 5px 12px;
+}
+
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .crdftr {
   text-align: center;
   padding: 20px 0 0;
@@ -500,39 +511,6 @@
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx.actv + label[for=male], #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.radio .rdbx .btnbx:checked + label[for=male] {
   background-color: #0077c0;
   border: 1px solid #0077c0;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld {
-  margin: 0 5px 15px;
-  display: inherit;
-  width: auto;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbldcntnt {
-  width: 100%;
-  color: #3a3a3a;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbldcntnt p {
-  margin: 0;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbldcntnt ul {
-  padding-left: 20px;
-  margin: 0 0 10px;
-}
-
-#edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .nptgrp.lbld .lbl {
-  position: relative;
-  left: 0;
-  top: 0;
-  border-top: 1px dotted #CCC;
-  font-size: 12px;
-  width: 100%;
-  clear: both;
-  margin-bottom: 0;
-  color: #0077c0;
-  font-weight: bold;
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_rght .avatar {

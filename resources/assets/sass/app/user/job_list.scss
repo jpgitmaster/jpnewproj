@@ -2,9 +2,18 @@
 
 	.cntntwrpr_lft{
 		#topfrms{
-			margin: 25px 0 10px;
+			margin: 30px 0 5px;
 			.nptgrp{
 				margin: 0;
+				.vlue{
+			    border-bottom: 1px solid #0077c0;
+			    width: 100%;
+			    float: left;
+			    margin: 0;
+				}
+				.lnkchng{
+					
+				}
 			}
 			.pvw {
 		    float: right;
@@ -24,7 +33,6 @@
 				.jb{
 					background-color: #fbfbfb;
 					margin: 10px 8px;
-					box-shadow: 1px 1px 20px #cecece;
 					position: relative;
 					padding-bottom: 50px;
 

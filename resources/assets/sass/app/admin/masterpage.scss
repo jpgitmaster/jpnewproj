@@ -102,8 +102,11 @@
 						border-bottom: 1px solid #E9E9E9;
 						position: relative;
 
-						.icn{position: absolute; right: 15px; top: 10px;}
-						.lbl{display: block;}
+						.icn{position: absolute; top: 10px;}
+						.lbl{
+							display: block;
+							padding-left: 30px;
+						}
 					}
 					&:first-child{
 						border-bottom: 1px solid #E9E9E9;
@@ -120,6 +123,13 @@
 			background-color: #E9E9E9;
 			border-top: 1px solid #FFF;
 			border-left: 1px solid #FFF;
+			.cntnbx {
+		    background-color: #FFF;
+		    padding: 10px 15px 20px;
+		    border: 1px solid #dbdbdb;
+		    margin: 0;
+		    font-size: 14px;
+			}
 		}
 	}
 	@media screen and (max-width: 992px) {

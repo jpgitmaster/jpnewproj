@@ -119,12 +119,12 @@
 
 #wrapper .admnbx.navi ul li a .icn {
   position: absolute;
-  right: 15px;
   top: 10px;
 }
 
 #wrapper .admnbx.navi ul li a .lbl {
   display: block;
+  padding-left: 30px;
 }
 
 #wrapper .admnbx.navi ul li:first-child {
@@ -140,6 +140,14 @@
   background-color: #E9E9E9;
   border-top: 1px solid #FFF;
   border-left: 1px solid #FFF;
+}
+
+#wrapper .admnbx.content .cntnbx {
+  background-color: #FFF;
+  padding: 10px 15px 20px;
+  border: 1px solid #dbdbdb;
+  margin: 0;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 992px) {

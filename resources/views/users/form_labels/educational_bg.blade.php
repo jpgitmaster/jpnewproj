@@ -6,56 +6,66 @@
 <div class="clearfix"></div>
 <div class="row no-gutters" style="margin-top: 10px; margin-bottom: 20px;">
 	<div class="col-lg-12">
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
-				<%= schl.school ? schl.school : '&nbsp;' %>
-			</span>
-	    	<label class="lbl">
-	    		School
+		<div class="bx lbld">
+			<div class="nptgrp">
+				<span class="vlue">
+					<%= schl.school ? schl.school : '&nbsp;' %>
+				</span>
+	    	<label class="nptlbl">
+	    		School <span>*</span>
 	    	</label>
 	  	</div>
+	  </div>
 	</div>
 	<div class="col-lg-6">
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
-				<%= schl.course ? schl.course : '&nbsp;' %>
-			</span>
-	    	<label class="lbl">
-	    		Course
+		<div class="bx lbld">
+			<div class="nptgrp">
+				<span class="vlue">
+					<%= schl.course ? schl.course : '&nbsp;' %>
+				</span>
+	    	<label class="nptlbl">
+	    		Course <span>*</span>
 	    	</label>
 	  	</div>
+	  </div>
 	</div>
 	<div class="col-lg-3">
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
-				<%= schl.sdate ? schl.sdate : '&nbsp;' %>
-			</span>
-	    	<label class="lbl">
-	    		Start Date
+		<div class="bx lbld">
+			<div class="nptgrp">
+				<span class="vlue">
+					<%= schl.sdate ? schl.sdate : '&nbsp;' %>
+				</span>
+	    	<label class="nptlbl">
+	    		Start Date <span>*</span>
 	    	</label>
 	  	</div>
+	  </div>
 	</div>
 	<div class="col-lg-3">
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
-				<%= schl.edate ? schl.edate : '&nbsp;' %>
-			</span>
-	    	<label class="lbl">
-	    		End Date
+		<div class="bx lbld">
+			<div class="nptgrp">
+				<span class="vlue">
+					<%= schl.edate ? schl.edate : '&nbsp;' %>
+				</span>
+	    	<label class="nptlbl">
+	    		End Date <span>*</span>
 	    	</label>
 	  	</div>
+	  </div>
 	</div>
 	<div class="col-lg-12" ng-if="schl.awardsrecognition" ng-cloak>
-		<div class="nptgrp lbld">
-			<span class="lbldcntnt">
-				<div ng-bind-html="schl.awardsrecognition" ng-if="schl.awardsrecognition" ng-cloak></div>
-				<div ng-if="!schl.awardsrecognition" ng-cloak>
-					&nbsp;
-				</div>
-			</span>
-	    	<label class="lbl">
+		<div class="bx lbld">
+			<div class="nptgrp">
+				<span class="vlue">
+					<div ng-bind-html="schl.awardsrecognition" ng-if="schl.awardsrecognition" ng-cloak></div>
+					<div ng-if="!schl.awardsrecognition" ng-cloak>
+						&nbsp;
+					</div>
+				</span>
+	    	<label class="nptlbl">
 	    		Awards and Recognition
 	    	</label>
 	  	</div>
+	  </div>
 	</div>
 </div>

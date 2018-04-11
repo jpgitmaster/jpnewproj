@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2018 at 01:46 PM
+-- Generation Time: Apr 11, 2018 at 03:55 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -57,13 +57,6 @@ CREATE TABLE `avatars` (
   `imgchanged` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `avatars`
---
-
-INSERT INTO `avatars` (`id`, `genid`, `imgname`, `imgext`, `imgfolder`, `imgadded`, `imgchanged`) VALUES
-(1, 'ilxaCixvdx1BuUBFR4cD', 'ilxaCixvdx1BuUBFR4cD022318032218.png', 'png', 'avatars', '2018-02-23 13:48:15', '2018-03-22 17:25:58');
-
 -- --------------------------------------------------------
 
 --
@@ -107,14 +100,6 @@ CREATE TABLE `character_reference` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `character_reference`
---
-
-INSERT INTO `character_reference` (`id`, `genid`, `chrid`, `name`, `company`, `position`, `relation`, `email`, `phone`) VALUES
-(7, 'ilxaCixvdx1BuUBFR4cD', 'UIEYsS3PheKgMXL02NgP', 'Dennis Lira', '', '', 'Officemate', 'dlira@stratpoint.com', ''),
-(8, 'ilxaCixvdx1BuUBFR4cD', 'g5C0rJW5vynHgHPQEib2', 'Marjun Bundukin', 'Stratpoint Global Outsourcing', 'Sr. Software Engineer', 'Teammate', 'mbunudukin@stratpoint.com', '45678');
 
 -- --------------------------------------------------------
 
@@ -399,13 +384,6 @@ CREATE TABLE `educational_background` (
   `awardsrecognition` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `educational_background`
---
-
-INSERT INTO `educational_background` (`id`, `genid`, `school`, `course`, `sdate`, `edate`, `awardsrecognition`) VALUES
-(13, 'ilxaCixvdx1BuUBFR4cD', 'Technological Institute of the Philippines - Quiapo, Manila', 'Bachelor of Science in Computer Engineering', '2018-02-28', '2018-04-29', '<ul><li>wertyuioo;ewrtyuio</li><li>ewrtyuioipoww3retr</li><li>ewrtyui</li><li>ertyui</li></ul>');
-
 -- --------------------------------------------------------
 
 --
@@ -426,13 +404,6 @@ CREATE TABLE `employment_history` (
   `jbdescription` text NOT NULL,
   `reasonforleaving` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `employment_history`
---
-
-INSERT INTO `employment_history` (`id`, `genid`, `empid`, `company`, `position`, `currency`, `salary`, `sdate`, `edate`, `ispresent`, `jbdescription`, `reasonforleaving`) VALUES
-(25, 'ilxaCixvdx1BuUBFR4cD', 'qerA4749VG6hpSjeMOWU', 'iTworks Global Solutions', 'Software Engineer', 2, '20000', '2018-02-04', '2018-04-05', 0, '<ul><li>dsdgrtfhghjk,</li><li>sfdghjkl</li><li>defsgthjkl</li><li>weftfrhyjukl;\'</li></ul>', '<ul><li>dsdgrtfhghjk,</li><li>sfdghjkl</li><li>defsgthjkl</li><li>weftfrhyjukl;\'</li></ul>');
 
 -- --------------------------------------------------------
 
@@ -458,13 +429,6 @@ CREATE TABLE `personal_information` (
   `wrkexperience` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `personal_information`
---
-
-INSERT INTO `personal_information` (`id`, `genid`, `mobile`, `phone`, `present_address`, `permanent_address`, `bday`, `bplace`, `age`, `gender`, `cstatus`, `country`, `nationality`, `objectives`, `wrkexperience`) VALUES
-(2, 'ilxaCixvdx1BuUBFR4cD', '09261234567', '(02) 123-4567', 'Bagong Silang Caloocan City', 'Bagong Silang Caloocan City', '1987-05-14', 'Valenzuela City', 30, 2, 2, 175, 175, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente obcaecati, ex? Quod dolor, ipsam error illum totam, ea ut, repellendus fuga molestiae amet veritatis harum ducimus sint reprehenderit', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -479,13 +443,6 @@ CREATE TABLE `profile_forms` (
   `emphistory` tinyint(1) NOT NULL,
   `charreference` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profile_forms`
---
-
-INSERT INTO `profile_forms` (`id`, `genid`, `personalinfo`, `educationalbg`, `emphistory`, `charreference`) VALUES
-(1, 'ilxaCixvdx1BuUBFR4cD', 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -526,13 +483,6 @@ CREATE TABLE `users` (
   `act_activated` datetime DEFAULT NULL,
   `role` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `genid`, `fname`, `mname`, `lname`, `email`, `password`, `remember`, `remember_token`, `activated`, `act_updated`, `act_created`, `act_activated`, `role`) VALUES
-(1, 'ilxaCixvdx1BuUBFR4cD', 'JP', 'Lascano', 'Vasquez', 'vasquezjp14@gmail.com', '$2y$10$MiqgBdQaRH9kwZkMV2Iu4uIs4.QpckgA3fdbaNPRnF79qS6lv9VpS', 0, 'deUumfIp8KPSGzAKBAQKW1vxSnUEVldxz4621myjVCEbhNOfvKpRoWhmLGGJ', 1, '2018-02-23 13:40:00', '2018-02-23 13:38:57', '2018-02-23 13:40:00', 1);
 
 --
 -- Indexes for dumped tables
@@ -623,7 +573,7 @@ ALTER TABLE `activity_type`
 -- AUTO_INCREMENT for table `avatars`
 --
 ALTER TABLE `avatars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `calendar_schedules`
 --
@@ -633,7 +583,7 @@ ALTER TABLE `calendar_schedules`
 -- AUTO_INCREMENT for table `character_reference`
 --
 ALTER TABLE `character_reference`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `countries`
 --
@@ -643,22 +593,22 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `educational_background`
 --
 ALTER TABLE `educational_background`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `employment_history`
 --
 ALTER TABLE `employment_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `profile_forms`
 --
 ALTER TABLE `profile_forms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `resumes`
 --
@@ -668,7 +618,7 @@ ALTER TABLE `resumes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

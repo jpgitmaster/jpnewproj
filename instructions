@@ -35,3 +35,6 @@ INSTRUCTIONS:
 
 *C:\Windows\System32\drivers\etc\hosts add host
 127.0.0.1 sample.dev.com
+
+* RESET to 1
+ALTER TABLE tablename AUTO_INCREMENT = 1
