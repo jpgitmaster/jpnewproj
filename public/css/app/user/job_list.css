@@ -3,18 +3,18 @@
 }
 
 .cntntwrpr .cntntwrpr_lft #topfrms {
-  margin: 30px 0 5px;
+  margin: 30px 0 0;
 }
 
 .cntntwrpr .cntntwrpr_lft #topfrms .nptgrp {
   margin: 0;
 }
 
-.cntntwrpr .cntntwrpr_lft #topfrms .nptgrp .vlue {
-  border-bottom: 1px solid #0077c0;
-  width: 100%;
-  float: left;
-  margin: 0;
+.cntntwrpr .cntntwrpr_lft #topfrms .nptgrp .lnkchng {
+  float: right;
+  font-size: 11px;
+  color: #0077c0;
+  cursor: pointer;
 }
 
 .cntntwrpr .cntntwrpr_lft #topfrms .pvw {
@@ -34,7 +34,7 @@
 
 .cntntwrpr .cntntwrpr_lft #jbs [class*=col-] .jb {
   background-color: #fbfbfb;
-  margin: 10px 8px;
+  margin: 5px 8px 10px;
   position: relative;
   padding-bottom: 50px;
 }

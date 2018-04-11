@@ -36,7 +36,7 @@
 	            <label class="nptlbl">
 	            	Work Availability <span>*</span>
 	            </label>
-	            <span class="btmlbl">
+	            <span class="lnkchng">
 	            	<strong>Change</strong>
 	            </span>
 						</div>
@@ -52,7 +52,7 @@
 	            <label class="nptlbl">
 	            	Type of Work <span>*</span>
 	            </label>
-	            <span class="btmlbl">
+	            <span class="lnkchng">
 	            	<strong>Change</strong>
 	            </span>
 						</div>
