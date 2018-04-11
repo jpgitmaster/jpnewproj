@@ -138,7 +138,7 @@
 }
 
 #edit_profile .cntntwrpr .cntntwrpr_lft .cntnbx #edtprof_accrdn .card .card-body .rwemp .row {
-  padding: 40px 15px 15px;
+  padding: 40px 15px 0;
   border: 1px dashed #54c3ec;
   border-radius: 10px;
   margin-bottom: 20px;
